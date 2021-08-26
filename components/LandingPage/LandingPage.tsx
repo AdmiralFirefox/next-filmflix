@@ -1,7 +1,8 @@
 import React, { FC } from "react";
+import dynamic from "next/dynamic";
 import { useSpring, animated } from "react-spring";
-import Content from "./Content/Content";
-import LogoAnimation from "./LogoAnimation";
+const Content = dynamic(() => import("./Content/Content"));
+const LogoAnimation = dynamic(() => import("./LogoAnimation"));
 
 const LandingPage: FC = () => {
   const fadeInProps = useSpring({

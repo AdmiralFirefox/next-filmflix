@@ -6,8 +6,12 @@ import WebLogo from "../assets/logo/WebLogo.png";
 import { auth } from "../firebase/firebase";
 import Link from "next/link";
 import dynamic from "next/dynamic";
-import AccountUserInput from "../components/Inputs/Accounts/AccountUserInput";
-import SignUpFooter from "../components/LandingPage/SignUpFooter";
+const AccountUserInput = dynamic(
+  () => import("../components/Inputs/Accounts/AccountUserInput")
+);
+const SignUpFooter = dynamic(
+  () => import("../components/LandingPage/SignUpFooter")
+);
 import accountStyles from "../styles/Home.module.scss";
 const ProfileSelection = dynamic(
   () => import("../components/Main/ProfileSelection")
@@ -102,8 +106,8 @@ const CreateAccount: FC = () => {
               </div>
               <div className={accountStyles["account-section-recaptcha"]}>
                 <p>
-                  This page is protected by Google reCAPTCHA to ensure you're
-                  not a bot.{" "}
+                  This page is protected by Google reCAPTCHA to ensure
+                  you&apos;re not a bot.{" "}
                 </p>
               </div>
             </div>

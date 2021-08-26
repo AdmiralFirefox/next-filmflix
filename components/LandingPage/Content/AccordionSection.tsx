@@ -26,7 +26,7 @@ const AccordionSection: FC = () => {
         <div
           className={accordionSectionStyles["accordion-section-button-wrapper"]}
         >
-          <Link href="/signin">
+          <Link href="/signin" passHref>
             <span>
               <LandingPageRedButton>Get Started</LandingPageRedButton>
             </span>

@@ -6,8 +6,8 @@ import PageContentOne from "./PageContentOne";
 import PageContentTwo from "./PageContentTwo";
 import PageContentThree from "./PageContentThree";
 import AccordionSection from "./AccordionSection";
-import contentStyles from "../../../styles/Home.module.scss";
 import LandingPageFooter from "./LandingPageFooter";
+import contentStyles from "../../../styles/Home.module.scss";
 
 const Content: FC = () => {
   //Content Background

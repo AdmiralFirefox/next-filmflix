@@ -18,7 +18,7 @@ const HeroSection: FC = () => {
           </p>
         </div>
         <div className={herosSectionStyles["hero-section-button-wrapper"]}>
-          <Link href="/signin">
+          <Link href="/signin" passHref>
             <span>
               <LandingPageRedButton>Get Started</LandingPageRedButton>
             </span>

@@ -7,8 +7,12 @@ import { auth } from "../firebase/firebase";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import firebase from "firebase/app";
-import ProfileUserInput from "../components/Inputs/Profiles/ProfileUserInput";
-import SignUpFooter from "../components/LandingPage/SignUpFooter";
+const ProfileUserInput = dynamic(
+  () => import("../components/Inputs/Profiles/ProfileUserInput")
+);
+const SignUpFooter = dynamic(
+  () => import("../components/LandingPage/SignUpFooter")
+);
 import profileStyles from "../styles/Home.module.scss";
 const ProfileSelection = dynamic(
   () => import("../components/Main/ProfileSelection")
@@ -110,8 +114,8 @@ const SignIn: FC = () => {
 
               <div className={profileStyles["profile-styles-recaptcha"]}>
                 <p>
-                  This page is protected by Google reCAPTCHA to ensure you're
-                  not a bot.{" "}
+                  This page is protected by Google reCAPTCHA to ensure
+                  you&apos;re not a bot.{" "}
                 </p>
               </div>
             </div>
