@@ -13,6 +13,7 @@ interface MovieCastProp {
     id: number;
     name: string;
     profile_path: string;
+    character: string;
   }[];
 }
 
@@ -100,6 +101,13 @@ const MovieCasts: FC<{ id: number }> = ({ id }) => {
 
               <div className={movieCastsStyles["movie-casts-name"]}>
                 <p>{movieCast.name}</p>
+                {movieCast.character !== "" ? (
+                  <p className={movieCastsStyles["movie-casts-character"]}>
+                    {movieCast.character}
+                  </p>
+                ) : (
+                  ""
+                )}
               </div>
             </div>
           );

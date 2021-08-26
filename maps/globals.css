@@ -925,6 +925,7 @@
 }
 .swiper-slide:hover {
   transform: scale(1.2);
+  box-shadow: 5px 10px 20px 1px rgba(0, 0, 0, 0.8);
   position: relative;
   z-index: 2;
 }

@@ -10,9 +10,9 @@ interface NavbarSearchButtonProps {
 const SearchButton = withStyles((theme: Theme) => ({
   root: {
     color: "#fff",
-    backgroundColor: "#0071EB",
+    backgroundColor: "#303030",
     "&:hover": {
-      backgroundColor: "hsl(211, 100%, 60%)",
+      backgroundColor: "hsl(0, 0%, 30%)",
     },
   },
 }))(Button);

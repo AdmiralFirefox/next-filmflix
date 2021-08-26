@@ -532,6 +532,7 @@
 }
 .swiper-slide:hover {
   transform: scale(1.2);
+  box-shadow: 5px 10px 20px 1px rgba(0, 0, 0, 0.8);
   position: relative;
   z-index: 2;
 }
@@ -1614,6 +1615,9 @@
   margin-top: 0.35em;
   text-align: center;
 }
+.movie-casts-wrapper .movie-casts-name .movie-casts-character {
+  color: #8c8c8c;
+}
 
 .movie-casts-button-wrapper {
   display: flex;
@@ -1670,6 +1674,9 @@
   font-size: 1rem;
   margin-top: 0.35em;
   text-align: center;
+}
+.tv-casts-wrapper .tv-casts-name .tv-casts-character {
+  color: #8c8c8c;
 }
 
 .tv-casts-button-wrapper {

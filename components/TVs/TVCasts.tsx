@@ -13,6 +13,7 @@ interface TVCastProp {
     id: number;
     profile_path: string;
     name: string;
+    character: string;
   }[];
 }
 
@@ -98,6 +99,13 @@ const TVCasts: FC<{ id: number }> = ({ id }) => {
 
               <div className={tvCastsStyles["tv-casts-name"]}>
                 <p>{cast.name}</p>
+                {cast.character !== "" ? (
+                  <p className={tvCastsStyles["tv-casts-character"]}>
+                    {cast.character}
+                  </p>
+                ) : (
+                  ""
+                )}
               </div>
             </div>
           );
