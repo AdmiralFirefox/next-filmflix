@@ -33,7 +33,7 @@ const SignIn: FC = () => {
         passwordRef.current!.value
       );
     } catch (error) {
-      // console.log(error);
+      console.log(error);
       alert(error);
     }
   };

@@ -35,7 +35,7 @@ const CreateAccount: FC = () => {
         );
         alert("Account Created Successfully!");
       } catch (error) {
-        // console.error(error);
+        console.error(error);
         alert(error);
       }
     } else if (confirmPasswordRef.current!.value === "") {
