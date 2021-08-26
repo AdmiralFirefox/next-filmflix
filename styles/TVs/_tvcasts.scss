@@ -1,0 +1,23 @@
+@use "../ThemeProvider/variables" as theme-variable;
+
+.tv-casts-wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(5rem, 1fr));
+  grid-gap: 3em;
+
+  .tv-casts-image {
+    width: 100%;
+  }
+
+  .tv-casts-name {
+    color: theme-variable.$white-font-color;
+    font-size: 1rem;
+    margin-top: 0.35em;
+    text-align: center;
+  }
+}
+
+.tv-casts-button-wrapper {
+  display: flex;
+  justify-content: center;
+}

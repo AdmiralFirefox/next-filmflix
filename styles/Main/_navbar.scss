@@ -1,0 +1,138 @@
+@use "../ThemeProvider/variables" as theme-variable;
+
+.navbar-wrapper {
+  background: transparent;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1em;
+  position: fixed;
+  z-index: 5;
+  width: 100%;
+  transition: background 0.5s ease-in-out;
+
+  .navbar-set {
+    display: flex;
+    align-items: center;
+
+    .site-logo {
+      margin-top: 0.5em;
+    }
+
+    .navbar-dropdown {
+      display: none;
+    }
+  }
+
+  .navbar-manage {
+    display: flex;
+    align-items: center;
+
+    .navbar-manage-image {
+      display: none;
+    }
+
+    .navbar-search-button-wrapper {
+      display: none;
+    }
+  }
+}
+
+@media (min-width: theme-variable.$media-query-default-value) {
+  .navbar-wrapper {
+    .navbar-set {
+      .navbar-dropdown {
+        display: inline;
+        margin-left: 0em;
+        position: relative;
+        z-index: 2;
+      }
+    }
+
+    .navbar-manage {
+      .navbar-manage-image {
+        display: inline;
+        width: 4em;
+        cursor: pointer;
+      }
+
+      .navbar-search-button-wrapper {
+        display: inline;
+        margin-right: 1em;
+      }
+
+      .navbar-hamburger {
+        display: none;
+      }
+    }
+  }
+}
+
+//Active Navbar
+.navbar-wrapper-active {
+  background: #000000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1em;
+  position: fixed;
+  z-index: 5;
+  width: 100%;
+  transition: background 0.5s ease-in-out;
+
+  .navbar-set {
+    display: flex;
+    align-items: center;
+
+    .site-logo {
+      margin-top: 0.5em;
+    }
+
+    .navbar-dropdown {
+      display: none;
+    }
+  }
+
+  .navbar-manage {
+    display: flex;
+    align-items: center;
+
+    .navbar-manage-image {
+      display: none;
+    }
+
+    .navbar-search-button-wrapper {
+      display: none;
+    }
+  }
+}
+
+@media (min-width: theme-variable.$media-query-default-value) {
+  .navbar-wrapper-active {
+    .navbar-set {
+      .navbar-dropdown {
+        display: inline;
+        margin-left: 0em;
+        position: relative;
+        z-index: 2;
+      }
+    }
+
+    .navbar-manage {
+      .navbar-manage-image {
+        display: inline;
+        width: 4em;
+        cursor: pointer;
+      }
+
+      .navbar-search-button-wrapper {
+        display: inline;
+        margin-right: 1em;
+      }
+
+      .navbar-hamburger {
+        display: none;
+      }
+    }
+  }
+}

@@ -1,0 +1,105 @@
+import React, { FC, useState, useEffect } from "react";
+import dynamic from "next/dynamic";
+import Skeleton from "@material-ui/lab/Skeleton";
+import Axios from "axios";
+import Image from "next/image";
+import VideoFallback from "../../assets/fallbacks/VideoFallback.jpg";
+import ReactPlayer from "react-player/lazy";
+const VideoPlayer = dynamic(() => import("../Modal/VideoPlayer/VideoPlayer"));
+import movieTrailerStyles from "../../styles/Home.module.scss";
+import PlayMovieButton from "../Buttons/Movies/PlayMovieButton";
+
+const { NEXT_PUBLIC_API_KEY } = process.env;
+
+const MovieTrailer: FC<{ id: number }> = ({ id }) => {
+  const [displayTrailer, setDisplayTrailer] = useState({ key: 0 });
+
+  const [isMounted, setIsMounted] = useState(true);
+
+  const [loadingPlayer, setIsLoadingPlayer] = useState(false);
+
+  //Open Video Player Modal
+  const [openMovieVideoPlayer, setOpenMovieVideoPlayer] = useState(false);
+
+  const handleOpenMovieVideoPlayer = () => {
+    setOpenMovieVideoPlayer(true);
+  };
+
+  const handleCloseMovieVideoPlayer = () => {
+    setOpenMovieVideoPlayer(false);
+  };
+
+  useEffect(() => {
+    setIsLoadingPlayer(true);
+    const displayTrailer = async () => {
+      try {
+        const res = await Axios.get(
+          `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${NEXT_PUBLIC_API_KEY}&language=en-US`
+        );
+        // console.log(res.data.results[0]);
+        if (isMounted) {
+          setDisplayTrailer(res.data.results[0]);
+          setIsLoadingPlayer(false);
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    displayTrailer();
+
+    return () => {
+      setIsMounted(false);
+    };
+  }, [id, isMounted]);
+
+  return (
+    <div>
+      {loadingPlayer ? (
+        <Skeleton variant="rect" id={movieTrailerStyles["movie-trailer-skeleton"]} />
+      ) : (
+        <>
+          {typeof displayTrailer !== "undefined" ? (
+            <>
+              <VideoPlayer
+                open={openMovieVideoPlayer}
+                onClose={handleCloseMovieVideoPlayer}
+                src={`https://www.youtube.com/embed/${displayTrailer.key}`}
+              />
+              <ReactPlayer
+                url={`https://www.youtube.com/embed/${displayTrailer.key}`}
+                width="100%"
+                playing={openMovieVideoPlayer ? false : true}
+                controls={true}
+                muted={true}
+                loop
+                height="30em"
+              />
+              <div className={movieTrailerStyles["movie-button-wrappers"]}>
+                <div className={movieTrailerStyles["play-movie-button"]}>
+                  <PlayMovieButton
+                    handleOpenMovieVideoPlayer={handleOpenMovieVideoPlayer}
+                  />
+                </div>
+              </div>
+            </>
+          ) : (
+            <>
+              <div className={movieTrailerStyles["movie-trailer-fallback"]}>
+                <Image
+                  src={VideoFallback}
+                  alt="Video Fallback"
+                  layout="responsive"
+                  quality={100}
+                  objectFit="cover"
+                />
+              </div>
+            </>
+          )}
+        </>
+      )}
+    </div>
+  );
+};
+
+export default MovieTrailer;

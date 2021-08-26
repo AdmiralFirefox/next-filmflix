@@ -1,0 +1,10 @@
+@use "../ThemeProvider/variables" as theme-variable;
+
+.tv-seasons-title {
+  color: theme-variable.$white-font-color;
+  text-align: center;
+}
+
+.tv-seasons-episodes-wrapper {
+  margin-top: 2em;
+}

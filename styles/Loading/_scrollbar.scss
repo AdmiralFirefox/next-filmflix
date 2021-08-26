@@ -1,0 +1,30 @@
+@use "../ThemeProvider/variables" as theme-variable;
+
+//Scroll Bar
+::-webkit-scrollbar {
+  width: 13px;
+  background: theme-variable.$main-background-color;
+}
+
+::-webkit-scrollbar-track {
+  background: theme-variable.$main-background-color;
+}
+
+::-webkit-scrollbar-thumb {
+  background: theme-variable.$gray-font-color;
+  background: #ed213a; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to left,
+    #93291e,
+    #ed213a
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to left,
+    #93291e,
+    #ed213a
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  &:hover {
+    background: theme-variable.$red-font-color-hover;
+  }
+}

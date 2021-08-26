@@ -1,0 +1,224 @@
+@use "../ThemeProvider/variables" as theme-variable;
+
+.main-background {
+  background: theme-variable.$main-background-color;
+}
+
+.whole-profile-main-wrapper {
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.profile-selection-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  //Web Logo
+  .profile-selection-web-logo {
+    align-self: flex-start;
+    margin-top: 0.7em;
+  }
+
+  //Profile Selection Title
+  .profile-selection-title {
+    margin: 1.5em 1.5em 1em 1.5em;
+    font-size: clamp(1.1rem, 2vw, 1.5rem);
+    color: theme-variable.$white-font-color;
+    text-align: center;
+    line-height: 2.3em;
+  }
+
+  @supports not (font-size: clamp(1.1rem, 2vw, 1.5rem)) {
+    .profile-selection-title {
+      font-size: min(5vw, 1.4rem);
+    }
+  }
+
+  .profile-selection-profiles {
+    display: grid;
+    grid-auto-flow: row;
+    grid-gap: 1.7em;
+
+    //Add Profile Icon
+    .add-profile-icon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: clamp(8rem, 11vw, 11rem);
+      color: theme-variable.$gray-font-color;
+      cursor: pointer;
+      transition: color 0.35s ease-in-out;
+
+      &:hover {
+        color: theme-variable.$white-font-color-hover;
+      }
+    }
+
+    @supports not (font-size: clamp(8rem, 11vw, 11rem)) {
+      .add-profile-icon {
+        font-size: 8rem;
+      }
+    }
+
+    //Edit Mode Off Wrapper for Profile Pic and Profile Name
+    .edit-mode-off-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+
+      .edit-mode-off-image {
+        width: clamp(10em, 12vw, 12em);
+      }
+
+      @supports not (width: clamp(10em, 12vw, 12em)) {
+        .edit-mode-off-image {
+          width: 10em;
+        }
+      }
+
+      //Profile Name
+      .edit-mode-off-profile-name {
+        font-size: clamp(1.5rem, 2vw, 2rem);
+        color: theme-variable.$white-font-color;
+        word-break: break-all;
+      }
+
+      @supports not (font-size: clamp(1.5rem, 2vw, 2rem)) {
+        .edit-mode-off-profile-name {
+          font-size: 1.5rem;
+        }
+      }
+    }
+
+    //Edit Mode on
+    .edit-mode-on-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+
+      .edit-mode-on-image-container {
+        position: relative;
+        width: auto;
+        overflow: hidden;
+
+        .edit-mode-on-image {
+          width: clamp(10em, 12vw, 12em);
+          height: auto;
+        }
+
+        @supports not (width: clamp(10em, 12vw, 12em)) {
+          .edit-mode-on-image {
+            width: 10em;
+          }
+        }
+
+        .edit-mode-on-image-overlay {
+          position: absolute;
+          top: 0;
+          background: theme-variable.$background-linear-gradient;
+          width: 100%;
+          height: 97%;
+          text-align: center;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          //Edit Profile Icon
+          .edit-mode-on-edit-profile-icon {
+            font-size: clamp(2rem, 2.5vw, 2.5rem);
+            cursor: pointer;
+            color: theme-variable.$white-font-color;
+            transition: color 0.35s ease-in-out;
+
+            &:hover {
+              color: theme-variable.$white-font-color-hover;
+            }
+          }
+
+          @supports not (font-size: clamp(2rem, 2.5vw, 2.5rem)) {
+            .edit-mode-on-edit-profile-icon {
+              font-size: 2rem;
+            }
+          }
+        }
+      }
+
+      .edit-mode-on-profile-name-wrapper {
+        display: flex;
+        align-items: center;
+
+        //Profile Name
+        .edit-mode-on-profile-name {
+          font-size: clamp(1.5rem, 2vw, 2rem);
+          color: theme-variable.$white-font-color;
+          word-break: break-all;
+        }
+
+        @supports not (font-size: clamp(1.5rem, 2vw, 2rem)) {
+          .edit-mode-on-profile-name {
+            font-size: 1.5rem;
+          }
+        }
+
+        //Edit Name Icon
+        .edit-mode-on-edit-name-icon {
+          font-size: clamp(1.5rem, 2vw, 2rem);
+          margin-left: 0.35em;
+          cursor: pointer;
+          color: theme-variable.$white-font-color;
+          transition: color 0.35s ease-in-out;
+
+          &:hover {
+            color: theme-variable.$white-font-color-hover;
+          }
+        }
+
+        @supports not (font-size: clamp(1.5rem, 2.5vw, 2.5rem)) {
+          .edit-mode-on-edit-name-icon {
+            font-size: 1.5rem;
+          }
+        }
+      }
+
+      //Remove Icon
+      .edit-mode-on-remove-profile-icon {
+        font-size: clamp(2rem, 2.5vw, 2.5rem);
+        margin-top: 0em;
+        cursor: pointer;
+        color: theme-variable.$red-font-color;
+        transition: color 0.35s ease-in-out;
+
+        &:hover {
+          color: theme-variable.$red-font-color-hover;
+        }
+      }
+
+      @supports not (font-size: clamp(2rem, 2.5vw, 2.5rem)) {
+        .edit-mode-on-remove-profile-icon {
+          font-size: 2rem;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: theme-variable.$media-query-medium-value) {
+  .profile-selection-wrapper {
+    .profile-selection-profiles {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}
+
+@media (min-width: theme-variable.$media-query-high-value) {
+  .profile-selection-wrapper {
+    .profile-selection-profiles {
+      grid-auto-flow: column;
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+}

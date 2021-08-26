@@ -1,0 +1,67 @@
+@use "../../ThemeProvider/variables" as theme-variable;
+
+.page-content-one-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .page-content-one-titles {
+    color: theme-variable.$white-font-color;
+    width: 100%;
+    text-align: center;
+    padding: 0em 2em;
+    margin-bottom: 2.5em;
+    align-self: flex-start;
+
+    //For Some reason, semantic tags are not working on ios safari :/
+    .page-content-one-info {
+      font-size: clamp(2.5rem, 3vw, 3rem);
+      line-height: 1.2em;
+    }
+
+    @supports not (font-size: clamp(2.5rem, 3vw, 3rem)) {
+      .page-content-one-info {
+        font-size: 2.7rem;
+      }
+    }
+
+    //For Some reason, semantic tags are not working on ios safari :/
+    .page-content-one-description {
+      font-size: clamp(1.4rem, 1.9vw, 1.9rem);
+      line-height: 1.3em;
+      margin-top: 0.5em;
+    }
+
+    @supports not (font-size: clamp(1.4rem, 1.9vw, 1.9rem)) {
+      .page-content-one-description {
+        font-size: 1.7rem;
+      }
+    }
+  }
+
+  .page-content-one-image {
+    margin-right: 2em;
+    margin-left: 2em;
+    pointer-events: none;
+  }
+}
+
+@media (min-width: theme-variable.$media-query-default-value) {
+  .page-content-one-wrapper {
+    flex-direction: row;
+    justify-content: space-evenly;
+
+    .page-content-one-titles {
+      margin-left: 2em;
+      width: min(80%, 40em);
+      padding: 0em;
+      text-align: left;
+      margin-bottom: 0em;
+      margin-top: 1.5em;
+    }
+
+    .page-content-one-image {
+      margin-right: 2em;
+    }
+  }
+}

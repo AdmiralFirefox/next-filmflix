@@ -1,0 +1,37 @@
+@use "../ThemeProvider/variables" as theme-variable;
+
+.movie-carousel-info-title {
+  text-align: left;
+  color: theme-variable.$white-font-color;
+  margin-bottom: 0.2em;
+  margin-left: 0.5em;
+  font-size: clamp(1.5rem, 1.9vw, 1.9rem);
+  font-weight: 400;
+}
+
+@supports not (font-size: clamp(1.5rem, 1.9vw, 1.9rem)) {
+  .movie-carousel-info-title {
+    font-size: 1.7rem;
+  }
+}
+
+.movie-carousel-fade-effect {
+  display: block;
+  border: none;
+  color: theme-variable.$white-font-color;
+  height: 0.3em;
+  background: theme-variable.$main-background-color;
+  background: linear-gradient(
+    to right,
+    theme-variable.$red-font-color,
+    theme-variable.$red-font-color,
+    theme-variable.$main-background-color 95%
+  );
+  margin-bottom: 1.7em;
+}
+
+@media (min-width: theme-variable.$media-query-default-value) {
+  .movie-carousel-info-title {
+    margin-left: 1em;
+  }
+}

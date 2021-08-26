@@ -1,0 +1,12 @@
+.landing-page-navbar-wrapper {
+  background: transparent;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1em;
+
+  .landing-page-navbar-image {
+    margin-left: -1em;
+    margin-top: 0.5em;
+  }
+}

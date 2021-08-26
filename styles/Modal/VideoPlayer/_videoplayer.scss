@@ -1,0 +1,26 @@
+@use "../../ThemeProvider/variables" as theme-variable;
+
+.video-player-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(100%, 50em);
+  outline: none !important;
+  background: theme-variable.$main-background-color;
+
+  .video-player-close-icon {
+    position: absolute;
+    z-index: 2;
+    right: 0.5em;
+    top: 0.2em;
+    font-size: 2.5rem;
+    color: theme-variable.$white-font-color;
+    cursor: pointer;
+    transition: color 0.35s ease-in-out;
+
+    &:hover {
+      color: theme-variable.$white-font-color-hover;
+    }
+  }
+}

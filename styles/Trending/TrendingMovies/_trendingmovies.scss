@@ -1,0 +1,12 @@
+@use "../../ThemeProvider/variables" as theme-variable;
+
+#trending-movies-loading-skeleton {
+  height: 25em;
+  background: theme-variable.$skeleton-background-color;
+}
+
+@media (min-width: theme-variable.$media-query-default-value) {
+  #trending-movies-loading-skeleton {
+    height: 37em;
+  }
+}

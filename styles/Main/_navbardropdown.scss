@@ -1,0 +1,27 @@
+//Dropdown Padding Outside
+.MuiMenu-paper {
+  background: #303030 !important;
+}
+
+//Dropdown Content
+.MuiList-padding {
+  padding: 0.5em 0em !important;
+  box-shadow: none !important;
+  background: #303030 !important;
+  color: #fff !important;
+  font-weight: bold !important;
+}
+
+//Dropdown Select
+.MuiListItem-root.Mui-selected {
+  background: #555 !important;
+}
+
+.MuiListItem-root:hover {
+  background: #555 !important;
+}
+
+//Dropdown Icon
+.MuiSelect-iconFilled {
+  fill: #fff !important;
+}

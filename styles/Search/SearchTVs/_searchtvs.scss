@@ -1,0 +1,28 @@
+@use "../../ThemeProvider/variables" as theme-variable;
+
+.search-tvs-input {
+  display: flex;
+  justify-content: center;
+  margin-top: 1em;
+}
+
+.search-tvs-results {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
+  grid-gap: 1em;
+  margin-bottom: 2em;
+}
+
+.search-tvs-loading {
+  display: flex;
+  justify-content: center;
+  margin-top: 2em;
+}
+
+.search-tvs-guide {
+  text-align: left;
+  color: theme-variable.$white-font-color;
+  margin-top: 1em;
+  font-size: 1rem;
+  line-height: 1.2em;
+}

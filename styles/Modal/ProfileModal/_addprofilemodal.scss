@@ -1,0 +1,45 @@
+@use "../../ThemeProvider/variables" as theme-variable;
+@use "../../ThemeProvider/mixins" as theme-mixin;
+
+.add-profile-modal-wrapper-animation {
+  @include theme-mixin.modal-animation();
+}
+
+.add-profile-modal-wrapper {
+  background: theme-variable.$modal-background-color;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(80%, 30em);
+  padding: 1em;
+  outline: none !important;
+  border-radius: 10px;
+
+  .add-profile-modal-title {
+    margin-bottom: 0.8em;
+    text-align: center;
+    color: theme-variable.$white-font-color;
+    font-size: clamp(0.95rem, 1.3vw, 1.3rem);
+    user-select: none;
+  }
+
+  @supports not (font-size: clamp(0.95rem, 1.3vw, 1.3rem)) {
+    .add-profile-modal-title {
+      font-size: 1.1rem;
+    }
+  }
+
+  .add-profile-modal-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .add-profile-modal-button-wrapper {
+      margin-top: 1.5em;
+      display: grid;
+      grid-auto-flow: column;
+      grid-gap: 1.5em;
+    }
+  }
+}

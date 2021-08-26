@@ -1,0 +1,84 @@
+@use "../ThemeProvider/variables" as theme-variable;
+
+.signup-footer-wrapper {
+  background: rgba(0, 0, 0, 0.8);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding: 3em 2em;
+  margin-top: 5em;
+
+  .signup-footer-contact-links {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    //Questions
+    .signup-footer-questions {
+      font-size: 1.2rem;
+      color: theme-variable.$gray-font-color;
+      transition: color 0.35s ease-in-out;
+      text-align: left;
+
+      &:hover {
+        color: theme-variable.$gray-alternate-font-color;
+        text-decoration: underline;
+      }
+    }
+
+    //Questions Links
+    .signup-footer-links-info {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      margin-top: 1.3em;
+      font-size: 1rem;
+      line-height: 2em;
+
+      & > * {
+        color: theme-variable.$gray-font-color;
+        transition: color 0.35s ease-in-out;
+
+        &:hover {
+          color: theme-variable.$gray-alternate-font-color;
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  //Terms of Service
+  .signup-footer-terms-of-service {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 1em 0em;
+    font-size: 1rem;
+    line-height: 2em;
+    color: theme-variable.$gray-font-color;
+
+    & > * {
+      color: theme-variable.$gray-font-color;
+      transition: color 0.35s ease-in-out;
+
+      &:hover {
+        color: theme-variable.$gray-alternate-font-color;
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+@media (min-width: theme-variable.$media-query-medium-value) {
+  .signup-footer-wrapper {
+    flex-direction: row;
+    justify-content: space-around;
+    text-align: left;
+
+    //Terms of Service
+    .signup-footer-terms-of-service {
+      margin: 0em;
+    }
+  }
+}

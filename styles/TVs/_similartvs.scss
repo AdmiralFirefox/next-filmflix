@@ -1,0 +1,43 @@
+@use "../ThemeProvider/variables" as theme-variable;
+
+.similar-tvs-wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15em, 1fr));
+  grid-gap: 1.7em;
+  text-align: center;
+
+  .similar-tvs-content {
+    background: theme-variable.$gray-background-color;
+  }
+
+  .similar-tvs-title {
+    color: theme-variable.$white-font-color;
+    font-size: clamp(1rem, 1.25vw, 1.25rem);
+    margin-top: 1em;
+    padding: 0em 0.5em;
+  }
+
+  @supports not (font-size: clamp(1rem, 1.25vw, 1.25rem)) {
+    .similar-tvs-title {
+      font-size: 1rem;
+    }
+  }
+
+  .similar-tvs-overview {
+    color: theme-variable.$white-font-color;
+    font-size: clamp(1rem, 1.3vw, 1.3rem);
+    margin-top: 0.8em;
+    padding: 0.5em 1em;
+  }
+
+  @supports not (font-size: clamp(1rem, 1.3vw, 1.3rem)) {
+    .similar-tvs-overview {
+      font-size: 1rem;
+    }
+  }
+}
+
+.similar-tvs-button-wrapper {
+  display: flex;
+  justify-content: center;
+}

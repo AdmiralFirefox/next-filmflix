@@ -1,0 +1,81 @@
+@use "./variables" as theme-variable;
+
+@mixin centralize-modal() {
+  background: theme-variable.$modal-background-color;
+  position: absolute;
+  top: 0%;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  height: 100vh;
+  overflow: auto;
+  outline: none !important;
+  width: min(100%, 50em);
+}
+
+//Modal Animation
+@mixin modal-animation() {
+  -webkit-animation: scale-in-center 0.6s linear both;
+  animation: scale-in-center 0.6s linear both;
+  position: relative;
+  top: 50%;
+}
+
+//Modal Animation keyframes
+@-webkit-keyframes scale-in-center {
+  0% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+@keyframes scale-in-center {
+  0% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+//Profile Pic Modal Animation
+@mixin profile-pic-modal-animation() {
+  -webkit-animation: slide-in-bottom 0.5s linear both;
+  animation: slide-in-bottom 0.5s linear both;
+}
+
+@-webkit-keyframes slide-in-bottom {
+  0% {
+    -webkit-transform: translateY(1000px);
+    transform: translateY(1000px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes slide-in-bottom {
+  0% {
+    -webkit-transform: translateY(1000px);
+    transform: translateY(1000px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

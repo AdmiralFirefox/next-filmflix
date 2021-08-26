@@ -1,0 +1,124 @@
+@use "../ThemeProvider/variables" as theme-variable;
+
+.profile-section-bg {
+  background: url("../../assets/login/LogInBG.jpg"), rgba(0, 0, 0, 0.5);
+  background-size: cover;
+  background-attachment: fixed;
+  background-blend-mode: multiply;
+}
+
+.profile-section-bg-log-in {
+  background: theme-variable.$main-background-color;
+}
+
+//Web Logo
+.profile-styles-web-logo {
+  margin-top: 0.7em;
+  cursor: pointer;
+  position: absolute;
+  left: 0;
+}
+
+.profile-styles-wrapper {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh; //In order to set space between two vertical elements
+
+  .profile-styles-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.8);
+    margin-top: 6em;
+    padding: 2em;
+    width: min(80%, 30em);
+    margin-bottom: 2em;
+    border-radius: 15px;
+
+    //Sign In Title
+    .profile-styles-title {
+      color: theme-variable.$white-font-color;
+      align-self: center;
+      font-size: clamp(1rem, 1.5vw, 1.5rem);
+      margin-bottom: 1em;
+      text-align: center;
+    }
+
+    @supports not (font-size: clamp(1rem, 1.5vw, 1.5rem)) {
+      .profile-styles-title {
+        font-size: 1rem;
+      }
+    }
+
+    //New to Filmflix Title
+    .profile-styles-new-title {
+      color: theme-variable.$white-font-color;
+      margin-top: 2em;
+      font-size: clamp(0.9rem, 1.1vw, 1.1rem);
+      align-self: center;
+      text-align: center;
+    }
+
+    @supports not (font-size: clamp(0.9rem, 1.1vw, 1.1rem)) {
+      .profile-styles-new-title {
+        font-size: 0.9rem;
+      }
+    }
+
+    //Link to create new account
+    .profile-styles-new-account-link {
+      color: theme-variable.$red-font-color;
+      text-align: center;
+      align-self: center;
+      font-weight: 400;
+      cursor: pointer;
+      text-decoration: underline;
+      font-size: 1rem;
+
+      &:hover {
+        color: theme-variable.$red-font-color-hover;
+      }
+    }
+
+    //Recaptcha Info
+    .profile-styles-recaptcha {
+      color: theme-variable.$white-font-color;
+      margin-top: 2em;
+      align-self: center;
+      text-align: center;
+    }
+  }
+}
+
+@media (min-width: theme-variable.$media-query-default-value) {
+  .profile-styles-wrapper {
+    .profile-styles-content {
+      //Sign In Title
+      .profile-styles-title {
+        align-self: flex-start;
+      }
+
+      //New to Filmflix Title
+      .profile-styles-new-title {
+        align-self: flex-start;
+        text-align: left;
+      }
+
+      //Link to create new account
+      .profile-styles-new-account-link {
+        color: theme-variable.$red-font-color;
+        align-self: flex-start;
+      }
+
+      //Recaptcha Info
+      .profile-styles-recaptcha {
+        color: theme-variable.$white-font-color;
+        margin-top: 2em;
+        align-self: flex-start;
+        text-align: left;
+      }
+    }
+  }
+}

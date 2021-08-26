@@ -1,0 +1,150 @@
+@use "../../ThemeProvider/mixins" as theme-mixin;
+@use "../../ThemeProvider/variables" as theme-variable;
+.tv-modal-wrapper {
+  @include theme-mixin.centralize-modal();
+
+  .tv-modal-close-icon {
+    position: absolute;
+    z-index: 2;
+    right: 0.5em;
+    top: 0.2em;
+    font-size: 2.5rem;
+    color: theme-variable.$white-font-color;
+    cursor: pointer;
+    transition: color 0.35s ease-in-out;
+
+    &:hover {
+      color: theme-variable.$white-font-color-hover;
+    }
+  }
+}
+
+.tv-modal-content {
+  text-align: left;
+  margin-left: 1.25em;
+
+  //TV Title
+  .tv-modal-title {
+    color: theme-variable.$white-font-color;
+    margin-top: 0.75em;
+    margin-right: 1em;
+    font-size: clamp(1rem, 1.5vw, 1.5rem);
+    line-height: 2.5em;
+  }
+
+  @supports not (font-size: clamp(1rem, 1.5vw, 1.5rem)) {
+    .tv-modal-title {
+      font-size: 1rem;
+    }
+  }
+
+  //Episodes and Seasons
+  .tv-modal-series-info {
+    display: flex;
+    align-items: center;
+    margin-top: 0.5em;
+    font-size: clamp(1rem, 1.4vw, 1.4rem);
+
+    .tv-modal-episodes {
+      color: theme-variable.$white-font-color;
+    }
+
+    .tv-modal-seasons {
+      color: theme-variable.$white-font-color;
+      margin-left: 1em;
+    }
+  }
+
+  @supports not (font-size: clamp(1rem, 1.4vw, 1.4rem)) {
+    .tv-modal-series-info {
+      font-size: 1rem;
+    }
+  }
+
+  //TV Overview
+  .tv-modal-overview {
+    //Overview Title
+    color: theme-variable.$white-font-color;
+    margin-top: 1em;
+    margin-right: 1.5em;
+    font-size: clamp(1rem, 1.4vw, 1.4rem);
+
+    //Overview Content
+    .tv-modal-overview-content {
+      font-size: clamp(1rem, 1.4vw, 1.4rem);
+    }
+
+    @supports not (font-size: clamp(1rem, 1.4vw, 1.4rem)) {
+      .tv-modal-overview-content {
+        font-size: 1rem;
+      }
+    }
+  }
+
+  @supports not (font-size: clamp(1rem, 1.4vw, 1.4rem)) {
+    .tv-modal-overview {
+      font-size: 1rem;
+    }
+  }
+
+  //TV Date First Aired and Last Aired
+  .tv-modal-date-aired {
+    font-size: clamp(1rem, 1.4vw, 1.4rem);
+    color: theme-variable.$white-font-color;
+    margin-top: 1em;
+  }
+
+  @supports not (font-size: clamp(1rem, 1.4vw, 1.4rem)) {
+    .tv-modal-date-aired {
+      font-size: 1rem;
+    }
+  }
+
+  //TV Status
+  .tv-modal-status {
+    font-size: clamp(1rem, 1.4vw, 1.4rem);
+    color: theme-variable.$white-font-color;
+    margin-top: 1em;
+  }
+
+  @supports not (font-size: clamp(1rem, 1.4vw, 1.4rem)) {
+    .tv-modal-status {
+      font-size: 1rem;
+    }
+  }
+
+  //TV Genre
+  .tv-modal-genres {
+    //Genre Title
+    color: theme-variable.$white-font-color;
+    font-size: clamp(1rem, 1.4vw, 1.4rem);
+    margin-top: 1em;
+    margin-bottom: 1.5em;
+
+    //Genre Content
+    .tv-modal-genre-name {
+      font-size: clamp(1rem, 1.4vw, 1.4rem);
+    }
+
+    @supports not (font-size: clamp(1rem, 1.4vw, 1.4rem)) {
+      .tv-modal-genre-name {
+        font-size: 1rem;
+      }
+    }
+  }
+
+  @supports not (font-size: clamp(1rem, 1.4vw, 1.4rem)) {
+    .tv-modal-genres {
+      font-size: 1rem;
+    }
+  }
+}
+
+@media (min-width: theme-variable.$media-query-default-value) {
+  .tv-modal-content {
+    //Episodes and Seasons
+    .tv-modal-series-info {
+      margin-top: 0.25em;
+    }
+  }
+}

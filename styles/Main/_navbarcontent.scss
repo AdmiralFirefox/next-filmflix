@@ -1,0 +1,114 @@
+@use "../ThemeProvider/variables" as theme-variable;
+
+.navbar-content-manage-profile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2em;
+  user-select: none;
+
+  //Navbar Image
+  .navbar-content-image {
+    position: relative;
+    width: 4em;
+    height: 4em;
+    margin-right: 0.7em;
+  }
+
+  .navbar-content-profile-content {
+    text-align: left;
+
+    //Navbar Profile Name
+    .navbar-content-profile-name {
+      color: theme-variable.$white-font-color;
+      font-weight: 600;
+      font-size: 1.2rem;
+    }
+
+    //Navbar Manage Profile
+    .navbar-content-manage-profile-name {
+      color: theme-variable.$white-font-color;
+      cursor: pointer;
+
+      &:hover {
+        color: theme-variable.$white-font-color-hover;
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.navbar-content-manage-category {
+  margin-top: 5em;
+  line-height: 4.5em;
+  user-select: none;
+
+  //Navbar Movie
+  .navbar-content-movie-category {
+    text-align: center;
+    color: theme-variable.$white-font-color;
+    font-size: 1.5rem;
+    transition: background 0.35s ease-in-out;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      background: theme-variable.$gray-background-color;
+      border-left: 4px solid theme-variable.$red-font-color;
+    }
+  }
+
+  //Navbar TV Shows
+  .navbar-content-tv-category {
+    text-align: center;
+    color: theme-variable.$white-font-color;
+    font-size: 1.5rem;
+    transition: background 0.35s ease-in-out;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      background: theme-variable.$gray-background-color;
+      border-left: 4px solid theme-variable.$red-font-color;
+    }
+  }
+
+  //Navbar Search
+  .navbar-content-search {
+    text-align: center;
+    color: theme-variable.$white-font-color;
+    font-size: 1.5rem;
+    transition: background 0.35s ease-in-out;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      background: theme-variable.$gray-background-color;
+      border-left: 4px solid theme-variable.$red-font-color;
+    }
+  }
+
+  //Navbar Sign Out
+  .navbar-content-signout {
+    text-align: center;
+    color: theme-variable.$white-font-color;
+    font-size: 1.5rem;
+    transition: background 0.35s ease-in-out;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2em;
+
+    &:hover {
+      background: theme-variable.$gray-background-color;
+      border-left: 4px solid theme-variable.$red-font-color;
+    }
+  }
+}

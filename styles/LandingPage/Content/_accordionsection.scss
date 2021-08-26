@@ -1,0 +1,42 @@
+@use "../../ThemeProvider/variables" as theme-variable;
+
+.accordion-section-title {
+  color: theme-variable.$white-font-color;
+  text-align: center;
+  font-size: clamp(1.3rem, 1.8vw, 1.8rem);
+  margin: 0em 1.5em;
+}
+
+@supports not (font-size: clamp(1.3rem, 1.8vw, 1.8rem)) {
+  .accordion-section-title {
+    font-size: 1.5rem;
+  }
+}
+
+.accordion-section-content {
+  display: flex;
+  justify-content: center;
+}
+
+.accordion-section-after-content {
+  color: theme-variable.$white-font-color;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  .accordion-section-after-content-title {
+    font-size: clamp(1.3rem, 1.8vw, 1.8rem);
+    margin: 0em 2em;
+  }
+
+  @supports not (font-size: clamp(1.3rem, 1.8vw, 1.8rem)) {
+    .accordion-section-after-content-title {
+      font-size: 1.5rem;
+    }
+  }
+
+  .accordion-section-button-wrapper {
+    margin-top: 1.5em;
+  }
+}

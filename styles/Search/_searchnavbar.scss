@@ -1,0 +1,26 @@
+@use "../ThemeProvider/variables" as theme-variable;
+
+.search-navbar-wrapper {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: space-between;
+  background: transparent;
+  padding: 0.5em 0.5em 0em 0.5em;
+
+  .search-navbar-image {
+    width: 4em;
+    cursor: pointer;
+  }
+
+  .search-navbar-close-icon {
+    color: theme-variable.$white-font-color;
+    font-size: 2.5rem;
+    cursor: pointer;
+    transition: color 0.35s ease-in-out;
+
+    &:hover {
+      color: theme-variable.$white-font-color-hover;
+    }
+  }
+}

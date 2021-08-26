@@ -1,0 +1,15 @@
+.movie-wrapper {
+  position: absolute;
+  width: 100%;
+  margin-top: 1.5em;
+
+  .movie-carousel {
+    margin-bottom: 1em;
+  }
+
+  .movie-spinner {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.3em;
+  }
+}

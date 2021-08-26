@@ -1,0 +1,63 @@
+@use "../../ThemeProvider/variables" as theme-variable;
+
+.landing-page-footer-wrapper {
+  padding: 0em 4em;
+  margin-bottom: 2em;
+
+  .landing-page-footer-questions {
+    //Questions Link
+    a {
+      color: theme-variable.$gray-font-color;
+      font-size: 1.2rem;
+      transition: color 0.35s ease-in-out;
+
+      &:hover {
+        color: theme-variable.$gray-alternate-font-color;
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .landing-page-footer-links {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+    margin: 2em 0em;
+    grid-gap: 2em;
+    line-height: 2em;
+
+    div {
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+      align-items: flex-start;
+
+      //Nav Links
+      a {
+        color: theme-variable.$gray-font-color;
+        font-size: 1rem;
+        transition: color 0.35s ease-in-out;
+
+        &:hover {
+          color: theme-variable.$gray-alternate-font-color;
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  .landing-page-footer-rights {
+    //All Rights Reserved
+    p {
+      color: theme-variable.$gray-font-color;
+      font-size: 1rem;
+      user-select: none;
+    }
+  }
+}
+
+@media (min-width: theme-variable.$media-query-medium-value) {
+  .landing-page-footer-wrapper {
+    padding: 0em 8em;
+  }
+}

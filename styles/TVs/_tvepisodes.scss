@@ -1,0 +1,61 @@
+@use "../ThemeProvider/variables" as theme-variable;
+
+.tv-episode-button-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.tv-episode-info {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-gap: 1em;
+  align-items: center;
+
+  //Episode Image
+  .tv-episode-image {
+    width: 100%;
+  }
+
+  //Episode Title and Number
+  .tv-episode-content {
+    color: theme-variable.$white-font-color;
+    font-size: clamp(0.9rem, 1vw, 1rem);
+    text-align: center;
+  }
+
+  @supports not (font-size: clamp(0.9rem, 1vw, 1rem)) {
+    .tv-episode-content {
+      font-size: 0.9rem;
+    }
+  }
+}
+
+//Episode Overview
+.tv-episode-overview {
+  text-align: center;
+  margin-top: 1em;
+  margin-bottom: 3.5em;
+  color: theme-variable.$white-font-color;
+  font-size: clamp(1rem, 1.3vw, 1.3rem);
+}
+
+@supports not (font-size: clamp(1rem, 1.3vw, 1.3rem)) {
+  .tv-episode-overview {
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: theme-variable.$media-query-medium-alternate-value) {
+  .tv-episode-info {
+    grid-template-columns: repeat(2, 1fr);
+
+    .tv-episode-content {
+      text-align: left;
+    }
+  }
+
+  .tv-episode-overview {
+    text-align: left;
+    margin-bottom: 3em;
+  }
+}

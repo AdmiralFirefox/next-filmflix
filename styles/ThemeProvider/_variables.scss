@@ -1,0 +1,42 @@
+//Media Query Values
+$media-query-default-value: 48em;
+
+$media-query-high-value: 55em;
+
+$media-query-medium-value: 30em;
+
+$media-query-medium-alternate-value: 37em;
+
+//Font Colors
+$white-font-color: #ffffff;
+
+$white-font-color-hover: hsl(0, 0%, 80%);
+
+$orange-font-color: #f59842;
+
+$red-font-color: #e50914;
+
+$red-font-color-hover: hsl(357, 92%, 60%);
+
+$pink-font-color: #ff6699;
+
+$gray-font-color: #757575;
+
+$gray-alternate-font-color: #8c8c8c;
+
+//Background Color
+$main-background-color: #000000;
+
+$modal-background-color: #303030;
+
+$gray-background-color: #757575;
+
+//Background linear gradient
+$background-linear-gradient: linear-gradient(
+  0deg,
+  #00000088 30%,
+  #ffffff44 100%
+);
+
+//Skeleton Background Color
+$skeleton-background-color: #757575;

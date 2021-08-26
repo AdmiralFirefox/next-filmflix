@@ -1,0 +1,138 @@
+@use "../../ThemeProvider/mixins" as theme-mixin;
+@use "../../ThemeProvider/variables" as theme-variable;
+
+.movie-info-modal-wrapper {
+  @include theme-mixin.centralize-modal();
+
+  .movie-info-modal-close-icon {
+    position: absolute;
+    z-index: 2;
+    right: 0.5em;
+    top: 0.2em;
+    font-size: 2.5rem;
+    color: theme-variable.$white-font-color;
+    cursor: pointer;
+    transition: color 0.35s ease-in-out;
+
+    &:hover {
+      color: theme-variable.$white-font-color-hover;
+    }
+  }
+}
+
+.movie-info-modal-content {
+  text-align: left;
+  margin-left: 1.25em;
+
+  //Movie Title
+  .movie-info-modal-title {
+    color: theme-variable.$white-font-color;
+    margin-top: 0.75em;
+    margin-right: 1em;
+    font-size: clamp(1rem, 1.5vw, 1.5rem);
+    line-height: 2.5em;
+  }
+
+  @supports not (font-size: clamp(1rem, 1.5vw, 1.5rem)) {
+    .movie-info-modal-title {
+      font-size: 1rem;
+    }
+  }
+
+  //Release Date and Run Time
+  .movie-info-modal-release-info {
+    display: flex;
+    align-items: center;
+    margin-top: 0.5em;
+    font-size: clamp(1rem, 1.4vw, 1.4rem);
+
+    .movie-info-modal-release-date {
+      color: theme-variable.$white-font-color;
+    }
+
+    .movie-info-modal-runtime {
+      color: theme-variable.$white-font-color;
+      margin-left: 1em;
+    }
+  }
+
+  @supports not (font-size: clamp(1rem, 1.4vw, 1.4rem)) {
+    .movie-info-modal-release-info {
+      font-size: 1rem;
+    }
+  }
+
+  //Overview
+  .movie-info-modal-overview {
+    //Overview Title
+    color: theme-variable.$white-font-color;
+    margin-top: 1em;
+    margin-right: 1.5em;
+    font-size: clamp(1rem, 1.4vw, 1.4rem);
+
+    //Overview Content
+    .movie-info-modal-overview-content {
+      font-size: clamp(1rem, 1.4vw, 1.4rem);
+    }
+
+    @supports not (font-size: clamp(1rem, 1.4vw, 1.4rem)) {
+      .movie-info-modal-overview-content {
+        font-size: 1rem;
+      }
+    }
+  }
+
+  @supports not (font-size: clamp(1rem, 1.4vw, 1.4rem)) {
+    .movie-info-modal-overview {
+      font-size: 1rem;
+    }
+  }
+
+  //Movie Status
+  .movie-info-modal-status {
+    font-size: clamp(1rem, 1.4vw, 1.4rem);
+    color: theme-variable.$white-font-color;
+    margin-top: 1em;
+  }
+
+  @supports not (font-size: clamp(1rem, 1.4vw, 1.4rem)) {
+    .movie-info-modal-status {
+      font-size: 1rem;
+    }
+  }
+
+  //Movie Genre
+  .movie-info-modal-genre {
+    //Genre Title
+    color: theme-variable.$white-font-color;
+    font-size: clamp(1rem, 1.4vw, 1.4rem);
+    margin-top: 1em;
+    margin-bottom: 1.5em;
+
+    //Genre Content
+    .movie-info-modal-genre-name {
+      font-size: clamp(1rem, 1.4vw, 1.4rem);
+    }
+
+    @supports not (font-size: clamp(1rem, 1.4vw, 1.4rem)) {
+      .movie-info-modal-genre-name {
+        font-size: 1rem;
+      }
+    }
+  }
+
+  @supports not (font-size: clamp(1rem, 1.4vw, 1.4rem)) {
+    .movie-info-modal-genre {
+      font-size: 1rem;
+    }
+  }
+}
+
+@media (min-width: theme-variable.$media-query-default-value) {
+  .movie-info-modal-content {
+    //Release Date and Run Time
+    .movie-info-modal-release-info {
+      margin-top: 0.25em;
+    }
+  }
+}

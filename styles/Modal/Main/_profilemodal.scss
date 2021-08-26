@@ -1,0 +1,80 @@
+@use "../../ThemeProvider/variables" as theme-variable;
+@use "../../ThemeProvider/mixins" as theme-mixin;
+
+.profile-info-modal-wrapper-animation {
+  @include theme-mixin.modal-animation();
+}
+
+.profile-info-modal-wrapper {
+  background: #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: theme-variable.$modal-background-color;
+  outline: none !important;
+  padding: 1.2em;
+  width: min(80%, 30em);
+  border-radius: 10px;
+
+  .profile-info-modal-close-icon {
+    font-size: 2.75em;
+    position: absolute;
+    top: 0em;
+    right: 0.35em;
+    color: theme-variable.$red-font-color;
+    cursor: pointer;
+    transition: color 0.35s ease-in-out;
+
+    &:hover {
+      color: theme-variable.$red-font-color-hover;
+    }
+  }
+
+  .profile-info-user-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .profile-info-user-image {
+      width: clamp(6em, 8vw, 8em);
+    }
+
+    @supports not (width: clamp(6em, 8vw, 8em)) {
+      .profile-info-user-image {
+        width: 6em;
+      }
+    }
+
+    .profile-info-user-name {
+      font-size: clamp(0.9rem, 1.3vw, 1.3rem);
+      color: theme-variable.$white-font-color;
+      text-align: center;
+      user-select: none;
+    }
+
+    @supports not (font-size: clamp(0.9rem, 1.3vw, 1.3rem)) {
+      .profile-info-user-name {
+        font-size: 1.1rem;
+      }
+    }
+  }
+
+  .profile-info-button-wrapper {
+    display: grid;
+    grid-auto-flow: row;
+    grid-gap: 1.2em;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1em;
+  }
+}
+
+@media (min-width: theme-variable.$media-query-medium-value) {
+  .profile-info-modal-wrapper {
+    .profile-info-button-wrapper {
+      display: grid;
+      grid-auto-flow: column;
+    }
+  }
+}
