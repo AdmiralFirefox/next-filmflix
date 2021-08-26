@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import React, { FC, useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 import Modal from "@material-ui/core/Modal";
 const TVTrailer = dynamic(() => import("../../TVs/TVTrailer"));
@@ -83,6 +83,18 @@ const TVModal: FC<TVModalProp> = ({
   const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
     setValue(newValue);
   };
+
+  //Adjusting vh of a window since 100vh is broken on mobile
+  useEffect(() => {
+    let vh = window.innerHeight * 0.01;
+
+    document.documentElement.style.setProperty("--vh", `${vh}px`);
+
+    window.addEventListener("resize", () => {
+      let vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty("--vh", `${vh}px`);
+    });
+  }, []);
 
   return (
     <>

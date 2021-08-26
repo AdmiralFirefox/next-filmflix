@@ -3,7 +3,7 @@ import dynamic from "next/dynamic";
 const MovieTrailer = dynamic(() => import("../../Movies/MovieTrailer"));
 const MovieCasts = dynamic(() => import("../../Movies/MovieCasts"));
 const SimilarMovies = dynamic(() => import("../../Movies/SimilarMovies"));
-import React, { FC, useState } from "react";
+import React, { FC, useState, useEffect } from "react";
 import movieInfoModalStyles from "../../../styles/Home.module.scss";
 
 //Tabs
@@ -89,6 +89,18 @@ const MovieModal: FC<ModalFunctionProp> = ({
     return rhours + "h " + rminutes + "m";
   };
 
+  //Adjusting vh of a window since 100vh is broken on mobile
+  useEffect(() => {
+    let vh = window.innerHeight * 0.01;
+
+    document.documentElement.style.setProperty("--vh", `${vh}px`);
+
+    window.addEventListener("resize", () => {
+      let vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty("--vh", `${vh}px`);
+    });
+  }, []);
+
   return (
     <>
       <Modal
@@ -126,11 +138,7 @@ const MovieModal: FC<ModalFunctionProp> = ({
               </div>
 
               <div className={movieInfoModalStyles["movie-info-modal-runtime"]}>
-                {runtime !== 0 ? (
-                  <p>{timeConvert(runtime)} </p>
-                ) : (
-                  <p>N/A</p>
-                )}
+                {runtime !== 0 ? <p>{timeConvert(runtime)} </p> : <p>N/A</p>}
               </div>
             </div>
 

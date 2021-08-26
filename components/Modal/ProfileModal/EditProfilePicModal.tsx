@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import React, { FC, useState, useEffect } from "react";
 import Modal from "@material-ui/core/Modal";
 import Image from "next/image";
 import { AvatarData } from "../../../data/profiledata";
@@ -27,6 +27,18 @@ const EditProfilePicModal: FC<EditProfilePicProps> = ({
   const [focus, setFocus] = useState(false);
 
   const focusProfilePic = () => setFocus(true);
+
+  //Adjusting vh of a window since 100vh is broken on mobile
+  useEffect(() => {
+    let vh = window.innerHeight * 0.01;
+
+    document.documentElement.style.setProperty("--vh", `${vh}px`);
+
+    window.addEventListener("resize", () => {
+      let vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty("--vh", `${vh}px`);
+    });
+  }, []);
 
   return (
     <>
