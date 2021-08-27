@@ -38,6 +38,19 @@ const SignIn: FC = () => {
     }
   };
 
+  //Allow the users to Sign In Anonymously
+  const signInAnonymously = async () => {
+    try {
+      let emailRef = process.env.NEXT_PUBLIC_ANONYMOUS_EMAIL as string;
+      let passwordRef = process.env.NEXT_PUBLIC_ANONYMOUS_PASSWORD as string;
+
+      await auth.signInWithEmailAndPassword(emailRef, passwordRef);
+    } catch (error) {
+      console.log(error);
+      alert(error);
+    }
+  };
+
   //Allow users to Sign In With their Google Account
   const signInWithgoogle = async () => {
     //Retrieve Google Provider Object
@@ -101,6 +114,7 @@ const SignIn: FC = () => {
                 passwordRef={passwordRef}
                 signIn={signIn}
                 signInWithgoogle={signInWithgoogle}
+                signInAnonymously={signInAnonymously}
               />
 
               <div className={profileStyles["profile-styles-new-title"]}>

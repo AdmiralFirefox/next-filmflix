@@ -48,13 +48,26 @@ const SignInButton = withStyles((theme: Theme) => ({
   },
 }))(Button);
 
+//Sign In With Dummy Account  Button
+const SignInDummyAccountButton = withStyles((theme: Theme) => ({
+  root: {
+    color: "#ffffff",
+    backgroundColor: "#e50914",
+    width: "100%",
+    marginTop: "1em",
+    "&:hover": {
+      backgroundColor: "hsl(357, 92%, 60%)",
+    },
+  },
+}))(Button);
+
 //Sign In With Google Button
 const SignInWithGoogleButton = withStyles((theme: Theme) => ({
   root: {
     color: "#000",
     backgroundColor: "#ffffff",
     width: "100%",
-    marginTop: "1.5em",
+    marginTop: "1em",
     "&:hover": {
       backgroundColor: "hsl(0, 0%, 80%)",
     },
@@ -66,6 +79,7 @@ interface ProfileUserInputProps {
   passwordRef: React.RefObject<HTMLInputElement>;
   signIn: () => Promise<void>;
   signInWithgoogle: () => Promise<void>;
+  signInAnonymously: () => Promise<void>;
 }
 
 const ProfileUserInput: FC<ProfileUserInputProps> = ({
@@ -73,6 +87,7 @@ const ProfileUserInput: FC<ProfileUserInputProps> = ({
   passwordRef,
   signIn,
   signInWithgoogle,
+  signInAnonymously,
 }) => {
   const classes = useStyles();
 
@@ -143,6 +158,14 @@ const ProfileUserInput: FC<ProfileUserInputProps> = ({
       >
         Sign In
       </SignInButton>
+      <SignInDummyAccountButton
+        variant="contained"
+        color="primary"
+        onClick={signInAnonymously}
+        type="submit"
+      >
+        Sign In Anonymously
+      </SignInDummyAccountButton>
       <SignInWithGoogleButton
         onClick={signInWithgoogle}
         variant="contained"
