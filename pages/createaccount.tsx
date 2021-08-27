@@ -23,25 +23,18 @@ const CreateAccount: FC = () => {
 
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
-  const confirmPasswordRef = useRef<HTMLInputElement>(null);
 
   //ALlow users to make an account
   const createAccount = async () => {
-    if (passwordRef.current!.value === confirmPasswordRef.current!.value) {
-      try {
-        await auth.createUserWithEmailAndPassword(
-          emailRef.current!.value,
-          passwordRef.current!.value
-        );
-        alert("Account Created Successfully!");
-      } catch (error) {
-        console.error(error);
-        alert(error);
-      }
-    } else if (confirmPasswordRef.current!.value === "") {
-      alert("Please re-type your password to confirm.");
-    } else {
-      alert("Password did not match. Please re-type your password.");
+    try {
+      await auth.createUserWithEmailAndPassword(
+        emailRef.current!.value,
+        passwordRef.current!.value
+      );
+      alert("Account Created Successfully!");
+    } catch (error) {
+      console.error(error);
+      alert(error);
     }
   };
 
@@ -90,7 +83,6 @@ const CreateAccount: FC = () => {
               <AccountUserInput
                 emailRef={emailRef}
                 passwordRef={passwordRef}
-                confirmPasswordRef={confirmPasswordRef}
                 createAccount={createAccount}
               />
 

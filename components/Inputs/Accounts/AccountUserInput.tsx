@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useRef } from "react";
 import {
   makeStyles,
   Theme,
@@ -49,14 +49,12 @@ const CreateAccount = withStyles((theme: Theme) => ({
 interface AccountUserInputProps {
   emailRef: React.RefObject<HTMLInputElement>;
   passwordRef: React.RefObject<HTMLInputElement>;
-  confirmPasswordRef: React.RefObject<HTMLInputElement>;
   createAccount: () => Promise<void>;
 }
 
 const AccountUserInput: FC<AccountUserInputProps> = ({
   emailRef,
   passwordRef,
-  confirmPasswordRef,
   createAccount,
 }) => {
   const classes = useStyles();
@@ -65,20 +63,24 @@ const AccountUserInput: FC<AccountUserInputProps> = ({
     register,
     handleSubmit,
     formState: { errors },
+    watch,
   } = useForm();
+
+  //Watching if both passwords entered are the same
+  const password = useRef({});
+  password.current = watch("password", "");
 
   return (
     <>
       <Paper className={classes.root}>
         <InputBase
           className={classes.input}
-          placeholder="Email"
           inputRef={emailRef}
-          type="email"
           inputProps={{
             "aria-label": "Email",
             style: { color: "#fff", fontWeight: "bold" },
           }}
+          type="email"
           id="email"
           aria-invalid={errors.email ? "true" : "false"}
           {...register("email", {
@@ -88,6 +90,7 @@ const AccountUserInput: FC<AccountUserInputProps> = ({
               message: "Please enter a valid email",
             },
           })}
+          placeholder="Email"
         />
       </Paper>
       {errors.email && (
@@ -98,13 +101,12 @@ const AccountUserInput: FC<AccountUserInputProps> = ({
       <Paper className={classes.root}>
         <InputBase
           className={classes.input}
-          placeholder="Password"
           inputRef={passwordRef}
-          type="password"
           inputProps={{
             "aria-label": "Password",
             style: { color: "#fff", fontWeight: "bold" },
           }}
+          type="password"
           id="password"
           aria-invalid={errors.passward ? "true" : "false"}
           {...register("password", {
@@ -114,6 +116,7 @@ const AccountUserInput: FC<AccountUserInputProps> = ({
               message: "Password length must be at least 8",
             },
           })}
+          placeholder="Password"
         />
       </Paper>
       {errors.password && (
@@ -124,15 +127,26 @@ const AccountUserInput: FC<AccountUserInputProps> = ({
       <Paper className={classes.root}>
         <InputBase
           className={classes.input}
-          placeholder="Confirm Password"
-          inputRef={confirmPasswordRef}
-          type="password"
           inputProps={{
             "aria-label": "Password",
             style: { color: "#fff", fontWeight: "bold" },
           }}
+          type="password"
+          id="confirmPassword"
+          aria-invalid={errors.confirmPassword ? "true" : "false"}
+          {...register("confirmPassword", {
+            required: "Please re-enter your password",
+            validate: (value) =>
+              value === password.current || "The passwords do not match",
+          })}
+          placeholder="Confirm Password"
         />
       </Paper>
+      {errors.confirmPassword && (
+        <p role="alert" className={classes.alert}>
+          {errors.confirmPassword.message}
+        </p>
+      )}
       <CreateAccount
         variant="contained"
         color="primary"
