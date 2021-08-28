@@ -1,4 +1,4 @@
-import React, { FC, useContext, useRef, useEffect } from "react";
+import React, { FC, useContext, useRef, useEffect, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { useRouter } from "next/router";
 import Image from "next/image";
@@ -6,6 +6,10 @@ import WebLogo from "../assets/logo/WebLogo.png";
 import { auth } from "../firebase/firebase";
 import Link from "next/link";
 import dynamic from "next/dynamic";
+import Snackbar from "@material-ui/core/Snackbar";
+import IconButton from "@material-ui/core/IconButton";
+import CloseIcon from "@material-ui/icons/Close";
+
 const AccountUserInput = dynamic(
   () => import("../components/Inputs/Accounts/AccountUserInput")
 );
@@ -20,9 +24,26 @@ const ProfileSelection = dynamic(
 const CreateAccount: FC = () => {
   const router = useRouter();
   const user = useContext(AuthContext);
+  const [openAlertMessage, setOpenAlertMessage] = useState(false);
 
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
+
+  //Alert Message when an account created successfully
+  const handleOpenAlertMessage = () => {
+    setOpenAlertMessage(true);
+  };
+
+  const handleCloseAlertMessage = (
+    event: React.SyntheticEvent | React.MouseEvent,
+    reason?: string
+  ) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpenAlertMessage(false);
+  };
 
   //ALlow users to make an account
   const createAccount = async () => {
@@ -31,7 +52,7 @@ const CreateAccount: FC = () => {
         emailRef.current!.value,
         passwordRef.current!.value
       );
-      alert("Account Created Successfully!");
+      handleOpenAlertMessage();
     } catch (error) {
       console.error(error);
       alert(error);
@@ -61,6 +82,28 @@ const CreateAccount: FC = () => {
 
   return (
     <>
+      <Snackbar
+        anchorOrigin={{
+          vertical: "top",
+          horizontal: "center",
+        }}
+        open={openAlertMessage}
+        autoHideDuration={5000}
+        onClose={handleCloseAlertMessage}
+        message="Account Created Successfully!"
+        action={
+          <React.Fragment>
+            <IconButton
+              size="small"
+              aria-label="close"
+              color="inherit"
+              onClick={handleCloseAlertMessage}
+            >
+              <CloseIcon fontSize="small" />
+            </IconButton>
+          </React.Fragment>
+        }
+      />
       {!user ? (
         <>
           <Link href="/" passHref>

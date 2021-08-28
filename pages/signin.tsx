@@ -61,7 +61,7 @@ const SignIn: FC = () => {
     try {
       await auth.signInWithPopup(provider);
     } catch (err) {
-      // console.log(err);
+      console.log(err);
       alert(err);
     }
   };
