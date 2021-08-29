@@ -601,11 +601,11 @@
   text-align: center;
 }
 .movie-overlay .movie-vote-average {
-  font-size: 1.3rem;
+  font-size: 0.9rem;
   user-select: none;
 }
 .movie-overlay .movie-info-icon {
-  font-size: 1.7rem;
+  font-size: 1.4rem;
   cursor: pointer;
   transition: color 0.35s ease-in-out;
   user-select: none;
@@ -620,6 +620,14 @@
   opacity: 1;
 }
 
+@media (min-width: 30em) {
+  .movie-overlay .movie-vote-average {
+    font-size: 1.3rem;
+  }
+  .movie-overlay .movie-info-icon {
+    font-size: 1.7rem;
+  }
+}
 /* The overlay effect - lays on top of the container and over the image */
 .tv-overlay {
   position: absolute;
@@ -639,11 +647,11 @@
   text-align: center;
 }
 .tv-overlay .tv-vote-average {
-  font-size: 1.3rem;
+  font-size: 0.9rem;
   user-select: none;
 }
 .tv-overlay .tv-info-icon {
-  font-size: 1.7rem;
+  font-size: 1.4rem;
   cursor: pointer;
   transition: color 0.35s ease-in-out;
   user-select: none;
@@ -658,6 +666,14 @@
   opacity: 1;
 }
 
+@media (min-width: 30em) {
+  .tv-overlay .tv-vote-average {
+    font-size: 1.3rem;
+  }
+  .tv-overlay .tv-info-icon {
+    font-size: 1.7rem;
+  }
+}
 .tv-wrapper {
   position: absolute;
   width: 100%;
@@ -859,7 +875,7 @@
 
 .search-movies-results {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(9.5em, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(8.5em, 1fr));
   grid-gap: 0.55em;
   margin-bottom: 2em;
 }
@@ -878,6 +894,11 @@
   line-height: 1.2em;
 }
 
+@media (min-width: 48em) {
+  .search-movies-results {
+    grid-template-columns: repeat(auto-fill, minmax(10em, 1fr));
+  }
+}
 /* Container needed to position the overlay. Adjust the width as needed */
 .search-movie-container {
   position: relative;
@@ -932,7 +953,7 @@
 
 .search-tvs-results {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(9.5em, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(8.5em, 1fr));
   grid-gap: 0.55em;
   margin-bottom: 2em;
 }
@@ -951,6 +972,11 @@
   line-height: 1.2em;
 }
 
+@media (min-width: 48em) {
+  .search-tvs-results {
+    grid-template-columns: repeat(auto-fill, minmax(10em, 1fr));
+  }
+}
 /* Container needed to position the overlay. Adjust the width as needed */
 .search-tv-container {
   position: relative;

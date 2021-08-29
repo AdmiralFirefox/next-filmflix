@@ -20,12 +20,12 @@
   text-align: center;
 
   .movie-vote-average {
-    font-size: 1.3rem;
+    font-size: 0.9rem;
     user-select: none;
   }
 
   .movie-info-icon {
-    font-size: 1.7rem;
+    font-size: 1.4rem;
     cursor: pointer;
     transition: color 0.35s ease-in-out;
     user-select: none;
@@ -40,4 +40,16 @@
 .movie-container:hover .movie-overlay {
   visibility: visible;
   opacity: 1;
+}
+
+@media (min-width: theme-variable.$media-query-medium-value) {
+  .movie-overlay {
+    .movie-vote-average {
+      font-size: 1.3rem;
+    }
+
+    .movie-info-icon {
+      font-size: 1.7rem;
+    }
+  }
 }

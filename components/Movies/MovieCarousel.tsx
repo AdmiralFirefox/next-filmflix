@@ -38,7 +38,7 @@ const MovieCarousel: FC<RouteProp> = ({ route, title }) => {
       slidesPerView: 2,
       spaceBetween: 8,
     },
-    "360": {
+    "320": {
       slidesPerView: 3,
       spaceBetween: 6,
     },
