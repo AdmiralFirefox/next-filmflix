@@ -20,6 +20,11 @@ interface SearchTVInfoProps {
   posterPath: string;
   voteAverage: number;
 }
+interface LanguageProps {
+  languageData: {
+    english_name: string;
+  }[];
+}
 
 const SearchTVInfo: FC<SearchTVInfoProps> = ({ posterPath, voteAverage }) => {
   const [searchTVInfo, setSearchTVInfo] = useState({
@@ -34,6 +39,10 @@ const SearchTVInfo: FC<SearchTVInfoProps> = ({ posterPath, voteAverage }) => {
   });
 
   const [genresTV, setGenresTV] = useState<TVGenreProp["tvGenreData"]>([]);
+
+  const [spokenLanguages, setSpokenLanguages] = useState<
+    LanguageProps["languageData"]
+  >([]);
 
   const [isMounted, setIsMounted] = useState(true);
 
@@ -59,6 +68,7 @@ const SearchTVInfo: FC<SearchTVInfoProps> = ({ posterPath, voteAverage }) => {
         if (isMounted) {
           setSearchTVInfo(res.data);
           setGenresTV(res.data.genres);
+          setSpokenLanguages(res.data.spoken_languages);
         }
       } catch (err) {
         console.log(err);
@@ -86,6 +96,7 @@ const SearchTVInfo: FC<SearchTVInfoProps> = ({ posterPath, voteAverage }) => {
         lastDateAired={searchTVInfo.last_air_date}
         name={searchTVInfo.name}
         id={searchTVInfo.id}
+        spokenLanguages={spokenLanguages}
       />
       {posterPath !== "" ? (
         <>

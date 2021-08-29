@@ -34,6 +34,12 @@ interface TrendingTVInfoProps {
   overview: string;
 }
 
+interface LanguageProps {
+  languageData: {
+    english_name: string;
+  }[];
+}
+
 const TrendingTVInfo: FC<TrendingTVInfoProps> = ({
   backdropPath,
   name,
@@ -51,6 +57,10 @@ const TrendingTVInfo: FC<TrendingTVInfoProps> = ({
   });
 
   const [genresTV, setGenresTV] = useState<TVGenreProp["tvGenreData"]>([]);
+
+  const [spokenLanguages, setSpokenLanguages] = useState<
+    LanguageProps["languageData"]
+  >([]);
 
   const TrendingTVID = useContext(TrendingTVIDContext);
 
@@ -77,6 +87,7 @@ const TrendingTVInfo: FC<TrendingTVInfoProps> = ({
         if (isMounted) {
           setGenresTV(res.data.genres);
           setTrendingTVInfo(res.data);
+          setSpokenLanguages(res.data.spoken_languages);
         }
       } catch (err) {
         console.log(err);
@@ -122,6 +133,7 @@ const TrendingTVInfo: FC<TrendingTVInfoProps> = ({
           lastDateAired={trendingTVInfo.last_air_date}
           name={trendingTVInfo.name}
           id={trendingTVInfo.id}
+          spokenLanguages={spokenLanguages}
         />
 
         {backdropPath !== "" ? (
@@ -178,6 +190,7 @@ const TrendingTVInfo: FC<TrendingTVInfoProps> = ({
     handleCloseTrendingTVModal,
     genresTV,
     openTrendingTVModal,
+    spokenLanguages,
   ]);
 };
 

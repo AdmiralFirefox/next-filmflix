@@ -113,6 +113,31 @@
     }
   }
 
+  //Movie Spoken Languages
+  .tv-info-spoken-languages {
+    //Language Title
+    color: theme-variable.$white-font-color;
+    font-size: clamp(1rem, 1.4vw, 1.4rem);
+    margin-top: 1em;
+
+    //Language Content
+    .tv-info-modal-language-name {
+      font-size: clamp(1rem, 1.4vw, 1.4rem);
+    }
+
+    @supports not (font-size: clamp(1rem, 1.4vw, 1.4rem)) {
+      .tv-info-modal-language-name {
+        font-size: 1rem;
+      }
+    }
+  }
+
+  @supports not (font-size: clamp(1rem, 1.4vw, 1.4rem)) {
+    .tv-info-spoken-languages {
+      font-size: 1rem;
+    }
+  }
+
   //TV Genre
   .tv-modal-genres {
     //Genre Title

@@ -462,6 +462,24 @@
     font-size: 1rem;
   }
 }
+.movie-info-modal-content .movie-info-spoken-languages {
+  color: #ffffff;
+  font-size: clamp(1rem, 1.4vw, 1.4rem);
+  margin-top: 1em;
+}
+.movie-info-modal-content .movie-info-spoken-languages .movie-info-modal-language-name {
+  font-size: clamp(1rem, 1.4vw, 1.4rem);
+}
+@supports not (font-size: clamp(1rem, 1.4vw, 1.4rem)) {
+  .movie-info-modal-content .movie-info-spoken-languages .movie-info-modal-language-name {
+    font-size: 1rem;
+  }
+}
+@supports not (font-size: clamp(1rem, 1.4vw, 1.4rem)) {
+  .movie-info-modal-content .movie-info-spoken-languages {
+    font-size: 1rem;
+  }
+}
 .movie-info-modal-content .movie-info-modal-genre {
   color: #ffffff;
   font-size: clamp(1rem, 1.4vw, 1.4rem);
@@ -741,6 +759,24 @@
 }
 @supports not (font-size: clamp(1rem, 1.4vw, 1.4rem)) {
   .tv-modal-content .tv-modal-status {
+    font-size: 1rem;
+  }
+}
+.tv-modal-content .tv-info-spoken-languages {
+  color: #ffffff;
+  font-size: clamp(1rem, 1.4vw, 1.4rem);
+  margin-top: 1em;
+}
+.tv-modal-content .tv-info-spoken-languages .tv-info-modal-language-name {
+  font-size: clamp(1rem, 1.4vw, 1.4rem);
+}
+@supports not (font-size: clamp(1rem, 1.4vw, 1.4rem)) {
+  .tv-modal-content .tv-info-spoken-languages .tv-info-modal-language-name {
+    font-size: 1rem;
+  }
+}
+@supports not (font-size: clamp(1rem, 1.4vw, 1.4rem)) {
+  .tv-modal-content .tv-info-spoken-languages {
     font-size: 1rem;
   }
 }

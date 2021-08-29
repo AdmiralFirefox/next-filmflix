@@ -34,6 +34,12 @@ interface TrendingMovieInfoProps {
   overview: string;
 }
 
+interface LanguageProps {
+  languageData: {
+    english_name: string;
+  }[];
+}
+
 const TrendingMovieInfo: FC<TrendingMovieInfoProps> = ({
   backdropPath,
   title,
@@ -51,6 +57,10 @@ const TrendingMovieInfo: FC<TrendingMovieInfoProps> = ({
   const trendingMovieID = useContext(TrendingMovieIDContext);
 
   const [genres, setGenres] = useState<GenreProp["genreData"]>([]);
+
+  const [spokenLanguages, setSpokenLanguages] = useState<
+    LanguageProps["languageData"]
+  >([]);
 
   const [isMounted, setIsMounted] = useState(true);
 
@@ -75,6 +85,7 @@ const TrendingMovieInfo: FC<TrendingMovieInfoProps> = ({
         if (isMounted) {
           setTrendingMovieInfo(res.data);
           setGenres(res.data.genres);
+          setSpokenLanguages(res.data.spoken_languages);
         }
       } catch (err) {
         console.log(err);
@@ -118,6 +129,7 @@ const TrendingMovieInfo: FC<TrendingMovieInfoProps> = ({
           status={trendingMovieInfo.status}
           title={trendingMovieInfo.title}
           id={trendingMovieInfo.id}
+          spokenLanguages={spokenLanguages}
         />
         {backdropPath !== "" ? (
           <div className={trendingMovieInfoStyles["trending-movie-img"]}>
@@ -175,6 +187,7 @@ const TrendingMovieInfo: FC<TrendingMovieInfoProps> = ({
     genres,
     handleCloseTrendingMovieModal,
     openTrendingMovieModal,
+    spokenLanguages,
   ]);
 };
 

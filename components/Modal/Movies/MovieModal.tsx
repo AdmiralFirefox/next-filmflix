@@ -4,6 +4,7 @@ const MovieTrailer = dynamic(() => import("../../Movies/MovieTrailer"));
 const MovieCasts = dynamic(() => import("../../Movies/MovieCasts"));
 const SimilarMovies = dynamic(() => import("../../Movies/SimilarMovies"));
 import React, { FC, useState, useEffect } from "react";
+import { v4 as uuidv4 } from "uuid";
 import movieInfoModalStyles from "../../../styles/Home.module.scss";
 
 //Tabs
@@ -59,6 +60,9 @@ interface ModalFunctionProp {
   status: string;
   title: string;
   id: number;
+  spokenLanguages: {
+    english_name: string;
+  }[];
 }
 
 const MovieModal: FC<ModalFunctionProp> = ({
@@ -71,6 +75,7 @@ const MovieModal: FC<ModalFunctionProp> = ({
   status,
   title,
   id,
+  spokenLanguages,
 }) => {
   //Tabs
   const [value, setValue] = useState(0);
@@ -159,6 +164,29 @@ const MovieModal: FC<ModalFunctionProp> = ({
 
             <div className={movieInfoModalStyles["movie-info-modal-status"]}>
               <p>Status: {status}</p>
+            </div>
+
+            <div
+              className={movieInfoModalStyles["movie-info-spoken-languages"]}
+            >
+              {spokenLanguages.length === 1 ? (
+                <h2>Spoken Language:</h2>
+              ) : (
+                <h2>Spoken Languages:</h2>
+              )}
+
+              {spokenLanguages.map((language) => {
+                return (
+                  <div
+                    key={uuidv4()}
+                    className={
+                      movieInfoModalStyles["movie-info-modal-language-name"]
+                    }
+                  >
+                    <p> - {language.english_name}</p>
+                  </div>
+                );
+              })}
             </div>
 
             <div className={movieInfoModalStyles["movie-info-modal-genre"]}>

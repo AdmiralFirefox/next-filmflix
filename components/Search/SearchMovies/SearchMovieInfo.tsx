@@ -21,6 +21,12 @@ interface SearchMovieInfoProps {
   voteAverge: number;
 }
 
+interface LanguageProps {
+  languageData: {
+    english_name: string;
+  }[];
+}
+
 const SearchMovieInfo: FC<SearchMovieInfoProps> = ({
   posterPath,
   voteAverge,
@@ -40,6 +46,10 @@ const SearchMovieInfo: FC<SearchMovieInfoProps> = ({
 
   const [genres, setGenres] = useState<GenreProp["genreData"]>([]);
 
+  const [spokenLanguages, setSpokenLanguages] = useState<
+    LanguageProps["languageData"]
+  >([]);
+
   useEffect(() => {
     const displaySearchMovieInfo = async () => {
       try {
@@ -50,6 +60,7 @@ const SearchMovieInfo: FC<SearchMovieInfoProps> = ({
         if (isMounted) {
           setSearchMovieInfo(res.data);
           setGenres(res.data.genres);
+          setSpokenLanguages(res.data.spoken_languages);
         }
       } catch (err) {
         console.log(err);
@@ -85,6 +96,7 @@ const SearchMovieInfo: FC<SearchMovieInfoProps> = ({
         status={searchMovieInfo.status}
         title={searchMovieInfo.title}
         id={searchMovieInfo.id}
+        spokenLanguages={spokenLanguages}
       />
       {posterPath !== "" ? (
         <>

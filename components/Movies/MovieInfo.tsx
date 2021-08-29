@@ -28,6 +28,12 @@ interface MovieInfoProps {
   voteAverage: number;
 }
 
+interface LanguageProps {
+  languageData: {
+    english_name: string;
+  }[];
+}
+
 const MovieInfo: FC<MovieInfoProps> = ({ posterPath, voteAverage }) => {
   const [movieInfo, setMovieInfo] = useState({
     overview: "",
@@ -39,6 +45,10 @@ const MovieInfo: FC<MovieInfoProps> = ({ posterPath, voteAverage }) => {
   });
 
   const [genres, setGenres] = useState<GenreProp["genreData"]>([]);
+
+  const [spokenLanguages, setSpokenLanguages] = useState<
+    LanguageProps["languageData"]
+  >([]);
 
   const movieID = useContext(MovieIDContext);
 
@@ -64,6 +74,7 @@ const MovieInfo: FC<MovieInfoProps> = ({ posterPath, voteAverage }) => {
         if (isMounted) {
           setMovieInfo(res.data);
           setGenres(res.data.genres);
+          setSpokenLanguages(res.data.spoken_languages);
         }
       } catch (err) {
         console.log(err);
@@ -90,6 +101,7 @@ const MovieInfo: FC<MovieInfoProps> = ({ posterPath, voteAverage }) => {
           status={movieInfo.status}
           title={movieInfo.title}
           id={movieInfo.id}
+          spokenLanguages={spokenLanguages}
         />
         {posterPath !== null ? (
           <>
@@ -161,6 +173,7 @@ const MovieInfo: FC<MovieInfoProps> = ({ posterPath, voteAverage }) => {
     handleOpenMovieModal,
     handleCloseMovieModal,
     openMovieModal,
+    spokenLanguages,
   ]);
 };
 

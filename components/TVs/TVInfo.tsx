@@ -28,6 +28,12 @@ interface TVInfoProps {
   voteAverage: number;
 }
 
+interface LanguageProps {
+  languageData: {
+    english_name: string;
+  }[];
+}
+
 const TVInfo: FC<TVInfoProps> = ({ posterPath, voteAverage }) => {
   const [infoTV, setInfoTV] = useState({
     overview: "",
@@ -40,6 +46,10 @@ const TVInfo: FC<TVInfoProps> = ({ posterPath, voteAverage }) => {
     id: 0,
   });
   const [genresTV, setGenresTV] = useState<TVGenreProp["tvGenreData"]>([]);
+
+  const [spokenLanguages, setSpokenLanguages] = useState<
+    LanguageProps["languageData"]
+  >([]);
 
   const TVID = useContext(TVIDContext);
 
@@ -65,6 +75,7 @@ const TVInfo: FC<TVInfoProps> = ({ posterPath, voteAverage }) => {
         if (isMounted) {
           setGenresTV(res.data.genres);
           setInfoTV(res.data);
+          setSpokenLanguages(res.data.spoken_languages);
         }
       } catch (err) {
         console.log(err);
@@ -93,6 +104,7 @@ const TVInfo: FC<TVInfoProps> = ({ posterPath, voteAverage }) => {
           lastDateAired={infoTV.last_air_date}
           name={infoTV.name}
           id={infoTV.id}
+          spokenLanguages={spokenLanguages}
         />
         {posterPath !== null ? (
           <>
@@ -166,6 +178,7 @@ const TVInfo: FC<TVInfoProps> = ({ posterPath, voteAverage }) => {
     handleCloseTVInfo,
     genresTV,
     openTVModal,
+    spokenLanguages,
   ]);
 };
 

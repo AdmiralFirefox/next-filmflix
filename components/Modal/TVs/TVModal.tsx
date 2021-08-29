@@ -5,6 +5,7 @@ const TVTrailer = dynamic(() => import("../../TVs/TVTrailer"));
 const SimilarTV = dynamic(() => import("../../TVs/SimilarTV"));
 const TVSeasons = dynamic(() => import("../../TVs/TVSeasons"));
 const TVCasts = dynamic(() => import("../../TVs/TVCasts"));
+import { v4 as uuidv4 } from "uuid";
 import tvModalStyles from "../../../styles/Home.module.scss";
 
 //Tabs
@@ -62,6 +63,9 @@ interface TVModalProp {
   lastDateAired: number;
   name: string;
   id: number;
+  spokenLanguages: {
+    english_name: string;
+  }[];
 }
 
 const TVModal: FC<TVModalProp> = ({
@@ -76,6 +80,7 @@ const TVModal: FC<TVModalProp> = ({
   lastDateAired,
   name,
   id,
+  spokenLanguages,
 }) => {
   //Tabs
   const [value, setValue] = useState(0);
@@ -168,6 +173,24 @@ const TVModal: FC<TVModalProp> = ({
 
             <div className={tvModalStyles["tv-modal-status"]}>
               <p>Status: {status}</p>
+            </div>
+
+            <div className={tvModalStyles["tv-info-spoken-languages"]}>
+              {spokenLanguages.length === 1 ? (
+                <h2>Spoken Language:</h2>
+              ) : (
+                <h2>Spoken Languages:</h2>
+              )}
+              {spokenLanguages.map((language) => {
+                return (
+                  <div
+                    key={uuidv4()}
+                    className={tvModalStyles["tv-info-modal-language-name"]}
+                  >
+                    <p> - {language.english_name}</p>
+                  </div>
+                );
+              })}
             </div>
 
             <div className={tvModalStyles["tv-modal-genres"]}>
