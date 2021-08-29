@@ -203,7 +203,7 @@ const MovieModal: FC<ModalFunctionProp> = ({
             </div>
 
             <div className={movieInfoModalStyles["movie-info-modal-genre"]}>
-              <h2>Genre:</h2>
+              {genres.length === 1 ? <h2>Genre:</h2> : <h2>Genres:</h2>}
               <div
                 className={
                   movieInfoModalStyles["movie-info-modal-genre-content"]

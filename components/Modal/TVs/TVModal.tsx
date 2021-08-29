@@ -205,7 +205,7 @@ const TVModal: FC<TVModalProp> = ({
             </div>
 
             <div className={tvModalStyles["tv-modal-genres"]}>
-              <h2>Genres: </h2>
+              {genresTV.length === 1 ? <h2>Genre:</h2> : <h2>Genres:</h2>}
               <div className={tvModalStyles["tv-info-modal-genre-content"]}>
                 {genresTV.map((genreTV, index) => {
                   return (
