@@ -175,34 +175,60 @@ const MovieModal: FC<ModalFunctionProp> = ({
                 <h2>Spoken Languages:</h2>
               )}
 
-              {spokenLanguages.map((language) => {
-                return (
-                  <div
-                    key={uuidv4()}
-                    className={
-                      movieInfoModalStyles["movie-info-modal-language-name"]
-                    }
-                  >
-                    <p> - {language.english_name}</p>
-                  </div>
-                );
-              })}
+              <div
+                className={
+                  movieInfoModalStyles["movie-info-spoken-languages-content"]
+                }
+              >
+                {spokenLanguages.map((language, index) => {
+                  return (
+                    <div
+                      key={uuidv4()}
+                      className={
+                        movieInfoModalStyles["movie-info-modal-language-name"]
+                      }
+                    >
+                      <p>
+                        {language.english_name +
+                          (index < spokenLanguages.length - 2
+                            ? ","
+                            : index === spokenLanguages.length - 2
+                            ? " and"
+                            : "")}
+                      </p>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
 
             <div className={movieInfoModalStyles["movie-info-modal-genre"]}>
               <h2>Genre:</h2>
-              {genres.map((genre) => {
-                return (
-                  <div
-                    key={genre.id}
-                    className={
-                      movieInfoModalStyles["movie-info-modal-genre-name"]
-                    }
-                  >
-                    <p> - {genre.name}</p>
-                  </div>
-                );
-              })}
+              <div
+                className={
+                  movieInfoModalStyles["movie-info-modal-genre-content"]
+                }
+              >
+                {genres.map((genre, index) => {
+                  return (
+                    <div
+                      key={genre.id}
+                      className={
+                        movieInfoModalStyles["movie-info-modal-genre-name"]
+                      }
+                    >
+                      <p>
+                        {genre.name +
+                          (index < genres.length - 2
+                            ? ","
+                            : index === genres.length - 2
+                            ? " and"
+                            : "")}
+                      </p>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
           </div>
           <div>

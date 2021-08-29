@@ -181,30 +181,50 @@ const TVModal: FC<TVModalProp> = ({
               ) : (
                 <h2>Spoken Languages:</h2>
               )}
-              {spokenLanguages.map((language) => {
-                return (
-                  <div
-                    key={uuidv4()}
-                    className={tvModalStyles["tv-info-modal-language-name"]}
-                  >
-                    <p> - {language.english_name}</p>
-                  </div>
-                );
-              })}
+              <div
+                className={tvModalStyles["tv-info-spoken-languages-content"]}
+              >
+                {spokenLanguages.map((language, index) => {
+                  return (
+                    <div
+                      key={uuidv4()}
+                      className={tvModalStyles["tv-info-modal-language-name"]}
+                    >
+                      <p>
+                        {language.english_name +
+                          (index < spokenLanguages.length - 2
+                            ? ","
+                            : index === spokenLanguages.length - 2
+                            ? " and"
+                            : "")}
+                      </p>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
 
             <div className={tvModalStyles["tv-modal-genres"]}>
               <h2>Genres: </h2>
-              {genresTV.map((genreTV) => {
-                return (
-                  <div
-                    key={genreTV.id}
-                    className={tvModalStyles["tv-modal-genre-name"]}
-                  >
-                    <p> - {genreTV.name}</p>
-                  </div>
-                );
-              })}
+              <div className={tvModalStyles["tv-info-modal-genre-content"]}>
+                {genresTV.map((genreTV, index) => {
+                  return (
+                    <div
+                      key={genreTV.id}
+                      className={tvModalStyles["tv-modal-genre-name"]}
+                    >
+                      <p>
+                        {genreTV.name +
+                          (index < genresTV.length - 2
+                            ? ","
+                            : index === genresTV.length - 2
+                            ? " and"
+                            : "")}
+                      </p>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
           </div>
           <div>

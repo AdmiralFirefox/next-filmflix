@@ -467,11 +467,17 @@
   font-size: clamp(1rem, 1.4vw, 1.4rem);
   margin-top: 1em;
 }
-.movie-info-modal-content .movie-info-spoken-languages .movie-info-modal-language-name {
+.movie-info-modal-content .movie-info-spoken-languages .movie-info-spoken-languages-content {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: 1.5em;
+}
+.movie-info-modal-content .movie-info-spoken-languages .movie-info-spoken-languages-content .movie-info-modal-language-name {
   font-size: clamp(1rem, 1.4vw, 1.4rem);
+  margin-right: 0.3em;
 }
 @supports not (font-size: clamp(1rem, 1.4vw, 1.4rem)) {
-  .movie-info-modal-content .movie-info-spoken-languages .movie-info-modal-language-name {
+  .movie-info-modal-content .movie-info-spoken-languages .movie-info-spoken-languages-content .movie-info-modal-language-name {
     font-size: 1rem;
   }
 }
@@ -486,11 +492,17 @@
   margin-top: 1em;
   margin-bottom: 1.5em;
 }
-.movie-info-modal-content .movie-info-modal-genre .movie-info-modal-genre-name {
+.movie-info-modal-content .movie-info-modal-genre .movie-info-modal-genre-content {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: 1.5em;
+}
+.movie-info-modal-content .movie-info-modal-genre .movie-info-modal-genre-content .movie-info-modal-genre-name {
   font-size: clamp(1rem, 1.4vw, 1.4rem);
+  margin-right: 0.3em;
 }
 @supports not (font-size: clamp(1rem, 1.4vw, 1.4rem)) {
-  .movie-info-modal-content .movie-info-modal-genre .movie-info-modal-genre-name {
+  .movie-info-modal-content .movie-info-modal-genre .movie-info-modal-genre-content .movie-info-modal-genre-name {
     font-size: 1rem;
   }
 }
@@ -767,11 +779,17 @@
   font-size: clamp(1rem, 1.4vw, 1.4rem);
   margin-top: 1em;
 }
-.tv-modal-content .tv-info-spoken-languages .tv-info-modal-language-name {
+.tv-modal-content .tv-info-spoken-languages .tv-info-spoken-languages-content {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: 1.5em;
+}
+.tv-modal-content .tv-info-spoken-languages .tv-info-spoken-languages-content .tv-info-modal-language-name {
   font-size: clamp(1rem, 1.4vw, 1.4rem);
+  margin-right: 0.3em;
 }
 @supports not (font-size: clamp(1rem, 1.4vw, 1.4rem)) {
-  .tv-modal-content .tv-info-spoken-languages .tv-info-modal-language-name {
+  .tv-modal-content .tv-info-spoken-languages .tv-info-spoken-languages-content .tv-info-modal-language-name {
     font-size: 1rem;
   }
 }
@@ -786,11 +804,17 @@
   margin-top: 1em;
   margin-bottom: 1.5em;
 }
-.tv-modal-content .tv-modal-genres .tv-modal-genre-name {
+.tv-modal-content .tv-modal-genres .tv-info-modal-genre-content {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: 1.5em;
+}
+.tv-modal-content .tv-modal-genres .tv-info-modal-genre-content .tv-modal-genre-name {
   font-size: clamp(1rem, 1.4vw, 1.4rem);
+  margin-right: 0.3em;
 }
 @supports not (font-size: clamp(1rem, 1.4vw, 1.4rem)) {
-  .tv-modal-content .tv-modal-genres .tv-modal-genre-name {
+  .tv-modal-content .tv-modal-genres .tv-info-modal-genre-content .tv-modal-genre-name {
     font-size: 1rem;
   }
 }

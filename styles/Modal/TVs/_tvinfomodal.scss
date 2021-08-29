@@ -121,13 +121,20 @@
     margin-top: 1em;
 
     //Language Content
-    .tv-info-modal-language-name {
-      font-size: clamp(1rem, 1.4vw, 1.4rem);
-    }
+    .tv-info-spoken-languages-content {
+      display: flex;
+      flex-wrap: wrap;
+      margin-right: 1.5em;
 
-    @supports not (font-size: clamp(1rem, 1.4vw, 1.4rem)) {
       .tv-info-modal-language-name {
-        font-size: 1rem;
+        font-size: clamp(1rem, 1.4vw, 1.4rem);
+        margin-right: 0.3em;
+      }
+
+      @supports not (font-size: clamp(1rem, 1.4vw, 1.4rem)) {
+        .tv-info-modal-language-name {
+          font-size: 1rem;
+        }
       }
     }
   }
@@ -147,13 +154,20 @@
     margin-bottom: 1.5em;
 
     //Genre Content
-    .tv-modal-genre-name {
-      font-size: clamp(1rem, 1.4vw, 1.4rem);
-    }
+    .tv-info-modal-genre-content {
+      display: flex;
+      flex-wrap: wrap;
+      margin-right: 1.5em;
 
-    @supports not (font-size: clamp(1rem, 1.4vw, 1.4rem)) {
       .tv-modal-genre-name {
-        font-size: 1rem;
+        font-size: clamp(1rem, 1.4vw, 1.4rem);
+        margin-right: 0.3em;
+      }
+
+      @supports not (font-size: clamp(1rem, 1.4vw, 1.4rem)) {
+        .tv-modal-genre-name {
+          font-size: 1rem;
+        }
       }
     }
   }
