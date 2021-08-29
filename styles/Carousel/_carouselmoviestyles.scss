@@ -13,19 +13,22 @@
   color: #ffffff;
   width: 100%;
   height: 100%;
-  transition: 0.5s ease;
+  visibility: hidden;
   opacity: 0;
+  transition: 0.7s ease;
   font-size: 20px;
   text-align: center;
 
   .movie-vote-average {
     font-size: 1.3rem;
+    user-select: none;
   }
 
   .movie-info-icon {
     font-size: 1.7rem;
     cursor: pointer;
     transition: color 0.35s ease-in-out;
+    user-select: none;
 
     &:hover {
       color: theme-variable.$white-font-color-hover;
@@ -35,5 +38,6 @@
 
 /* When you mouse over the container, fade in the overlay title */
 .movie-container:hover .movie-overlay {
+  visibility: visible;
   opacity: 1;
 }
