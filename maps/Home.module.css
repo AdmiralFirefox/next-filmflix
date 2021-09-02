@@ -894,6 +894,13 @@
   line-height: 1.2em;
 }
 
+.search-movies-no-results-found {
+  color: #ffffff;
+  margin-right: 2em;
+  font-size: 1rem;
+  margin-top: 1.2em;
+}
+
 @media (min-width: 48em) {
   .search-movies-results {
     grid-template-columns: repeat(auto-fill, minmax(10em, 1fr));
@@ -970,6 +977,13 @@
   margin-top: 1em;
   font-size: 1rem;
   line-height: 1.2em;
+}
+
+.search-tvs-no-results-found {
+  color: #ffffff;
+  margin-right: 2em;
+  font-size: 1rem;
+  margin-top: 1.2em;
 }
 
 @media (min-width: 48em) {

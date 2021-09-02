@@ -59,6 +59,21 @@ const SearchTVs: FC = () => {
     setSearchQuery("/");
   }
 
+  //If there are no searched tv shows available
+  const noResultsFound = (): JSX.Element | undefined => {
+    if (searchQuery !== "/" && searchTVs.length === 0 && !loadingSearches) {
+      return (
+        <div className={searchTVStyles["search-tvs-no-results-found"]}>
+          <p>
+            We tried searching for &quot;{searchQuery}&quot; but we
+            couldn&apos;t find it. Please check your spelling or try searching
+            in the Movies tab.
+          </p>
+        </div>
+      );
+    }
+  };
+
   return (
     <div>
       <div className={searchTVStyles["search-tvs-input"]}>
@@ -70,6 +85,8 @@ const SearchTVs: FC = () => {
           Search results for: {searchQuery}
         </p>
       )}
+
+      {noResultsFound()}
 
       {loadingSearches ? (
         <div className={searchTVStyles["search-tvs-loading"]}>

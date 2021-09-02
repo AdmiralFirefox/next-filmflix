@@ -27,6 +27,13 @@
   line-height: 1.2em;
 }
 
+.search-movies-no-results-found {
+  color: theme-variable.$white-font-color;
+  margin-right: 2em;
+  font-size: 1rem;
+  margin-top: 1.2em;
+}
+
 @media (min-width: theme-variable.$media-query-default-value) {
   .search-movies-results {
     grid-template-columns: repeat(auto-fill, minmax(10em, 1fr));
