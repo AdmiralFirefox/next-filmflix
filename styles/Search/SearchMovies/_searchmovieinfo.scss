@@ -4,6 +4,10 @@
 .search-movie-container {
   position: relative;
   width: 100%;
+
+  img {
+    border-radius: 10px !important;
+  }
 }
 
 /* The overlay effect - lays on top of the container and over the image */
@@ -11,14 +15,13 @@
   position: absolute;
   bottom: 0;
   background: theme-variable.$background-linear-gradient; /* Black see-through */
-  color: #f1f1f1;
   width: 100%;
   height: 100%;
   visibility: hidden;
   opacity: 0;
   transition: 0.7s ease;
-  color: white;
-  font-size: 20px;
+  color: theme-variable.$white-font-color;
+  border-radius: 10px;
   text-align: center;
   display: flex;
   flex-direction: column;

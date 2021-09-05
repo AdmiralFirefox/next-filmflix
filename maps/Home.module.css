@@ -599,6 +599,7 @@
   transition: 0.7s ease;
   font-size: 20px;
   text-align: center;
+  border-radius: 8px !important;
 }
 .movie-overlay .movie-vote-average {
   font-size: 0.9rem;
@@ -612,6 +613,10 @@
 }
 .movie-overlay .movie-info-icon:hover {
   color: #cccccc;
+}
+
+.movie-container img {
+  border-radius: 8px !important;
 }
 
 /* When you mouse over the container, fade in the overlay title */
@@ -645,6 +650,7 @@
   transition: 0.7s ease;
   font-size: 20px;
   text-align: center;
+  border-radius: 8px !important;
 }
 .tv-overlay .tv-vote-average {
   font-size: 0.9rem;
@@ -658,6 +664,10 @@
 }
 .tv-overlay .tv-info-icon:hover {
   color: #cccccc;
+}
+
+.tv-container img {
+  border-radius: 8px !important;
 }
 
 /* When you mouse over the container, fade in the overlay title */
@@ -911,6 +921,9 @@
   position: relative;
   width: 100%;
 }
+.search-movie-container img {
+  border-radius: 10px !important;
+}
 
 /* The overlay effect - lays on top of the container and over the image */
 .search-movie-overlay {
@@ -918,14 +931,13 @@
   bottom: 0;
   background: linear-gradient(0deg, #00000088 30%, #ffffff44 100%);
   /* Black see-through */
-  color: #f1f1f1;
   width: 100%;
   height: 100%;
   visibility: hidden;
   opacity: 0;
   transition: 0.7s ease;
-  color: white;
-  font-size: 20px;
+  color: #ffffff;
+  border-radius: 10px;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -996,6 +1008,9 @@
   position: relative;
   width: 100%;
 }
+.search-tv-container img {
+  border-radius: 10px !important;
+}
 
 /* The overlay effect - lays on top of the container and over the image */
 .search-tv-overlay {
@@ -1003,14 +1018,13 @@
   bottom: 0;
   background: linear-gradient(0deg, #00000088 30%, #ffffff44 100%);
   /* Black see-through */
-  color: #f1f1f1;
   width: 100%;
   height: 100%;
   visibility: hidden;
   opacity: 0;
   transition: 0.7s ease;
-  color: white;
-  font-size: 20px;
+  color: #ffffff;
+  border-radius: 10px;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -1553,7 +1567,7 @@
   margin-bottom: 0.2em;
   margin-left: 0.5em;
   font-size: clamp(1.5rem, 1.9vw, 1.9rem);
-  font-weight: 400;
+  font-weight: 600;
 }
 
 @supports not (font-size: clamp(1.5rem, 1.9vw, 1.9rem)) {
@@ -1582,7 +1596,7 @@
   margin-bottom: 0.2em;
   margin-left: 0.5em;
   font-size: clamp(1.5rem, 1.9vw, 1.9rem);
-  font-weight: 400;
+  font-weight: 600;
 }
 
 @supports not (font-size: clamp(1.5rem, 1.9vw, 1.9rem)) {

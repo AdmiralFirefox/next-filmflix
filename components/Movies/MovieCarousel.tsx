@@ -121,7 +121,7 @@ const MovieCarousel: FC<RouteProp> = ({ route, title }) => {
                 variant="rect"
                 width={210}
                 height={250}
-                style={{ background: "#757575" }}
+                style={{ background: "#757575", borderRadius:"8px" }}
               />
             </SwiperSlide>
             <SwiperSlide>
@@ -129,7 +129,7 @@ const MovieCarousel: FC<RouteProp> = ({ route, title }) => {
                 variant="rect"
                 width={210}
                 height={250}
-                style={{ background: "#757575" }}
+                style={{ background: "#757575", borderRadius:"8px" }}
               />
             </SwiperSlide>
             <SwiperSlide>
@@ -137,7 +137,7 @@ const MovieCarousel: FC<RouteProp> = ({ route, title }) => {
                 variant="rect"
                 width={210}
                 height={250}
-                style={{ background: "#757575" }}
+                style={{ background: "#757575", borderRadius:"8px" }}
               />
             </SwiperSlide>
           </>

@@ -18,6 +18,7 @@
   transition: 0.7s ease;
   font-size: 20px;
   text-align: center;
+  border-radius: 8px !important;
 
   .tv-vote-average {
     font-size: 0.9rem;
@@ -33,6 +34,12 @@
     &:hover {
       color: theme-variable.$white-font-color-hover;
     }
+  }
+}
+
+.tv-container {
+  img {
+    border-radius: 8px !important;
   }
 }
 
