@@ -1,11 +1,4 @@
-import React, {
-  FC,
-  useState,
-  useEffect,
-  useContext,
-  useMemo,
-  useCallback,
-} from "react";
+import React, { FC, useState, useEffect, useContext } from "react";
 import dynamic from "next/dynamic";
 import { TrendingMovieIDContext } from "./TrendingMovies";
 import Axios from "axios";
@@ -67,13 +60,13 @@ const TrendingMovieInfo: FC<TrendingMovieInfoProps> = ({
   // Trending Movie Modal Info
   const [openTrendingMovieModal, setOpenTrendingMovieModal] = useState(false);
 
-  const handleOpenTrendingMovieModal = useCallback((): void => {
+  const handleOpenTrendingMovieModal = (): void => {
     setOpenTrendingMovieModal(true);
-  }, [setOpenTrendingMovieModal]);
+  };
 
-  const handleCloseTrendingMovieModal = useCallback((): void => {
+  const handleCloseTrendingMovieModal = (): void => {
     setOpenTrendingMovieModal(false);
-  }, [setOpenTrendingMovieModal]);
+  };
 
   useEffect(() => {
     const displayTrendingMovieInfo = async () => {
@@ -116,79 +109,67 @@ const TrendingMovieInfo: FC<TrendingMovieInfoProps> = ({
     } else return text;
   };
 
-  return useMemo(() => {
-    return (
-      <div>
-        <MovieModal
-          open={openTrendingMovieModal}
-          handleCloseMovieModal={handleCloseTrendingMovieModal}
-          overview={trendingMovieInfo.overview}
-          releaseDate={trendingMovieInfo.release_date}
-          genres={genres}
-          runtime={trendingMovieInfo.runtime}
-          status={trendingMovieInfo.status}
-          title={trendingMovieInfo.title}
-          id={trendingMovieInfo.id}
-          spokenLanguages={spokenLanguages}
-        />
-        {backdropPath !== "" ? (
-          <div className={trendingMovieInfoStyles["trending-movie-img"]}>
-            <Image
-              src={`https://image.tmdb.org/t/p/w1280/${backdropPath}`}
-              alt="Movie Poster"
-              priority={true}
-              layout="fill"
-              objectFit="cover"
-              objectPosition="center top"
-            />
-          </div>
-        ) : (
-          <>
-            <Skeleton
-              variant="rect"
-              id={trendingMovieInfoStyles["trending-movie-skeleton"]}
-            />
-          </>
-        )}
-        <div className={trendingMovieInfoStyles["trending-movie-content"]}>
-          <div className={trendingMovieInfoStyles["trending-movie-title"]}>
-            <h1>{title}</h1>
-          </div>
-          <div className={trendingMovieInfoStyles["trending-movie-overview"]}>
-            <p>{limitText(overview, 500)}</p>
-          </div>
-          <div
-            className={trendingMovieInfoStyles["trending-movie-button-wrapper"]}
-          >
-            {trendingMovieInfo.id !== 0 ? (
-              <>
-                <PlayMovieVideoButton id={trendingMovieInfo.id} />
-              </>
-            ) : (
-              <FallbackButton />
-            )}
-
-            <MoreMovieInfoButton
-              handleOpenTrendingMovieModal={handleOpenTrendingMovieModal}
-            />
-          </div>
+  return (
+    <div>
+      <MovieModal
+        open={openTrendingMovieModal}
+        handleCloseMovieModal={handleCloseTrendingMovieModal}
+        overview={trendingMovieInfo.overview}
+        releaseDate={trendingMovieInfo.release_date}
+        genres={genres}
+        runtime={trendingMovieInfo.runtime}
+        status={trendingMovieInfo.status}
+        title={trendingMovieInfo.title}
+        id={trendingMovieInfo.id}
+        spokenLanguages={spokenLanguages}
+      />
+      {backdropPath !== "" ? (
+        <div className={trendingMovieInfoStyles["trending-movie-img"]}>
+          <Image
+            src={`https://image.tmdb.org/t/p/w1280/${backdropPath}`}
+            alt="Movie Poster"
+            priority={true}
+            layout="fill"
+            objectFit="cover"
+            objectPosition="center top"
+          />
+        </div>
+      ) : (
+        <>
+          <Skeleton
+            variant="rect"
+            id={trendingMovieInfoStyles["trending-movie-skeleton"]}
+          />
+        </>
+      )}
+      <div className={trendingMovieInfoStyles["trending-movie-content"]}>
+        <div className={trendingMovieInfoStyles["trending-movie-title"]}>
+          <h1>{title}</h1>
+        </div>
+        <div className={trendingMovieInfoStyles["trending-movie-overview"]}>
+          <p>{limitText(overview, 500)}</p>
         </div>
         <div
-          className={trendingMovieInfoStyles["trending-movie-gradient-shadow"]}
-        ></div>
+          className={trendingMovieInfoStyles["trending-movie-button-wrapper"]}
+        >
+          {trendingMovieInfo.id !== 0 ? (
+            <>
+              <PlayMovieVideoButton id={trendingMovieInfo.id} />
+            </>
+          ) : (
+            <FallbackButton />
+          )}
+
+          <MoreMovieInfoButton
+            handleOpenTrendingMovieModal={handleOpenTrendingMovieModal}
+          />
+        </div>
       </div>
-    );
-  }, [
-    trendingMovieInfo,
-    backdropPath,
-    title,
-    overview,
-    handleOpenTrendingMovieModal,
-    genres,
-    handleCloseTrendingMovieModal,
-    openTrendingMovieModal,
-    spokenLanguages,
-  ]);
+      <div
+        className={trendingMovieInfoStyles["trending-movie-gradient-shadow"]}
+      ></div>
+    </div>
+  );
 };
 
 export default TrendingMovieInfo;

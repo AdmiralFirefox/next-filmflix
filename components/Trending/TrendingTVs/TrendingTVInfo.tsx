@@ -1,11 +1,4 @@
-import React, {
-  FC,
-  useState,
-  useEffect,
-  useContext,
-  useMemo,
-  useCallback,
-} from "react";
+import React, { FC, useState, useEffect, useContext } from "react";
 import dynamic from "next/dynamic";
 import { TrendingTVIDContext } from "./TrendingTVs";
 import Axios from "axios";
@@ -69,13 +62,13 @@ const TrendingTVInfo: FC<TrendingTVInfoProps> = ({
 
   const [isMounted, setIsMounted] = useState(true);
 
-  const handleOpenTrendingTVModal = useCallback((): void => {
+  const handleOpenTrendingTVModal = (): void => {
     setOpenTrendingTVModal(true);
-  }, [setOpenTrendingTVModal]);
+  };
 
-  const handleCloseTrendingTVModal = useCallback((): void => {
+  const handleCloseTrendingTVModal = (): void => {
     setOpenTrendingTVModal(false);
-  }, [setOpenTrendingTVModal]);
+  };
 
   useEffect(() => {
     const displayTrendingTV = async () => {
@@ -118,80 +111,68 @@ const TrendingTVInfo: FC<TrendingTVInfoProps> = ({
     } else return text;
   };
 
-  return useMemo(() => {
-    return (
-      <div>
-        <TVModal
-          openTVModal={openTrendingTVModal}
-          handleCloseTVInfo={handleCloseTrendingTVModal}
-          overview={trendingTVInfo.overview}
-          genresTV={genresTV}
-          dateAired={trendingTVInfo.first_air_date}
-          episodes={trendingTVInfo.number_of_episodes}
-          seasons={trendingTVInfo.number_of_seasons}
-          status={trendingTVInfo.status}
-          lastDateAired={trendingTVInfo.last_air_date}
-          name={trendingTVInfo.name}
-          id={trendingTVInfo.id}
-          spokenLanguages={spokenLanguages}
-        />
+  return (
+    <div>
+      <TVModal
+        openTVModal={openTrendingTVModal}
+        handleCloseTVInfo={handleCloseTrendingTVModal}
+        overview={trendingTVInfo.overview}
+        genresTV={genresTV}
+        dateAired={trendingTVInfo.first_air_date}
+        episodes={trendingTVInfo.number_of_episodes}
+        seasons={trendingTVInfo.number_of_seasons}
+        status={trendingTVInfo.status}
+        lastDateAired={trendingTVInfo.last_air_date}
+        name={trendingTVInfo.name}
+        id={trendingTVInfo.id}
+        spokenLanguages={spokenLanguages}
+      />
 
-        {backdropPath !== "" ? (
-          <div className={trendingTVInfoStyles["trending-tv-img"]}>
-            <Image
-              src={`https://image.tmdb.org/t/p/w1280/${backdropPath}`}
-              alt="TV Poster"
-              priority={true}
-              layout="fill"
-              objectFit="cover"
-              objectPosition="center top"
-            />
-          </div>
-        ) : (
-          <>
-            <Skeleton
-              variant="rect"
-              id={trendingTVInfoStyles["trending-tv-skeleton"]}
-            />
-          </>
-        )}
-        <div className={trendingTVInfoStyles["trending-tv-content"]}>
-          <div className={trendingTVInfoStyles["trending-tv-title"]}>
-            <h1>{name}</h1>
-          </div>
-          <div className={trendingTVInfoStyles["trending-tv-overview"]}>
-            <p>{limitText(overview, 500)}</p>
-          </div>
-          <div className={trendingTVInfoStyles["trending-tv-button-wrapper"]}>
-            {trendingTVInfo.id !== 0 ? (
-              <>
-                <PlayTVVideoButton id={trendingTVInfo.id} />
-              </>
-            ) : (
-              <FallbackButton />
-            )}
-
-            <MoreTVInfoButton
-              handleOpenTrendingTVModal={handleOpenTrendingTVModal}
-            />
-          </div>
+      {backdropPath !== "" ? (
+        <div className={trendingTVInfoStyles["trending-tv-img"]}>
+          <Image
+            src={`https://image.tmdb.org/t/p/w1280/${backdropPath}`}
+            alt="TV Poster"
+            priority={true}
+            layout="fill"
+            objectFit="cover"
+            objectPosition="center top"
+          />
         </div>
-        <div
-          className={trendingTVInfoStyles["trending-tv-gradient-shadow"]}
-        ></div>
+      ) : (
+        <>
+          <Skeleton
+            variant="rect"
+            id={trendingTVInfoStyles["trending-tv-skeleton"]}
+          />
+        </>
+      )}
+      <div className={trendingTVInfoStyles["trending-tv-content"]}>
+        <div className={trendingTVInfoStyles["trending-tv-title"]}>
+          <h1>{name}</h1>
+        </div>
+        <div className={trendingTVInfoStyles["trending-tv-overview"]}>
+          <p>{limitText(overview, 500)}</p>
+        </div>
+        <div className={trendingTVInfoStyles["trending-tv-button-wrapper"]}>
+          {trendingTVInfo.id !== 0 ? (
+            <>
+              <PlayTVVideoButton id={trendingTVInfo.id} />
+            </>
+          ) : (
+            <FallbackButton />
+          )}
+
+          <MoreTVInfoButton
+            handleOpenTrendingTVModal={handleOpenTrendingTVModal}
+          />
+        </div>
       </div>
-    );
-  }, [
-    trendingTVInfo,
-    backdropPath,
-    name,
-    overview,
-    handleOpenTrendingTVModal,
-    handleCloseTrendingTVModal,
-    genresTV,
-    openTrendingTVModal,
-    spokenLanguages,
-  ]);
+      <div
+        className={trendingTVInfoStyles["trending-tv-gradient-shadow"]}
+      ></div>
+    </div>
+  );
 };
 
 export default TrendingTVInfo;

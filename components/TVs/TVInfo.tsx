@@ -1,11 +1,4 @@
-import React, {
-  FC,
-  useState,
-  useEffect,
-  useContext,
-  useMemo,
-  useCallback,
-} from "react";
+import React, { FC, useState, useEffect, useContext } from "react";
 import dynamic from "next/dynamic";
 import { TVIDContext } from "./TVCarousel";
 import Axios from "axios";
@@ -57,13 +50,13 @@ const TVInfo: FC<TVInfoProps> = ({ posterPath, voteAverage }) => {
 
   const [isMounted, setIsMounted] = useState(true);
 
-  const handleOpenTVInfo = useCallback((): void => {
+  const handleOpenTVInfo = (): void => {
     setOpenTVModal(true);
-  }, [setOpenTVModal]);
+  };
 
-  const handleCloseTVInfo = useCallback((): void => {
+  const handleCloseTVInfo = (): void => {
     setOpenTVModal(false);
-  }, [setOpenTVModal]);
+  };
 
   useEffect(() => {
     const displayTVInfo = async () => {
@@ -89,58 +82,46 @@ const TVInfo: FC<TVInfoProps> = ({ posterPath, voteAverage }) => {
     };
   }, [TVID, isMounted]);
 
-  return useMemo(() => {
-    return (
-      <div>
-        <TVModal
-          openTVModal={openTVModal}
-          handleCloseTVInfo={handleCloseTVInfo}
-          overview={infoTV.overview}
-          genresTV={genresTV}
-          dateAired={infoTV.first_air_date}
-          episodes={infoTV.number_of_episodes}
-          seasons={infoTV.number_of_seasons}
-          status={infoTV.status}
-          lastDateAired={infoTV.last_air_date}
-          name={infoTV.name}
-          id={infoTV.id}
-          spokenLanguages={spokenLanguages}
-        />
-        {posterPath !== null ? (
-          <>
-            {posterPath !== "" ? (
-              <div className={tvInfoStyles["tv-container"]}>
-                <Image
-                  src={`https://image.tmdb.org/t/p/w300/${posterPath}`}
-                  alt="TV Poster"
-                  width={350}
-                  height={500}
-                  priority={true}
-                />
-                <div className={tvInfoStyles["tv-overlay"]}>
-                  <div className={tvInfoStyles["tv-vote-average"]}>
-                    {voteAverage !== 0 ? <h1>{voteAverage}</h1> : <h1>N/A</h1>}
-                  </div>
-                  <div
-                    onClick={handleOpenTVInfo}
-                    className={tvInfoStyles["tv-info-icon"]}
-                  >
-                    <i className="fas fa-info-circle"></i>
-                  </div>
-                </div>
-              </div>
-            ) : (
+  return (
+    <div>
+      <TVModal
+        openTVModal={openTVModal}
+        handleCloseTVInfo={handleCloseTVInfo}
+        overview={infoTV.overview}
+        genresTV={genresTV}
+        dateAired={infoTV.first_air_date}
+        episodes={infoTV.number_of_episodes}
+        seasons={infoTV.number_of_seasons}
+        status={infoTV.status}
+        lastDateAired={infoTV.last_air_date}
+        name={infoTV.name}
+        id={infoTV.id}
+        spokenLanguages={spokenLanguages}
+      />
+      {posterPath !== null ? (
+        <>
+          {posterPath !== "" ? (
+            <div className={tvInfoStyles["tv-container"]}>
               <Image
-                src={PosterFallback}
-                alt="Movie Poster"
+                src={`https://image.tmdb.org/t/p/w300/${posterPath}`}
+                alt="TV Poster"
                 width={350}
                 height={500}
                 priority={true}
               />
-            )}
-          </>
-        ) : (
-          <div className={tvInfoStyles["tv-container"]}>
+              <div className={tvInfoStyles["tv-overlay"]}>
+                <div className={tvInfoStyles["tv-vote-average"]}>
+                  {voteAverage !== 0 ? <h1>{voteAverage}</h1> : <h1>N/A</h1>}
+                </div>
+                <div
+                  onClick={handleOpenTVInfo}
+                  className={tvInfoStyles["tv-info-icon"]}
+                >
+                  <i className="fas fa-info-circle"></i>
+                </div>
+              </div>
+            </div>
+          ) : (
             <Image
               src={PosterFallback}
               alt="Movie Poster"
@@ -148,38 +129,32 @@ const TVInfo: FC<TVInfoProps> = ({ posterPath, voteAverage }) => {
               height={500}
               priority={true}
             />
-            <div className={tvInfoStyles["tv-overlay"]}>
-              <div className={tvInfoStyles["tv-vote-average"]}>
-                {voteAverage !== 0 ? <h1>{voteAverage}</h1> : <h1>N/A</h1>}
-              </div>
-              <div
-                onClick={handleOpenTVInfo}
-                className={tvInfoStyles["tv-info-icon"]}
-              >
-                <i className="fas fa-info-circle"></i>
-              </div>
+          )}
+        </>
+      ) : (
+        <div className={tvInfoStyles["tv-container"]}>
+          <Image
+            src={PosterFallback}
+            alt="Movie Poster"
+            width={350}
+            height={500}
+            priority={true}
+          />
+          <div className={tvInfoStyles["tv-overlay"]}>
+            <div className={tvInfoStyles["tv-vote-average"]}>
+              {voteAverage !== 0 ? <h1>{voteAverage}</h1> : <h1>N/A</h1>}
+            </div>
+            <div
+              onClick={handleOpenTVInfo}
+              className={tvInfoStyles["tv-info-icon"]}
+            >
+              <i className="fas fa-info-circle"></i>
             </div>
           </div>
-        )}
-      </div>
-    );
-  }, [
-    infoTV.first_air_date,
-    infoTV.id,
-    infoTV.last_air_date,
-    infoTV.number_of_episodes,
-    infoTV.number_of_seasons,
-    infoTV.overview,
-    infoTV.status,
-    infoTV.name,
-    posterPath,
-    voteAverage,
-    handleOpenTVInfo,
-    handleCloseTVInfo,
-    genresTV,
-    openTVModal,
-    spokenLanguages,
-  ]);
+        </div>
+      )}
+    </div>
+  );
 };
 
 export default TVInfo;

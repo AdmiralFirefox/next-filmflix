@@ -1,11 +1,4 @@
-import React, {
-  FC,
-  useState,
-  useEffect,
-  useContext,
-  useMemo,
-  useCallback,
-} from "react";
+import React, { FC, useState, useEffect, useContext } from "react";
 import dynamic from "next/dynamic";
 import { MovieIDContext } from "./MovieCarousel";
 import Axios from "axios";
@@ -56,13 +49,13 @@ const MovieInfo: FC<MovieInfoProps> = ({ posterPath, voteAverage }) => {
 
   const [isMounted, setIsMounted] = useState(true);
 
-  const handleOpenMovieModal = useCallback((): void => {
+  const handleOpenMovieModal = (): void => {
     setOpenMovieModal(true);
-  }, [setOpenMovieModal]);
+  };
 
-  const handleCloseMovieModal = useCallback((): void => {
+  const handleCloseMovieModal = (): void => {
     setOpenMovieModal(false);
-  }, []);
+  };
 
   useEffect(() => {
     const displayMovieInfo = async () => {
@@ -88,56 +81,44 @@ const MovieInfo: FC<MovieInfoProps> = ({ posterPath, voteAverage }) => {
     };
   }, [movieID, isMounted]);
 
-  return useMemo(() => {
-    return (
-      <div>
-        <MovieModal
-          open={openMovieModal}
-          handleCloseMovieModal={handleCloseMovieModal}
-          overview={movieInfo.overview}
-          releaseDate={movieInfo.release_date}
-          genres={genres}
-          runtime={movieInfo.runtime}
-          status={movieInfo.status}
-          title={movieInfo.title}
-          id={movieInfo.id}
-          spokenLanguages={spokenLanguages}
-        />
-        {posterPath !== null ? (
-          <>
-            {posterPath !== "" ? (
-              <div className={movieInfoStyles["movie-container"]}>
-                <Image
-                  src={`https://image.tmdb.org/t/p/w300/${posterPath}`}
-                  alt="Movie Poster"
-                  width={350}
-                  height={500}
-                  priority={true}
-                />
-                <div className={movieInfoStyles["movie-overlay"]}>
-                  <div className={movieInfoStyles["movie-vote-average"]}>
-                    {voteAverage !== 0 ? <h1>{voteAverage}</h1> : <h1>N/A</h1>}
-                  </div>
-                  <div
-                    onClick={handleOpenMovieModal}
-                    className={movieInfoStyles["movie-info-icon"]}
-                  >
-                    <i className="fas fa-info-circle"></i>
-                  </div>
-                </div>
-              </div>
-            ) : (
+  return (
+    <div>
+      <MovieModal
+        open={openMovieModal}
+        handleCloseMovieModal={handleCloseMovieModal}
+        overview={movieInfo.overview}
+        releaseDate={movieInfo.release_date}
+        genres={genres}
+        runtime={movieInfo.runtime}
+        status={movieInfo.status}
+        title={movieInfo.title}
+        id={movieInfo.id}
+        spokenLanguages={spokenLanguages}
+      />
+      {posterPath !== null ? (
+        <>
+          {posterPath !== "" ? (
+            <div className={movieInfoStyles["movie-container"]}>
               <Image
-                src={PosterFallback}
+                src={`https://image.tmdb.org/t/p/w300/${posterPath}`}
                 alt="Movie Poster"
                 width={350}
                 height={500}
                 priority={true}
               />
-            )}
-          </>
-        ) : (
-          <div className={movieInfoStyles["movie-container"]}>
+              <div className={movieInfoStyles["movie-overlay"]}>
+                <div className={movieInfoStyles["movie-vote-average"]}>
+                  {voteAverage !== 0 ? <h1>{voteAverage}</h1> : <h1>N/A</h1>}
+                </div>
+                <div
+                  onClick={handleOpenMovieModal}
+                  className={movieInfoStyles["movie-info-icon"]}
+                >
+                  <i className="fas fa-info-circle"></i>
+                </div>
+              </div>
+            </div>
+          ) : (
             <Image
               src={PosterFallback}
               alt="Movie Poster"
@@ -145,36 +126,32 @@ const MovieInfo: FC<MovieInfoProps> = ({ posterPath, voteAverage }) => {
               height={500}
               priority={true}
             />
-            <div className={movieInfoStyles["movie-overlay"]}>
-              <div className={movieInfoStyles["movie-vote-average"]}>
-                {voteAverage !== 0 ? <h1>{voteAverage}</h1> : <h1>N/A</h1>}
-              </div>
-              <div
-                onClick={handleOpenMovieModal}
-                className={movieInfoStyles["movie-info-icon"]}
-              >
-                <i className="fas fa-info-circle"></i>
-              </div>
+          )}
+        </>
+      ) : (
+        <div className={movieInfoStyles["movie-container"]}>
+          <Image
+            src={PosterFallback}
+            alt="Movie Poster"
+            width={350}
+            height={500}
+            priority={true}
+          />
+          <div className={movieInfoStyles["movie-overlay"]}>
+            <div className={movieInfoStyles["movie-vote-average"]}>
+              {voteAverage !== 0 ? <h1>{voteAverage}</h1> : <h1>N/A</h1>}
+            </div>
+            <div
+              onClick={handleOpenMovieModal}
+              className={movieInfoStyles["movie-info-icon"]}
+            >
+              <i className="fas fa-info-circle"></i>
             </div>
           </div>
-        )}
-      </div>
-    );
-  }, [
-    movieInfo.id,
-    movieInfo.overview,
-    movieInfo.release_date,
-    movieInfo.runtime,
-    movieInfo.status,
-    movieInfo.title,
-    posterPath,
-    voteAverage,
-    genres,
-    handleOpenMovieModal,
-    handleCloseMovieModal,
-    openMovieModal,
-    spokenLanguages,
-  ]);
+        </div>
+      )}
+    </div>
+  );
 };
 
 export default MovieInfo;

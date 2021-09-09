@@ -398,71 +398,32 @@ const ProfileSelection: FC<ProfileSelectionProps> = ({ signOut }) => {
                 key={profile.id}
                 className={profileSelectionStyles["edit-mode-off-wrapper"]}
               >
-                {/* Profile Picture Edit*/}
-                {editProfilePic === profile.id ? (
-                  <>
-                    <div
-                      className={profileSelectionStyles["edit-mode-off-image"]}
-                    >
-                      <Image
-                        src={profile.picture}
-                        alt="Avatar Profile"
-                        onClick={() => {
-                          selectedProfile();
-                          setProfile(profile.name);
-                          setProfilePic(profile.picture);
-                        }}
-                        priority={true}
-                      />
-                    </div>
-                  </>
-                ) : (
-                  <>
-                    <div
-                      className={profileSelectionStyles["edit-mode-off-image"]}
-                    >
-                      <Image
-                        src={profile.picture}
-                        alt="Avatar Profile"
-                        onClick={() => {
-                          selectedProfile();
-                          setProfile(profile.name);
-                          setProfilePic(profile.picture);
-                        }}
-                        priority={true}
-                      />
-                    </div>
-                  </>
-                )}
+                <div className={profileSelectionStyles["edit-mode-off-image"]}>
+                  <Image
+                    src={profile.picture}
+                    alt="Avatar Profile"
+                    onClick={() => {
+                      selectedProfile();
+                      setProfile(profile.name);
+                      setProfilePic(profile.picture);
+                    }}
+                    priority={true}
+                  />
+                </div>
 
-                {/* Profile Edit */}
-                {profileEdit === profile.id ? (
-                  <>
-                    <h1
-                      className={
-                        profileSelectionStyles["edit-mode-off-profile-name"]
-                      }
-                    >
-                      {profile.name}
-                    </h1>
-                  </>
-                ) : (
-                  <>
-                    <h1
-                      className={
-                        profileSelectionStyles["edit-mode-off-profile-name"]
-                      }
-                    >
-                      {profile.name}
-                    </h1>
-                  </>
-                )}
+                <h1
+                  className={
+                    profileSelectionStyles["edit-mode-off-profile-name"]
+                  }
+                >
+                  {profile.name}
+                </h1>
               </div>
             );
           })}
 
           {/* Add Profiles */}
-          {profiles.length === 5 ? null : (
+          {profiles.length !== 5 && (
             <>
               {editMode ? null : (
                 <>
