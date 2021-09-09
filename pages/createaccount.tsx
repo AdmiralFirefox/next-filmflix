@@ -74,7 +74,7 @@ const CreateAccount: FC = () => {
   //Route Changing when the user is logged in
   useEffect(() => {
     if (user) {
-      router.push("/createaccount", "/createaccount?main", { shallow: true });
+      router.push("/createaccount", "/signin?main", { shallow: true });
     } else {
       router.push("/createaccount", undefined, { shallow: true });
     }
