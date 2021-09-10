@@ -108,6 +108,7 @@ const TVInfo: FC<TVInfoProps> = ({ posterPath, voteAverage }) => {
                 width={350}
                 height={500}
                 priority={true}
+                unoptimized={true}
               />
               <div className={tvInfoStyles["tv-overlay"]}>
                 <div className={tvInfoStyles["tv-vote-average"]}>
