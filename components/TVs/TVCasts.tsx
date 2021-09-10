@@ -82,6 +82,7 @@ const TVCasts: FC<{ id: number }> = ({ id }) => {
                     layout="responsive"
                     objectFit="cover"
                     priority={true}
+                    unoptimized={true}
                   />
                 </div>
               ) : (
