@@ -88,7 +88,6 @@ const TVEpisodes: FC<CurrentSeasonProp> = ({ currentSeason, id }) => {
                       objectFit="cover"
                       objectPosition="center"
                       priority={true}
-                      unoptimized={true}
                     />
                   </div>
                 ) : (

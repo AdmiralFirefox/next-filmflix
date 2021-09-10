@@ -105,7 +105,6 @@ const MovieInfo: FC<MovieInfoProps> = ({ posterPath, voteAverage }) => {
                 width={350}
                 height={500}
                 priority={true}
-                unoptimized={true} 
               />
               <div className={movieInfoStyles["movie-overlay"]}>
                 <div className={movieInfoStyles["movie-vote-average"]}>
