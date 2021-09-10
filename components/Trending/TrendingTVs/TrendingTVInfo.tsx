@@ -137,7 +137,6 @@ const TrendingTVInfo: FC<TrendingTVInfoProps> = ({
             layout="fill"
             objectFit="cover"
             objectPosition="center top"
-            unoptimized={true}
           />
         </div>
       ) : (

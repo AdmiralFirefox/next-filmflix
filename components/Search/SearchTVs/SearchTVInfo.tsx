@@ -110,7 +110,6 @@ const SearchTVInfo: FC<SearchTVInfoProps> = ({ posterPath, voteAverage }) => {
                 width={350}
                 height={500}
                 objectFit="cover"
-                unoptimized={true}
               />
 
               <div className={searchTVStyles["search-tv-overlay"]}>
