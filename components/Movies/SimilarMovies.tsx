@@ -103,6 +103,7 @@ const SimilarMovies: FC<{ id: number }> = ({ id }) => {
                   layout="responsive"
                   objectFit="cover"
                   priority={true}
+                  unoptimized={true}
                 />
               ) : (
                 <Image

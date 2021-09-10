@@ -110,6 +110,7 @@ const SearchMovieInfo: FC<SearchMovieInfoProps> = ({
                 width={350}
                 height={500}
                 objectFit="cover"
+                unoptimized={true}
               />
 
               <div className={searchMovieInfoStyles["search-movie-overlay"]}>
