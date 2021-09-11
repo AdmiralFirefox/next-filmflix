@@ -7,9 +7,9 @@ export const MovieData = [
     route: `https://api.themoviedb.org/3/trending/movie/day?api_key=${NEXT_PUBLIC_API_KEY}`,
   },
   {
-    id: 2,
-    name: "Popular",
-    route: `https://api.themoviedb.org/3/movie/popular?api_key=${NEXT_PUBLIC_API_KEY}&language=en-US&page=1`,
+    id: 5,
+    name: "Upcoming",
+    route: `https://api.themoviedb.org/3/movie/upcoming?api_key=${NEXT_PUBLIC_API_KEY}&language=en-US&page=1`,
   },
   {
     id: 3,
@@ -18,19 +18,19 @@ export const MovieData = [
     https://api.themoviedb.org/3/movie/now_playing?api_key=${NEXT_PUBLIC_API_KEY}&language=en-US&page=1`,
   },
   {
+    id: 2,
+    name: "Popular",
+    route: `https://api.themoviedb.org/3/movie/popular?api_key=${NEXT_PUBLIC_API_KEY}&language=en-US&page=1`,
+  },
+  {
     id: 4,
     name: "Top Rated",
     route: `https://api.themoviedb.org/3/movie/top_rated?api_key=${NEXT_PUBLIC_API_KEY}&language=en-US&page=1`,
   },
   {
-    id: 5,
-    name: "Upcoming",
-    route: `https://api.themoviedb.org/3/movie/upcoming?api_key=${NEXT_PUBLIC_API_KEY}&language=en-US&page=1`,
-  },
-  {
     id: 6,
     name: "Discover",
-    route: `https://api.themoviedb.org/3/discover/movie?api_key=${NEXT_PUBLIC_API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate`,
+    route: `https://api.themoviedb.org/3/discover/movie?api_key=${NEXT_PUBLIC_API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=2&with_watch_monetization_types=flatrate`,
   },
   {
     id: 7,

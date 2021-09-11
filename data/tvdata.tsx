@@ -13,7 +13,7 @@ export const TVData = [
   },
   {
     id: 3,
-    name: "On the Air",
+    name: "Aired this Week",
     route: `https://api.themoviedb.org/3/tv/on_the_air?api_key=${NEXT_PUBLIC_API_KEY}&language=en-US&page=1`,
   },
   {
@@ -29,7 +29,7 @@ export const TVData = [
   {
     id: 6,
     name: "Discover",
-    route: `https://api.themoviedb.org/3/discover/tv?api_key=${NEXT_PUBLIC_API_KEY}&language=en-US&sort_by=popularity.desc&page=1&timezone=America%2FNew_York&include_null_first_air_dates=false&with_watch_monetization_types=flatrate`,
+    route: `https://api.themoviedb.org/3/discover/tv?api_key=${NEXT_PUBLIC_API_KEY}&language=en-US&sort_by=popularity.desc&page=2&timezone=America%2FNew_York&include_null_first_air_dates=false&with_watch_monetization_types=flatrate`,
   },
   {
     id: 7,
