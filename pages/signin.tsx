@@ -83,6 +83,7 @@ const SignIn: FC = () => {
     } else {
       router.push("/signin", undefined, { shallow: true });
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
 
   return (

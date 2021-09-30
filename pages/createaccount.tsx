@@ -75,6 +75,7 @@ const CreateAccount: FC = () => {
     } else {
       router.push("/createaccount", undefined, { shallow: true });
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
 
   return (
