@@ -7,9 +7,7 @@ import { auth } from "../firebase/firebase";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import firebase from "firebase/app";
-const ProfileUserInput = dynamic(
-  () => import("../components/Inputs/Profiles/ProfileUserInput")
-);
+import ProfileUserInput from "../components/Inputs/Profiles/ProfileUserInput";
 const SignUpFooter = dynamic(
   () => import("../components/LandingPage/SignUpFooter")
 );
