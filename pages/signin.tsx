@@ -59,7 +59,6 @@ const SignIn: FC = () => {
 
   //Allow users to Sign In With their Google Account
   const signInWithgoogle = async () => {
-    setAuthLoading(true);
     //Retrieve Google Provider Object
     const provider = new firebase.auth.GoogleAuthProvider();
     //Set language to the default browser preference
@@ -67,11 +66,9 @@ const SignIn: FC = () => {
     //Start sign in process
     try {
       await auth.signInWithPopup(provider);
-      setAuthLoading(false);
     } catch (err) {
       console.log(err);
       alert(err);
-      setAuthLoading(false);
     }
   };
 
