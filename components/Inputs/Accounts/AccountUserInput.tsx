@@ -9,6 +9,7 @@ import { useForm } from "react-hook-form";
 import Paper from "@material-ui/core/Paper";
 import InputBase from "@material-ui/core/InputBase";
 import Button from "@material-ui/core/Button";
+import LoadingButtons from "../../Buttons/LoadingButtons/LoadingButtons";
 
 //Input
 const useStyles = makeStyles((theme: Theme) =>
@@ -40,6 +41,7 @@ const CreateAccount = withStyles((theme: Theme) => ({
     color: "#ffffff",
     backgroundColor: "#e50914",
     width: "100%",
+    padding: "0.7em",
     "&:hover": {
       backgroundColor: "hsl(357, 92%, 60%)",
     },
@@ -50,12 +52,14 @@ interface AccountUserInputProps {
   emailRef: React.RefObject<HTMLInputElement>;
   passwordRef: React.RefObject<HTMLInputElement>;
   createAccount: () => Promise<void>;
+  authLoading: boolean;
 }
 
 const AccountUserInput: FC<AccountUserInputProps> = ({
   emailRef,
   passwordRef,
   createAccount,
+  authLoading,
 }) => {
   const classes = useStyles();
 
@@ -147,14 +151,20 @@ const AccountUserInput: FC<AccountUserInputProps> = ({
           {errors.confirmPassword.message}
         </p>
       )}
-      <CreateAccount
-        variant="contained"
-        color="primary"
-        onClick={handleSubmit(createAccount)}
-        type="button"
-      >
-        Create Account
-      </CreateAccount>
+      {authLoading ? (
+        <>
+          <LoadingButtons />
+        </>
+      ) : (
+        <CreateAccount
+          variant="contained"
+          color="primary"
+          onClick={handleSubmit(createAccount)}
+          type="button"
+        >
+          Create Account
+        </CreateAccount>
+      )}
     </>
   );
 };

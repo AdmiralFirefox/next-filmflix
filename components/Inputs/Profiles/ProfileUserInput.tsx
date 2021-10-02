@@ -11,6 +11,7 @@ import GoogleLogo from "../../../assets/login/Google.png";
 import Button from "@material-ui/core/Button";
 import Paper from "@material-ui/core/Paper";
 import InputBase from "@material-ui/core/InputBase";
+import LoadingButtons from "../../Buttons/LoadingButtons/LoadingButtons";
 
 //Input
 const useStyles = makeStyles((theme: Theme) =>
@@ -42,6 +43,7 @@ const SignInButton = withStyles((theme: Theme) => ({
     color: "#ffffff",
     backgroundColor: "#e50914",
     width: "100%",
+    padding: "0.7em",
     "&:hover": {
       backgroundColor: "hsl(357, 92%, 60%)",
     },
@@ -54,7 +56,8 @@ const SignInDummyAccountButton = withStyles((theme: Theme) => ({
     color: "#ffffff",
     backgroundColor: "#e50914",
     width: "100%",
-    marginTop: "1em",
+    marginTop: "1.1em",
+    padding: "0.7em",
     "&:hover": {
       backgroundColor: "hsl(357, 92%, 60%)",
     },
@@ -67,7 +70,8 @@ const SignInWithGoogleButton = withStyles((theme: Theme) => ({
     color: "#000",
     backgroundColor: "#ffffff",
     width: "100%",
-    marginTop: "1em",
+    marginTop: "1.1em",
+    padding: "0.7em",
     "&:hover": {
       backgroundColor: "hsl(0, 0%, 80%)",
     },
@@ -80,6 +84,7 @@ interface ProfileUserInputProps {
   signIn: () => Promise<void>;
   signInWithgoogle: () => Promise<void>;
   signInAnonymously: () => Promise<void>;
+  authLoading: boolean;
 }
 
 const ProfileUserInput: FC<ProfileUserInputProps> = ({
@@ -88,6 +93,7 @@ const ProfileUserInput: FC<ProfileUserInputProps> = ({
   signIn,
   signInWithgoogle,
   signInAnonymously,
+  authLoading,
 }) => {
   const classes = useStyles();
 
@@ -150,32 +156,47 @@ const ProfileUserInput: FC<ProfileUserInputProps> = ({
           {errors.password.message}
         </p>
       )}
-      <SignInButton
-        variant="contained"
-        color="primary"
-        onClick={handleSubmit(signIn)}
-        type="submit"
-      >
-        Sign In
-      </SignInButton>
-      <SignInDummyAccountButton
-        variant="contained"
-        color="primary"
-        onClick={signInAnonymously}
-        type="submit"
-      >
-        Sign In Anonymously
-      </SignInDummyAccountButton>
-      <SignInWithGoogleButton
-        onClick={signInWithgoogle}
-        variant="contained"
-        color="primary"
-        startIcon={
-          <Image src={GoogleLogo} alt="Google Image" width={30} height={30} />
-        }
-      >
-        Sign In with Google
-      </SignInWithGoogleButton>
+      {authLoading ? (
+        <>
+          <LoadingButtons />
+          <LoadingButtons />
+          <LoadingButtons />
+        </>
+      ) : (
+        <>
+          <SignInButton
+            variant="contained"
+            color="primary"
+            onClick={handleSubmit(signIn)}
+            type="submit"
+          >
+            Sign In
+          </SignInButton>
+          <SignInDummyAccountButton
+            variant="contained"
+            color="primary"
+            onClick={signInAnonymously}
+            type="submit"
+          >
+            Sign In Anonymously
+          </SignInDummyAccountButton>
+          <SignInWithGoogleButton
+            onClick={signInWithgoogle}
+            variant="contained"
+            color="primary"
+            startIcon={
+              <Image
+                src={GoogleLogo}
+                alt="Google Image"
+                width={30}
+                height={30}
+              />
+            }
+          >
+            Sign In with Google
+          </SignInWithGoogleButton>
+        </>
+      )}
     </>
   );
 };

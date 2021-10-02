@@ -19,6 +19,8 @@ const ProfileSelection = dynamic(
 );
 
 const CreateAccount: FC = () => {
+  const [authLoading, setAuthLoading] = useState(false);
+
   const router = useRouter();
   const user = useContext(AuthContext);
   const [openAlertMessage, setOpenAlertMessage] = useState(false);
@@ -44,15 +46,18 @@ const CreateAccount: FC = () => {
 
   //ALlow users to make an account
   const createAccount = async () => {
+    setAuthLoading(true);
     try {
       await auth.createUserWithEmailAndPassword(
         emailRef.current!.value,
         passwordRef.current!.value
       );
       handleOpenAlertMessage();
+      setAuthLoading(false);
     } catch (error) {
       console.error(error);
       alert(error);
+      setAuthLoading(false);
     }
   };
 
@@ -75,7 +80,7 @@ const CreateAccount: FC = () => {
     } else {
       router.push("/createaccount", undefined, { shallow: true });
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
 
   return (
@@ -125,6 +130,7 @@ const CreateAccount: FC = () => {
                 emailRef={emailRef}
                 passwordRef={passwordRef}
                 createAccount={createAccount}
+                authLoading={authLoading}
               />
 
               <div

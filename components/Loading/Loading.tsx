@@ -7,7 +7,7 @@ const Loading: FC = () => {
     <div id="main-loading-wrapper">
       <div id="main-loading">
         <div className="main-loading-web-logo">
-          <Image src={WebLogo} alt="Web Logo" />
+          <Image src={WebLogo} alt="Web Logo" priority={true} />
         </div>
         <div className="main-loading-bulletouter">
           <div className="main-loading-bulletinner" />

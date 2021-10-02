@@ -18,7 +18,13 @@ const ProfileLoader: FC = () => {
           </div>
         </div>
         <div className="profile-loader-image">
-          <Image src={profilePic} alt="User Avatar" width={70} height={70} />
+          <Image
+            src={profilePic}
+            alt="User Avatar"
+            width={70}
+            height={70}
+            priority={true}
+          />
         </div>
       </>
     );

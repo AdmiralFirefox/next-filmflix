@@ -1,4 +1,4 @@
-import React, { FC, useContext, useRef, useEffect } from "react";
+import React, { FC, useContext, useRef, useEffect, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { useRouter } from "next/router";
 import Image from "next/image";
@@ -17,6 +17,8 @@ const ProfileSelection = dynamic(
 );
 
 const SignIn: FC = () => {
+  const [authLoading, setAuthLoading] = useState(false);
+
   const router = useRouter();
   const user = useContext(AuthContext);
 
@@ -25,32 +27,39 @@ const SignIn: FC = () => {
 
   //Allow the users to Sign In with an already created account
   const signIn = async () => {
+    setAuthLoading(true);
     try {
       await auth.signInWithEmailAndPassword(
         emailRef.current!.value,
         passwordRef.current!.value
       );
+      setAuthLoading(false);
     } catch (error) {
       console.log(error);
       alert(error);
+      setAuthLoading(false);
     }
   };
 
   //Allow the users to Sign In Anonymously
   const signInAnonymously = async () => {
+    setAuthLoading(true);
     try {
       let emailRef = process.env.NEXT_PUBLIC_ANONYMOUS_EMAIL as string;
       let passwordRef = process.env.NEXT_PUBLIC_ANONYMOUS_PASSWORD as string;
 
       await auth.signInWithEmailAndPassword(emailRef, passwordRef);
+      setAuthLoading(false);
     } catch (error) {
       console.log(error);
       alert(error);
+      setAuthLoading(false);
     }
   };
 
   //Allow users to Sign In With their Google Account
   const signInWithgoogle = async () => {
+    setAuthLoading(true);
     //Retrieve Google Provider Object
     const provider = new firebase.auth.GoogleAuthProvider();
     //Set language to the default browser preference
@@ -58,9 +67,11 @@ const SignIn: FC = () => {
     //Start sign in process
     try {
       await auth.signInWithPopup(provider);
+      setAuthLoading(false);
     } catch (err) {
       console.log(err);
       alert(err);
+      setAuthLoading(false);
     }
   };
 
@@ -83,7 +94,7 @@ const SignIn: FC = () => {
     } else {
       router.push("/signin", undefined, { shallow: true });
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
 
   return (
@@ -108,13 +119,14 @@ const SignIn: FC = () => {
                 <h1>Sign In</h1>
               </div>
 
-              <ProfileUserInput
-                emailRef={emailRef}
-                passwordRef={passwordRef}
-                signIn={signIn}
-                signInWithgoogle={signInWithgoogle}
-                signInAnonymously={signInAnonymously}
-              />
+                <ProfileUserInput
+                  emailRef={emailRef}
+                  passwordRef={passwordRef}
+                  signIn={signIn}
+                  signInWithgoogle={signInWithgoogle}
+                  signInAnonymously={signInAnonymously}
+                  authLoading={authLoading}
+                />
 
               <div className={profileStyles["profile-styles-new-title"]}>
                 <h1>New to Filmflix?</h1>
