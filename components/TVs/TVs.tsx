@@ -46,7 +46,11 @@ const TVs: FC = () => {
             <CircularProgress size={50} />
           </div>
         }
-        style={{ position: "relative", overflow: "hidden" }}
+        style={{
+          position: "relative",
+          overflow: "hidden",
+          marginBottom: "3.2em",
+        }}
       >
         {currentItems.map((tvCategory) => {
           return (

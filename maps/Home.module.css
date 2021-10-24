@@ -319,7 +319,7 @@
 .movie-wrapper .movie-spinner {
   display: flex;
   justify-content: center;
-  margin-bottom: 1.3em;
+  margin-top: 2em;
 }
 
 @-webkit-keyframes scale-in-center {
@@ -630,7 +630,7 @@
 .tv-wrapper .tv-spinner {
   display: flex;
   justify-content: center;
-  margin-bottom: 1.3em;
+  margin-top: 2em;
 }
 
 .tv-modal-wrapper {
