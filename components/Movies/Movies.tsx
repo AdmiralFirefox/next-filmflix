@@ -18,7 +18,7 @@ const Movies: FC = () => {
 
   const handleLoadMore = useCallback(() => {
     if (itemsPerPage === 2) {
-      setTimeout(() => setitemsPerPage(itemsPerPage + 2), 2500);
+      setTimeout(() => setitemsPerPage(itemsPerPage + 2), 1500);
     } else if (itemsPerPage === 4) {
       setTimeout(() => setitemsPerPage(itemsPerPage + 2), 3500);
     } else if (itemsPerPage === 8) {

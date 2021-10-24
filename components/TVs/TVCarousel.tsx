@@ -31,7 +31,6 @@ const TVCarousel: FC<TVShowsRouteProps> = ({ route, title }) => {
   const [tvShows, setTvShows] = useState<TVShowsProps["tvShowData"]>([]);
   const [loading, setLoading] = useState(false);
   const [isMounted, setIsMounted] = useState(true);
-  const [show, setShow] = useState(false);
 
   const breakpoints: {} = {
     "280": {
@@ -82,28 +81,16 @@ const TVCarousel: FC<TVShowsRouteProps> = ({ route, title }) => {
     };
   }, [route, isMounted]);
 
-  //Setting a Timer
-  useEffect(() => {
-    setTimeout(() => {
-      setShow(true);
-    }, 1300);
-  }, [show]);
-
   return (
     <div>
-      <div className={tvCarouselStyles["tv-carousel-info-title"]}>
-        {show ? <>{loading ? null : <p>{title}:</p>}</> : null}
-      </div>
-
-      {show ? (
+      {loading ? null : (
         <>
-          {loading ? null : (
-            <span
-              className={tvCarouselStyles["tv-carousel-fade-effect"]}
-            ></span>
-          )}
+          <div className={tvCarouselStyles["tv-carousel-info-title"]}>
+            <p>{title}:</p>
+          </div>
+          <span className={tvCarouselStyles["tv-carousel-fade-effect"]}></span>
         </>
-      ) : null}
+      )}
 
       <Swiper
         spaceBetween={8}
@@ -116,30 +103,18 @@ const TVCarousel: FC<TVShowsRouteProps> = ({ route, title }) => {
       >
         {loading ? (
           <>
-            <SwiperSlide>
-              <Skeleton
-                variant="rect"
-                width={210}
-                height={250}
-                style={{ background: "#757575", borderRadius: "8px" }}
-              />
-            </SwiperSlide>
-            <SwiperSlide>
-              <Skeleton
-                variant="rect"
-                width={210}
-                height={250}
-                style={{ background: "#757575", borderRadius: "8px" }}
-              />
-            </SwiperSlide>
-            <SwiperSlide>
-              <Skeleton
-                variant="rect"
-                width={210}
-                height={250}
-                style={{ background: "#757575", borderRadius: "8px" }}
-              />
-            </SwiperSlide>
+            {[...Array(3)].map((_e, i) => {
+              return (
+                <SwiperSlide key={i}>
+                  <Skeleton
+                    variant="rect"
+                    width={210}
+                    height={250}
+                    style={{ background: "#757575", borderRadius: "8px" }}
+                  />
+                </SwiperSlide>
+              );
+            })}
           </>
         ) : (
           <>
