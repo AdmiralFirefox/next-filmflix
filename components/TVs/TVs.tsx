@@ -8,7 +8,7 @@ import tvStyles from "../../styles/Home.module.scss";
 
 const TVs: FC = () => {
   const [currentPage] = useState(1);
-  const [itemsPerPage, setitemsPerPage] = useState(2);
+  const [itemsPerPage, setitemsPerPage] = useState(3);
   const [hasMore, setHasMore] = useState(true);
   const [isMounted, setIsMounted] = useState(true);
 
@@ -17,15 +17,7 @@ const TVs: FC = () => {
   const currentItems = TVData.slice(indexOfFirstItem, indexOfLastItem);
 
   const handleLoadMore = useCallback(() => {
-    if (itemsPerPage === 2) {
-      setTimeout(() => setitemsPerPage(itemsPerPage + 2), 1500);
-    } else if (itemsPerPage === 4) {
-      setTimeout(() => setitemsPerPage(itemsPerPage + 2), 3500);
-    } else if (itemsPerPage === 8) {
-      setTimeout(() => setitemsPerPage(itemsPerPage + 2), 4000);
-    } else {
-      setTimeout(() => setitemsPerPage(itemsPerPage + 2), 4500);
-    }
+    setTimeout(() => setitemsPerPage(itemsPerPage + 3), 1500);
 
     if (currentItems.length === TVData.length) {
       setHasMore(false);

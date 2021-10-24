@@ -7,10 +7,13 @@ import movieCarouselStyles from "../../styles/Home.module.scss";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
-import SwiperCore, { Navigation } from "swiper/core";
+import SwiperCore, { Navigation, Virtual } from "swiper/core";
 
 // install Swiper modules
 SwiperCore.use([Navigation]);
+
+// install Virtual module
+SwiperCore.use([Virtual]);
 
 interface RouteProp {
   route: string;
@@ -98,16 +101,15 @@ const MovieCarousel: FC<RouteProp> = ({ route, title }) => {
         spaceBetween={8}
         slidesPerView={7}
         navigation={true}
-        loop={true}
         breakpoints={breakpoints}
-        freeMode={true}
         className="mySwiper"
+        virtual
       >
         {loading ? (
           <>
-            {[...Array(3)].map((_e, i) => {
+            {[...Array(8)].map((_e, i) => {
               return (
-                <SwiperSlide key={i}>
+                <SwiperSlide key={i} virtualIndex={i}>
                   <Skeleton
                     variant="rect"
                     width={210}
@@ -122,7 +124,7 @@ const MovieCarousel: FC<RouteProp> = ({ route, title }) => {
           <>
             {movies.map((movie) => {
               return (
-                <SwiperSlide key={movie.id}>
+                <SwiperSlide key={movie.id} virtualIndex={movie.id}>
                   <MovieIDContext.Provider value={movie.id}>
                     <MovieInfo
                       posterPath={movie.poster_path}

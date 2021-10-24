@@ -7,10 +7,13 @@ import tvCarouselStyles from "../../styles/Home.module.scss";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
-import SwiperCore, { Navigation } from "swiper/core";
+import SwiperCore, { Navigation, Virtual } from "swiper/core";
 
 // install Swiper modules
 SwiperCore.use([Navigation]);
+
+// install Virtual module
+SwiperCore.use([Virtual]);
 
 interface TVShowsRouteProps {
   route: string;
@@ -96,16 +99,15 @@ const TVCarousel: FC<TVShowsRouteProps> = ({ route, title }) => {
         spaceBetween={8}
         slidesPerView={7}
         navigation={true}
-        loop={true}
         breakpoints={breakpoints}
-        freeMode={true}
         className="mySwiper"
+        virtual
       >
         {loading ? (
           <>
-            {[...Array(3)].map((_e, i) => {
+            {[...Array(8)].map((_e, i) => {
               return (
-                <SwiperSlide key={i}>
+                <SwiperSlide key={i} virtualIndex={i}>
                   <Skeleton
                     variant="rect"
                     width={210}
@@ -120,7 +122,7 @@ const TVCarousel: FC<TVShowsRouteProps> = ({ route, title }) => {
           <>
             {tvShows.map((tvShow) => {
               return (
-                <SwiperSlide key={tvShow.id}>
+                <SwiperSlide key={tvShow.id} virtualIndex={tvShow.id}>
                   <TVIDContext.Provider value={tvShow.id}>
                     <TVInfo
                       posterPath={tvShow.poster_path}
