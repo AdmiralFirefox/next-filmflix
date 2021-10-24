@@ -1,5 +1,6 @@
-import React, { FC, useState } from "react";
+import React, { FC, useState, useRef } from "react";
 import { useWindowSize, Size } from "../../../hooks/useWindowSize";
+import useOnClickOutside from "../../../hooks/useOnClickOutside";
 import Modal from "@material-ui/core/Modal";
 import Image from "next/image";
 import { AvatarData } from "../../../data/profiledata";
@@ -25,9 +26,13 @@ const EditProfilePicModal: FC<EditProfilePicProps> = ({
   setEditProfilePic,
   profilePic,
 }) => {
+  const selectRef = useRef(null);
   const [focus, setFocus] = useState(false);
 
   const focusProfilePic = () => setFocus(true);
+  const unFocusProfilePic = () => setFocus(false);
+
+  useOnClickOutside(selectRef, unFocusProfilePic);
 
   const size: Size = useWindowSize();
 
@@ -78,6 +83,7 @@ const EditProfilePicModal: FC<EditProfilePicProps> = ({
                       <Image src={avatar.avatar} alt="Avatar Profile" />
                     </div>
                     <div
+                      ref={selectRef}
                       className={editProfilePicStyles["edit-profile-overlay"]}
                       onClick={() => {
                         setEditProfilePicText(avatar.avatar);
@@ -100,6 +106,7 @@ const EditProfilePicModal: FC<EditProfilePicProps> = ({
                 SubmitProfilePicEdit={SubmitProfilePicEdit}
                 focus={focus}
                 profile={profile}
+                selectRef={selectRef}
               />
             </div>
           </div>
