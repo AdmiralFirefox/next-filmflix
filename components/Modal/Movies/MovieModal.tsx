@@ -1,9 +1,10 @@
 import Modal from "@material-ui/core/Modal";
 import dynamic from "next/dynamic";
+import { useWindowSize, Size } from "../../../hooks/useWindowSize";
 const MovieTrailer = dynamic(() => import("../../Movies/MovieTrailer"));
 const MovieCasts = dynamic(() => import("../../Movies/MovieCasts"));
 const SimilarMovies = dynamic(() => import("../../Movies/SimilarMovies"));
-import React, { FC, useState, useEffect } from "react";
+import React, { FC, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import movieInfoModalStyles from "../../../styles/Home.module.scss";
 
@@ -80,6 +81,8 @@ const MovieModal: FC<ModalFunctionProp> = ({
   //Tabs
   const [value, setValue] = useState(0);
 
+  const size: Size = useWindowSize();
+
   const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
     setValue(newValue);
   };
@@ -94,18 +97,6 @@ const MovieModal: FC<ModalFunctionProp> = ({
     return rhours + "h " + rminutes + "m";
   };
 
-  //Adjusting vh of a window since 100vh is broken on mobile
-  useEffect(() => {
-    let vh = window.innerHeight * 0.01;
-
-    document.documentElement.style.setProperty("--vh", `${vh}px`);
-
-    window.addEventListener("resize", () => {
-      let vh = window.innerHeight * 0.01;
-      document.documentElement.style.setProperty("--vh", `${vh}px`);
-    });
-  }, []);
-
   return (
     <>
       <Modal
@@ -114,7 +105,10 @@ const MovieModal: FC<ModalFunctionProp> = ({
         aria-labelledby="simple-modal-title"
         aria-describedby="simple-modal-description"
       >
-        <div className={movieInfoModalStyles["movie-info-modal-wrapper"]}>
+        <div
+          className={movieInfoModalStyles["movie-info-modal-wrapper"]}
+          style={{ height: `${size.height}px` }}
+        >
           <div
             onClick={handleCloseMovieModal}
             className={movieInfoModalStyles["movie-info-modal-close-icon"]}

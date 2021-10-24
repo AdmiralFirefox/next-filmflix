@@ -1,4 +1,5 @@
-import React, { FC, useState, useEffect } from "react";
+import React, { FC, useState } from "react";
+import { useWindowSize, Size } from "../../../hooks/useWindowSize";
 import Modal from "@material-ui/core/Modal";
 import Image from "next/image";
 import { AvatarData } from "../../../data/profiledata";
@@ -28,17 +29,7 @@ const EditProfilePicModal: FC<EditProfilePicProps> = ({
 
   const focusProfilePic = () => setFocus(true);
 
-  //Adjusting vh of a window since 100vh is broken on mobile
-  useEffect(() => {
-    let vh = window.innerHeight * 0.01;
-
-    document.documentElement.style.setProperty("--vh", `${vh}px`);
-
-    window.addEventListener("resize", () => {
-      let vh = window.innerHeight * 0.01;
-      document.documentElement.style.setProperty("--vh", `${vh}px`);
-    });
-  }, []);
+  const size: Size = useWindowSize();
 
   return (
     <>
@@ -51,7 +42,10 @@ const EditProfilePicModal: FC<EditProfilePicProps> = ({
         <div
           className={editProfilePicStyles["edit-profile-pic-wrapper-animation"]}
         >
-          <div className={editProfilePicStyles["edit-profile-pic-wrapper"]}>
+          <div
+            className={editProfilePicStyles["edit-profile-pic-wrapper"]}
+            style={{ height: `${size.height}px` }}
+          >
             <div
               className={
                 editProfilePicStyles["edit-profile-pic-close-icon-wrapper"]

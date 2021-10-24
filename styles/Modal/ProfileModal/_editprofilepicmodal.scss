@@ -14,8 +14,6 @@
   background: theme-variable.$modal-background-color;
   width: min(80%, 40em);
   padding: 1.5em;
-  height: 100vh; //Fallback for browsers that doesn't support custom properties
-  height: calc(var(--vh, 1vh) * 100);
   overflow: auto;
   outline: none !important;
 

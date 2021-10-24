@@ -379,8 +379,6 @@
   display: flex;
   flex-direction: column;
   text-align: center;
-  height: 100vh;
-  height: calc(var(--vh, 1vh) * 100);
   overflow: auto;
   outline: none !important;
   width: min(100%, 50em);
@@ -642,8 +640,6 @@
   display: flex;
   flex-direction: column;
   text-align: center;
-  height: 100vh;
-  height: calc(var(--vh, 1vh) * 100);
   overflow: auto;
   outline: none !important;
   width: min(100%, 50em);
@@ -1084,8 +1080,6 @@
   background: #303030;
   width: min(80%, 40em);
   padding: 1.5em;
-  height: 100vh;
-  height: calc(var(--vh, 1vh) * 100);
   overflow: auto;
   outline: none !important;
 }
@@ -1609,8 +1603,6 @@
 .video-player-fallback-wrapper .video-player-fallback-img {
   position: relative;
   width: 100%;
-  height: 100vh;
-  height: calc(var(--vh, 1vh) * 100);
 }
 .video-player-fallback-wrapper .video-player-fallback-close-icon {
   position: absolute;

@@ -1,4 +1,5 @@
-import React, { FC, useState, useEffect } from "react";
+import React, { FC, useState } from "react";
+import { useWindowSize, Size } from "../../../hooks/useWindowSize";
 import dynamic from "next/dynamic";
 import Modal from "@material-ui/core/Modal";
 const TVTrailer = dynamic(() => import("../../TVs/TVTrailer"));
@@ -85,21 +86,11 @@ const TVModal: FC<TVModalProp> = ({
   //Tabs
   const [value, setValue] = useState(0);
 
+  const size: Size = useWindowSize();
+
   const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
     setValue(newValue);
   };
-
-  //Adjusting vh of a window since 100vh is broken on mobile
-  useEffect(() => {
-    let vh = window.innerHeight * 0.01;
-
-    document.documentElement.style.setProperty("--vh", `${vh}px`);
-
-    window.addEventListener("resize", () => {
-      let vh = window.innerHeight * 0.01;
-      document.documentElement.style.setProperty("--vh", `${vh}px`);
-    });
-  }, []);
 
   return (
     <>
@@ -109,7 +100,10 @@ const TVModal: FC<TVModalProp> = ({
         aria-labelledby="simple-modal-title"
         aria-describedby="simple-modal-description"
       >
-        <div className={tvModalStyles["tv-modal-wrapper"]}>
+        <div
+          className={tvModalStyles["tv-modal-wrapper"]}
+          style={{ height: `${size.height}px` }}
+        >
           <div
             onClick={handleCloseTVInfo}
             className={tvModalStyles["tv-modal-close-icon"]}

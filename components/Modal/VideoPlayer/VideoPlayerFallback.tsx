@@ -1,4 +1,5 @@
-import React, { FC, useEffect } from "react";
+import React, { FC } from "react";
+import { useWindowSize, Size } from "../../../hooks/useWindowSize";
 import Modal from "@material-ui/core/Modal";
 import Image from "next/image";
 import VideoFallback from "../../../assets/fallbacks/VideoFallback.jpg";
@@ -13,17 +14,7 @@ const VideoPlayerFallback: FC<VideoPlayerFallbackProps> = ({
   open,
   onClose,
 }) => {
-  //Adjusting vh of a window since 100vh is broken on mobile
-  useEffect(() => {
-    let vh = window.innerHeight * 0.01;
-
-    document.documentElement.style.setProperty("--vh", `${vh}px`);
-
-    window.addEventListener("resize", () => {
-      let vh = window.innerHeight * 0.01;
-      document.documentElement.style.setProperty("--vh", `${vh}px`);
-    });
-  }, []);
+  const size: Size = useWindowSize();
 
   return (
     <>
@@ -38,6 +29,7 @@ const VideoPlayerFallback: FC<VideoPlayerFallbackProps> = ({
         >
           <div
             className={videoPlayeFallbackrStyles["video-player-fallback-img"]}
+            style={{ height: `${size.height}px` }}
           >
             <Image
               src={VideoFallback}
