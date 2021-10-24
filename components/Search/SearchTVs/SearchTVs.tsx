@@ -1,4 +1,5 @@
 import React, { FC, useState, useEffect, createContext } from "react";
+import useDebounce from "../../../hooks/useDebounce";
 import Axios from "axios";
 import dynamic from "next/dynamic";
 const SearchTVInfo = dynamic(() => import("./SearchTVInfo"));
@@ -21,9 +22,11 @@ interface SearchTVProps {
 const SearchTVs: FC = () => {
   const [searchTVs, setSearchTVs] = useState<SearchTVProps["searchTVData"]>([]);
 
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchQuery, setSearchQuery] = useState("/");
 
   const [loadingSearches, setLoadingSearches] = useState(false);
+
+  const debouncedSearch = useDebounce(searchQuery, 650);
 
   const handleSearchChange = (
     e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
@@ -37,7 +40,7 @@ const SearchTVs: FC = () => {
     const displaySearchTVs = async () => {
       try {
         const res = await Axios.get(`
-        https://api.themoviedb.org/3/search/tv?api_key=${NEXT_PUBLIC_API_KEY}&language=en-US&page=1&query=${searchQuery}&include_adult=false`);
+        https://api.themoviedb.org/3/search/tv?api_key=${NEXT_PUBLIC_API_KEY}&language=en-US&page=1&query=${debouncedSearch}&include_adult=false`);
         // console.log(res.data.results);
         if (isMounted) {
           setSearchTVs(res.data.results);
@@ -53,7 +56,7 @@ const SearchTVs: FC = () => {
     return () => {
       isMounted = false;
     };
-  }, [searchQuery]);
+  }, [debouncedSearch]);
 
   if (searchQuery === "") {
     setSearchQuery("/");
@@ -61,7 +64,12 @@ const SearchTVs: FC = () => {
 
   //If there are no searched tv shows available
   const noResultsFound = (): JSX.Element | undefined => {
-    if (searchQuery !== "/" && searchTVs.length === 0 && !loadingSearches) {
+    if (
+      searchQuery !== "/" &&
+      debouncedSearch !== "/" &&
+      searchTVs.length === 0 &&
+      !loadingSearches
+    ) {
       return (
         <div className={searchTVStyles["search-tvs-no-results-found"]}>
           <p>

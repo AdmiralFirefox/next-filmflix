@@ -1,4 +1,5 @@
 import React, { FC, useState, useEffect, createContext } from "react";
+import useDebounce from "../../../hooks/useDebounce";
 import Axios from "axios";
 import dynamic from "next/dynamic";
 const SearchMovieInfo = dynamic(() => import("./SearchMovieInfo"));
@@ -19,9 +20,11 @@ const SearchMovies: FC = () => {
     SearchMovieProps["searchMovieData"]
   >([]);
 
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchQuery, setSearchQuery] = useState("/");
 
   const [loadingSearches, setLoadingSearches] = useState(false);
+
+  const debouncedSearch = useDebounce(searchQuery, 650);
 
   const handleSearchChange = (
     e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
@@ -35,7 +38,7 @@ const SearchMovies: FC = () => {
     const displaySearchMovies = async () => {
       try {
         const res = await Axios.get(
-          `https://api.themoviedb.org/3/search/movie?api_key=${NEXT_PUBLIC_API_KEY}&language=en-US&query=${searchQuery}&page=1&include_adult=false`
+          `https://api.themoviedb.org/3/search/movie?api_key=${NEXT_PUBLIC_API_KEY}&language=en-US&query=${debouncedSearch}&page=1&include_adult=false`
         );
         // console.log(res.data.results);
         if (isMounted) {
@@ -52,7 +55,7 @@ const SearchMovies: FC = () => {
     return () => {
       isMounted = false;
     };
-  }, [searchQuery]);
+  }, [debouncedSearch]);
 
   if (searchQuery === "") {
     setSearchQuery("/");
@@ -60,7 +63,12 @@ const SearchMovies: FC = () => {
 
   //If there are no searched movies available
   const noResultsFound = (): JSX.Element | undefined => {
-    if (searchQuery !== "/" && searchMovies.length === 0 && !loadingSearches) {
+    if (
+      searchQuery !== "/" &&
+      debouncedSearch !== "/" &&
+      searchMovies.length === 0 &&
+      !loadingSearches
+    ) {
       return (
         <div className={searchMovieStyles["search-movies-no-results-found"]}>
           <p>
