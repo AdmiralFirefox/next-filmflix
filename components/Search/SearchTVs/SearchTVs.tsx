@@ -83,7 +83,7 @@ const SearchTVs: FC = () => {
   };
 
   return (
-    <div>
+    <>
       <div className={searchTVStyles["search-tvs-input"]}>
         <SearchTVsInput handleSearchChange={handleSearchChange} />
       </div>
@@ -102,22 +102,24 @@ const SearchTVs: FC = () => {
         </div>
       ) : (
         <div className={searchTVStyles["search-tvs-results"]}>
-          {searchTVs.map((searchTV) => {
-            return (
-              <div key={searchTV.id}>
-                <br />
-                <SearchTVIDContext.Provider value={searchTV.id}>
-                  <SearchTVInfo
-                    posterPath={searchTV.poster_path}
-                    voteAverage={searchTV.vote_average}
-                  />
-                </SearchTVIDContext.Provider>
-              </div>
-            );
-          })}
+          {searchTVs
+            .filter((searchTV) => searchTV.poster_path !== null)
+            .map((searchTV) => {
+              return (
+                <div key={searchTV.id}>
+                  <br />
+                  <SearchTVIDContext.Provider value={searchTV.id}>
+                    <SearchTVInfo
+                      posterPath={searchTV.poster_path}
+                      voteAverage={searchTV.vote_average}
+                    />
+                  </SearchTVIDContext.Provider>
+                </div>
+              );
+            })}
         </div>
       )}
-    </div>
+    </>
   );
 };
 

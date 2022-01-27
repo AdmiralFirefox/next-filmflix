@@ -112,7 +112,7 @@ const TrendingTVInfo: FC<TrendingTVInfoProps> = ({
   };
 
   return (
-    <div>
+    <>
       <TVModal
         openTVModal={openTrendingTVModal}
         handleCloseTVInfo={handleCloseTrendingTVModal}
@@ -172,7 +172,7 @@ const TrendingTVInfo: FC<TrendingTVInfoProps> = ({
       <div
         className={trendingTVInfoStyles["trending-tv-gradient-shadow"]}
       ></div>
-    </div>
+    </>
   );
 };
 

@@ -1,4 +1,4 @@
-import React, { FC, useState, useEffect, useCallback } from "react";
+import React, { FC, useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 import { TVData } from "../../data/tvdata";
 const TVCarousel = dynamic(() => import("./TVCarousel"));
@@ -16,13 +16,13 @@ const TVs: FC = () => {
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = TVData.slice(indexOfFirstItem, indexOfLastItem);
 
-  const handleLoadMore = useCallback(() => {
+  const handleLoadMore = () => {
     setTimeout(() => setitemsPerPage(itemsPerPage + 3), 2000);
 
     if (currentItems.length === TVData.length) {
       setHasMore(false);
     }
-  }, [setitemsPerPage, setHasMore, currentItems.length, itemsPerPage]);
+  };
 
   //Cleanup Function
   useEffect(() => {

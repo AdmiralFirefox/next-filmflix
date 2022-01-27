@@ -44,31 +44,31 @@ const TrendingTVs: FC = () => {
     };
   }, [isMounted]);
 
+  if (loading) {
+    return (
+      <>
+        <Skeleton
+          variant="rect"
+          id={trendingTVStyles["trending-tvs-loading-skeleton"]}
+        />
+      </>
+    );
+  }
+
   return (
-    <div>
-      {loading ? (
+    <>
+      {trendingTV.id !== 0 ? (
         <>
-          <Skeleton
-            variant="rect"
-            id={trendingTVStyles["trending-tvs-loading-skeleton"]}
-          />
+          <TrendingTVIDContext.Provider value={trendingTV.id}>
+            <TrendingTVInfo
+              backdropPath={trendingTV.backdrop_path}
+              name={trendingTV.name}
+              overview={trendingTV.overview}
+            />
+          </TrendingTVIDContext.Provider>
         </>
-      ) : (
-        <>
-          {trendingTV.id !== 0 ? (
-            <>
-              <TrendingTVIDContext.Provider value={trendingTV.id}>
-                <TrendingTVInfo
-                  backdropPath={trendingTV.backdrop_path}
-                  name={trendingTV.name}
-                  overview={trendingTV.overview} 
-                />
-              </TrendingTVIDContext.Provider>
-            </>
-          ) : null}
-        </>
-      )}
-    </div>
+      ) : null}
+    </>
   );
 };
 

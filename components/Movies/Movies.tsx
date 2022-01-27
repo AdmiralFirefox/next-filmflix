@@ -1,4 +1,4 @@
-import React, { FC, useState, useEffect, useCallback } from "react";
+import React, { FC, useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 import { MovieData } from "../../data/moviedata";
 const MovieCarousel = dynamic(() => import("./MovieCarousel"));
@@ -16,13 +16,13 @@ const Movies: FC = () => {
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = MovieData.slice(indexOfFirstItem, indexOfLastItem);
 
-  const handleLoadMore = useCallback(() => {
+  const handleLoadMore = () => {
     setTimeout(() => setitemsPerPage(itemsPerPage + 3), 2000);
 
     if (currentItems.length === MovieData.length) {
       setHasMore(false);
     }
-  }, [setitemsPerPage, setHasMore, currentItems.length, itemsPerPage]);
+  };
 
   //Cleanup Function
   useEffect(() => {

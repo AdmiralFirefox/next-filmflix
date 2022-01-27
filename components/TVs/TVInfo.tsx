@@ -83,7 +83,7 @@ const TVInfo: FC<TVInfoProps> = ({ posterPath, voteAverage }) => {
   }, [TVID, isMounted]);
 
   return (
-    <div>
+    <>
       <TVModal
         openTVModal={openTVModal}
         handleCloseTVInfo={handleCloseTVInfo}
@@ -154,7 +154,7 @@ const TVInfo: FC<TVInfoProps> = ({ posterPath, voteAverage }) => {
           </div>
         </div>
       )}
-    </div>
+    </>
   );
 };
 

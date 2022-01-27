@@ -122,7 +122,7 @@ const MovieCarousel: FC<RouteProp> = ({ route, title }) => {
           </>
         ) : (
           <>
-            {movies.map((movie) => {
+            {movies.filter(movie => movie.poster_path !== null).map((movie) => {
               return (
                 <SwiperSlide key={movie.id} virtualIndex={movie.id}>
                   <MovieIDContext.Provider value={movie.id}>

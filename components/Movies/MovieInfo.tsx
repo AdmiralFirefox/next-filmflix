@@ -82,7 +82,7 @@ const MovieInfo: FC<MovieInfoProps> = ({ posterPath, voteAverage }) => {
   }, [movieID, isMounted]);
 
   return (
-    <div>
+    <>
       <MovieModal
         open={openMovieModal}
         handleCloseMovieModal={handleCloseMovieModal}
@@ -151,7 +151,7 @@ const MovieInfo: FC<MovieInfoProps> = ({ posterPath, voteAverage }) => {
           </div>
         </div>
       )}
-    </div>
+    </>
   );
 };
 

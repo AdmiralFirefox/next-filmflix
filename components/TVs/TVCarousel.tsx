@@ -120,18 +120,20 @@ const TVCarousel: FC<TVShowsRouteProps> = ({ route, title }) => {
           </>
         ) : (
           <>
-            {tvShows.map((tvShow) => {
-              return (
-                <SwiperSlide key={tvShow.id} virtualIndex={tvShow.id}>
-                  <TVIDContext.Provider value={tvShow.id}>
-                    <TVInfo
-                      posterPath={tvShow.poster_path}
-                      voteAverage={tvShow.vote_average}
-                    />
-                  </TVIDContext.Provider>
-                </SwiperSlide>
-              );
-            })}
+            {tvShows
+              .filter((tvShow) => tvShow.poster_path !== null)
+              .map((tvShow) => {
+                return (
+                  <SwiperSlide key={tvShow.id} virtualIndex={tvShow.id}>
+                    <TVIDContext.Provider value={tvShow.id}>
+                      <TVInfo
+                        posterPath={tvShow.poster_path}
+                        voteAverage={tvShow.vote_average}
+                      />
+                    </TVIDContext.Provider>
+                  </SwiperSlide>
+                );
+              })}
           </>
         )}
       </Swiper>

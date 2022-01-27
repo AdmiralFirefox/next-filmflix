@@ -110,7 +110,7 @@ const TrendingMovieInfo: FC<TrendingMovieInfoProps> = ({
   };
 
   return (
-    <div>
+    <>
       <MovieModal
         open={openTrendingMovieModal}
         handleCloseMovieModal={handleCloseTrendingMovieModal}
@@ -169,7 +169,7 @@ const TrendingMovieInfo: FC<TrendingMovieInfoProps> = ({
       <div
         className={trendingMovieInfoStyles["trending-movie-gradient-shadow"]}
       ></div>
-    </div>
+    </>
   );
 };
 

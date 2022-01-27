@@ -16,6 +16,7 @@ const TrendingMovies: FC = () => {
     title: "",
     overview: "",
   });
+
   const [isMounted, setIsMounted] = useState(true);
   const [loading, setLoading] = useState(false);
 
@@ -43,31 +44,31 @@ const TrendingMovies: FC = () => {
     };
   }, [isMounted]);
 
+  if (loading) {
+    return (
+      <>
+        <Skeleton
+          variant="rect"
+          id={trendingMovieStyles["trending-movies-loading-skeleton"]}
+        />
+      </>
+    );
+  }
+
   return (
-    <div>
-      {loading ? (
+    <>
+      {trendingMovie.id !== 0 ? (
         <>
-          <Skeleton
-            variant="rect"
-            id={trendingMovieStyles["trending-movies-loading-skeleton"]}
-          />
+          <TrendingMovieIDContext.Provider value={trendingMovie.id}>
+            <TrendingMovieInfo
+              backdropPath={trendingMovie.backdrop_path}
+              title={trendingMovie.title}
+              overview={trendingMovie.overview}
+            />
+          </TrendingMovieIDContext.Provider>
         </>
-      ) : (
-        <>
-          {trendingMovie.id !== 0 ? (
-            <>
-              <TrendingMovieIDContext.Provider value={trendingMovie.id}>
-                <TrendingMovieInfo
-                  backdropPath={trendingMovie.backdrop_path}
-                  title={trendingMovie.title}
-                  overview={trendingMovie.overview}
-                />
-              </TrendingMovieIDContext.Provider>
-            </>
-          ) : null}
-        </>
-      )}
-    </div>
+      ) : null}
+    </>
   );
 };
 

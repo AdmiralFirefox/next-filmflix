@@ -82,7 +82,7 @@ const SearchMovies: FC = () => {
   };
 
   return (
-    <div>
+    <>
       <div className={searchMovieStyles["search-movies-input"]}>
         <SearchMoviesInput handleSearchChange={handleSearchChange} />
       </div>
@@ -101,22 +101,24 @@ const SearchMovies: FC = () => {
         </div>
       ) : (
         <div className={searchMovieStyles["search-movies-results"]}>
-          {searchMovies.map((searchMovie) => {
-            return (
-              <div key={searchMovie.id}>
-                <br />
-                <SearchMovieIDContext.Provider value={searchMovie.id}>
-                  <SearchMovieInfo
-                    posterPath={searchMovie.poster_path}
-                    voteAverge={searchMovie.vote_average}
-                  />
-                </SearchMovieIDContext.Provider>
-              </div>
-            );
-          })}
+          {searchMovies
+            .filter((searchMovie) => searchMovie.poster_path !== null)
+            .map((searchMovie) => {
+              return (
+                <div key={searchMovie.id}>
+                  <br />
+                  <SearchMovieIDContext.Provider value={searchMovie.id}>
+                    <SearchMovieInfo
+                      posterPath={searchMovie.poster_path}
+                      voteAverge={searchMovie.vote_average}
+                    />
+                  </SearchMovieIDContext.Provider>
+                </div>
+              );
+            })}
         </div>
       )}
-    </div>
+    </>
   );
 };
 

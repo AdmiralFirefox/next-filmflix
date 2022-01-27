@@ -85,7 +85,7 @@ const SearchMovieInfo: FC<SearchMovieInfoProps> = ({
   };
 
   return (
-    <div>
+    <>
       <MovieModal
         open={openSearchMovieModal}
         handleCloseMovieModal={handleCloseSearchMovieModal}
@@ -180,7 +180,7 @@ const SearchMovieInfo: FC<SearchMovieInfoProps> = ({
           </div>
         </div>
       )}
-    </div>
+    </>
   );
 };
 
