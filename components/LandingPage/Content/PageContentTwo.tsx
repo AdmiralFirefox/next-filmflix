@@ -22,6 +22,7 @@ const PageContentTwo: FC = () => {
           width={460}
           height={350}
           objectFit="cover"
+          priority={true}
         />
       </div>
     </div>

@@ -22,6 +22,7 @@ const PageContentThree: FC = () => {
           width={540}
           height={400}
           objectFit="cover"
+          priority={true}
         />
       </div>
     </div>
