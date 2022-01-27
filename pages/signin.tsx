@@ -11,6 +11,9 @@ import ProfileUserInput from "../components/Inputs/Profiles/ProfileUserInput";
 const SignUpFooter = dynamic(
   () => import("../components/LandingPage/SignUpFooter")
 );
+const ProfileSelection = dynamic(
+  () => import("../components/Main/ProfileSelection")
+);
 import profileStyles from "../styles/Home.module.scss";
 
 const SignIn: FC = () => {
@@ -69,6 +72,11 @@ const SignIn: FC = () => {
     }
   };
 
+  //Allow Users to Sign Out
+  const signOut = async () => {
+    await auth.signOut();
+  };
+
   //Profile Background
   useEffect(() => {
     document.getElementsByTagName("body")[0].className = !user
@@ -79,11 +87,17 @@ const SignIn: FC = () => {
   // Route Changing when the user is logged in
   useEffect(() => {
     if (user) {
-      router.push("/main");
-    } 
+      router.push("/signin", "/signin?userSignedIn", { shallow: true });
+    } else {
+      router.push("/signin", undefined, { shallow: true });
+    }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
+
+  if (user) {
+    return <ProfileSelection signOut={signOut} />;
+  }
 
   return (
     <>

@@ -13,7 +13,7 @@ const Home: FC = () => {
   // Route Changing when the user is logged in
   useEffect(() => {
     if (user) {
-      router.push("/main");
+      router.push("/signin");
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
