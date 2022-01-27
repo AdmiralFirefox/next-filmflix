@@ -92,12 +92,12 @@ const Main: FC<MainProps> = ({ manageProfiles, signOut }) => {
           {category === "Movies" ? (
             <>
               <TrendingMovies />
-              {/* <Movies /> */}
+              <Movies />
             </>
           ) : (
             <>
               <TrendingTVs />
-              {/* <TVs /> */}
+              <TVs />
             </>
           )}
         </>
