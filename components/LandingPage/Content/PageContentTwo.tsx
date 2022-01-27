@@ -16,7 +16,14 @@ const PageContentTwo: FC = () => {
         </p>
       </div>
       <div className={pageContentTwoStyles["page-content-two-image"]}>
-        <Image src={Watch} alt="" width={460} height={350} objectFit="cover" />
+        <Image
+          src={Watch}
+          alt=""
+          width={460}
+          height={350}
+          objectFit="cover"
+          priority={true}
+        />
       </div>
     </div>
   );

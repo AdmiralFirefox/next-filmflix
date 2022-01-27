@@ -16,7 +16,14 @@ const PageContentThree: FC = () => {
         </p>
       </div>
       <div className={pageContentThreeStyles["page-content-three-image"]}>
-        <Image src={Kids} alt="" width={540} height={400} objectFit="cover" />
+        <Image
+          src={Kids}
+          alt=""
+          width={540}
+          height={400}
+          objectFit="cover"
+          priority={true}
+        />
       </div>
     </div>
   );
