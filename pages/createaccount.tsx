@@ -14,9 +14,6 @@ const SignUpFooter = dynamic(
   () => import("../components/LandingPage/SignUpFooter")
 );
 import accountStyles from "../styles/Home.module.scss";
-const ProfileSelection = dynamic(
-  () => import("../components/Main/ProfileSelection")
-);
 
 const CreateAccount: FC = () => {
   const [authLoading, setAuthLoading] = useState(false);
@@ -61,11 +58,6 @@ const CreateAccount: FC = () => {
     }
   };
 
-  //ALlow users to Sign Out
-  const signOut = async () => {
-    await auth.signOut();
-  };
-
   //Profile Background
   useEffect(() => {
     document.getElementsByTagName("body")[0].className = !user
@@ -76,10 +68,9 @@ const CreateAccount: FC = () => {
   //Route Changing when the user is logged in
   useEffect(() => {
     if (user) {
-      router.push("/createaccount", "/signin?main", { shallow: true });
-    } else {
-      router.push("/createaccount", undefined, { shallow: true });
+      router.push("/main");
     }
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
 
@@ -107,57 +98,48 @@ const CreateAccount: FC = () => {
           </React.Fragment>
         }
       />
-      {!user ? (
-        <>
-          <Link href="/" passHref>
-            <div className={accountStyles["account-section-web-logo"]}>
-              <Image
-                src={WebLogo}
-                alt="Web Logo"
-                width={150}
-                height={50}
-                objectFit="cover"
-              />
-            </div>
-          </Link>
-          <div className={accountStyles["account-section-wrapper"]}>
-            <div className={accountStyles["account-section-content"]}>
-              <div className={accountStyles["account-section-title"]}>
-                <h1>Create Account</h1>
-              </div>
 
-              <AccountUserInput
-                emailRef={emailRef}
-                passwordRef={passwordRef}
-                createAccount={createAccount}
-                authLoading={authLoading}
-              />
-
-              <div
-                className={accountStyles["account-section-existing-account"]}
-              >
-                <h1>Already Have an Account?</h1>
-              </div>
-              <div className={accountStyles["account-section-link-to-login"]}>
-                <Link href="/signin" passHref>
-                  <p>Click here to log-in</p>
-                </Link>
-              </div>
-              <div className={accountStyles["account-section-recaptcha"]}>
-                <p>
-                  This page is protected by Google reCAPTCHA to ensure
-                  you&apos;re not a bot.{" "}
-                </p>
-              </div>
-            </div>
-            <SignUpFooter />
+      <Link href="/" passHref>
+        <div className={accountStyles["account-section-web-logo"]}>
+          <Image
+            src={WebLogo}
+            alt="Web Logo"
+            width={150}
+            height={50}
+            objectFit="cover"
+          />
+        </div>
+      </Link>
+      <div className={accountStyles["account-section-wrapper"]}>
+        <div className={accountStyles["account-section-content"]}>
+          <div className={accountStyles["account-section-title"]}>
+            <h1>Create Account</h1>
           </div>
-        </>
-      ) : (
-        <>
-          <ProfileSelection signOut={signOut} />
-        </>
-      )}
+
+          <AccountUserInput
+            emailRef={emailRef}
+            passwordRef={passwordRef}
+            createAccount={createAccount}
+            authLoading={authLoading}
+          />
+
+          <div className={accountStyles["account-section-existing-account"]}>
+            <h1>Already Have an Account?</h1>
+          </div>
+          <div className={accountStyles["account-section-link-to-login"]}>
+            <Link href="/signin" passHref>
+              <p>Click here to log-in</p>
+            </Link>
+          </div>
+          <div className={accountStyles["account-section-recaptcha"]}>
+            <p>
+              This page is protected by Google reCAPTCHA to ensure you&apos;re
+              not a bot.{" "}
+            </p>
+          </div>
+        </div>
+        <SignUpFooter />
+      </div>
     </>
   );
 };

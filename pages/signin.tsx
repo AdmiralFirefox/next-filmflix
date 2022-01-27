@@ -12,9 +12,6 @@ const SignUpFooter = dynamic(
   () => import("../components/LandingPage/SignUpFooter")
 );
 import profileStyles from "../styles/Home.module.scss";
-const ProfileSelection = dynamic(
-  () => import("../components/Main/ProfileSelection")
-);
 
 const SignIn: FC = () => {
   const [authLoading, setAuthLoading] = useState(false);
@@ -72,11 +69,6 @@ const SignIn: FC = () => {
     }
   };
 
-  //Allow Users to Sign Out
-  const signOut = async () => {
-    await auth.signOut();
-  };
-
   //Profile Background
   useEffect(() => {
     document.getElementsByTagName("body")[0].className = !user
@@ -87,68 +79,59 @@ const SignIn: FC = () => {
   // Route Changing when the user is logged in
   useEffect(() => {
     if (user) {
-      router.push("/signin", "/signin?main", { shallow: true });
-    } else {
-      router.push("/signin", undefined, { shallow: true });
-    }
+      router.push("/main");
+    } 
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
 
   return (
     <>
-      {!user ? (
-        <>
-          <Link href="/" passHref>
-            <div className={profileStyles["profile-styles-web-logo"]}>
-              <Image
-                src={WebLogo}
-                alt="Web Logo"
-                width={150}
-                height={50}
-                objectFit="cover"
-              />
-            </div>
-          </Link>
+      <Link href="/" passHref>
+        <div className={profileStyles["profile-styles-web-logo"]}>
+          <Image
+            src={WebLogo}
+            alt="Web Logo"
+            width={150}
+            height={50}
+            objectFit="cover"
+          />
+        </div>
+      </Link>
 
-          <div className={profileStyles["profile-styles-wrapper"]}>
-            <div className={profileStyles["profile-styles-content"]}>
-              <div className={profileStyles["profile-styles-title"]}>
-                <h1>Sign In</h1>
-              </div>
-
-                <ProfileUserInput
-                  emailRef={emailRef}
-                  passwordRef={passwordRef}
-                  signIn={signIn}
-                  signInWithgoogle={signInWithgoogle}
-                  signInAnonymously={signInAnonymously}
-                  authLoading={authLoading}
-                />
-
-              <div className={profileStyles["profile-styles-new-title"]}>
-                <h1>New to Filmflix?</h1>
-              </div>
-              <div className={profileStyles["profile-styles-new-account-link"]}>
-                <Link href="/createaccount" passHref>
-                  <p>Click here to create new account</p>
-                </Link>
-              </div>
-
-              <div className={profileStyles["profile-styles-recaptcha"]}>
-                <p>
-                  This page is protected by Google reCAPTCHA to ensure
-                  you&apos;re not a bot.{" "}
-                </p>
-              </div>
-            </div>
-            <SignUpFooter />
+      <div className={profileStyles["profile-styles-wrapper"]}>
+        <div className={profileStyles["profile-styles-content"]}>
+          <div className={profileStyles["profile-styles-title"]}>
+            <h1>Sign In</h1>
           </div>
-        </>
-      ) : (
-        <>
-          <ProfileSelection signOut={signOut} />
-        </>
-      )}
+
+          <ProfileUserInput
+            emailRef={emailRef}
+            passwordRef={passwordRef}
+            signIn={signIn}
+            signInWithgoogle={signInWithgoogle}
+            signInAnonymously={signInAnonymously}
+            authLoading={authLoading}
+          />
+
+          <div className={profileStyles["profile-styles-new-title"]}>
+            <h1>New to Filmflix?</h1>
+          </div>
+          <div className={profileStyles["profile-styles-new-account-link"]}>
+            <Link href="/createaccount" passHref>
+              <p>Click here to create new account</p>
+            </Link>
+          </div>
+
+          <div className={profileStyles["profile-styles-recaptcha"]}>
+            <p>
+              This page is protected by Google reCAPTCHA to ensure you&apos;re
+              not a bot.{" "}
+            </p>
+          </div>
+        </div>
+        <SignUpFooter />
+      </div>
     </>
   );
 };

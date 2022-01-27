@@ -22,6 +22,8 @@ export const AuthProvider: React.FC = ({ children }) => {
     });
 
     return unsubscribe;
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (initializing)
