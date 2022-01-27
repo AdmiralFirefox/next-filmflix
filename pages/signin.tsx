@@ -45,14 +45,11 @@ const SignIn: FC = () => {
   const signInAnonymously = async () => {
     setAuthLoading(true);
     try {
-      let emailRef = process.env.NEXT_PUBLIC_ANONYMOUS_EMAIL as string;
-      let passwordRef = process.env.NEXT_PUBLIC_ANONYMOUS_PASSWORD as string;
-
-      await auth.signInWithEmailAndPassword(emailRef, passwordRef);
+      await auth.signInAnonymously();
       setAuthLoading(false);
-    } catch (error) {
-      console.log(error);
-      alert(error);
+    } catch (err) {
+      console.log(err);
+      alert(err);
       setAuthLoading(false);
     }
   };
