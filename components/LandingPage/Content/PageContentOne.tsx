@@ -22,7 +22,6 @@ const PageContentOne: FC = () => {
           width={540}
           height={330}
           objectFit="cover"
-          priority={true}
         />
       </div>
     </div>
