@@ -25,14 +25,13 @@
 
   .similar-movies-overview {
     color: theme-variable.$white-font-color;
-    font-size: clamp(1rem, 1.3vw, 1.3rem);
-    margin-top: 0.8em;
-    padding: 0.5em 1em;
+    font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+    padding: 1.1em;
   }
 
-  @supports not (font-size: clamp(1rem, 1.3vw, 1.3rem)) {
+  @supports not (font-size: clamp(0.9rem, 1.5vw, 1.1rem)) {
     .similar-movies-overview {
-      font-size: 1rem;
+      font-size: min(max(0.9rem, 1.5vw), 1.1rem);
     }
   }
 }

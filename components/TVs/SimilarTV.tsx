@@ -11,7 +11,7 @@ const { NEXT_PUBLIC_API_KEY } = process.env;
 interface SimilarTVProp {
   similarTVData: {
     id: number;
-    poster_path: string;
+    backdrop_path: string;
     name: string;
     overview: string;
   }[];
@@ -94,12 +94,12 @@ const SimilarTV: FC<{ id: number }> = ({ id }) => {
               key={similarTV.id}
               className={similarTVStyles["similar-tvs-content"]}
             >
-              {similarTV.poster_path !== null ? (
+              {similarTV.backdrop_path !== null ? (
                 <Image
-                  src={`https://image.tmdb.org/t/p/w500/${similarTV.poster_path}`}
+                  src={`https://image.tmdb.org/t/p/w500/${similarTV.backdrop_path}`}
                   alt="Similar Poster"
                   width={350}
-                  height={500}
+                  height={250}
                   layout="responsive"
                   objectFit="cover"
                   priority={true}
@@ -110,7 +110,7 @@ const SimilarTV: FC<{ id: number }> = ({ id }) => {
                   src={PosterFallback}
                   alt="Similar Poster"
                   width={350}
-                  height={500}
+                  height={250}
                   layout="responsive"
                   objectFit="cover"
                 />

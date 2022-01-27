@@ -11,7 +11,7 @@ const { NEXT_PUBLIC_API_KEY } = process.env;
 interface SimilarMoviesProps {
   similarMovieData: {
     id: number;
-    poster_path: string;
+    backdrop_path: string;
     title: string;
     overview: string;
   }[];
@@ -94,12 +94,12 @@ const SimilarMovies: FC<{ id: number }> = ({ id }) => {
               key={similarMovie.id}
               className={similarMovieStyles["similar-movies-content"]}
             >
-              {similarMovie.poster_path !== null ? (
+              {similarMovie.backdrop_path !== null ? (
                 <Image
-                  src={`https://image.tmdb.org/t/p/w500/${similarMovie.poster_path}`}
+                  src={`https://image.tmdb.org/t/p/w500/${similarMovie.backdrop_path}`}
                   alt="Similar Poster"
                   width={350}
-                  height={500}
+                  height={250}
                   layout="responsive"
                   objectFit="cover"
                   priority={true}
@@ -110,7 +110,7 @@ const SimilarMovies: FC<{ id: number }> = ({ id }) => {
                   src={PosterFallback}
                   alt="Similar Poster"
                   width={350}
-                  height={500}
+                  height={250}
                   layout="responsive"
                   objectFit="cover"
                 />
