@@ -4,9 +4,15 @@ import { useRouter } from "next/router";
 import Image from "next/image";
 import WebLogo from "../assets/logo/WebLogo.png";
 import { auth } from "../firebase/firebase";
+import {
+  GoogleAuthProvider,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+  signOut,
+  signInAnonymously,
+} from "firebase/auth";
 import Link from "next/link";
 import dynamic from "next/dynamic";
-import firebase from "firebase/app";
 import ProfileUserInput from "../components/Inputs/Profiles/ProfileUserInput";
 const SignUpFooter = dynamic(
   () => import("../components/LandingPage/SignUpFooter")
@@ -29,7 +35,8 @@ const SignIn: FC = () => {
   const signIn = async () => {
     setAuthLoading(true);
     try {
-      await auth.signInWithEmailAndPassword(
+      await signInWithEmailAndPassword(
+        auth,
         emailRef.current!.value,
         passwordRef.current!.value
       );
@@ -42,10 +49,10 @@ const SignIn: FC = () => {
   };
 
   //Allow the users to Sign In Anonymously
-  const signInAnonymously = async () => {
+  const anonymousAccountSignIn = async () => {
     setAuthLoading(true);
     try {
-      await auth.signInAnonymously();
+      await signInAnonymously(auth);
       setAuthLoading(false);
     } catch (err) {
       console.log(err);
@@ -57,12 +64,12 @@ const SignIn: FC = () => {
   //Allow users to Sign In With their Google Account
   const signInWithgoogle = async () => {
     //Retrieve Google Provider Object
-    const provider = new firebase.auth.GoogleAuthProvider();
+    const provider = new GoogleAuthProvider();
     //Set language to the default browser preference
     auth.useDeviceLanguage();
     //Start sign in process
     try {
-      await auth.signInWithPopup(provider);
+      await signInWithPopup(auth, provider);
     } catch (err) {
       console.log(err);
       alert(err);
@@ -70,8 +77,8 @@ const SignIn: FC = () => {
   };
 
   //Allow Users to Sign Out
-  const signOut = async () => {
-    await auth.signOut();
+  const signOutAccount = async () => {
+    await signOut(auth);
   };
 
   //Profile Background
@@ -93,7 +100,7 @@ const SignIn: FC = () => {
   }, [user]);
 
   if (user) {
-    return <ProfileSelection signOut={signOut} />;
+    return <ProfileSelection signOut={signOutAccount} />;
   }
 
   return (
@@ -121,7 +128,7 @@ const SignIn: FC = () => {
             passwordRef={passwordRef}
             signIn={signIn}
             signInWithgoogle={signInWithgoogle}
-            signInAnonymously={signInAnonymously}
+            signInAnonymously={anonymousAccountSignIn}
             authLoading={authLoading}
           />
 

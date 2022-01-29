@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import Image from "next/image";
 import WebLogo from "../assets/logo/WebLogo.png";
 import { auth } from "../firebase/firebase";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import Snackbar from "@material-ui/core/Snackbar";
@@ -45,7 +46,8 @@ const CreateAccount: FC = () => {
   const createAccount = async () => {
     setAuthLoading(true);
     try {
-      await auth.createUserWithEmailAndPassword(
+      await createUserWithEmailAndPassword(
+        auth,
         emailRef.current!.value,
         passwordRef.current!.value
       );

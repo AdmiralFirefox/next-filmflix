@@ -1,15 +1,15 @@
-import { useEffect, useState } from "react";
-import { AuthContext } from "../context/AuthContext";
-import firebase from "firebase/app";
+import { FC, useState, useEffect } from "react";
+import { AuthContext, UserInfo } from "../context/AuthContext";
 import { auth } from "../firebase/firebase";
+import { onAuthStateChanged } from "firebase/auth";
 import Loading from "../components/Loading/Loading";
 
-export const AuthProvider: React.FC = ({ children }) => {
-  const [user, setUser] = useState<firebase.User | null>(null);
+export const AuthProvider: FC = ({ children }) => {
+  const [user, setUser] = useState<UserInfo | null>(null);
   const [initializing, setInitializing] = useState(true);
 
   useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((firebaseUser) => {
+    const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
       if (!user) {
         setUser(firebaseUser);
       } else {
@@ -22,16 +22,10 @@ export const AuthProvider: React.FC = ({ children }) => {
     });
 
     return unsubscribe;
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  if (initializing)
-    return (
-      <div>
-        <Loading />
-      </div>
-    );
+  if (initializing) return <Loading />;
 
   return <AuthContext.Provider value={user}>{children}</AuthContext.Provider>;
 };
