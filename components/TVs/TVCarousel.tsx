@@ -3,7 +3,7 @@ import dynamic from "next/dynamic";
 const TVInfo = dynamic(() => import("./TVInfo"));
 import Axios from "axios";
 import Skeleton from "@material-ui/lab/Skeleton";
-import tvCarouselStyles from "../../styles/Home.module.scss";
+import styles from "../../styles/TVs/TVCarousel.module.scss";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -88,10 +88,10 @@ const TVCarousel: FC<TVShowsRouteProps> = ({ route, title }) => {
     <div>
       {loading ? null : (
         <>
-          <div className={tvCarouselStyles["tv-carousel-info-title"]}>
+          <div className={styles["tv-carousel-info-title"]}>
             <p>{title}:</p>
           </div>
-          <span className={tvCarouselStyles["tv-carousel-fade-effect"]}></span>
+          <span className={styles["tv-carousel-fade-effect"]}></span>
         </>
       )}
 

@@ -3,7 +3,7 @@ import { useWindowSize, Size } from "../../../hooks/useWindowSize";
 import Modal from "@material-ui/core/Modal";
 import Image from "next/image";
 import VideoFallback from "../../../assets/fallbacks/VideoFallback.jpg";
-import videoPlayeFallbackrStyles from "../../../styles/Home.module.scss";
+import styles from "../../../styles/Modal/VideoPlayer/VideoPlayerFallback.module.scss";
 
 interface VideoPlayerFallbackProps {
   open: boolean;
@@ -24,11 +24,9 @@ const VideoPlayerFallback: FC<VideoPlayerFallbackProps> = ({
         aria-labelledby="simple-modal-title"
         aria-describedby="simple-modal-description"
       >
-        <div
-          className={videoPlayeFallbackrStyles["video-player-fallback-wrapper"]}
-        >
+        <div className={styles["video-player-fallback-wrapper"]}>
           <div
-            className={videoPlayeFallbackrStyles["video-player-fallback-img"]}
+            className={styles["video-player-fallback-img"]}
             style={{ height: `${size.height}px` }}
           >
             <Image
@@ -40,9 +38,7 @@ const VideoPlayerFallback: FC<VideoPlayerFallbackProps> = ({
           </div>
           <div
             onClick={onClose}
-            className={
-              videoPlayeFallbackrStyles["video-player-fallback-close-icon"]
-            }
+            className={styles["video-player-fallback-close-icon"]}
           >
             <i className="fas fa-times-circle"></i>
           </div>

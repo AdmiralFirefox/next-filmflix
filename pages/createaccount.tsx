@@ -14,7 +14,7 @@ import AccountUserInput from "../components/Inputs/Accounts/AccountUserInput";
 const SignUpFooter = dynamic(
   () => import("../components/LandingPage/SignUpFooter")
 );
-import accountStyles from "../styles/Home.module.scss";
+import accountStyles from "../styles/Pages/CreateAccount.module.scss";
 
 const CreateAccount: FC = () => {
   const [authLoading, setAuthLoading] = useState(false);

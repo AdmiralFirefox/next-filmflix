@@ -7,7 +7,7 @@ const SimilarTV = dynamic(() => import("../../TVs/SimilarTV"));
 const TVSeasons = dynamic(() => import("../../TVs/TVSeasons"));
 const TVCasts = dynamic(() => import("../../TVs/TVCasts"));
 import { v4 as uuidv4 } from "uuid";
-import tvModalStyles from "../../../styles/Home.module.scss";
+import styles from "../../../styles/Modal/TVs/TVModal.module.scss";
 
 //Tabs
 import AppBar from "@material-ui/core/AppBar";
@@ -101,24 +101,24 @@ const TVModal: FC<TVModalProp> = ({
         aria-describedby="simple-modal-description"
       >
         <div
-          className={tvModalStyles["tv-modal-wrapper"]}
+          className={styles["tv-modal-wrapper"]}
           style={{ height: `${size.height}px` }}
         >
           <div
             onClick={handleCloseTVInfo}
-            className={tvModalStyles["tv-modal-close-icon"]}
+            className={styles["tv-modal-close-icon"]}
           >
             <i className="fas fa-times-circle"></i>
           </div>
           <TVTrailer id={id} />
 
-          <div className={tvModalStyles["tv-modal-content"]}>
-            <div className={tvModalStyles["tv-modal-title"]}>
+          <div className={styles["tv-modal-content"]}>
+            <div className={styles["tv-modal-title"]}>
               <h1>{name}</h1>
             </div>
 
-            <div className={tvModalStyles["tv-modal-series-info"]}>
-              <div className={tvModalStyles["tv-modal-episodes"]}>
+            <div className={styles["tv-modal-series-info"]}>
+              <div className={styles["tv-modal-episodes"]}>
                 {episodes <= 1 ? (
                   <p>{episodes} Episode</p>
                 ) : (
@@ -126,7 +126,7 @@ const TVModal: FC<TVModalProp> = ({
                 )}
               </div>
 
-              <div className={tvModalStyles["tv-modal-seasons"]}>
+              <div className={styles["tv-modal-seasons"]}>
                 {seasons <= 1 ? (
                   <p>{seasons} Season</p>
                 ) : (
@@ -135,9 +135,9 @@ const TVModal: FC<TVModalProp> = ({
               </div>
             </div>
 
-            <div className={tvModalStyles["tv-modal-overview"]}>
+            <div className={styles["tv-modal-overview"]}>
               <h2>Overview:</h2>
-              <div className={tvModalStyles["tv-modal-overview-content"]}>
+              <div className={styles["tv-modal-overview-content"]}>
                 {overview !== "" ? (
                   <p>{overview}</p>
                 ) : (
@@ -146,7 +146,7 @@ const TVModal: FC<TVModalProp> = ({
               </div>
             </div>
 
-            <div className={tvModalStyles["tv-modal-date-aired"]}>
+            <div className={styles["tv-modal-date-aired"]}>
               {dateAired === null ? (
                 <p>Date First Aired: N/A</p>
               ) : (
@@ -165,24 +165,22 @@ const TVModal: FC<TVModalProp> = ({
               )}
             </div>
 
-            <div className={tvModalStyles["tv-modal-status"]}>
+            <div className={styles["tv-modal-status"]}>
               <p>Status: {status}</p>
             </div>
 
-            <div className={tvModalStyles["tv-info-spoken-languages"]}>
+            <div className={styles["tv-info-spoken-languages"]}>
               {spokenLanguages.length === 1 ? (
                 <h2>Spoken Language:</h2>
               ) : (
                 <h2>Spoken Languages:</h2>
               )}
-              <div
-                className={tvModalStyles["tv-info-spoken-languages-content"]}
-              >
+              <div className={styles["tv-info-spoken-languages-content"]}>
                 {spokenLanguages.map((language, index) => {
                   return (
                     <div
                       key={uuidv4()}
-                      className={tvModalStyles["tv-info-modal-language-name"]}
+                      className={styles["tv-info-modal-language-name"]}
                     >
                       <p>
                         {language.english_name +
@@ -198,14 +196,14 @@ const TVModal: FC<TVModalProp> = ({
               </div>
             </div>
 
-            <div className={tvModalStyles["tv-modal-genres"]}>
+            <div className={styles["tv-modal-genres"]}>
               {genresTV.length === 1 ? <h2>Genre:</h2> : <h2>Genres:</h2>}
-              <div className={tvModalStyles["tv-info-modal-genre-content"]}>
+              <div className={styles["tv-info-modal-genre-content"]}>
                 {genresTV.map((genreTV, index) => {
                   return (
                     <div
                       key={genreTV.id}
-                      className={tvModalStyles["tv-modal-genre-name"]}
+                      className={styles["tv-modal-genre-name"]}
                     >
                       <p>
                         {genreTV.name +

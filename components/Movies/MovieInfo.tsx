@@ -5,7 +5,7 @@ import Axios from "axios";
 import Image from "next/image";
 import PosterFallback from "../../assets/fallbacks/PosterFallback.jpg";
 const MovieModal = dynamic(() => import("../Modal/Movies/MovieModal"));
-import movieInfoStyles from "../../styles/Home.module.scss";
+import styles from "../../styles/Movies/MovieInfo.module.scss";
 
 const { NEXT_PUBLIC_API_KEY } = process.env;
 
@@ -98,7 +98,7 @@ const MovieInfo: FC<MovieInfoProps> = ({ posterPath, voteAverage }) => {
       {posterPath !== null ? (
         <>
           {posterPath !== "" ? (
-            <div className={movieInfoStyles["movie-container"]}>
+            <div className={styles["movie-container"]}>
               <Image
                 src={`https://image.tmdb.org/t/p/w300/${posterPath}`}
                 alt="Movie Poster"
@@ -107,13 +107,13 @@ const MovieInfo: FC<MovieInfoProps> = ({ posterPath, voteAverage }) => {
                 priority={true}
                 unoptimized={true}
               />
-              <div className={movieInfoStyles["movie-overlay"]}>
-                <div className={movieInfoStyles["movie-vote-average"]}>
+              <div className={styles["movie-overlay"]}>
+                <div className={styles["movie-vote-average"]}>
                   {voteAverage !== 0 ? <h1>{voteAverage}</h1> : <h1>N/A</h1>}
                 </div>
                 <div
                   onClick={handleOpenMovieModal}
-                  className={movieInfoStyles["movie-info-icon"]}
+                  className={styles["movie-info-icon"]}
                 >
                   <i className="fas fa-info-circle"></i>
                 </div>
@@ -130,7 +130,7 @@ const MovieInfo: FC<MovieInfoProps> = ({ posterPath, voteAverage }) => {
           )}
         </>
       ) : (
-        <div className={movieInfoStyles["movie-container"]}>
+        <div className={styles["movie-container"]}>
           <Image
             src={PosterFallback}
             alt="Movie Poster"
@@ -138,13 +138,13 @@ const MovieInfo: FC<MovieInfoProps> = ({ posterPath, voteAverage }) => {
             height={500}
             priority={true}
           />
-          <div className={movieInfoStyles["movie-overlay"]}>
-            <div className={movieInfoStyles["movie-vote-average"]}>
+          <div className={styles["movie-overlay"]}>
+            <div className={styles["movie-vote-average"]}>
               {voteAverage !== 0 ? <h1>{voteAverage}</h1> : <h1>N/A</h1>}
             </div>
             <div
               onClick={handleOpenMovieModal}
-              className={movieInfoStyles["movie-info-icon"]}
+              className={styles["movie-info-icon"]}
             >
               <i className="fas fa-info-circle"></i>
             </div>

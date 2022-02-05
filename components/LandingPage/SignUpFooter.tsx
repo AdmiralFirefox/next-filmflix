@@ -1,17 +1,17 @@
 import React, { FC } from "react";
 import Link from "next/link";
-import signUpFooterStyles from "../../styles/Home.module.scss";
+import styles from "../../styles/LandingPage/SignUpFooter.module.scss";
 
 const SignUpFooter: FC = () => {
   return (
-    <div className={signUpFooterStyles["signup-footer-wrapper"]}>
-      <div className={signUpFooterStyles["signup-footer-contact-links"]}>
-        <div className={signUpFooterStyles["signup-footer-questions"]}>
+    <div className={styles["signup-footer-wrapper"]}>
+      <div className={styles["signup-footer-contact-links"]}>
+        <div className={styles["signup-footer-questions"]}>
           <Link href="/signin">
             <a>Questions? Contact us.</a>
           </Link>
         </div>
-        <div className={signUpFooterStyles["signup-footer-links-info"]}>
+        <div className={styles["signup-footer-links-info"]}>
           <Link href="/signin">
             <a>FAQ</a>
           </Link>
@@ -29,7 +29,7 @@ const SignUpFooter: FC = () => {
           </Link>
         </div>
       </div>
-      <div className={signUpFooterStyles["signup-footer-terms-of-service"]}>
+      <div className={styles["signup-footer-terms-of-service"]}>
         <Link href="/signin">
           <a>Terms of Use</a>
         </Link>

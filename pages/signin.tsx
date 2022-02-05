@@ -20,7 +20,7 @@ const SignUpFooter = dynamic(
 const ProfileSelection = dynamic(
   () => import("../components/Main/ProfileSelection")
 );
-import profileStyles from "../styles/Home.module.scss";
+import profileStyles from "../styles/Pages/SignIn.module.scss";
 
 const SignIn: FC = () => {
   const [authLoading, setAuthLoading] = useState(false);

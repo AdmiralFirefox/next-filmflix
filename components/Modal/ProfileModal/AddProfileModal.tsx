@@ -1,9 +1,9 @@
 import React, { FC, useEffect, useState } from "react";
 import Modal from "@material-ui/core/Modal";
-import addProfileModalStyles from "../../../styles/Home.module.scss";
 import AddProfileModalInput from "../../Inputs/Modal/AddProfileModalInput";
 import AddProfileModalButton from "../../Buttons/Modal/AddProfileModalButton";
 import CancelProfileAddModalButton from "../../Buttons/Modal/CancelProfileAddButton";
+import styles from "../../../styles/Modal/ProfileModal/AddProfileModal.module.scss";
 
 // Material UI Snackbar Import
 import Snackbar from "@material-ui/core/Snackbar";
@@ -95,29 +95,21 @@ const AddProfileModal: FC<AddProfileModalProps> = ({
         aria-labelledby="simple-modal-title"
         aria-describedby="simple-modal-description"
       >
-        <div
-          className={
-            addProfileModalStyles["add-profile-modal-wrapper-animation"]
-          }
-        >
-          <div className={addProfileModalStyles["add-profile-modal-wrapper"]}>
-            <div className={addProfileModalStyles["add-profile-modal-title"]}>
+        <div className={styles["add-profile-modal-wrapper-animation"]}>
+          <div className={styles["add-profile-modal-wrapper"]}>
+            <div className={styles["add-profile-modal-title"]}>
               <h1>What&apos;s your Name?</h1>
             </div>
             <form
               onSubmit={handleProfileSubmit}
-              className={addProfileModalStyles["add-profile-modal-form"]}
+              className={styles["add-profile-modal-form"]}
             >
               <div>
                 <AddProfileModalInput
                   handleProfileChange={handleProfileChange}
                 />
               </div>
-              <div
-                className={
-                  addProfileModalStyles["add-profile-modal-button-wrapper"]
-                }
-              >
+              <div className={styles["add-profile-modal-button-wrapper"]}>
                 <AddProfileModalButton profile={profile} />
                 <CancelProfileAddModalButton
                   setProfile={setProfile}

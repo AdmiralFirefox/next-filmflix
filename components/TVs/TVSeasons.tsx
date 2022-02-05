@@ -4,7 +4,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import TVEpisodes from "./TVEpisodes";
-import tvSeasonStyles from "../../styles/Home.module.scss";
+import styles from "../../styles/TVs/TVSeasons.module.scss";
 
 interface SeasonProp {
   seasons: number;
@@ -33,7 +33,7 @@ const TVSeasons: FC<SeasonProp> = ({ seasons, id }) => {
 
   return (
     <div>
-      <div className={tvSeasonStyles["tv-seasons-title"]}>
+      <div className={styles["tv-seasons-title"]}>
         <h1>Season:</h1>
       </div>
       <FormControl variant="filled" className={classes.formControl}>
@@ -53,7 +53,7 @@ const TVSeasons: FC<SeasonProp> = ({ seasons, id }) => {
           })}
         </Select>
       </FormControl>
-      <div className={tvSeasonStyles["tv-seasons-episodes-wrapper"]}>
+      <div className={styles["tv-seasons-episodes-wrapper"]}>
         <TVEpisodes currentSeason={currentSeason} id={id} />
       </div>
     </div>

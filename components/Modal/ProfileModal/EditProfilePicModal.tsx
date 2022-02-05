@@ -4,8 +4,8 @@ import useOnClickOutside from "../../../hooks/useOnClickOutside";
 import Modal from "@material-ui/core/Modal";
 import Image from "next/image";
 import { AvatarData } from "../../../data/profiledata";
-import editProfilePicStyles from "../../../styles/Home.module.scss";
 import SaveProfilePicButton from "../../Buttons/Modal/SaveProfilePicButton";
+import styles from "../../../styles/Modal/ProfileModal/EditProfilePicModal.module.scss";
 
 interface EditProfilePicProps {
   editProfilePicModal: boolean;
@@ -44,20 +44,14 @@ const EditProfilePicModal: FC<EditProfilePicProps> = ({
         aria-labelledby="simple-modal-title"
         aria-describedby="simple-modal-description"
       >
-        <div
-          className={editProfilePicStyles["edit-profile-pic-wrapper-animation"]}
-        >
+        <div className={styles["edit-profile-pic-wrapper-animation"]}>
           <div
-            className={editProfilePicStyles["edit-profile-pic-wrapper"]}
+            className={styles["edit-profile-pic-wrapper"]}
             style={{ height: `${size.height}px` }}
           >
-            <div
-              className={
-                editProfilePicStyles["edit-profile-pic-close-icon-wrapper"]
-              }
-            >
+            <div className={styles["edit-profile-pic-close-icon-wrapper"]}>
               <div
-                className={editProfilePicStyles["edit-profile-pic-close-icon"]}
+                className={styles["edit-profile-pic-close-icon"]}
                 onClick={() => {
                   setEditProfilePic(false);
                   setEditProfilePicText(profilePic);
@@ -67,32 +61,30 @@ const EditProfilePicModal: FC<EditProfilePicProps> = ({
               </div>
             </div>
 
-            <div className={editProfilePicStyles["edit-profile-pic-title"]}>
+            <div className={styles["edit-profile-pic-title"]}>
               <h1>Choose Profile</h1>
             </div>
 
-            <div className={editProfilePicStyles["profile-pics"]}>
+            <div className={styles["profile-pics"]}>
               {AvatarData.map((avatar) => {
                 return (
                   <div
                     key={avatar.id}
-                    className={editProfilePicStyles["edit-profile-container"]}
+                    className={styles["edit-profile-container"]}
                     tabIndex={avatar.tabIndex}
                   >
-                    <div className={editProfilePicStyles["choose-profile"]}>
+                    <div className={styles["choose-profile"]}>
                       <Image src={avatar.avatar} alt="Avatar Profile" />
                     </div>
                     <div
                       ref={selectRef}
-                      className={editProfilePicStyles["edit-profile-overlay"]}
+                      className={styles["edit-profile-overlay"]}
                       onClick={() => {
                         setEditProfilePicText(avatar.avatar);
                         focusProfilePic();
                       }}
                     >
-                      <div
-                        className={editProfilePicStyles["edit-profile-icon"]}
-                      >
+                      <div className={styles["edit-profile-icon"]}>
                         <i className="far fa-check-circle"></i>
                       </div>
                     </div>
@@ -101,7 +93,7 @@ const EditProfilePicModal: FC<EditProfilePicProps> = ({
               })}
             </div>
 
-            <div className={editProfilePicStyles["edit-profile-pic-button"]}>
+            <div className={styles["edit-profile-pic-button"]}>
               <SaveProfilePicButton
                 SubmitProfilePicEdit={SubmitProfilePicEdit}
                 focus={focus}

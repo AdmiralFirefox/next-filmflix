@@ -1,16 +1,16 @@
 import React, { FC } from "react";
 import Link from "next/link";
-import landingPageFooterStyles from "../../../styles/Home.module.scss";
+import styles from "../../../styles/LandingPage/Content/LandingPageFooter.module.scss";
 
 const LandingPageFooter: FC = () => {
   return (
-    <div className={landingPageFooterStyles["landing-page-footer-wrapper"]}>
-      <div className={landingPageFooterStyles["landing-page-footer-questions"]}>
+    <div className={styles["landing-page-footer-wrapper"]}>
+      <div className={styles["landing-page-footer-questions"]}>
         <Link href="/">
           <a>Questions? Contact us.</a>
         </Link>
       </div>
-      <div className={landingPageFooterStyles["landing-page-footer-links"]}>
+      <div className={styles["landing-page-footer-links"]}>
         <div>
           <Link href="/">
             <a>FAQ</a>
@@ -71,7 +71,7 @@ const LandingPageFooter: FC = () => {
           </Link>
         </div>
       </div>
-      <div className={landingPageFooterStyles["landing-page-footer-rights"]}>
+      <div className={styles["landing-page-footer-rights"]}>
         <p>Filmflix. All rights reserved.</p>
       </div>
     </div>

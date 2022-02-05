@@ -7,7 +7,7 @@ import VideoFallback from "../../assets/fallbacks/VideoFallback.jpg";
 import ReactPlayer from "react-player/lazy";
 const VideoPlayer = dynamic(() => import("../Modal/VideoPlayer/VideoPlayer"));
 import PlayTVButton from "../Buttons/TVs/PlayTVButton";
-import tvTrailerStyles from "../../styles/Home.module.scss";
+import styles from "../../styles/TVs/TVTrailer.module.scss";
 
 const { NEXT_PUBLIC_API_KEY } = process.env;
 
@@ -54,7 +54,7 @@ const TVTrailer: FC<{ id: number }> = ({ id }) => {
   return (
     <div>
       {loadingPlayer ? (
-        <Skeleton variant="rect" id={tvTrailerStyles["tv-trailer-skeleton"]} />
+        <Skeleton variant="rect" id={styles["tv-trailer-skeleton"]} />
       ) : (
         <>
           {typeof trailerTV !== "undefined" ? (
@@ -73,8 +73,8 @@ const TVTrailer: FC<{ id: number }> = ({ id }) => {
                 loop
                 height="30em"
               />
-              <div className={tvTrailerStyles["tv-button-wrappers"]}>
-                <div className={tvTrailerStyles["play-tv-button"]}>
+              <div className={styles["tv-button-wrappers"]}>
+                <div className={styles["play-tv-button"]}>
                   <PlayTVButton
                     handleOpenTVVideoPlayer={handleOpenTVVideoPlayer}
                   />
@@ -83,7 +83,7 @@ const TVTrailer: FC<{ id: number }> = ({ id }) => {
             </>
           ) : (
             <>
-              <div className={tvTrailerStyles["tv-trailer-fallback"]}>
+              <div className={styles["tv-trailer-fallback"]}>
                 <Image
                   src={VideoFallback}
                   alt="Video Fallback"

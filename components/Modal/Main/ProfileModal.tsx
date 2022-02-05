@@ -7,7 +7,7 @@ import {
 } from "../../Main/ProfileSelection";
 import { withStyles, Theme } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
-import profileModalStyles from "../../../styles/Home.module.scss";
+import styles from "../../../styles/Modal/Main/ProfileModal.module.scss";
 
 interface ProfileModalProps {
   openProfileModal: boolean;
@@ -54,24 +54,24 @@ const ProfileModal: FC<ProfileModalProps> = ({
         aria-describedby="simple-modal-description"
       >
         <div
-          className={profileModalStyles["profile-info-modal-wrapper-animation"]}
+          className={styles["profile-info-modal-wrapper-animation"]}
         >
-          <div className={profileModalStyles["profile-info-modal-wrapper"]}>
+          <div className={styles["profile-info-modal-wrapper"]}>
             <div
-              className={profileModalStyles["profile-info-modal-close-icon"]}
+              className={styles["profile-info-modal-close-icon"]}
               onClick={handleCloseProfileModal}
             >
               <i className="fas fa-times-circle"></i>
             </div>
-            <div className={profileModalStyles["profile-info-user-info"]}>
-              <div className={profileModalStyles["profile-info-user-image"]}>
+            <div className={styles["profile-info-user-info"]}>
+              <div className={styles["profile-info-user-image"]}>
                 <Image src={profilePic} alt="Avatar Profile" />
               </div>
-              <div className={profileModalStyles["profile-info-user-name"]}>
+              <div className={styles["profile-info-user-name"]}>
                 <h1>{profile}</h1>
               </div>
             </div>
-            <div className={profileModalStyles["profile-info-button-wrapper"]}>
+            <div className={styles["profile-info-button-wrapper"]}>
               <BlueButtonClick
                 variant="contained"
                 color="primary"

@@ -10,7 +10,7 @@ import SearchIcon from "@material-ui/icons/Search";
 import MovieIcon from "@material-ui/icons/Movie";
 import TvIcon from "@material-ui/icons/Tv";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
-import navbarContentStyles from "../../styles/Home.module.scss";
+import styles from "../../styles/Main/NavbarContent.module.scss";
 
 interface NavbarContentProps {
   manageProfiles: () => void;
@@ -82,37 +82,30 @@ const NavbarContent: FC<NavbarContentProps> = ({
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <div>
-        <div className={navbarContentStyles["navbar-content-manage-profile"]}>
-          <div className={navbarContentStyles["navbar-content-image"]}>
+        <div className={styles["navbar-content-manage-profile"]}>
+          <div className={styles["navbar-content-image"]}>
             <Image src={profilePic} alt="AvatarProfile" priority={true} />
           </div>
-          <div
-            className={navbarContentStyles["navbar-content-profile-content"]}
-          >
-            <div className={navbarContentStyles["navbar-content-profile-name"]}>
+          <div className={styles["navbar-content-profile-content"]}>
+            <div className={styles["navbar-content-profile-name"]}>
               <p>{profile}</p>
             </div>
             <div
-              className={
-                navbarContentStyles["navbar-content-manage-profile-name"]
-              }
+              className={styles["navbar-content-manage-profile-name"]}
               onClick={manageProfiles}
             >
               <p>Manage Profiles</p>
             </div>
           </div>
         </div>
-        <div className={navbarContentStyles["navbar-content-manage-category"]}>
-          <div
-            className={navbarContentStyles["navbar-content-search"]}
-            onClick={searchMode}
-          >
+        <div className={styles["navbar-content-manage-category"]}>
+          <div className={styles["navbar-content-search"]} onClick={searchMode}>
             <SearchIcon fontSize="large" style={littleMargin} />
             <p>Search</p>
           </div>
           <div onClick={toggleDrawer(anchor, false)}>
             <div
-              className={navbarContentStyles["navbar-content-movie-category"]}
+              className={styles["navbar-content-movie-category"]}
               onClick={() => setCategory("Movies")}
             >
               <MovieIcon fontSize="large" style={littleMargin} />
@@ -121,17 +114,14 @@ const NavbarContent: FC<NavbarContentProps> = ({
           </div>
           <div onClick={toggleDrawer(anchor, false)}>
             <div
-              className={navbarContentStyles["navbar-content-tv-category"]}
+              className={styles["navbar-content-tv-category"]}
               onClick={() => setCategory("TVs")}
             >
               <TvIcon fontSize="large" style={littleMargin} />
               <p>TV Shows</p>
             </div>
           </div>
-          <div
-            className={navbarContentStyles["navbar-content-signout"]}
-            onClick={signOut}
-          >
+          <div className={styles["navbar-content-signout"]} onClick={signOut}>
             <ExitToAppIcon fontSize="large" style={littleMargin} />
             <p>Sign Out</p>
           </div>

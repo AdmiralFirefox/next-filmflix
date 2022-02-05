@@ -3,7 +3,7 @@ import Axios from "axios";
 import dynamic from "next/dynamic";
 const TrendingTVInfo = dynamic(() => import("./TrendingTVInfo"));
 import Skeleton from "@material-ui/lab/Skeleton";
-import trendingTVStyles from "../../../styles/Home.module.scss";
+import styles from "../../../styles/Trending/TrendingTVs/TrendingTVs.module.scss";
 
 const { NEXT_PUBLIC_API_KEY } = process.env;
 
@@ -47,10 +47,7 @@ const TrendingTVs: FC = () => {
   if (loading) {
     return (
       <>
-        <Skeleton
-          variant="rect"
-          id={trendingTVStyles["trending-tvs-loading-skeleton"]}
-        />
+        <Skeleton variant="rect" id={styles["trending-tvs-loading-skeleton"]} />
       </>
     );
   }

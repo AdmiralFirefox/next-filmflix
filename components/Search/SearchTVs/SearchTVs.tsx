@@ -5,7 +5,7 @@ import dynamic from "next/dynamic";
 const SearchTVInfo = dynamic(() => import("./SearchTVInfo"));
 import SearchTVsInput from "../../Inputs/SearchTVs/SearchTVsInput";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import searchTVStyles from "../../../styles/Home.module.scss";
+import styles from "../../../styles/Search/SearchTVs/SearchTVs.module.scss";
 
 const { NEXT_PUBLIC_API_KEY } = process.env;
 
@@ -71,7 +71,7 @@ const SearchTVs: FC = () => {
       !loadingSearches
     ) {
       return (
-        <div className={searchTVStyles["search-tvs-no-results-found"]}>
+        <div className={styles["search-tvs-no-results-found"]}>
           <p>
             We tried searching for &quot;{searchQuery}&quot; but we
             couldn&apos;t find it. Please check your spelling or try searching
@@ -84,12 +84,12 @@ const SearchTVs: FC = () => {
 
   return (
     <>
-      <div className={searchTVStyles["search-tvs-input"]}>
+      <div className={styles["search-tvs-input"]}>
         <SearchTVsInput handleSearchChange={handleSearchChange} />
       </div>
 
       {searchQuery === "/" ? null : (
-        <p className={searchTVStyles["search-tvs-guide"]}>
+        <p className={styles["search-tvs-guide"]}>
           Search results for: {searchQuery}
         </p>
       )}
@@ -97,11 +97,11 @@ const SearchTVs: FC = () => {
       {noResultsFound()}
 
       {loadingSearches ? (
-        <div className={searchTVStyles["search-tvs-loading"]}>
+        <div className={styles["search-tvs-loading"]}>
           <CircularProgress size={50} />
         </div>
       ) : (
-        <div className={searchTVStyles["search-tvs-results"]}>
+        <div className={styles["search-tvs-results"]}>
           {searchTVs
             .filter((searchTV) => searchTV.poster_path !== null)
             .map((searchTV) => {

@@ -4,7 +4,7 @@ import Image from "next/image";
 import BackdropFallback from "../../assets/fallbacks/BackdropFallback.jpg";
 import { withStyles, Theme } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
-import tvEpisodesStyles from "../../styles/Home.module.scss";
+import styles from "../../styles/TVs/TVEpisodes.module.scss";
 
 const { NEXT_PUBLIC_API_KEY } = process.env;
 
@@ -75,10 +75,10 @@ const TVEpisodes: FC<CurrentSeasonProp> = ({ currentSeason, id }) => {
       {currentItems.map((episode) => {
         return (
           <div key={episode.id}>
-            <div className={tvEpisodesStyles["tv-episode-info"]}>
+            <div className={styles["tv-episode-info"]}>
               <div>
                 {episode.still_path !== null ? (
-                  <div className={tvEpisodesStyles["tv-episode-image"]}>
+                  <div className={styles["tv-episode-image"]}>
                     <Image
                       src={`https://image.tmdb.org/t/p/w500/${episode.still_path}`}
                       alt={`Episode ${episode.episode_number} Poster`}
@@ -92,7 +92,7 @@ const TVEpisodes: FC<CurrentSeasonProp> = ({ currentSeason, id }) => {
                     />
                   </div>
                 ) : (
-                  <div className={tvEpisodesStyles["tv-episode-image"]}>
+                  <div className={styles["tv-episode-image"]}>
                     <Image
                       src={BackdropFallback}
                       alt="Fallback Poster"
@@ -107,7 +107,7 @@ const TVEpisodes: FC<CurrentSeasonProp> = ({ currentSeason, id }) => {
                 )}
               </div>
 
-              <div className={tvEpisodesStyles["tv-episode-content"]}>
+              <div className={styles["tv-episode-content"]}>
                 <h2>
                   Season {currentSeason}, Episode {episode.episode_number}
                 </h2>
@@ -115,7 +115,7 @@ const TVEpisodes: FC<CurrentSeasonProp> = ({ currentSeason, id }) => {
               </div>
             </div>
 
-            <div className={tvEpisodesStyles["tv-episode-overview"]}>
+            <div className={styles["tv-episode-overview"]}>
               {episode.overview === "" ? (
                 <p>Overview Unvailable...</p>
               ) : (
@@ -126,7 +126,7 @@ const TVEpisodes: FC<CurrentSeasonProp> = ({ currentSeason, id }) => {
         );
       })}
 
-      <div className={tvEpisodesStyles["tv-episode-button-wrapper"]}>
+      <div className={styles["tv-episode-button-wrapper"]}>
         <LoadMoreEpisodeButton
           variant="contained"
           color="primary"

@@ -4,7 +4,7 @@ import Image from "next/image";
 import PosterFallback from "../../../assets/fallbacks/PosterFallback.jpg";
 import { SearchMovieIDContext } from "./SearchMovies";
 import Axios from "axios";
-import searchMovieInfoStyles from "../../../styles/Home.module.scss";
+import styles from "../../../styles/Search/SearchMovies/SearchMovieInfo.module.scss";
 const MovieModal = dynamic(() => import("../../Modal/Movies/MovieModal"));
 
 const { NEXT_PUBLIC_API_KEY } = process.env;
@@ -101,7 +101,7 @@ const SearchMovieInfo: FC<SearchMovieInfoProps> = ({
       {posterPath !== "" ? (
         <>
           {posterPath !== null ? (
-            <div className={searchMovieInfoStyles["search-movie-container"]}>
+            <div className={styles["search-movie-container"]}>
               <Image
                 src={`https://image.tmdb.org/t/p/w500/${posterPath}`}
                 alt="Movie Poster"
@@ -113,22 +113,20 @@ const SearchMovieInfo: FC<SearchMovieInfoProps> = ({
                 unoptimized={true}
               />
 
-              <div className={searchMovieInfoStyles["search-movie-overlay"]}>
-                <div
-                  className={searchMovieInfoStyles["search-movie-vote-average"]}
-                >
+              <div className={styles["search-movie-overlay"]}>
+                <div className={styles["search-movie-vote-average"]}>
                   {voteAverge !== 0 ? <h1>{voteAverge}</h1> : <h1>N/A</h1>}
                 </div>
                 <div
                   onClick={handleOpenSearchMovieModal}
-                  className={searchMovieInfoStyles["search-movie-info-icon"]}
+                  className={styles["search-movie-info-icon"]}
                 >
                   <i className="fas fa-info-circle"></i>
                 </div>
               </div>
             </div>
           ) : (
-            <div className={searchMovieInfoStyles["search-movie-container"]}>
+            <div className={styles["search-movie-container"]}>
               <Image
                 src={PosterFallback}
                 alt="Movie Poster"
@@ -139,15 +137,13 @@ const SearchMovieInfo: FC<SearchMovieInfoProps> = ({
                 objectFit="cover"
               />
 
-              <div className={searchMovieInfoStyles["search-movie-overlay"]}>
-                <div
-                  className={searchMovieInfoStyles["search-movie-vote-average"]}
-                >
+              <div className={styles["search-movie-overlay"]}>
+                <div className={styles["search-movie-vote-average"]}>
                   {voteAverge !== 0 ? <h1>{voteAverge}</h1> : <h1>N/A</h1>}
                 </div>
                 <div
                   onClick={handleOpenSearchMovieModal}
-                  className={searchMovieInfoStyles["search-movie-info-icon"]}
+                  className={styles["search-movie-info-icon"]}
                 >
                   <i className="fas fa-info-circle"></i>
                 </div>
@@ -156,7 +152,7 @@ const SearchMovieInfo: FC<SearchMovieInfoProps> = ({
           )}
         </>
       ) : (
-        <div className={searchMovieInfoStyles["search-movie-container"]}>
+        <div className={styles["search-movie-container"]}>
           <Image
             src={PosterFallback}
             alt="Movie Poster"
@@ -167,13 +163,13 @@ const SearchMovieInfo: FC<SearchMovieInfoProps> = ({
             objectFit="cover"
           />
 
-          <div className={searchMovieInfoStyles["search-movie-overlay"]}>
-            <div className={searchMovieInfoStyles["search-movie-vote-average"]}>
+          <div className={styles["search-movie-overlay"]}>
+            <div className={styles["search-movie-vote-average"]}>
               {voteAverge !== 0 ? <h1>{voteAverge}</h1> : <h1>N/A</h1>}
             </div>
             <div
               onClick={handleOpenSearchMovieModal}
-              className={searchMovieInfoStyles["search-movie-info-icon"]}
+              className={styles["search-movie-info-icon"]}
             >
               <i className="fas fa-info-circle"></i>
             </div>

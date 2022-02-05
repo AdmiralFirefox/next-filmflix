@@ -3,7 +3,7 @@ import dynamic from "next/dynamic";
 import Axios from "axios";
 const MovieInfo = dynamic(() => import("./MovieInfo"));
 import Skeleton from "@material-ui/lab/Skeleton";
-import movieCarouselStyles from "../../styles/Home.module.scss";
+import styles from "../../styles/Movies/MovieCarousel.module.scss";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -88,12 +88,10 @@ const MovieCarousel: FC<RouteProp> = ({ route, title }) => {
     <div>
       {loading ? null : (
         <>
-          <div className={movieCarouselStyles["movie-carousel-info-title"]}>
+          <div className={styles["movie-carousel-info-title"]}>
             <p>{title}:</p>
           </div>
-          <span
-            className={movieCarouselStyles["movie-carousel-fade-effect"]}
-          ></span>
+          <span className={styles["movie-carousel-fade-effect"]}></span>
         </>
       )}
 
@@ -122,18 +120,20 @@ const MovieCarousel: FC<RouteProp> = ({ route, title }) => {
           </>
         ) : (
           <>
-            {movies.filter(movie => movie.poster_path !== null).map((movie) => {
-              return (
-                <SwiperSlide key={movie.id} virtualIndex={movie.id}>
-                  <MovieIDContext.Provider value={movie.id}>
-                    <MovieInfo
-                      posterPath={movie.poster_path}
-                      voteAverage={movie.vote_average}
-                    />
-                  </MovieIDContext.Provider>
-                </SwiperSlide>
-              );
-            })}
+            {movies
+              .filter((movie) => movie.poster_path !== null)
+              .map((movie) => {
+                return (
+                  <SwiperSlide key={movie.id} virtualIndex={movie.id}>
+                    <MovieIDContext.Provider value={movie.id}>
+                      <MovieInfo
+                        posterPath={movie.poster_path}
+                        voteAverage={movie.vote_average}
+                      />
+                    </MovieIDContext.Provider>
+                  </SwiperSlide>
+                );
+              })}
           </>
         )}
       </Swiper>

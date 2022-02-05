@@ -4,7 +4,7 @@ import Image from "next/image";
 import ProfileFallback from "../../assets/fallbacks/ProfileFallback.jpg";
 import { withStyles, Theme } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
-import movieCastsStyles from "../../styles/Home.module.scss";
+import styles from "../../styles/Movies/MovieCasts.module.scss";
 
 const { NEXT_PUBLIC_API_KEY } = process.env;
 
@@ -70,12 +70,12 @@ const MovieCasts: FC<{ id: number }> = ({ id }) => {
 
   return (
     <>
-      <div className={movieCastsStyles["movie-casts-wrapper"]}>
+      <div className={styles["movie-casts-wrapper"]}>
         {currentItems.map((movieCast) => {
           return (
             <div key={movieCast.id}>
               {movieCast.profile_path !== null ? (
-                <div className={movieCastsStyles["movie-casts-image"]}>
+                <div className={styles["movie-casts-image"]}>
                   <Image
                     src={`https://image.tmdb.org/t/p/w500/${movieCast.profile_path}`}
                     alt="Movie Cast"
@@ -88,7 +88,7 @@ const MovieCasts: FC<{ id: number }> = ({ id }) => {
                   />
                 </div>
               ) : (
-                <div className={movieCastsStyles["movie-casts-image"]}>
+                <div className={styles["movie-casts-image"]}>
                   <Image
                     src={ProfileFallback}
                     alt="Movie Cast"
@@ -100,10 +100,10 @@ const MovieCasts: FC<{ id: number }> = ({ id }) => {
                 </div>
               )}
 
-              <div className={movieCastsStyles["movie-casts-name"]}>
+              <div className={styles["movie-casts-name"]}>
                 <p>{movieCast.name}</p>
                 {movieCast.character !== "" ? (
-                  <p className={movieCastsStyles["movie-casts-character"]}>
+                  <p className={styles["movie-casts-character"]}>
                     {movieCast.character}
                   </p>
                 ) : (
@@ -115,7 +115,7 @@ const MovieCasts: FC<{ id: number }> = ({ id }) => {
         })}
       </div>
 
-      <div className={movieCastsStyles["movie-casts-button-wrapper"]}>
+      <div className={styles["movie-casts-button-wrapper"]}>
         <LoadMoreProfilesButton
           variant="contained"
           color="primary"

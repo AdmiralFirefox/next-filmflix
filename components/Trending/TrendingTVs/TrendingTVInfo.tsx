@@ -3,7 +3,6 @@ import dynamic from "next/dynamic";
 import { TrendingTVIDContext } from "./TrendingTVs";
 import Axios from "axios";
 import Image from "next/image";
-import trendingTVInfoStyles from "../../../styles/Home.module.scss";
 import MoreTVInfoButton from "../../Buttons/TrendingTVs/MoreTVInfoButton";
 const PlayTVVideoButton = dynamic(
   () => import("../../Buttons/TrendingTVs/PlayTVVideoButton")
@@ -11,6 +10,7 @@ const PlayTVVideoButton = dynamic(
 import Skeleton from "@material-ui/lab/Skeleton";
 import FallbackButton from "../../Buttons/FallbackButton/FallbackButton";
 const TVModal = dynamic(() => import("../../Modal/TVs/TVModal"));
+import styles from "../../../styles/Trending/TrendingTVs/TrendingTVInfo.module.scss";
 
 const { NEXT_PUBLIC_API_KEY } = process.env;
 
@@ -129,7 +129,7 @@ const TrendingTVInfo: FC<TrendingTVInfoProps> = ({
       />
 
       {backdropPath !== "" ? (
-        <div className={trendingTVInfoStyles["trending-tv-img"]}>
+        <div className={styles["trending-tv-img"]}>
           <Image
             src={`https://image.tmdb.org/t/p/w1280/${backdropPath}`}
             alt="TV Poster"
@@ -142,20 +142,17 @@ const TrendingTVInfo: FC<TrendingTVInfoProps> = ({
         </div>
       ) : (
         <>
-          <Skeleton
-            variant="rect"
-            id={trendingTVInfoStyles["trending-tv-skeleton"]}
-          />
+          <Skeleton variant="rect" id={styles["trending-tv-skeleton"]} />
         </>
       )}
-      <div className={trendingTVInfoStyles["trending-tv-content"]}>
-        <div className={trendingTVInfoStyles["trending-tv-title"]}>
+      <div className={styles["trending-tv-content"]}>
+        <div className={styles["trending-tv-title"]}>
           <h1>{name}</h1>
         </div>
-        <div className={trendingTVInfoStyles["trending-tv-overview"]}>
+        <div className={styles["trending-tv-overview"]}>
           <p>{limitText(overview, 500)}</p>
         </div>
-        <div className={trendingTVInfoStyles["trending-tv-button-wrapper"]}>
+        <div className={styles["trending-tv-button-wrapper"]}>
           {trendingTVInfo.id !== 0 ? (
             <>
               <PlayTVVideoButton id={trendingTVInfo.id} />
@@ -169,9 +166,7 @@ const TrendingTVInfo: FC<TrendingTVInfoProps> = ({
           />
         </div>
       </div>
-      <div
-        className={trendingTVInfoStyles["trending-tv-gradient-shadow"]}
-      ></div>
+      <div className={styles["trending-tv-gradient-shadow"]}></div>
     </>
   );
 };

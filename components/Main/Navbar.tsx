@@ -5,7 +5,7 @@ import WebLogo from "../../assets/logo/WebLogo.png";
 import { ProfilePicContext } from "./ProfileSelection";
 const NavbarContent = dynamic(() => import("./NavbarContent"));
 import NavbarSearchButton from "../Buttons/Main/NavbarSearchButton";
-import navbarStyles from "../../styles/Home.module.scss";
+import styles from "../../styles/Main/Navbar.module.scss";
 
 //Material UI Dropdown
 import InputLabel from "@material-ui/core/InputLabel";
@@ -65,15 +65,21 @@ const Navbar: FC<NavbarProps> = ({
     <div
       className={
         navbackground
-          ? navbarStyles["navbar-wrapper-active"]
-          : navbarStyles["navbar-wrapper"]
+          ? styles["navbar-wrapper-active"]
+          : styles["navbar-wrapper"]
       }
     >
-      <div className={navbarStyles["navbar-set"]}>
-        <div className={navbarStyles["site-logo"]}>
-          <Image src={WebLogo} alt="Web Logo" width={150} height={50} objectFit="cover" />
+      <div className={styles["navbar-set"]}>
+        <div className={styles["site-logo"]}>
+          <Image
+            src={WebLogo}
+            alt="Web Logo"
+            width={150}
+            height={50}
+            objectFit="cover"
+          />
         </div>
-        <div className={navbarStyles["navbar-dropdown"]}>
+        <div className={styles["navbar-dropdown"]}>
           <FormControl variant="filled">
             <InputLabel
               id="demo-simple-select-filled-label"
@@ -95,19 +101,19 @@ const Navbar: FC<NavbarProps> = ({
         </div>
       </div>
 
-      <div className={navbarStyles["navbar-manage"]}>
-        <div className={navbarStyles["navbar-search-button-wrapper"]}>
+      <div className={styles["navbar-manage"]}>
+        <div className={styles["navbar-search-button-wrapper"]}>
           <NavbarSearchButton searchMode={searchMode} />
         </div>
 
         <div
-          className={navbarStyles["navbar-manage-image"]}
+          className={styles["navbar-manage-image"]}
           onClick={handleOpenProfileModal}
         >
           <Image src={profilePic} alt="Avatar Profile" />
         </div>
 
-        <div className={navbarStyles["navbar-hamburger"]}>
+        <div className={styles["navbar-hamburger"]}>
           <NavbarContent
             manageProfiles={manageProfiles}
             signOut={signOut}

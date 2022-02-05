@@ -4,7 +4,7 @@ import Image from "next/image";
 import PosterFallback from "../../../assets/fallbacks/PosterFallback.jpg";
 import { SearchTVIDContext } from "./SearchTVs";
 import Axios from "axios";
-import searchTVStyles from "../../../styles/Home.module.scss";
+import styles from "../../../styles/Search/SearchTVs/SearchTVInfo.module.scss";
 const TVModal = dynamic(() => import("../../Modal/TVs/TVModal"));
 
 const { NEXT_PUBLIC_API_KEY } = process.env;
@@ -101,7 +101,7 @@ const SearchTVInfo: FC<SearchTVInfoProps> = ({ posterPath, voteAverage }) => {
       {posterPath !== "" ? (
         <>
           {posterPath !== null ? (
-            <div className={searchTVStyles["search-tv-container"]}>
+            <div className={styles["search-tv-container"]}>
               <Image
                 src={`https://image.tmdb.org/t/p/w500/${posterPath}`}
                 alt="TV Poster"
@@ -113,20 +113,20 @@ const SearchTVInfo: FC<SearchTVInfoProps> = ({ posterPath, voteAverage }) => {
                 unoptimized={true}
               />
 
-              <div className={searchTVStyles["search-tv-overlay"]}>
-                <div className={searchTVStyles["search-tv-vote-average"]}>
+              <div className={styles["search-tv-overlay"]}>
+                <div className={styles["search-tv-vote-average"]}>
                   {voteAverage !== 0 ? <h1>{voteAverage}</h1> : <h1>N/A</h1>}
                 </div>
                 <div
                   onClick={handleOpenSearchTVInfo}
-                  className={searchTVStyles["search-tv-info-icon"]}
+                  className={styles["search-tv-info-icon"]}
                 >
                   <i className="fas fa-info-circle"></i>
                 </div>
               </div>
             </div>
           ) : (
-            <div className={searchTVStyles["search-tv-container"]}>
+            <div className={styles["search-tv-container"]}>
               <Image
                 src={PosterFallback}
                 alt="Movie Poster"
@@ -137,13 +137,13 @@ const SearchTVInfo: FC<SearchTVInfoProps> = ({ posterPath, voteAverage }) => {
                 objectFit="cover"
               />
 
-              <div className={searchTVStyles["search-tv-overlay"]}>
-                <div className={searchTVStyles["search-tv-vote-average"]}>
+              <div className={styles["search-tv-overlay"]}>
+                <div className={styles["search-tv-vote-average"]}>
                   {voteAverage !== 0 ? <h1>{voteAverage}</h1> : <h1>N/A</h1>}
                 </div>
                 <div
                   onClick={handleOpenSearchTVInfo}
-                  className={searchTVStyles["search-tv-info-icon"]}
+                  className={styles["search-tv-info-icon"]}
                 >
                   <i className="fas fa-info-circle"></i>
                 </div>
@@ -152,7 +152,7 @@ const SearchTVInfo: FC<SearchTVInfoProps> = ({ posterPath, voteAverage }) => {
           )}
         </>
       ) : (
-        <div className={searchTVStyles["search-tv-container"]}>
+        <div className={styles["search-tv-container"]}>
           <Image
             src={PosterFallback}
             alt="Movie Poster"
@@ -163,13 +163,13 @@ const SearchTVInfo: FC<SearchTVInfoProps> = ({ posterPath, voteAverage }) => {
             objectFit="cover"
           />
 
-          <div className={searchTVStyles["search-tv-overlay"]}>
-            <div className={searchTVStyles["search-tv-vote-average"]}>
+          <div className={styles["search-tv-overlay"]}>
+            <div className={styles["search-tv-vote-average"]}>
               {voteAverage !== 0 ? <h1>{voteAverage}</h1> : <h1>N/A</h1>}
             </div>
             <div
               onClick={handleOpenSearchTVInfo}
-              className={searchTVStyles["search-tv-info-icon"]}
+              className={styles["search-tv-info-icon"]}
             >
               <i className="fas fa-info-circle"></i>
             </div>

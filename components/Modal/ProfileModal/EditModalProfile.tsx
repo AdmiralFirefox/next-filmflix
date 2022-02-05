@@ -1,9 +1,9 @@
 import React, { FC, useEffect, useState } from "react";
 import Modal from "@material-ui/core/Modal";
-import editProfileModalStyles from "../../../styles/Home.module.scss";
 import EditProfileModalInput from "../../Inputs/Modal/EditProfileModalInput";
 import SubmitEditProfileButton from "../../Buttons/Modal/SubmitEditProfileButton";
 import CancelEditProfileButton from "../../Buttons/Modal/CancelEditProfileButton";
+import styles from "../../../styles/Modal/ProfileModal/EditProfileModal.module.scss";
 
 // Material UI Snackbar Import
 import Snackbar from "@material-ui/core/Snackbar";
@@ -96,18 +96,10 @@ const EditProfileModal: FC<EditModalProps> = ({
         aria-labelledby="simple-modal-title"
         aria-describedby="simple-modal-description"
       >
-        <div
-          className={
-            editProfileModalStyles["edit-profile-modal-wrapper-animation"]
-          }
-        >
-          <div className={editProfileModalStyles["edit-profile-modal-wrapper"]}>
-            <div
-              className={editProfileModalStyles["edit-profile-modal-content"]}
-            >
-              <div
-                className={editProfileModalStyles["edit-profile-modal-title"]}
-              >
+        <div className={styles["edit-profile-modal-wrapper-animation"]}>
+          <div className={styles["edit-profile-modal-wrapper"]}>
+            <div className={styles["edit-profile-modal-content"]}>
+              <div className={styles["edit-profile-modal-title"]}>
                 <h1>Who&apos;s Watching?</h1>
               </div>
               <div>
@@ -116,11 +108,7 @@ const EditProfileModal: FC<EditModalProps> = ({
                   profile={profile}
                 />
               </div>
-              <div
-                className={
-                  editProfileModalStyles["edit-profile-modal-button-wrapper"]
-                }
-              >
+              <div className={styles["edit-profile-modal-button-wrapper"]}>
                 <SubmitEditProfileButton
                   SubmitProfileEdit={SubmitProfileEdit}
                   profile={profile}

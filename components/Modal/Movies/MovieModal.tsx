@@ -6,7 +6,7 @@ const MovieCasts = dynamic(() => import("../../Movies/MovieCasts"));
 const SimilarMovies = dynamic(() => import("../../Movies/SimilarMovies"));
 import React, { FC, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
-import movieInfoModalStyles from "../../../styles/Home.module.scss";
+import styles from "../../../styles/Modal/Movies/MovieModal.module.scss";
 
 //Tabs
 import AppBar from "@material-ui/core/AppBar";
@@ -106,29 +106,23 @@ const MovieModal: FC<ModalFunctionProp> = ({
         aria-describedby="simple-modal-description"
       >
         <div
-          className={movieInfoModalStyles["movie-info-modal-wrapper"]}
+          className={styles["movie-info-modal-wrapper"]}
           style={{ height: `${size.height}px` }}
         >
           <div
             onClick={handleCloseMovieModal}
-            className={movieInfoModalStyles["movie-info-modal-close-icon"]}
+            className={styles["movie-info-modal-close-icon"]}
           >
             <i className="fas fa-times-circle"></i>
           </div>
           <MovieTrailer id={id} />
-          <div className={movieInfoModalStyles["movie-info-modal-content"]}>
-            <div className={movieInfoModalStyles["movie-info-modal-title"]}>
+          <div className={styles["movie-info-modal-content"]}>
+            <div className={styles["movie-info-modal-title"]}>
               <h1>{title}</h1>
             </div>
 
-            <div
-              className={movieInfoModalStyles["movie-info-modal-release-info"]}
-            >
-              <div
-                className={
-                  movieInfoModalStyles["movie-info-modal-release-date"]
-                }
-              >
+            <div className={styles["movie-info-modal-release-info"]}>
+              <div className={styles["movie-info-modal-release-date"]}>
                 {releaseDate !== "" ? (
                   <p>{new Date(releaseDate).toLocaleDateString()}</p>
                 ) : (
@@ -136,18 +130,14 @@ const MovieModal: FC<ModalFunctionProp> = ({
                 )}
               </div>
 
-              <div className={movieInfoModalStyles["movie-info-modal-runtime"]}>
+              <div className={styles["movie-info-modal-runtime"]}>
                 {runtime !== 0 ? <p>{timeConvert(runtime)} </p> : <p>N/A</p>}
               </div>
             </div>
 
-            <div className={movieInfoModalStyles["movie-info-modal-overview"]}>
+            <div className={styles["movie-info-modal-overview"]}>
               <h2>Overview:</h2>
-              <div
-                className={
-                  movieInfoModalStyles["movie-info-modal-overview-content"]
-                }
-              >
+              <div className={styles["movie-info-modal-overview-content"]}>
                 {overview !== "" ? (
                   <p>{overview}</p>
                 ) : (
@@ -156,31 +146,23 @@ const MovieModal: FC<ModalFunctionProp> = ({
               </div>
             </div>
 
-            <div className={movieInfoModalStyles["movie-info-modal-status"]}>
+            <div className={styles["movie-info-modal-status"]}>
               <p>Status: {status}</p>
             </div>
 
-            <div
-              className={movieInfoModalStyles["movie-info-spoken-languages"]}
-            >
+            <div className={styles["movie-info-spoken-languages"]}>
               {spokenLanguages.length === 1 ? (
                 <h2>Spoken Language:</h2>
               ) : (
                 <h2>Spoken Languages:</h2>
               )}
 
-              <div
-                className={
-                  movieInfoModalStyles["movie-info-spoken-languages-content"]
-                }
-              >
+              <div className={styles["movie-info-spoken-languages-content"]}>
                 {spokenLanguages.map((language, index) => {
                   return (
                     <div
                       key={uuidv4()}
-                      className={
-                        movieInfoModalStyles["movie-info-modal-language-name"]
-                      }
+                      className={styles["movie-info-modal-language-name"]}
                     >
                       <p>
                         {language.english_name +
@@ -196,20 +178,14 @@ const MovieModal: FC<ModalFunctionProp> = ({
               </div>
             </div>
 
-            <div className={movieInfoModalStyles["movie-info-modal-genre"]}>
+            <div className={styles["movie-info-modal-genre"]}>
               {genres.length === 1 ? <h2>Genre:</h2> : <h2>Genres:</h2>}
-              <div
-                className={
-                  movieInfoModalStyles["movie-info-modal-genre-content"]
-                }
-              >
+              <div className={styles["movie-info-modal-genre-content"]}>
                 {genres.map((genre, index) => {
                   return (
                     <div
                       key={genre.id}
-                      className={
-                        movieInfoModalStyles["movie-info-modal-genre-name"]
-                      }
+                      className={styles["movie-info-modal-genre-name"]}
                     >
                       <p>
                         {genre.name +

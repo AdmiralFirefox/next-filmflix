@@ -5,7 +5,7 @@ import dynamic from "next/dynamic";
 const SearchMovieInfo = dynamic(() => import("./SearchMovieInfo"));
 import SearchMoviesInput from "../../Inputs/SearchMovies/SearchMoviesInput";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import searchMovieStyles from "../../../styles/Home.module.scss";
+import styles from "../../../styles/Search/SearchMovies/SearchMovies.module.scss";
 
 const { NEXT_PUBLIC_API_KEY } = process.env;
 
@@ -70,7 +70,7 @@ const SearchMovies: FC = () => {
       !loadingSearches
     ) {
       return (
-        <div className={searchMovieStyles["search-movies-no-results-found"]}>
+        <div className={styles["search-movies-no-results-found"]}>
           <p>
             We tried searching for &quot;{searchQuery}&quot; but we
             couldn&apos;t find it. Please check your spelling or try searching
@@ -83,12 +83,12 @@ const SearchMovies: FC = () => {
 
   return (
     <>
-      <div className={searchMovieStyles["search-movies-input"]}>
+      <div className={styles["search-movies-input"]}>
         <SearchMoviesInput handleSearchChange={handleSearchChange} />
       </div>
 
       {searchQuery === "/" ? null : (
-        <p className={searchMovieStyles["search-movies-guide"]}>
+        <p className={styles["search-movies-guide"]}>
           Search results for: {searchQuery}
         </p>
       )}
@@ -96,11 +96,11 @@ const SearchMovies: FC = () => {
       {noResultsFound()}
 
       {loadingSearches ? (
-        <div className={searchMovieStyles["search-movies-loading"]}>
+        <div className={styles["search-movies-loading"]}>
           <CircularProgress size={50} />
         </div>
       ) : (
-        <div className={searchMovieStyles["search-movies-results"]}>
+        <div className={styles["search-movies-results"]}>
           {searchMovies
             .filter((searchMovie) => searchMovie.poster_path !== null)
             .map((searchMovie) => {

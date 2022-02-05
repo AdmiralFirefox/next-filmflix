@@ -3,7 +3,6 @@ import dynamic from "next/dynamic";
 import { TrendingMovieIDContext } from "./TrendingMovies";
 import Axios from "axios";
 import Image from "next/image";
-import trendingMovieInfoStyles from "../../../styles/Home.module.scss";
 import MoreMovieInfoButton from "../../Buttons/TrendingMovies/MoreMovieInfoButton";
 const PlayMovieVideoButton = dynamic(
   () => import("../../Buttons/TrendingMovies/PlayMovieVideoButton")
@@ -11,6 +10,7 @@ const PlayMovieVideoButton = dynamic(
 import Skeleton from "@material-ui/lab/Skeleton";
 import FallbackButton from "../../Buttons/FallbackButton/FallbackButton";
 const MovieModal = dynamic(() => import("../../Modal/Movies/MovieModal"));
+import styles from "../../../styles/Trending/TrendingMovies/TrendingMovieInfo.module.scss";
 
 const { NEXT_PUBLIC_API_KEY } = process.env;
 
@@ -124,7 +124,7 @@ const TrendingMovieInfo: FC<TrendingMovieInfoProps> = ({
         spokenLanguages={spokenLanguages}
       />
       {backdropPath !== "" ? (
-        <div className={trendingMovieInfoStyles["trending-movie-img"]}>
+        <div className={styles["trending-movie-img"]}>
           <Image
             src={`https://image.tmdb.org/t/p/w1280/${backdropPath}`}
             alt="Movie Poster"
@@ -139,19 +139,19 @@ const TrendingMovieInfo: FC<TrendingMovieInfoProps> = ({
         <>
           <Skeleton
             variant="rect"
-            id={trendingMovieInfoStyles["trending-movie-skeleton"]}
+            id={styles["trending-movie-skeleton"]}
           />
         </>
       )}
-      <div className={trendingMovieInfoStyles["trending-movie-content"]}>
-        <div className={trendingMovieInfoStyles["trending-movie-title"]}>
+      <div className={styles["trending-movie-content"]}>
+        <div className={styles["trending-movie-title"]}>
           <h1>{title}</h1>
         </div>
-        <div className={trendingMovieInfoStyles["trending-movie-overview"]}>
+        <div className={styles["trending-movie-overview"]}>
           <p>{limitText(overview, 500)}</p>
         </div>
         <div
-          className={trendingMovieInfoStyles["trending-movie-button-wrapper"]}
+          className={styles["trending-movie-button-wrapper"]}
         >
           {trendingMovieInfo.id !== 0 ? (
             <>
@@ -167,7 +167,7 @@ const TrendingMovieInfo: FC<TrendingMovieInfoProps> = ({
         </div>
       </div>
       <div
-        className={trendingMovieInfoStyles["trending-movie-gradient-shadow"]}
+        className={styles["trending-movie-gradient-shadow"]}
       ></div>
     </>
   );

@@ -4,7 +4,7 @@ import Image from "next/image";
 import ProfileFallback from "../../assets/fallbacks/ProfileFallback.jpg";
 import { withStyles, Theme } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
-import tvCastsStyles from "../../styles/Home.module.scss";
+import styles from "../../styles/TVs/TVCasts.module.scss";
 
 const { NEXT_PUBLIC_API_KEY } = process.env;
 
@@ -68,12 +68,12 @@ const TVCasts: FC<{ id: number }> = ({ id }) => {
 
   return (
     <>
-      <div className={tvCastsStyles["tv-casts-wrapper"]}>
+      <div className={styles["tv-casts-wrapper"]}>
         {currentItems.map((cast) => {
           return (
             <div key={cast.id}>
               {cast.profile_path !== null ? (
-                <div className={tvCastsStyles["tv-casts-image"]}>
+                <div className={styles["tv-casts-image"]}>
                   <Image
                     src={`https://image.tmdb.org/t/p/w500/${cast.profile_path}`}
                     alt="TV Cast"
@@ -86,7 +86,7 @@ const TVCasts: FC<{ id: number }> = ({ id }) => {
                   />
                 </div>
               ) : (
-                <div className={tvCastsStyles["tv-casts-image"]}>
+                <div className={styles["tv-casts-image"]}>
                   <Image
                     src={ProfileFallback}
                     alt="TV Cast"
@@ -98,10 +98,10 @@ const TVCasts: FC<{ id: number }> = ({ id }) => {
                 </div>
               )}
 
-              <div className={tvCastsStyles["tv-casts-name"]}>
+              <div className={styles["tv-casts-name"]}>
                 <p>{cast.name}</p>
                 {cast.character !== "" ? (
-                  <p className={tvCastsStyles["tv-casts-character"]}>
+                  <p className={styles["tv-casts-character"]}>
                     {cast.character}
                   </p>
                 ) : (
@@ -113,7 +113,7 @@ const TVCasts: FC<{ id: number }> = ({ id }) => {
         })}
       </div>
 
-      <div className={tvCastsStyles["tv-casts-button-wrapper"]}>
+      <div className={styles["tv-casts-button-wrapper"]}>
         <LoadMoreProfilesButton
           variant="contained"
           color="primary"

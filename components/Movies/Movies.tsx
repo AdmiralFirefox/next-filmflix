@@ -4,7 +4,7 @@ import { MovieData } from "../../data/moviedata";
 const MovieCarousel = dynamic(() => import("./MovieCarousel"));
 import InfiniteScroll from "react-infinite-scroll-component";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import movieStyles from "../../styles/Home.module.scss";
+import styles from "../../styles/Movies/Movies.module.scss";
 
 const Movies: FC = () => {
   const [currentPage] = useState(1);
@@ -36,13 +36,13 @@ const Movies: FC = () => {
   }, [isMounted, setIsMounted]);
 
   return (
-    <div className={movieStyles["movie-wrapper"]}>
+    <div className={styles["movie-wrapper"]}>
       <InfiniteScroll
         dataLength={currentItems.length}
         next={handleLoadMore}
         hasMore={hasMore}
         loader={
-          <div className={movieStyles["movie-spinner"]}>
+          <div className={styles["movie-spinner"]}>
             <CircularProgress size={50} />
           </div>
         }
@@ -54,10 +54,7 @@ const Movies: FC = () => {
       >
         {currentItems.map((movieCategory) => {
           return (
-            <div
-              key={movieCategory.id}
-              className={movieStyles["movie-carousel"]}
-            >
+            <div key={movieCategory.id} className={styles["movie-carousel"]}>
               <MovieCarousel
                 title={movieCategory.name}
                 route={movieCategory.route}

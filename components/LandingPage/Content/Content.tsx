@@ -7,27 +7,27 @@ import PageContentTwo from "./PageContentTwo";
 import PageContentThree from "./PageContentThree";
 import AccordionSection from "./AccordionSection";
 import LandingPageFooter from "./LandingPageFooter";
-import contentStyles from "../../../styles/Home.module.scss";
+import styles from "../../../styles/LandingPage/Content/Content.module.scss";
 
 const Content: FC = () => {
   //Content Background
   useEffect(() => {
     document.getElementsByTagName("body")[0].className =
-      contentStyles["landing-page-bg"];
+      styles["landing-page-bg"];
   }, []);
 
   return (
-    <div className={contentStyles["landing-page-content-wrapper"]}>
+    <div className={styles["landing-page-content-wrapper"]}>
       <LandingPageNavbar />
       <HeroSection />
       <PageContentOne />
-      <Divider className={contentStyles["content-divider"]} />
+      <Divider className={styles["content-divider"]} />
       <PageContentTwo />
-      <Divider className={contentStyles["content-divider"]} />
+      <Divider className={styles["content-divider"]} />
       <PageContentThree />
-      <Divider className={contentStyles["content-divider"]} />
+      <Divider className={styles["content-divider"]} />
       <AccordionSection />
-      <Divider className={contentStyles["content-divider"]} />
+      <Divider className={styles["content-divider"]} />
       <LandingPageFooter />
     </div>
   );

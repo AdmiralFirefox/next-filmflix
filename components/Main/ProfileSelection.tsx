@@ -15,8 +15,8 @@ import { useSpring, animated } from "react-spring";
 import Image from "next/image";
 import WebLogo from "../../assets/logo/WebLogo.png";
 import DefaultProfile from "../../assets/profileicons/DefaultAvatar.png";
-import profileSelectionStyles from "../../styles/Home.module.scss";
 import ManageProfileButton from "../Buttons/Main/ManageProfileButton";
+import styles from "../../styles/Main/ProfileSelection.module.scss";
 
 interface ProfilesProps {
   profileData: {
@@ -119,7 +119,7 @@ const ProfileSelection: FC<ProfileSelectionProps> = ({ signOut }) => {
   //Changing Background Color
   useEffect(() => {
     document.getElementsByTagName("body")[0].className =
-      profileSelectionStyles["main-background"];
+      styles["main-background"];
 
     //Clean up whether it unmounts
     return () => {
@@ -203,13 +203,10 @@ const ProfileSelection: FC<ProfileSelectionProps> = ({ signOut }) => {
   //Profile Edit Mode On
   const profileEditModeOn = (): JSX.Element => {
     return (
-      <div className={profileSelectionStyles["profile-selection-profiles"]}>
+      <div className={styles["profile-selection-profiles"]}>
         {profiles.map((profile) => {
           return (
-            <div
-              key={profile.id}
-              className={profileSelectionStyles["edit-mode-on-wrapper"]}
-            >
+            <div key={profile.id} className={styles["edit-mode-on-wrapper"]}>
               {editProfilePic === profile.id ? (
                 <>
                   <EditProfilePicModal
@@ -223,14 +220,8 @@ const ProfileSelection: FC<ProfileSelectionProps> = ({ signOut }) => {
                     setEditProfilePic={setEditProfilePic}
                     profilePic={profilePic}
                   />
-                  <div
-                    className={
-                      profileSelectionStyles["edit-mode-on-image-container"]
-                    }
-                  >
-                    <div
-                      className={profileSelectionStyles["edit-mode-on-image"]}
-                    >
+                  <div className={styles["edit-mode-on-image-container"]}>
+                    <div className={styles["edit-mode-on-image"]}>
                       <Image
                         src={profile.picture}
                         alt="Avatar Profile"
@@ -241,17 +232,9 @@ const ProfileSelection: FC<ProfileSelectionProps> = ({ signOut }) => {
                         priority={true}
                       />
                     </div>
-                    <div
-                      className={
-                        profileSelectionStyles["edit-mode-on-image-overlay"]
-                      }
-                    >
+                    <div className={styles["edit-mode-on-image-overlay"]}>
                       <div
-                        className={
-                          profileSelectionStyles[
-                            "edit-mode-on-edit-profile-icon"
-                          ]
-                        }
+                        className={styles["edit-mode-on-edit-profile-icon"]}
                         onClick={() => {
                           setEditProfilePic(profile.id);
                           handleOpenEditProfilePicModal();
@@ -264,14 +247,8 @@ const ProfileSelection: FC<ProfileSelectionProps> = ({ signOut }) => {
                 </>
               ) : (
                 <>
-                  <div
-                    className={
-                      profileSelectionStyles["edit-mode-on-image-container"]
-                    }
-                  >
-                    <div
-                      className={profileSelectionStyles["edit-mode-on-image"]}
-                    >
+                  <div className={styles["edit-mode-on-image-container"]}>
+                    <div className={styles["edit-mode-on-image"]}>
                       <Image
                         src={profile.picture}
                         alt="Avatar Profile"
@@ -282,17 +259,9 @@ const ProfileSelection: FC<ProfileSelectionProps> = ({ signOut }) => {
                         priority={true}
                       />
                     </div>
-                    <div
-                      className={
-                        profileSelectionStyles["edit-mode-on-image-overlay"]
-                      }
-                    >
+                    <div className={styles["edit-mode-on-image-overlay"]}>
                       <div
-                        className={
-                          profileSelectionStyles[
-                            "edit-mode-on-edit-profile-icon"
-                          ]
-                        }
+                        className={styles["edit-mode-on-edit-profile-icon"]}
                         onClick={() => {
                           setEditProfilePic(profile.id);
                           handleOpenEditProfilePicModal();
@@ -306,11 +275,7 @@ const ProfileSelection: FC<ProfileSelectionProps> = ({ signOut }) => {
               )}
 
               {profileEdit === profile.id ? (
-                <div
-                  className={
-                    profileSelectionStyles["edit-mode-on-profile-name-wrapper"]
-                  }
-                >
+                <div className={styles["edit-mode-on-profile-name-wrapper"]}>
                   <EditProfileModal
                     editProfileModal={editProfileModal}
                     handleCloseEditProfileModal={handleCloseEditProfileModal}
@@ -321,17 +286,11 @@ const ProfileSelection: FC<ProfileSelectionProps> = ({ signOut }) => {
                     setProfileEdit={setProfileEdit}
                     profiles={profiles}
                   />
-                  <h1
-                    className={
-                      profileSelectionStyles["edit-mode-on-profile-name"]
-                    }
-                  >
+                  <h1 className={styles["edit-mode-on-profile-name"]}>
                     {profile.name}
                   </h1>
                   <div
-                    className={
-                      profileSelectionStyles["edit-mode-on-edit-name-icon"]
-                    }
+                    className={styles["edit-mode-on-edit-name-icon"]}
                     onClick={() => {
                       setProfileEdit(profile.id);
                       handleOpenEditProfileModal();
@@ -341,22 +300,12 @@ const ProfileSelection: FC<ProfileSelectionProps> = ({ signOut }) => {
                   </div>
                 </div>
               ) : (
-                <div
-                  className={
-                    profileSelectionStyles["edit-mode-on-profile-name-wrapper"]
-                  }
-                >
-                  <h1
-                    className={
-                      profileSelectionStyles["edit-mode-on-profile-name"]
-                    }
-                  >
+                <div className={styles["edit-mode-on-profile-name-wrapper"]}>
+                  <h1 className={styles["edit-mode-on-profile-name"]}>
                     {profile.name}
                   </h1>
                   <div
-                    className={
-                      profileSelectionStyles["edit-mode-on-edit-name-icon"]
-                    }
+                    className={styles["edit-mode-on-edit-name-icon"]}
                     onClick={() => {
                       setProfileEdit(profile.id);
                       handleOpenEditProfileModal();
@@ -368,9 +317,7 @@ const ProfileSelection: FC<ProfileSelectionProps> = ({ signOut }) => {
               )}
 
               <div
-                className={
-                  profileSelectionStyles["edit-mode-on-remove-profile-icon"]
-                }
+                className={styles["edit-mode-on-remove-profile-icon"]}
                 onClick={() => RemoveProfile(profile.id)}
               >
                 <i className="fas fa-times-circle"></i>
@@ -385,14 +332,11 @@ const ProfileSelection: FC<ProfileSelectionProps> = ({ signOut }) => {
   //Profile Edit Mode Off
   const profileEditModeOff = (): JSX.Element => {
     return (
-      <div className={profileSelectionStyles["profile-selection-profiles"]}>
+      <div className={styles["profile-selection-profiles"]}>
         {profiles.map((profile) => {
           return (
-            <div
-              key={profile.id}
-              className={profileSelectionStyles["edit-mode-off-wrapper"]}
-            >
-              <div className={profileSelectionStyles["edit-mode-off-image"]}>
+            <div key={profile.id} className={styles["edit-mode-off-wrapper"]}>
+              <div className={styles["edit-mode-off-image"]}>
                 <Image
                   src={profile.picture}
                   alt="Avatar Profile"
@@ -405,9 +349,7 @@ const ProfileSelection: FC<ProfileSelectionProps> = ({ signOut }) => {
                 />
               </div>
 
-              <h1
-                className={profileSelectionStyles["edit-mode-off-profile-name"]}
-              >
+              <h1 className={styles["edit-mode-off-profile-name"]}>
                 {profile.name}
               </h1>
             </div>
@@ -421,7 +363,7 @@ const ProfileSelection: FC<ProfileSelectionProps> = ({ signOut }) => {
               <>
                 <div
                   onClick={handleOpenAddProfileModal}
-                  className={profileSelectionStyles["add-profile-icon"]}
+                  className={styles["add-profile-icon"]}
                 >
                   <i className="fas fa-plus-circle"></i>
                 </div>
@@ -464,10 +406,8 @@ const ProfileSelection: FC<ProfileSelectionProps> = ({ signOut }) => {
             setProfile={setProfile}
             profiles={profiles}
           />
-          <div className={profileSelectionStyles["profile-selection-wrapper"]}>
-            <div
-              className={profileSelectionStyles["profile-selection-web-logo"]}
-            >
+          <div className={styles["profile-selection-wrapper"]}>
+            <div className={styles["profile-selection-web-logo"]}>
               <Image
                 src={WebLogo}
                 alt="Web Logo"
@@ -476,7 +416,7 @@ const ProfileSelection: FC<ProfileSelectionProps> = ({ signOut }) => {
                 objectFit="cover"
               />
             </div>
-            <div className={profileSelectionStyles["profile-selection-title"]}>
+            <div className={styles["profile-selection-title"]}>
               <h1>Who&apos;s Watching?</h1>
             </div>
 
@@ -503,7 +443,7 @@ const ProfileSelection: FC<ProfileSelectionProps> = ({ signOut }) => {
       </animated.div>
 
       <animated.div style={fadeInProps}>
-        <div className={profileSelectionStyles["whole-profile-main-wrapper"]}>
+        <div className={styles["whole-profile-main-wrapper"]}>
           {profileSelected()}
         </div>
       </animated.div>

@@ -6,8 +6,8 @@ import Image from "next/image";
 import VideoFallback from "../../assets/fallbacks/VideoFallback.jpg";
 import ReactPlayer from "react-player/lazy";
 const VideoPlayer = dynamic(() => import("../Modal/VideoPlayer/VideoPlayer"));
-import movieTrailerStyles from "../../styles/Home.module.scss";
 import PlayMovieButton from "../Buttons/Movies/PlayMovieButton";
+import styles from "../../styles/Movies/MovieTrailer.module.scss";
 
 const { NEXT_PUBLIC_API_KEY } = process.env;
 
@@ -56,7 +56,7 @@ const MovieTrailer: FC<{ id: number }> = ({ id }) => {
   return (
     <div>
       {loadingPlayer ? (
-        <Skeleton variant="rect" id={movieTrailerStyles["movie-trailer-skeleton"]} />
+        <Skeleton variant="rect" id={styles["movie-trailer-skeleton"]} />
       ) : (
         <>
           {typeof displayTrailer !== "undefined" ? (
@@ -75,8 +75,8 @@ const MovieTrailer: FC<{ id: number }> = ({ id }) => {
                 loop
                 height="30em"
               />
-              <div className={movieTrailerStyles["movie-button-wrappers"]}>
-                <div className={movieTrailerStyles["play-movie-button"]}>
+              <div className={styles["movie-button-wrappers"]}>
+                <div className={styles["play-movie-button"]}>
                   <PlayMovieButton
                     handleOpenMovieVideoPlayer={handleOpenMovieVideoPlayer}
                   />
@@ -85,7 +85,7 @@ const MovieTrailer: FC<{ id: number }> = ({ id }) => {
             </>
           ) : (
             <>
-              <div className={movieTrailerStyles["movie-trailer-fallback"]}>
+              <div className={styles["movie-trailer-fallback"]}>
                 <Image
                   src={VideoFallback}
                   alt="Video Fallback"

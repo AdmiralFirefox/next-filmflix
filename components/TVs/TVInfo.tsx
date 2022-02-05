@@ -5,7 +5,7 @@ import Axios from "axios";
 import Image from "next/image";
 import PosterFallback from "../../assets/fallbacks/PosterFallback.jpg";
 const TVModal = dynamic(() => import("../Modal/TVs/TVModal"));
-import tvInfoStyles from "../../styles/Home.module.scss";
+import styles from "../../styles/TVs/TVInfo.module.scss";
 
 const { NEXT_PUBLIC_API_KEY } = process.env;
 
@@ -101,7 +101,7 @@ const TVInfo: FC<TVInfoProps> = ({ posterPath, voteAverage }) => {
       {posterPath !== null ? (
         <>
           {posterPath !== "" ? (
-            <div className={tvInfoStyles["tv-container"]}>
+            <div className={styles["tv-container"]}>
               <Image
                 src={`https://image.tmdb.org/t/p/w300/${posterPath}`}
                 alt="TV Poster"
@@ -110,13 +110,13 @@ const TVInfo: FC<TVInfoProps> = ({ posterPath, voteAverage }) => {
                 priority={true}
                 unoptimized={true}
               />
-              <div className={tvInfoStyles["tv-overlay"]}>
-                <div className={tvInfoStyles["tv-vote-average"]}>
+              <div className={styles["tv-overlay"]}>
+                <div className={styles["tv-vote-average"]}>
                   {voteAverage !== 0 ? <h1>{voteAverage}</h1> : <h1>N/A</h1>}
                 </div>
                 <div
                   onClick={handleOpenTVInfo}
-                  className={tvInfoStyles["tv-info-icon"]}
+                  className={styles["tv-info-icon"]}
                 >
                   <i className="fas fa-info-circle"></i>
                 </div>
@@ -133,7 +133,7 @@ const TVInfo: FC<TVInfoProps> = ({ posterPath, voteAverage }) => {
           )}
         </>
       ) : (
-        <div className={tvInfoStyles["tv-container"]}>
+        <div className={styles["tv-container"]}>
           <Image
             src={PosterFallback}
             alt="Movie Poster"
@@ -141,14 +141,11 @@ const TVInfo: FC<TVInfoProps> = ({ posterPath, voteAverage }) => {
             height={500}
             priority={true}
           />
-          <div className={tvInfoStyles["tv-overlay"]}>
-            <div className={tvInfoStyles["tv-vote-average"]}>
+          <div className={styles["tv-overlay"]}>
+            <div className={styles["tv-vote-average"]}>
               {voteAverage !== 0 ? <h1>{voteAverage}</h1> : <h1>N/A</h1>}
             </div>
-            <div
-              onClick={handleOpenTVInfo}
-              className={tvInfoStyles["tv-info-icon"]}
-            >
+            <div onClick={handleOpenTVInfo} className={styles["tv-info-icon"]}>
               <i className="fas fa-info-circle"></i>
             </div>
           </div>

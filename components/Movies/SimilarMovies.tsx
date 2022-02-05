@@ -4,7 +4,7 @@ import Image from "next/image";
 import PosterFallback from "../../assets/fallbacks/PosterFallback.jpg";
 import { withStyles, Theme } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
-import similarMovieStyles from "../../styles/Home.module.scss";
+import styles from "../../styles/Movies/SimilarMovies.module.scss";
 
 const { NEXT_PUBLIC_API_KEY } = process.env;
 
@@ -87,12 +87,12 @@ const SimilarMovies: FC<{ id: number }> = ({ id }) => {
 
   return (
     <>
-      <div className={similarMovieStyles["similar-movies-wrapper"]}>
+      <div className={styles["similar-movies-wrapper"]}>
         {currentItems.map((similarMovie) => {
           return (
             <div
               key={similarMovie.id}
-              className={similarMovieStyles["similar-movies-content"]}
+              className={styles["similar-movies-content"]}
             >
               {similarMovie.backdrop_path !== null ? (
                 <Image
@@ -115,11 +115,11 @@ const SimilarMovies: FC<{ id: number }> = ({ id }) => {
                   objectFit="cover"
                 />
               )}
-              <div className={similarMovieStyles["similar-movies-title"]}>
+              <div className={styles["similar-movies-title"]}>
                 <h2>{similarMovie.title}</h2>
               </div>
 
-              <div className={similarMovieStyles["similar-movies-overview"]}>
+              <div className={styles["similar-movies-overview"]}>
                 {similarMovie.overview === "" ? (
                   <p>Overview Unvailable...</p>
                 ) : (
@@ -130,7 +130,7 @@ const SimilarMovies: FC<{ id: number }> = ({ id }) => {
           );
         })}
       </div>
-      <div className={similarMovieStyles["similar-movies-button-wrapper"]}>
+      <div className={styles["similar-movies-button-wrapper"]}>
         <LoadMoreSimilarMoviesButton
           variant="contained"
           color="primary"

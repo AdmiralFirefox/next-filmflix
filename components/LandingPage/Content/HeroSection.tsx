@@ -1,15 +1,15 @@
 import React, { FC } from "react";
 import Link from "next/link";
-import herosSectionStyles from "../../../styles/Home.module.scss";
 import LandingPageRedButton from "../../Buttons/LandingPage/LandingPageRedButton";
+import styles from "../../../styles/LandingPage/Content/HeroSection.module.scss";
 
 const HeroSection: FC = () => {
   return (
     <>
-      <div className={herosSectionStyles["hero-section-bg"]}></div>
-      <div className={herosSectionStyles["hero-section-gradient-shadow"]}></div>
-      <div className={herosSectionStyles["hero-section-wrapper"]}>
-        <div className={herosSectionStyles["hero-section-titles"]}>
+      <div className={styles["hero-section-bg"]}></div>
+      <div className={styles["hero-section-gradient-shadow"]}></div>
+      <div className={styles["hero-section-wrapper"]}>
+        <div className={styles["hero-section-titles"]}>
           <h1>Unlimited movies, TV shows, and more.</h1>
           <h2>Watch anywhere. Cancel anytime.</h2>
           <p>
@@ -17,7 +17,7 @@ const HeroSection: FC = () => {
             Movies and TV Shows.
           </p>
         </div>
-        <div className={herosSectionStyles["hero-section-button-wrapper"]}>
+        <div className={styles["hero-section-button-wrapper"]}>
           <Link href="/signin" passHref>
             <span>
               <LandingPageRedButton>Get Started</LandingPageRedButton>
