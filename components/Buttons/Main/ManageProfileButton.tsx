@@ -1,12 +1,12 @@
 import React, { FC } from "react";
 import { styled } from "@mui/material/styles";
+import Box from "@mui/material/Box";
 import Button, { ButtonProps } from "@mui/material/Button";
 
 const ManageProfileButtonClick = styled(Button)<ButtonProps>(() => ({
   color: "#8C8C8C",
   backgroundColor: "transparent",
   border: "3px solid #8C8C8C",
-  margin: "2.5em 0em",
   fontWeight: "bold",
   transition: "border 0.35s ease-in-out, color 0.35s ease-in-out",
   "&:hover": {
@@ -32,7 +32,9 @@ const ManageProfileButton: FC<ManageProfileButtonProps> = ({
   editMode,
 }) => {
   return (
-    <div>
+    <Box
+      sx={{ display: "flex", justifyContent: "center", margin: "2.5em 0em" }}
+    >
       {editMode ? (
         <ManageProfileButtonClick variant="outlined" onClick={toggleEditMode}>
           Save Changes
@@ -46,7 +48,7 @@ const ManageProfileButton: FC<ManageProfileButtonProps> = ({
           Manage Profiles
         </ManageProfileButtonClick>
       )}
-    </div>
+    </Box>
   );
 };
 
