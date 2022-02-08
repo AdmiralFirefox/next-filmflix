@@ -1,5 +1,6 @@
 import React, { FC, useContext, useState } from "react";
 import { ProfileNameContext, ProfilePicContext } from "./ProfileSelection";
+import { useWindowSize, Size } from "../../hooks/useWindowSize";
 import Image from "next/image";
 import Box from "@mui/material/Box";
 import SwipeableDrawer from "@mui/material/SwipeableDrawer";
@@ -29,6 +30,8 @@ const NavbarContent: FC<NavbarContentProps> = ({
   const profilePic = useContext(ProfilePicContext);
   const profile = useContext(ProfileNameContext);
 
+  const size: Size = useWindowSize();
+
   const [state, setState] = useState({
     top: false,
     left: false,
@@ -57,7 +60,11 @@ const NavbarContent: FC<NavbarContentProps> = ({
 
   const list = (anchor: Anchor) => (
     <Box
-      sx={{ width: anchor === "top" || anchor === "bottom" ? "auto" : 250 }}
+      sx={{
+        width: anchor === "top" || anchor === "bottom" ? "auto" : 250,
+        background: "#303030",
+        height: `${size.height}px`,
+      }}
       role="presentation"
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
