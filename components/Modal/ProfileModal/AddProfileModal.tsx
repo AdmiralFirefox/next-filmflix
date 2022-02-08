@@ -1,14 +1,14 @@
 import React, { FC, useEffect, useState } from "react";
-import Modal from "@material-ui/core/Modal";
+import Modal from "@mui/material/Modal";
 import AddProfileModalInput from "../../Inputs/Modal/AddProfileModalInput";
 import AddProfileModalButton from "../../Buttons/Modal/AddProfileModalButton";
 import CancelProfileAddModalButton from "../../Buttons/Modal/CancelProfileAddButton";
 import styles from "../../../styles/Modal/ProfileModal/AddProfileModal.module.scss";
 
 // Material UI Snackbar Import
-import Snackbar from "@material-ui/core/Snackbar";
-import IconButton from "@material-ui/core/IconButton";
-import CloseIcon from "@material-ui/icons/Close";
+import Snackbar from "@mui/material/Snackbar";
+import IconButton from "@mui/material/IconButton";
+import CloseIcon from "@mui/icons-material/Close";
 
 interface AddProfileModalProps {
   openAddProfileModal: boolean;
@@ -41,7 +41,7 @@ const AddProfileModal: FC<AddProfileModalProps> = ({
   };
 
   const handleCloseAlertError = (
-    event: React.SyntheticEvent | React.MouseEvent,
+    event: React.SyntheticEvent | Event,
     reason?: string
   ) => {
     if (reason === "clickaway") {

@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import { useWindowSize, Size } from "../../../hooks/useWindowSize";
-import Modal from "@material-ui/core/Modal";
+import Modal from "@mui/material/Modal";
 import ReactPlayer from "react-player/lazy";
 import styles from "../../../styles/Modal/VideoPlayer/VideoPlayer.module.scss";
 

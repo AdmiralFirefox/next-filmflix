@@ -2,8 +2,8 @@ import React, { FC, useState, useEffect } from "react";
 import Axios from "axios";
 import Image from "next/image";
 import PosterFallback from "../../assets/fallbacks/PosterFallback.jpg";
-import { withStyles, Theme } from "@material-ui/core/styles";
-import Button from "@material-ui/core/Button";
+import { styled } from "@mui/material/styles";
+import Button, { ButtonProps } from "@mui/material/Button";
 import styles from "../../styles/TVs/SimilarTVs.module.scss";
 
 const { NEXT_PUBLIC_API_KEY } = process.env;
@@ -17,16 +17,14 @@ interface SimilarTVProp {
   }[];
 }
 
-const LoadMoreSimilarMoviesButton = withStyles((theme: Theme) => ({
-  root: {
-    color: "#fff",
-    backgroundColor: "#0071EB",
-    marginTop: "2em",
-    "&:hover": {
-      backgroundColor: "hsl(211, 100%, 60%)",
-    },
+const LoadMoreSimilarTVsButton = styled(Button)<ButtonProps>(() => ({
+  color: "#fff",
+  backgroundColor: "#0071EB",
+  marginTop: "2em",
+  "&:hover": {
+    backgroundColor: "hsl(211, 100%, 60%)",
   },
-}))(Button);
+}));
 
 const SimilarTV: FC<{ id: number }> = ({ id }) => {
   const [similarTVs, setSimilarTVs] = useState<SimilarTVProp["similarTVData"]>(
@@ -90,10 +88,7 @@ const SimilarTV: FC<{ id: number }> = ({ id }) => {
       <div className={styles["similar-tvs-wrapper"]}>
         {currentItems.map((similarTV) => {
           return (
-            <div
-              key={similarTV.id}
-              className={styles["similar-tvs-content"]}
-            >
+            <div key={similarTV.id} className={styles["similar-tvs-content"]}>
               {similarTV.backdrop_path !== null ? (
                 <Image
                   src={`https://image.tmdb.org/t/p/w500/${similarTV.backdrop_path}`}
@@ -131,14 +126,13 @@ const SimilarTV: FC<{ id: number }> = ({ id }) => {
         })}
       </div>
       <div className={styles["similar-tvs-button-wrapper"]}>
-        <LoadMoreSimilarMoviesButton
+        <LoadMoreSimilarTVsButton
           variant="contained"
-          color="primary"
           onClick={handleLoadMore}
           disabled={currentItems.length === similarTVs.length}
         >
           Load More
-        </LoadMoreSimilarMoviesButton>
+        </LoadMoreSimilarTVsButton>
       </div>
     </>
   );

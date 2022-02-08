@@ -2,7 +2,7 @@ import React, { FC, useState, useEffect, createContext } from "react";
 import Axios from "axios";
 import dynamic from "next/dynamic";
 const TrendingTVInfo = dynamic(() => import("./TrendingTVInfo"));
-import Skeleton from "@material-ui/lab/Skeleton";
+import Skeleton from "@mui/material/Skeleton";
 import styles from "../../../styles/Trending/TrendingTVs/TrendingTVs.module.scss";
 
 const { NEXT_PUBLIC_API_KEY } = process.env;
@@ -47,7 +47,10 @@ const TrendingTVs: FC = () => {
   if (loading) {
     return (
       <>
-        <Skeleton variant="rect" id={styles["trending-tvs-loading-skeleton"]} />
+        <Skeleton
+          variant="rectangular"
+          id={styles["trending-tvs-loading-skeleton"]}
+        />
       </>
     );
   }

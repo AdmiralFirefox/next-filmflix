@@ -1,14 +1,14 @@
 import React, { FC, useEffect, useState } from "react";
-import Modal from "@material-ui/core/Modal";
+import Modal from "@mui/material/Modal";
 import EditProfileModalInput from "../../Inputs/Modal/EditProfileModalInput";
 import SubmitEditProfileButton from "../../Buttons/Modal/SubmitEditProfileButton";
 import CancelEditProfileButton from "../../Buttons/Modal/CancelEditProfileButton";
 import styles from "../../../styles/Modal/ProfileModal/EditProfileModal.module.scss";
 
 // Material UI Snackbar Import
-import Snackbar from "@material-ui/core/Snackbar";
-import IconButton from "@material-ui/core/IconButton";
-import CloseIcon from "@material-ui/icons/Close";
+import Snackbar from "@mui/material/Snackbar";
+import IconButton from "@mui/material/IconButton";
+import CloseIcon from "@mui/icons-material/Close";
 
 interface EditModalProps {
   editProfileModal: boolean;
@@ -43,7 +43,7 @@ const EditProfileModal: FC<EditModalProps> = ({
   };
 
   const handleCloseAlertError = (
-    event: React.SyntheticEvent | React.MouseEvent,
+    event: React.SyntheticEvent | Event,
     reason?: string
   ) => {
     if (reason === "clickaway") {

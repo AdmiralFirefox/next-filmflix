@@ -7,7 +7,7 @@ import MoreMovieInfoButton from "../../Buttons/TrendingMovies/MoreMovieInfoButto
 const PlayMovieVideoButton = dynamic(
   () => import("../../Buttons/TrendingMovies/PlayMovieVideoButton")
 );
-import Skeleton from "@material-ui/lab/Skeleton";
+import Skeleton from "@mui/material/Skeleton";
 import FallbackButton from "../../Buttons/FallbackButton/FallbackButton";
 const MovieModal = dynamic(() => import("../../Modal/Movies/MovieModal"));
 import styles from "../../../styles/Trending/TrendingMovies/TrendingMovieInfo.module.scss";
@@ -138,7 +138,7 @@ const TrendingMovieInfo: FC<TrendingMovieInfoProps> = ({
       ) : (
         <>
           <Skeleton
-            variant="rect"
+            variant="rectangular"
             id={styles["trending-movie-skeleton"]}
           />
         </>
@@ -150,9 +150,7 @@ const TrendingMovieInfo: FC<TrendingMovieInfoProps> = ({
         <div className={styles["trending-movie-overview"]}>
           <p>{limitText(overview, 500)}</p>
         </div>
-        <div
-          className={styles["trending-movie-button-wrapper"]}
-        >
+        <div className={styles["trending-movie-button-wrapper"]}>
           {trendingMovieInfo.id !== 0 ? (
             <>
               <PlayMovieVideoButton id={trendingMovieInfo.id} />
@@ -166,9 +164,7 @@ const TrendingMovieInfo: FC<TrendingMovieInfoProps> = ({
           />
         </div>
       </div>
-      <div
-        className={styles["trending-movie-gradient-shadow"]}
-      ></div>
+      <div className={styles["trending-movie-gradient-shadow"]}></div>
     </>
   );
 };

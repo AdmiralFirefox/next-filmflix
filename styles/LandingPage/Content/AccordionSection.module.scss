@@ -13,9 +13,14 @@
   }
 }
 
-.accordion-section-content {
+.accordion-section-content-wrapper {
   display: flex;
   justify-content: center;
+  margin: 1.5em 0em;
+
+  .accordion-section-content {
+    width: min(80%, 50em);
+  }
 }
 
 .accordion-section-after-content {

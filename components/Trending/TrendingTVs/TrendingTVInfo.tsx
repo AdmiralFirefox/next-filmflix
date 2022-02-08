@@ -7,7 +7,7 @@ import MoreTVInfoButton from "../../Buttons/TrendingTVs/MoreTVInfoButton";
 const PlayTVVideoButton = dynamic(
   () => import("../../Buttons/TrendingTVs/PlayTVVideoButton")
 );
-import Skeleton from "@material-ui/lab/Skeleton";
+import Skeleton from "@mui/material/Skeleton";
 import FallbackButton from "../../Buttons/FallbackButton/FallbackButton";
 const TVModal = dynamic(() => import("../../Modal/TVs/TVModal"));
 import styles from "../../../styles/Trending/TrendingTVs/TrendingTVInfo.module.scss";
@@ -142,7 +142,7 @@ const TrendingTVInfo: FC<TrendingTVInfoProps> = ({
         </div>
       ) : (
         <>
-          <Skeleton variant="rect" id={styles["trending-tv-skeleton"]} />
+          <Skeleton variant="rectangular" id={styles["trending-tv-skeleton"]} />
         </>
       )}
       <div className={styles["trending-tv-content"]}>

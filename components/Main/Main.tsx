@@ -1,6 +1,7 @@
 import React, { FC, useState } from "react";
 import { useSpring, animated } from "react-spring";
 import dynamic from "next/dynamic";
+import { SelectChangeEvent } from "@mui/material/Select";
 import ProfileLoader from "./ProfileLoader";
 const Movies = dynamic(() => import("../Movies/Movies"));
 const Navbar = dynamic(() => import("./Navbar"));
@@ -49,9 +50,7 @@ const Main: FC<MainProps> = ({ manageProfiles, signOut }) => {
   });
 
   //Handling Changes in Changing Category
-  const handleCategoryChange = (
-    event: React.ChangeEvent<{ value: unknown }>
-  ) => {
+  const handleCategoryChange = (event: SelectChangeEvent) => {
     setCategory(event.target.value as unknown as string);
   };
 

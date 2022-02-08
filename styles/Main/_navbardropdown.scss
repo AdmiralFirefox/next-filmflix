@@ -1,27 +1,19 @@
-//Dropdown Padding Outside
-.MuiMenu-paper {
-  background: #303030 !important;
-}
-
-//Dropdown Content
-.MuiList-padding {
-  padding: 0.5em 0em !important;
-  box-shadow: none !important;
-  background: #303030 !important;
+//Select Icon
+.MuiSelect-icon {
   color: #fff !important;
-  font-weight: bold !important;
 }
 
-//Dropdown Select
-.MuiListItem-root.Mui-selected {
+//Focused Menu
+.Mui-focusVisible {
   background: #555 !important;
 }
 
-.MuiListItem-root:hover {
-  background: #555 !important;
+//Text Label when Active
+.MuiFormLabel-root {
+  color: #fff !important;
 }
 
-//Dropdown Icon
-.MuiSelect-iconFilled {
-  fill: #fff !important;
+//Select Border when Actice
+.MuiFilledInput-root:after {
+  border-bottom: none !important;
 }

@@ -8,18 +8,14 @@ import NavbarSearchButton from "../Buttons/Main/NavbarSearchButton";
 import styles from "../../styles/Main/Navbar.module.scss";
 
 //Material UI Dropdown
-import InputLabel from "@material-ui/core/InputLabel";
-import MenuItem from "@material-ui/core/MenuItem";
-import FormControl from "@material-ui/core/FormControl";
-import Select from "@material-ui/core/Select";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select, { SelectChangeEvent } from "@mui/material/Select";
 
 interface NavbarProps {
   manageProfiles: () => void;
-  handleCategoryChange: (
-    event: React.ChangeEvent<{
-      value: unknown;
-    }>
-  ) => void;
+  handleCategoryChange: (event: SelectChangeEvent) => void;
   signOut: () => Promise<void>;
   searchMode: () => void;
   setCategory: React.Dispatch<React.SetStateAction<string>>;
@@ -80,10 +76,17 @@ const Navbar: FC<NavbarProps> = ({
           />
         </div>
         <div className={styles["navbar-dropdown"]}>
-          <FormControl variant="filled">
+          <FormControl
+            variant="filled"
+            sx={{
+              background: "#303030 ",
+              borderTopLeftRadius: "5px",
+              borderTopRightRadius: "5px",
+            }}
+          >
             <InputLabel
               id="demo-simple-select-filled-label"
-              style={{ color: "#fff" }}
+              sx={{ color: "#fff" }}
             >
               Category
             </InputLabel>
@@ -92,7 +95,34 @@ const Navbar: FC<NavbarProps> = ({
               id="demo-simple-select-filled"
               onChange={handleCategoryChange}
               value={category}
-              style={{ color: "#fff", background: "#303030" }}
+              sx={{ color: "#fff" }}
+              MenuProps={{
+                sx: {
+                  ".MuiPaper-root": {
+                    background: "none",
+                    boxShadow: "none",
+                  },
+                  ".MuiMenu-list": {
+                    backgroundColor: "#303030",
+                  },
+
+                  ".MuiMenuItem-root": {
+                    color: "#fff",
+                    transition: "background 0.2s ease-in-out",
+
+                    "&:hover": {
+                      backgroundColor: "#555",
+                    },
+                  },
+                  "&& .Mui-selected": {
+                    background: "#555 ",
+
+                    "&:hover": {
+                      backgroundColor: "#555",
+                    },
+                  },
+                },
+              }}
             >
               <MenuItem value="Movies">Movies</MenuItem>
               <MenuItem value="TVs">TVs</MenuItem>

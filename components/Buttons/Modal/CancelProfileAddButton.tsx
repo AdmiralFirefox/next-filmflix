@@ -1,21 +1,19 @@
 import React, { FC } from "react";
-import { withStyles, Theme } from "@material-ui/core/styles";
-import Button from "@material-ui/core/Button";
+import { styled } from "@mui/material/styles";
+import Button, { ButtonProps } from "@mui/material/Button";
 
 interface CancelProfileAddButtonProps {
   setProfile: React.Dispatch<React.SetStateAction<string>>;
   handleCloseAddProfileModal: () => void;
 }
 
-const CancelProfileAddButton = withStyles((theme: Theme) => ({
-  root: {
-    color: "#fff",
-    backgroundColor: "#E50914",
-    "&:hover": {
-      backgroundColor: "hsl(357, 92%, 60%)",
-    },
+const CancelProfileAddButton = styled(Button)<ButtonProps>(() => ({
+  color: "#fff",
+  backgroundColor: "#E50914",
+  "&:hover": {
+    backgroundColor: "hsl(357, 92%, 60%)",
   },
-}))(Button);
+}));
 
 const CancelProfileAddModalButton: FC<CancelProfileAddButtonProps> = ({
   setProfile,
@@ -25,7 +23,6 @@ const CancelProfileAddModalButton: FC<CancelProfileAddButtonProps> = ({
     <>
       <CancelProfileAddButton
         variant="contained"
-        color="primary"
         onClick={() => {
           setProfile("");
           handleCloseAddProfileModal();

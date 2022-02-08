@@ -1,6 +1,6 @@
 import React, { FC } from "react";
-import { withStyles, Theme } from "@material-ui/core/styles";
-import Button from "@material-ui/core/Button";
+import { styled } from "@mui/material/styles";
+import Button, { ButtonProps } from "@mui/material/Button";
 
 interface SaveProfilePicButtonProps {
   SubmitProfilePicEdit: (id: number) => void;
@@ -9,15 +9,13 @@ interface SaveProfilePicButtonProps {
   selectRef: React.MutableRefObject<null>;
 }
 
-const EditProfilePic = withStyles((theme: Theme) => ({
-  root: {
-    color: "#fff",
-    backgroundColor: "#0071EB",
-    "&:hover": {
-      backgroundColor: "hsl(211, 100%, 60%)",
-    },
+const EditProfilePic = styled(Button)<ButtonProps>(() => ({
+  color: "#fff",
+  backgroundColor: "#0071EB",
+  "&:hover": {
+    backgroundColor: "hsl(211, 100%, 60%)",
   },
-}))(Button);
+}));
 
 const SaveProfilePicButton: FC<SaveProfilePicButtonProps> = ({
   SubmitProfilePicEdit,
@@ -29,7 +27,6 @@ const SaveProfilePicButton: FC<SaveProfilePicButtonProps> = ({
     <>
       <EditProfilePic
         variant="contained"
-        color="primary"
         onClick={() => SubmitProfilePicEdit(profile.id)}
         disabled={!focus}
         ref={selectRef}

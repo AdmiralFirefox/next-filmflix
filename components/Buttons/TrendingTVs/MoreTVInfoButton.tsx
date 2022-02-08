@@ -1,22 +1,20 @@
 import React, { FC } from "react";
-import { withStyles, Theme } from "@material-ui/core/styles";
-import Button from "@material-ui/core/Button";
-import InfoIcon from "@material-ui/icons/Info";
+import { styled } from "@mui/material/styles";
+import Button, { ButtonProps } from "@mui/material/Button";
+import InfoIcon from "@mui/icons-material/Info";
 
 interface MoreInfoButtonProps {
   handleOpenTrendingTVModal: () => void;
 }
 
-const MoreInfoButtonClick = withStyles((theme: Theme) => ({
-  root: {
-    color: "#fff",
-    backgroundColor: "hsl(0, 0%, 33%)",
-    marginLeft: "0.85em",
-    "&:hover": {
-      backgroundColor: "hsl(0, 0%, 50%)",
-    },
+const MoreInfoButtonClick = styled(Button)<ButtonProps>(() => ({
+  color: "#fff",
+  backgroundColor: "hsl(0, 0%, 33%)",
+  marginLeft: "0.85em",
+  "&:hover": {
+    backgroundColor: "hsl(0, 0%, 50%)",
   },
-}))(Button);
+}));
 
 const MoreTVInfoButton: FC<MoreInfoButtonProps> = ({
   handleOpenTrendingTVModal,
@@ -25,7 +23,6 @@ const MoreTVInfoButton: FC<MoreInfoButtonProps> = ({
     <>
       <MoreInfoButtonClick
         variant="contained"
-        color="primary"
         onClick={handleOpenTrendingTVModal}
         endIcon={<InfoIcon />}
       >

@@ -1,28 +1,25 @@
 import React, { FC } from "react";
-import { withStyles, Theme } from "@material-ui/core/styles";
-import Button from "@material-ui/core/Button";
-import SearchIcon from "@material-ui/icons/Search";
+import { styled } from "@mui/material/styles";
+import Button, { ButtonProps } from "@mui/material/Button";
+import SearchIcon from "@mui/icons-material/Search";
 
 interface NavbarSearchButtonProps {
   searchMode: () => void;
 }
 
-const SearchButton = withStyles((theme: Theme) => ({
-  root: {
-    color: "#fff",
-    backgroundColor: "#303030",
-    "&:hover": {
-      backgroundColor: "hsl(0, 0%, 30%)",
-    },
+const SearchButton = styled(Button)<ButtonProps>(() => ({
+  color: "#fff",
+  backgroundColor: "#303030",
+  "&:hover": {
+    backgroundColor: "hsl(0, 0%, 30%)",
   },
-}))(Button);
+}));
 
 const NavbarSearchButton: FC<NavbarSearchButtonProps> = ({ searchMode }) => {
   return (
     <>
       <SearchButton
         variant="contained"
-        color="primary"
         onClick={searchMode}
         startIcon={<SearchIcon />}
       >

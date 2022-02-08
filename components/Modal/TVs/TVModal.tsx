@@ -1,7 +1,7 @@
 import React, { FC, useState } from "react";
 import { useWindowSize, Size } from "../../../hooks/useWindowSize";
 import dynamic from "next/dynamic";
-import Modal from "@material-ui/core/Modal";
+import Modal from "@mui/material/Modal";
 const TVTrailer = dynamic(() => import("../../TVs/TVTrailer"));
 const SimilarTV = dynamic(() => import("../../TVs/SimilarTV"));
 const TVSeasons = dynamic(() => import("../../TVs/TVSeasons"));
@@ -10,44 +10,11 @@ import { v4 as uuidv4 } from "uuid";
 import styles from "../../../styles/Modal/TVs/TVModal.module.scss";
 
 //Tabs
-import AppBar from "@material-ui/core/AppBar";
-import Tabs from "@material-ui/core/Tabs";
-import Tab from "@material-ui/core/Tab";
-import Typography from "@material-ui/core/Typography";
-import Box from "@material-ui/core/Box";
-
-interface TabPanelProps {
-  children?: React.ReactNode;
-  index: any;
-  value: any;
-}
-
-function TabPanel(props: TabPanelProps) {
-  const { children, value, index, ...other } = props;
-
-  return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`simple-tabpanel-${index}`}
-      aria-labelledby={`simple-tab-${index}`}
-      {...other}
-    >
-      {value === index && (
-        <Box p={3}>
-          <Typography component={"span"}>{children}</Typography>
-        </Box>
-      )}
-    </div>
-  );
-}
-
-function a11yProps(index: any) {
-  return {
-    id: `simple-tab-${index}`,
-    "aria-controls": `simple-tabpanel-${index}`,
-  };
-}
+import Box from "@mui/material/Box";
+import Tab from "@mui/material/Tab";
+import TabContext from "@mui/lab/TabContext";
+import TabList from "@mui/lab/TabList";
+import TabPanel from "@mui/lab/TabPanel";
 
 interface TVModalProp {
   openTVModal: boolean;
@@ -84,11 +51,11 @@ const TVModal: FC<TVModalProp> = ({
   spokenLanguages,
 }) => {
   //Tabs
-  const [value, setValue] = useState(0);
+  const [value, setValue] = useState("1");
 
   const size: Size = useWindowSize();
 
-  const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
+  const handleChange = (event: React.SyntheticEvent, newValue: string) => {
     setValue(newValue);
   };
 
@@ -220,32 +187,57 @@ const TVModal: FC<TVModalProp> = ({
             </div>
           </div>
           <div>
-            <AppBar
-              position="static"
-              style={{ backgroundColor: "#000000", boxShadow: "none" }}
-            >
-              <Tabs
-                value={value}
-                onChange={handleChange}
-                aria-label="simple tabs example"
-                TabIndicatorProps={{
-                  style: { borderBottom: "5px solid#E50914", color: "#fff" },
-                }}
-              >
-                <Tab label="Episodes" {...a11yProps(0)} />
-                <Tab label="Casts" {...a11yProps(1)} />
-                <Tab label="Similar TV" {...a11yProps(2)} />
-              </Tabs>
-            </AppBar>
-            <TabPanel value={value} index={0}>
-              <TVSeasons seasons={seasons} id={id} />
-            </TabPanel>
-            <TabPanel value={value} index={1}>
-              <TVCasts id={id} />
-            </TabPanel>
-            <TabPanel value={value} index={2}>
-              <SimilarTV id={id} />
-            </TabPanel>
+            <Box sx={{ width: "100%", typography: "body1" }}>
+              <TabContext value={value}>
+                <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+                  <TabList
+                    onChange={handleChange}
+                    aria-label="lab API tabs example"
+                    sx={{ background: "#000" }}
+                    TabIndicatorProps={{
+                      style: {
+                        borderBottom: "5px solid#E50914",
+                      },
+                    }}
+                    variant="scrollable"
+                  >
+                    <Tab
+                      label="Episodes"
+                      value="1"
+                      sx={{
+                        color: "#fff",
+                        "&.Mui-selected": { color: "#fff" },
+                      }}
+                    />
+                    <Tab
+                      label="Casts"
+                      value="2"
+                      sx={{
+                        color: "#fff",
+                        "&.Mui-selected": { color: "#fff" },
+                      }}
+                    />
+                    <Tab
+                      label="Similar TV"
+                      value="3"
+                      sx={{
+                        color: "#fff",
+                        "&.Mui-selected": { color: "#fff" },
+                      }}
+                    />
+                  </TabList>
+                </Box>
+                <TabPanel value="1">
+                  <TVSeasons seasons={seasons} id={id} />
+                </TabPanel>
+                <TabPanel value="2">
+                  <TVCasts id={id} />
+                </TabPanel>
+                <TabPanel value="3">
+                  <SimilarTV id={id} />
+                </TabPanel>
+              </TabContext>
+            </Box>
           </div>
         </div>
       </Modal>

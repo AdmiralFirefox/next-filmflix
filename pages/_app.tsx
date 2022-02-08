@@ -1,35 +1,32 @@
+import React, { FC } from "react";
 import type { AppProps } from "next/app";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import { ThemeProvider } from "@material-ui/core/styles";
+import CssBaseline from "@mui/material/CssBaseline";
+import { ThemeProvider } from "@mui/material/styles";
+import { CacheProvider } from "@emotion/react";
 import theme from "../src/theme";
-import React, { FC, useEffect } from "react";
 import { AuthProvider } from "../provider/AuthProvider";
+import createEmotionCache from "../src/createEmotionCache";
+import Meta from "../components/LandingPage/Meta";
 import "../styles/globals.scss";
 
 // Import Swiper styles
 import "swiper/swiper.min.css";
 import "swiper/components/navigation/navigation.min.css";
-import Meta from "../components/LandingPage/Meta";
+
+const clientSideEmotionCache = createEmotionCache();
 
 const MyApp: FC<AppProps> = ({ Component, pageProps }: AppProps) => {
-  useEffect(() => {
-    // Remove the server-side injected CSS.
-    const jssStyles = document.querySelector("#jss-server-side");
-    if (jssStyles) {
-      jssStyles?.parentElement?.removeChild(jssStyles);
-    }
-  }, []);
-
   return (
     <>
-      <Meta />
-      <ThemeProvider theme={theme}>
-        {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-        <CssBaseline />
-        <AuthProvider>
-          <Component {...pageProps} />
-        </AuthProvider>
-      </ThemeProvider>
+      <CacheProvider value={clientSideEmotionCache}>
+        <Meta />
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          <AuthProvider>
+            <Component {...pageProps} />
+          </AuthProvider>
+        </ThemeProvider>
+      </CacheProvider>
     </>
   );
 };

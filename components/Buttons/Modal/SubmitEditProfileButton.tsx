@@ -1,6 +1,6 @@
 import React, { FC } from "react";
-import { withStyles, Theme } from "@material-ui/core/styles";
-import Button from "@material-ui/core/Button";
+import { styled } from "@mui/material/styles";
+import Button, { ButtonProps } from "@mui/material/Button";
 
 interface SubmitEditProfileButtonProps {
   SubmitProfileEdit: (id: number) => void;
@@ -8,15 +8,13 @@ interface SubmitEditProfileButtonProps {
   profileTextEdit: string;
 }
 
-const EditProfileButton = withStyles((theme: Theme) => ({
-  root: {
-    color: "#fff",
-    backgroundColor: "#0071EB",
-    "&:hover": {
-      backgroundColor: "hsl(211, 100%, 60%)",
-    },
+const EditProfileButton = styled(Button)<ButtonProps>(() => ({
+  color: "#fff",
+  backgroundColor: "#0071EB",
+  "&:hover": {
+    backgroundColor: "hsl(211, 100%, 60%)",
   },
-}))(Button);
+}));
 
 const SubmitEditProfileButton: FC<SubmitEditProfileButtonProps> = ({
   SubmitProfileEdit,
@@ -27,7 +25,6 @@ const SubmitEditProfileButton: FC<SubmitEditProfileButtonProps> = ({
     <>
       <EditProfileButton
         variant="contained"
-        color="primary"
         onClick={() => SubmitProfileEdit(profile.id)}
         disabled={!profileTextEdit}
       >

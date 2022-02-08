@@ -1,22 +1,21 @@
 import React, { FC } from "react";
-import { withStyles, Theme } from "@material-ui/core/styles";
-import PlayArrowIcon from "@material-ui/icons/PlayArrow";
-import Button from "@material-ui/core/Button";
+import { styled } from "@mui/material/styles";
+import Button, { ButtonProps } from "@mui/material/Button";
+import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 
 interface PlayMovieButtonProps {
   handleOpenMovieVideoPlayer: () => void;
 }
 
-const PlayButton = withStyles((theme: Theme) => ({
-  root: {
-    color: "#000",
-    backgroundColor: "#fff",
-    width: "90%",
-    "&:hover": {
-      backgroundColor: "hsl(0, 0%, 80%)",
-    },
+const PlayButton = styled(Button)<ButtonProps>(() => ({
+  color: "#000",
+  backgroundColor: "#fff",
+  width: "90%",
+  padding: "0.5em",
+  "&:hover": {
+    backgroundColor: "hsl(0, 0%, 80%)",
   },
-}))(Button);
+}));
 
 const PlayMovieButton: FC<PlayMovieButtonProps> = ({
   handleOpenMovieVideoPlayer,
@@ -25,7 +24,6 @@ const PlayMovieButton: FC<PlayMovieButtonProps> = ({
     <>
       <PlayButton
         variant="contained"
-        color="primary"
         onClick={handleOpenMovieVideoPlayer}
         endIcon={<PlayArrowIcon />}
       >

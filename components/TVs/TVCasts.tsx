@@ -2,8 +2,8 @@ import React, { FC, useState, useEffect } from "react";
 import Axios from "axios";
 import Image from "next/image";
 import ProfileFallback from "../../assets/fallbacks/ProfileFallback.jpg";
-import { withStyles, Theme } from "@material-ui/core/styles";
-import Button from "@material-ui/core/Button";
+import { styled } from "@mui/material/styles";
+import Button, { ButtonProps } from "@mui/material/Button";
 import styles from "../../styles/TVs/TVCasts.module.scss";
 
 const { NEXT_PUBLIC_API_KEY } = process.env;
@@ -17,16 +17,14 @@ interface TVCastProp {
   }[];
 }
 
-const LoadMoreProfilesButton = withStyles((theme: Theme) => ({
-  root: {
-    color: "#fff",
-    backgroundColor: "#0071EB",
-    marginTop: "2em",
-    "&:hover": {
-      backgroundColor: "hsl(211, 100%, 60%)",
-    },
+const LoadMoreProfilesButton = styled(Button)<ButtonProps>(() => ({
+  color: "#fff",
+  backgroundColor: "#0071EB",
+  marginTop: "2em",
+  "&:hover": {
+    backgroundColor: "hsl(211, 100%, 60%)",
   },
-}))(Button);
+}));
 
 const TVCasts: FC<{ id: number }> = ({ id }) => {
   const [castTV, setCastTV] = useState<TVCastProp["tvCastData"]>([]);
@@ -116,7 +114,6 @@ const TVCasts: FC<{ id: number }> = ({ id }) => {
       <div className={styles["tv-casts-button-wrapper"]}>
         <LoadMoreProfilesButton
           variant="contained"
-          color="primary"
           onClick={handleLoadMore}
           disabled={castTV.length === currentItems.length}
         >

@@ -1,27 +1,25 @@
 import { FC } from "react";
-import { withStyles, Theme } from "@material-ui/core/styles";
-import Button from "@material-ui/core/Button";
-import CircularProgress from "@material-ui/core/CircularProgress";
+import { styled } from "@mui/material/styles";
+import Button, { ButtonProps } from "@mui/material/Button";
+import CircularProgress from "@mui/material/CircularProgress";
 
-const LoadingAuthButton = withStyles((theme: Theme) => ({
-  root: {
-    color: "#ffffff",
+const LoadingAuthButton = styled(Button)<ButtonProps>(() => ({
+  color: "#ffffff",
+  backgroundColor: "#303030",
+  width: "100%",
+  marginBottom: "1em",
+  padding: "0.7em",
+  border: "2.5px solid #e50914",
+  "&:hover": {
     backgroundColor: "#303030",
-    width: "100%",
-    marginBottom: "1em",
-    padding: "0.7em",
-    border: "2.5px solid #e50914",
-    "&:hover": {
-      backgroundColor: "#303030",
-      cursor: "context-menu",
-    },
+    cursor: "context-menu",
   },
-}))(Button);
+}));
 
 const LoadingButtons: FC = () => {
   return (
     <>
-      <LoadingAuthButton variant="contained" color="primary">
+      <LoadingAuthButton variant="contained">
         <CircularProgress size={35} />
       </LoadingAuthButton>
     </>

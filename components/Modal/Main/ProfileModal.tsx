@@ -1,12 +1,12 @@
 import React, { FC, useContext } from "react";
-import Modal from "@material-ui/core/Modal";
+import Modal from "@mui/material/Modal";
 import Image from "next/image";
 import {
   ProfileNameContext,
   ProfilePicContext,
 } from "../../Main/ProfileSelection";
-import { withStyles, Theme } from "@material-ui/core/styles";
-import Button from "@material-ui/core/Button";
+import { styled } from "@mui/material/styles";
+import Button, { ButtonProps } from "@mui/material/Button";
 import styles from "../../../styles/Modal/Main/ProfileModal.module.scss";
 
 interface ProfileModalProps {
@@ -16,25 +16,21 @@ interface ProfileModalProps {
   signOut: () => Promise<void>;
 }
 
-const BlueButtonClick = withStyles((theme: Theme) => ({
-  root: {
-    color: "#fff",
-    backgroundColor: "#0071EB",
-    "&:hover": {
-      backgroundColor: "hsl(211, 100%, 60%)",
-    },
+const BlueButtonClick = styled(Button)<ButtonProps>(() => ({
+  color: "#fff",
+  backgroundColor: "#0071EB",
+  "&:hover": {
+    backgroundColor: "hsl(211, 100%, 60%)",
   },
-}))(Button);
+}));
 
-const RedButtonClick = withStyles((theme: Theme) => ({
-  root: {
-    color: "#fff",
-    backgroundColor: "#E50914",
-    "&:hover": {
-      backgroundColor: "hsl(357, 92%, 60%)",
-    },
+const RedButtonClick = styled(Button)<ButtonProps>(() => ({
+  color: "#fff",
+  backgroundColor: "#E50914",
+  "&:hover": {
+    backgroundColor: "hsl(357, 92%, 60%)",
   },
-}))(Button);
+}));
 
 const ProfileModal: FC<ProfileModalProps> = ({
   openProfileModal,
@@ -53,9 +49,7 @@ const ProfileModal: FC<ProfileModalProps> = ({
         aria-labelledby="simple-modal-title"
         aria-describedby="simple-modal-description"
       >
-        <div
-          className={styles["profile-info-modal-wrapper-animation"]}
-        >
+        <div className={styles["profile-info-modal-wrapper-animation"]}>
           <div className={styles["profile-info-modal-wrapper"]}>
             <div
               className={styles["profile-info-modal-close-icon"]}
@@ -72,18 +66,10 @@ const ProfileModal: FC<ProfileModalProps> = ({
               </div>
             </div>
             <div className={styles["profile-info-button-wrapper"]}>
-              <BlueButtonClick
-                variant="contained"
-                color="primary"
-                onClick={manageProfiles}
-              >
+              <BlueButtonClick variant="contained" onClick={manageProfiles}>
                 Manage Profiles
               </BlueButtonClick>
-              <RedButtonClick
-                variant="contained"
-                color="primary"
-                onClick={signOut}
-              >
+              <RedButtonClick variant="contained" onClick={signOut}>
                 Sign Out
               </RedButtonClick>
             </div>

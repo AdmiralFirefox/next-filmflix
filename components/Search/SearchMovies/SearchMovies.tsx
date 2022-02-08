@@ -4,7 +4,7 @@ import Axios from "axios";
 import dynamic from "next/dynamic";
 const SearchMovieInfo = dynamic(() => import("./SearchMovieInfo"));
 import SearchMoviesInput from "../../Inputs/SearchMovies/SearchMoviesInput";
-import CircularProgress from "@material-ui/core/CircularProgress";
+import CircularProgress from "@mui/material/CircularProgress";
 import styles from "../../../styles/Search/SearchMovies/SearchMovies.module.scss";
 
 const { NEXT_PUBLIC_API_KEY } = process.env;

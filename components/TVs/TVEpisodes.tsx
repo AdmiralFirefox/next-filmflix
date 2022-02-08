@@ -2,8 +2,8 @@ import React, { FC, useState, useEffect } from "react";
 import Axios from "axios";
 import Image from "next/image";
 import BackdropFallback from "../../assets/fallbacks/BackdropFallback.jpg";
-import { withStyles, Theme } from "@material-ui/core/styles";
-import Button from "@material-ui/core/Button";
+import { styled } from "@mui/material/styles";
+import Button, { ButtonProps } from "@mui/material/Button";
 import styles from "../../styles/TVs/TVEpisodes.module.scss";
 
 const { NEXT_PUBLIC_API_KEY } = process.env;
@@ -23,15 +23,13 @@ interface CurrentSeasonProp {
   id: number;
 }
 
-const LoadMoreEpisodeButton = withStyles((theme: Theme) => ({
-  root: {
-    color: "#fff",
-    backgroundColor: "#0071EB",
-    "&:hover": {
-      backgroundColor: "hsl(211, 100%, 60%)",
-    },
+const LoadMoreEpisodeButton = styled(Button)<ButtonProps>(() => ({
+  color: "#fff",
+  backgroundColor: "#0071EB",
+  "&:hover": {
+    backgroundColor: "hsl(211, 100%, 60%)",
   },
-}))(Button);
+}));
 
 const TVEpisodes: FC<CurrentSeasonProp> = ({ currentSeason, id }) => {
   const [episodes, setEpisodes] = useState<EpisodeProp["episodeData"]>([]);
@@ -129,7 +127,6 @@ const TVEpisodes: FC<CurrentSeasonProp> = ({ currentSeason, id }) => {
       <div className={styles["tv-episode-button-wrapper"]}>
         <LoadMoreEpisodeButton
           variant="contained"
-          color="primary"
           onClick={handleLoadMore}
           disabled={currentItems.length === episodes.length}
         >

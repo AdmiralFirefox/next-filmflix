@@ -2,8 +2,8 @@ import React, { FC, useState, useEffect } from "react";
 import Axios from "axios";
 import Image from "next/image";
 import PosterFallback from "../../assets/fallbacks/PosterFallback.jpg";
-import { withStyles, Theme } from "@material-ui/core/styles";
-import Button from "@material-ui/core/Button";
+import { styled } from "@mui/material/styles";
+import Button, { ButtonProps } from "@mui/material/Button";
 import styles from "../../styles/Movies/SimilarMovies.module.scss";
 
 const { NEXT_PUBLIC_API_KEY } = process.env;
@@ -17,16 +17,14 @@ interface SimilarMoviesProps {
   }[];
 }
 
-const LoadMoreSimilarMoviesButton = withStyles((theme: Theme) => ({
-  root: {
-    color: "#fff",
-    backgroundColor: "#0071EB",
-    marginTop: "2em",
-    "&:hover": {
-      backgroundColor: "hsl(211, 100%, 60%)",
-    },
+const LoadMoreSimilarMoviesButton = styled(Button)<ButtonProps>(() => ({
+  color: "#fff",
+  backgroundColor: "#0071EB",
+  marginTop: "2em",
+  "&:hover": {
+    backgroundColor: "hsl(211, 100%, 60%)",
   },
-}))(Button);
+}));
 
 const SimilarMovies: FC<{ id: number }> = ({ id }) => {
   const [similarMovies, setSimilarMovies] = useState<
@@ -133,7 +131,6 @@ const SimilarMovies: FC<{ id: number }> = ({ id }) => {
       <div className={styles["similar-movies-button-wrapper"]}>
         <LoadMoreSimilarMoviesButton
           variant="contained"
-          color="primary"
           onClick={handleLoadMore}
           disabled={currentItems.length === similarMovies.length}
         >

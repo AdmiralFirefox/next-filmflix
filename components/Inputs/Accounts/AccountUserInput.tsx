@@ -1,52 +1,22 @@
 import React, { FC, useRef } from "react";
-import {
-  makeStyles,
-  Theme,
-  createStyles,
-  withStyles,
-} from "@material-ui/core/styles";
 import { useForm } from "react-hook-form";
-import Paper from "@material-ui/core/Paper";
-import InputBase from "@material-ui/core/InputBase";
-import Button from "@material-ui/core/Button";
+import Paper from "@mui/material/Paper";
+import InputBase from "@mui/material/InputBase";
+import { styled } from "@mui/material/styles";
+import Box from "@mui/material/Box";
+import Button, { ButtonProps } from "@mui/material/Button";
 import LoadingButtons from "../../Buttons/LoadingButtons/LoadingButtons";
 
-//Input
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      padding: "0.5em",
-      display: "flex",
-      alignItems: "center",
-      width: "min(100%, 35em)",
-      background: "#333333",
-      marginBottom: "1.5em",
-    },
-    input: {
-      flex: 1,
-    },
-    alert: {
-      color: "#f59842",
-      marginTop: "-1em",
-      marginBottom: "1.5em",
-      alignSelf: "start",
-      textAlign: "left",
-    },
-  })
-);
-
 //Create Account Button
-const CreateAccount = withStyles((theme: Theme) => ({
-  root: {
-    color: "#ffffff",
-    backgroundColor: "#e50914",
-    width: "100%",
-    padding: "0.7em",
-    "&:hover": {
-      backgroundColor: "hsl(357, 92%, 60%)",
-    },
+const CreateAccount = styled(Button)<ButtonProps>(() => ({
+  color: "#ffffff",
+  backgroundColor: "#e50914",
+  width: "100%",
+  padding: "0.7em",
+  "&:hover": {
+    backgroundColor: "hsl(357, 92%, 60%)",
   },
-}))(Button);
+}));
 
 interface AccountUserInputProps {
   emailRef: React.RefObject<HTMLInputElement>;
@@ -61,8 +31,6 @@ const AccountUserInput: FC<AccountUserInputProps> = ({
   createAccount,
   authLoading,
 }) => {
-  const classes = useStyles();
-
   const {
     register,
     handleSubmit,
@@ -76,13 +44,26 @@ const AccountUserInput: FC<AccountUserInputProps> = ({
 
   return (
     <>
-      <Paper className={classes.root}>
+      <Paper
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          padding: "0.5em",
+          width: "min(100%, 35em)",
+          marginBottom: "1.5em",
+          background: "#333333",
+        }}
+      >
         <InputBase
-          className={classes.input}
           inputRef={emailRef}
           inputProps={{
             "aria-label": "Email",
-            style: { color: "#fff", fontWeight: "bold" },
+          }}
+          sx={{
+            color: "#fff",
+            fontWeight: "bold",
+            ml: 1,
+            flex: 1,
           }}
           type="email"
           id="email"
@@ -98,17 +79,39 @@ const AccountUserInput: FC<AccountUserInputProps> = ({
         />
       </Paper>
       {errors.email && (
-        <p role="alert" className={classes.alert}>
-          {errors.email.message}
-        </p>
+        <Box
+          role="alert"
+          sx={{
+            color: "#f59842",
+            marginTop: "-1em",
+            marginBottom: "1.5em",
+            alignSelf: "start",
+            textAlign: "left",
+          }}
+        >
+          <p>{errors.email.message}</p>
+        </Box>
       )}
-      <Paper className={classes.root}>
+      <Paper
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          padding: "0.5em",
+          width: "min(100%, 35em)",
+          marginBottom: "1.5em",
+          background: "#333333",
+        }}
+      >
         <InputBase
-          className={classes.input}
           inputRef={passwordRef}
           inputProps={{
             "aria-label": "Password",
-            style: { color: "#fff", fontWeight: "bold" },
+          }}
+          sx={{
+            color: "#fff",
+            fontWeight: "bold",
+            ml: 1,
+            flex: 1,
           }}
           type="password"
           id="password"
@@ -124,16 +127,38 @@ const AccountUserInput: FC<AccountUserInputProps> = ({
         />
       </Paper>
       {errors.password && (
-        <p role="alert" className={classes.alert}>
-          {errors.password.message}
-        </p>
+        <Box
+          role="alert"
+          sx={{
+            color: "#f59842",
+            marginTop: "-1em",
+            marginBottom: "1.5em",
+            alignSelf: "start",
+            textAlign: "left",
+          }}
+        >
+          <p>{errors.password.message}</p>
+        </Box>
       )}
-      <Paper className={classes.root}>
+      <Paper
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          padding: "0.5em",
+          width: "min(100%, 35em)",
+          marginBottom: "1.5em",
+          background: "#333333",
+        }}
+      >
         <InputBase
-          className={classes.input}
           inputProps={{
             "aria-label": "Password",
-            style: { color: "#fff", fontWeight: "bold" },
+          }}
+          sx={{
+            color: "#fff",
+            fontWeight: "bold",
+            ml: 1,
+            flex: 1,
           }}
           type="password"
           id="confirmPassword"
@@ -147,9 +172,18 @@ const AccountUserInput: FC<AccountUserInputProps> = ({
         />
       </Paper>
       {errors.confirmPassword && (
-        <p role="alert" className={classes.alert}>
-          {errors.confirmPassword.message}
-        </p>
+        <Box
+          role="alert"
+          sx={{
+            color: "#f59842",
+            marginTop: "-1em",
+            marginBottom: "1.5em",
+            alignSelf: "start",
+            textAlign: "left",
+          }}
+        >
+          <p>{errors.confirmPassword.message}</p>
+        </Box>
       )}
       {authLoading ? (
         <>
@@ -158,7 +192,6 @@ const AccountUserInput: FC<AccountUserInputProps> = ({
       ) : (
         <CreateAccount
           variant="contained"
-          color="primary"
           onClick={handleSubmit(createAccount)}
           type="button"
         >

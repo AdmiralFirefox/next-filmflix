@@ -1,5 +1,5 @@
 import React, { FC, useEffect } from "react";
-import Divider from "@material-ui/core/Divider";
+import Divider from "@mui/material/Divider";
 import LandingPageNavbar from "../LandingPageNavbar";
 import HeroSection from "./HeroSection";
 import PageContentOne from "./PageContentOne";

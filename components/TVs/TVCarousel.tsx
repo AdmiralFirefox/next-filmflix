@@ -2,7 +2,7 @@ import React, { FC, useState, useEffect, createContext } from "react";
 import dynamic from "next/dynamic";
 const TVInfo = dynamic(() => import("./TVInfo"));
 import Axios from "axios";
-import Skeleton from "@material-ui/lab/Skeleton";
+import Skeleton from "@mui/material/Skeleton";
 import styles from "../../styles/TVs/TVCarousel.module.scss";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -109,10 +109,10 @@ const TVCarousel: FC<TVShowsRouteProps> = ({ route, title }) => {
               return (
                 <SwiperSlide key={i} virtualIndex={i}>
                   <Skeleton
-                    variant="rect"
+                    variant="rectangular"
                     width={210}
                     height={250}
-                    style={{ background: "#757575", borderRadius: "8px" }}
+                    sx={{ background: "#757575", borderRadius: "8px" }}
                   />
                 </SwiperSlide>
               );

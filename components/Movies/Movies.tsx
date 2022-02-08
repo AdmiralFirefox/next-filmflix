@@ -3,7 +3,7 @@ import dynamic from "next/dynamic";
 import { MovieData } from "../../data/moviedata";
 const MovieCarousel = dynamic(() => import("./MovieCarousel"));
 import InfiniteScroll from "react-infinite-scroll-component";
-import CircularProgress from "@material-ui/core/CircularProgress";
+import CircularProgress from "@mui/material/CircularProgress";
 import styles from "../../styles/Movies/Movies.module.scss";
 
 const Movies: FC = () => {

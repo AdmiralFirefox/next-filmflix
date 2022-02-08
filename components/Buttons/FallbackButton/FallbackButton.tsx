@@ -1,26 +1,20 @@
 import React, { FC } from "react";
-import { withStyles, Theme } from "@material-ui/core/styles";
-import Button from "@material-ui/core/Button";
-import PlayArrowIcon from "@material-ui/icons/PlayArrow";
+import { styled } from "@mui/material/styles";
+import Button, { ButtonProps } from "@mui/material/Button";
+import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 
-const FallbackButtonClick = withStyles((theme: Theme) => ({
-  root: {
-    color: "#000",
-    backgroundColor: "hsl(0, 0%, 100%)",
-    "&:hover": {
-      backgroundColor: "hsl(0, 0%, 80%)",
-    },
+const FallbackButtonClick = styled(Button)<ButtonProps>(() => ({
+  color: "#000",
+  backgroundColor: "hsl(0, 0%, 100%)",
+  "&:hover": {
+    backgroundColor: "hsl(0, 0%, 80%)",
   },
-}))(Button);
+}));
 
 const FallbackButton: FC = () => {
   return (
     <>
-      <FallbackButtonClick
-        variant="contained"
-        color="primary"
-        endIcon={<PlayArrowIcon />}
-      >
+      <FallbackButtonClick variant="contained" endIcon={<PlayArrowIcon />}>
         Play
       </FallbackButtonClick>
     </>

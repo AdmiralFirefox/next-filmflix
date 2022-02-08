@@ -1,9 +1,9 @@
 import React, { FC, useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 import Axios from "axios";
-import { withStyles, Theme } from "@material-ui/core/styles";
-import Button from "@material-ui/core/Button";
-import PlayArrowIcon from "@material-ui/icons/PlayArrow";
+import { styled } from "@mui/material/styles";
+import Button, { ButtonProps } from "@mui/material/Button";
+import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 const VideoPlayerFallback = dynamic(
   () => import("../../Modal/VideoPlayer/VideoPlayerFallback")
 );
@@ -13,15 +13,13 @@ const VideoPlayer = dynamic(
 
 const { NEXT_PUBLIC_API_KEY } = process.env;
 
-const PlayButton = withStyles((theme: Theme) => ({
-  root: {
-    color: "#000",
-    backgroundColor: "hsl(0, 0%, 100%)",
-    "&:hover": {
-      backgroundColor: "hsl(0, 0%, 80%)",
-    },
+const PlayButton = styled(Button)<ButtonProps>(() => ({
+  color: "#000",
+  backgroundColor: "hsl(0, 0%, 100%)",
+  "&:hover": {
+    backgroundColor: "hsl(0, 0%, 80%)",
   },
-}))(Button);
+}));
 
 const PlayMovieVideoButton: FC<{ id?: number }> = ({ id }) => {
   const [displayTrailer, setDisplayTrailer] = useState({ key: 0 });
@@ -78,7 +76,6 @@ const PlayMovieVideoButton: FC<{ id?: number }> = ({ id }) => {
 
       <PlayButton
         variant="contained"
-        color="primary"
         endIcon={<PlayArrowIcon />}
         onClick={handleOpenMovieVideoPlayer}
       >

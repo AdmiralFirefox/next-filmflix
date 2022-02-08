@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import { useWindowSize, Size } from "../../../hooks/useWindowSize";
-import Modal from "@material-ui/core/Modal";
+import Modal from "@mui/material/Modal";
 import Image from "next/image";
 import VideoFallback from "../../../assets/fallbacks/VideoFallback.jpg";
 import styles from "../../../styles/Modal/VideoPlayer/VideoPlayerFallback.module.scss";

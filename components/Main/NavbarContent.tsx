@@ -1,15 +1,14 @@
-import React, { FC, useContext } from "react";
+import React, { FC, useContext, useState } from "react";
 import { ProfileNameContext, ProfilePicContext } from "./ProfileSelection";
 import Image from "next/image";
-import clsx from "clsx";
-import { makeStyles } from "@material-ui/core/styles";
-import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
-import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/icons/Menu";
-import SearchIcon from "@material-ui/icons/Search";
-import MovieIcon from "@material-ui/icons/Movie";
-import TvIcon from "@material-ui/icons/Tv";
-import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import Box from "@mui/material/Box";
+import SwipeableDrawer from "@mui/material/SwipeableDrawer";
+import IconButton from "@mui/material/IconButton";
+import MenuIcon from "@mui/icons-material/Menu";
+import SearchIcon from "@mui/icons-material/Search";
+import MovieIcon from "@mui/icons-material/Movie";
+import TvIcon from "@mui/icons-material/Tv";
+import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import styles from "../../styles/Main/NavbarContent.module.scss";
 
 interface NavbarContentProps {
@@ -19,22 +18,6 @@ interface NavbarContentProps {
   searchMode: () => void;
 }
 
-const useStyles = makeStyles({
-  list: {
-    width: 250,
-  },
-  fullList: {
-    width: "auto",
-  },
-  paper: {
-    background: "#333333",
-  },
-  divider: {
-    background: "#757575",
-    height: "0.3em",
-  },
-});
-
 type Anchor = "top" | "left" | "bottom" | "right";
 
 const NavbarContent: FC<NavbarContentProps> = ({
@@ -43,11 +26,10 @@ const NavbarContent: FC<NavbarContentProps> = ({
   setCategory,
   searchMode,
 }) => {
-  const classes = useStyles();
   const profilePic = useContext(ProfilePicContext);
   const profile = useContext(ProfileNameContext);
 
-  const [state, setState] = React.useState({
+  const [state, setState] = useState({
     top: false,
     left: false,
     bottom: false,
@@ -74,11 +56,10 @@ const NavbarContent: FC<NavbarContentProps> = ({
   };
 
   const list = (anchor: Anchor) => (
-    <div
-      className={clsx(classes.list, {
-        [classes.fullList]: anchor === "top" || anchor === "bottom",
-      })}
+    <Box
+      sx={{ width: anchor === "top" || anchor === "bottom" ? "auto" : 250 }}
       role="presentation"
+      onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <div>
@@ -127,22 +108,21 @@ const NavbarContent: FC<NavbarContentProps> = ({
           </div>
         </div>
       </div>
-    </div>
+    </Box>
   );
 
   return (
     <div>
-      {(["right"] as Anchor[]).map((anchor) => (
+      {(["right"] as const).map((anchor) => (
         <React.Fragment key={anchor}>
           <IconButton onClick={toggleDrawer(anchor, true)}>
-            <MenuIcon style={{ fill: "#fff", fontSize: "2rem" }} />
+            <MenuIcon sx={{ color: "#fff", fontSize: "2rem" }} />
           </IconButton>
           <SwipeableDrawer
             anchor={anchor}
             open={state[anchor]}
             onClose={toggleDrawer(anchor, false)}
             onOpen={toggleDrawer(anchor, true)}
-            classes={{ paper: classes.paper }}
           >
             {list(anchor)}
           </SwipeableDrawer>

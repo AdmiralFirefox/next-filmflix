@@ -1,6 +1,6 @@
 import React, { FC, useState, useEffect } from "react";
 import dynamic from "next/dynamic";
-import Skeleton from "@material-ui/lab/Skeleton";
+import Skeleton from "@mui/material/Skeleton";
 import Axios from "axios";
 import Image from "next/image";
 import VideoFallback from "../../assets/fallbacks/VideoFallback.jpg";
@@ -56,7 +56,7 @@ const MovieTrailer: FC<{ id: number }> = ({ id }) => {
   return (
     <div>
       {loadingPlayer ? (
-        <Skeleton variant="rect" id={styles["movie-trailer-skeleton"]} />
+        <Skeleton variant="rectangular" id={styles["movie-trailer-skeleton"]} />
       ) : (
         <>
           {typeof displayTrailer !== "undefined" ? (

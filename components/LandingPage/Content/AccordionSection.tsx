@@ -6,12 +6,14 @@ import styles from "../../../styles/LandingPage/Content/AccordionSection.module.
 
 const AccordionSection: FC = () => {
   return (
-    <div>
+    <>
       <div className={styles["accordion-section-title"]}>
         <h1>Frequently Asked Questions</h1>
       </div>
-      <div className={styles["accordion-section-content"]}>
-        <AccordionContent />
+      <div className={styles["accordion-section-content-wrapper"]}>
+        <div className={styles["accordion-section-content"]}>
+          <AccordionContent />
+        </div>
       </div>
       <div className={styles["accordion-section-after-content"]}>
         <p className={styles["accordion-section-after-content-title"]}>
@@ -25,7 +27,7 @@ const AccordionSection: FC = () => {
           </Link>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

@@ -3,7 +3,7 @@ import dynamic from "next/dynamic";
 import { TVData } from "../../data/tvdata";
 const TVCarousel = dynamic(() => import("./TVCarousel"));
 import InfiniteScroll from "react-infinite-scroll-component";
-import CircularProgress from "@material-ui/core/CircularProgress";
+import CircularProgress from "@mui/material/CircularProgress";
 import styles from "../../styles/TVs/TVs.module.scss";
 
 const TVs: FC = () => {
