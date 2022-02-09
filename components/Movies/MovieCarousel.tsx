@@ -36,7 +36,7 @@ const MovieCarousel: FC<RouteProp> = ({ route, title }) => {
   const [isMounted, setIsMounted] = useState(true);
 
   const breakpoints: {} = {
-    "280": {
+    "270": {
       slidesPerView: 2,
       spaceBetween: 8,
     },
@@ -58,6 +58,14 @@ const MovieCarousel: FC<RouteProp> = ({ route, title }) => {
     },
     "1200": {
       slidesPerView: 7,
+      spaceBetween: 8,
+    },
+    "2000": {
+      slidesPerView: 10,
+      spaceBetween: 8,
+    },
+    "4000": {
+      slidesPerView: 13,
       spaceBetween: 8,
     },
   };
