@@ -1,8 +1,11 @@
 @use "../../ThemeProvider/variables" as theme-variable;
 
 .landing-page-footer-wrapper {
-  padding: 0em 4em;
+  padding: 0em 3em;
   margin-bottom: 2em;
+  width: 100%;
+  margin: 0 auto;
+  max-width: 120em;
 
   .landing-page-footer-questions {
     //Questions Link
@@ -52,6 +55,7 @@
       color: theme-variable.$gray-font-color;
       font-size: 1rem;
       user-select: none;
+      margin-bottom: 2em;
     }
   }
 }
