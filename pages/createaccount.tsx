@@ -7,9 +7,6 @@ import { auth } from "../firebase/firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import Link from "next/link";
 import dynamic from "next/dynamic";
-import Snackbar from "@mui/material/Snackbar";
-import IconButton from "@mui/material/IconButton";
-import CloseIcon from "@mui/icons-material/Close";
 import AccountUserInput from "../components/Inputs/Accounts/AccountUserInput";
 const SignUpFooter = dynamic(
   () => import("../components/LandingPage/SignUpFooter")
@@ -21,26 +18,9 @@ const CreateAccount: FC = () => {
 
   const router = useRouter();
   const user = useContext(AuthContext);
-  const [openAlertMessage, setOpenAlertMessage] = useState(false);
 
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
-
-  //Alert Message when an account created successfully
-  const handleOpenAlertMessage = () => {
-    setOpenAlertMessage(true);
-  };
-
-  const handleCloseAlertMessage = (
-    event: React.SyntheticEvent | Event,
-    reason?: string
-  ) => {
-    if (reason === "clickaway") {
-      return;
-    }
-
-    setOpenAlertMessage(false);
-  };
 
   //ALlow users to make an account
   const createAccount = async () => {
@@ -51,7 +31,6 @@ const CreateAccount: FC = () => {
         emailRef.current!.value,
         passwordRef.current!.value
       );
-      handleOpenAlertMessage();
       setAuthLoading(false);
     } catch (error) {
       console.error(error);
@@ -78,29 +57,6 @@ const CreateAccount: FC = () => {
 
   return (
     <>
-      <Snackbar
-        anchorOrigin={{
-          vertical: "top",
-          horizontal: "center",
-        }}
-        open={openAlertMessage}
-        autoHideDuration={5000}
-        onClose={handleCloseAlertMessage}
-        message="Account Created Successfully!"
-        action={
-          <React.Fragment>
-            <IconButton
-              size="small"
-              aria-label="close"
-              color="inherit"
-              onClick={handleCloseAlertMessage}
-            >
-              <CloseIcon fontSize="small" />
-            </IconButton>
-          </React.Fragment>
-        }
-      />
-
       <Link href="/" passHref>
         <div className={accountStyles["account-section-web-logo"]}>
           <Image
