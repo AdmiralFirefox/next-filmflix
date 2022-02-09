@@ -113,7 +113,7 @@ const MovieCarousel: FC<RouteProp> = ({ route, title }) => {
       >
         {loading ? (
           <>
-            {[...Array(8)].map((_e, i) => {
+            {[...Array(movies.length)].map((_e, i) => {
               return (
                 <SwiperSlide key={i} virtualIndex={i}>
                   <Skeleton

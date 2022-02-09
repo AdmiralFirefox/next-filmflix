@@ -113,7 +113,7 @@ const TVCarousel: FC<TVShowsRouteProps> = ({ route, title }) => {
       >
         {loading ? (
           <>
-            {[...Array(8)].map((_e, i) => {
+            {[...Array(tvShows.length)].map((_e, i) => {
               return (
                 <SwiperSlide key={i} virtualIndex={i}>
                   <Skeleton
