@@ -3,7 +3,6 @@ import { useForm } from "react-hook-form";
 import Paper from "@mui/material/Paper";
 import InputBase from "@mui/material/InputBase";
 import { styled } from "@mui/material/styles";
-import Box from "@mui/material/Box";
 import Button, { ButtonProps } from "@mui/material/Button";
 import LoadingButtons from "../../Buttons/LoadingButtons/LoadingButtons";
 
@@ -79,9 +78,9 @@ const AccountUserInput: FC<AccountUserInputProps> = ({
         />
       </Paper>
       {errors.email && (
-        <Box
+        <p
           role="alert"
-          sx={{
+          style={{
             color: "#f59842",
             marginTop: "-1em",
             marginBottom: "1.5em",
@@ -89,8 +88,8 @@ const AccountUserInput: FC<AccountUserInputProps> = ({
             textAlign: "left",
           }}
         >
-          <p>{errors.email.message}</p>
-        </Box>
+          {errors.email.message}
+        </p>
       )}
       <Paper
         sx={{
@@ -127,9 +126,9 @@ const AccountUserInput: FC<AccountUserInputProps> = ({
         />
       </Paper>
       {errors.password && (
-        <Box
+        <p
           role="alert"
-          sx={{
+          style={{
             color: "#f59842",
             marginTop: "-1em",
             marginBottom: "1.5em",
@@ -137,8 +136,8 @@ const AccountUserInput: FC<AccountUserInputProps> = ({
             textAlign: "left",
           }}
         >
-          <p>{errors.password.message}</p>
-        </Box>
+          {errors.password.message}
+        </p>
       )}
       <Paper
         sx={{
@@ -172,9 +171,9 @@ const AccountUserInput: FC<AccountUserInputProps> = ({
         />
       </Paper>
       {errors.confirmPassword && (
-        <Box
+        <p
           role="alert"
-          sx={{
+          style={{
             color: "#f59842",
             marginTop: "-1em",
             marginBottom: "1.5em",
@@ -182,8 +181,8 @@ const AccountUserInput: FC<AccountUserInputProps> = ({
             textAlign: "left",
           }}
         >
-          <p>{errors.confirmPassword.message}</p>
-        </Box>
+          {errors.confirmPassword.message}
+        </p>
       )}
       {authLoading ? (
         <>

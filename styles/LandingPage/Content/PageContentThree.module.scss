@@ -4,6 +4,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
+  margin: 0 auto;
+  max-width: 120em;
 
   .page-content-three-title {
     color: theme-variable.$white-font-color;

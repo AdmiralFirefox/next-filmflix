@@ -1,13 +1,10 @@
 import React, { FC } from "react";
 import Link from "next/link";
-import Box from "@mui/material/Box";
 import styles from "../../styles/LandingPage/SignUpFooter.module.scss";
 
 const SignUpFooter: FC = () => {
   return (
-    <Box
-      sx={{ background: "rgba(0, 0, 0, 0.8)", width: "100%", marginTop: "5em" }}
-    >
+    <div className={styles["signup-footer-container"]}>
       <div className={styles["signup-footer-wrapper"]}>
         <div className={styles["signup-footer-contact-links"]}>
           <div className={styles["signup-footer-questions"]}>
@@ -42,7 +39,7 @@ const SignUpFooter: FC = () => {
           </Link>
         </div>
       </div>
-    </Box>
+    </div>
   );
 };
 

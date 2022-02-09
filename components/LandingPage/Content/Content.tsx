@@ -1,6 +1,5 @@
 import React, { FC, useEffect } from "react";
 import Divider from "@mui/material/Divider";
-import Box from "@mui/material/Box";
 import LandingPageNavbar from "../LandingPageNavbar";
 import HeroSection from "./HeroSection";
 import PageContentOne from "./PageContentOne";
@@ -17,27 +16,15 @@ const Content: FC = () => {
       styles["landing-page-bg"];
   }, []);
 
-  const centerContent = {
-    width: "100%",
-    margin: "0 auto",
-    maxWidth: "120em",
-  };
-
   return (
     <div className={styles["landing-page-content-wrapper"]}>
       <LandingPageNavbar />
       <HeroSection />
-      <Box sx={centerContent}>
-        <PageContentOne />
-      </Box>
+      <PageContentOne />
       <Divider className={styles["content-divider"]} />
-      <Box sx={centerContent}>
-        <PageContentTwo />
-      </Box>
+      <PageContentTwo />
       <Divider className={styles["content-divider"]} />
-      <Box sx={centerContent}>
-        <PageContentThree />
-      </Box>
+      <PageContentThree />
       <Divider className={styles["content-divider"]} />
       <AccordionSection />
       <Divider className={styles["content-divider"]} />
