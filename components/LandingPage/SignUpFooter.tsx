@@ -5,7 +5,9 @@ import styles from "../../styles/LandingPage/SignUpFooter.module.scss";
 
 const SignUpFooter: FC = () => {
   return (
-    <Box sx={{ background: "rgba(0, 0, 0, 0.8)", width: "100%" }}>
+    <Box
+      sx={{ background: "rgba(0, 0, 0, 0.8)", width: "100%", marginTop: "5em" }}
+    >
       <div className={styles["signup-footer-wrapper"]}>
         <div className={styles["signup-footer-contact-links"]}>
           <div className={styles["signup-footer-questions"]}>
