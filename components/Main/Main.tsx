@@ -1,5 +1,4 @@
 import React, { FC, useState } from "react";
-import { useSpring, animated } from "react-spring";
 import dynamic from "next/dynamic";
 import { SelectChangeEvent } from "@mui/material/Select";
 import ProfileLoader from "./ProfileLoader";
@@ -33,21 +32,6 @@ const Main: FC<MainProps> = ({ manageProfiles, signOut }) => {
     setSearch(false);
     setCategory("Movies");
   };
-
-  //Transition Animation Between Profile Loader and Main Content
-  const fadeInProps = useSpring({
-    from: { opacity: 0 },
-    to: { opacity: 1 },
-    delay: 2000,
-    config: { duration: 2000 },
-  });
-
-  const fadeOutProps = useSpring({
-    from: { opacity: 1, display: "inline" },
-    to: { opacity: 0, display: "none" },
-    delay: 2000,
-    config: { duration: 2000 },
-  });
 
   //Handling Changes in Changing Category
   const handleCategoryChange = (event: SelectChangeEvent) => {
@@ -106,19 +90,15 @@ const Main: FC<MainProps> = ({ manageProfiles, signOut }) => {
 
   return (
     <div>
-      <animated.div style={fadeOutProps}>
-        <ProfileLoader />
-      </animated.div>
+      <ProfileLoader />
 
-      <animated.div style={fadeInProps}>
-        <ProfileModal
-          openProfileModal={openProfileModal}
-          handleCloseProfileModal={handleCloseProfileModal}
-          manageProfiles={manageProfiles}
-          signOut={signOut}
-        />
-        {searchMedia()}
-      </animated.div>
+      <ProfileModal
+        openProfileModal={openProfileModal}
+        handleCloseProfileModal={handleCloseProfileModal}
+        manageProfiles={manageProfiles}
+        signOut={signOut}
+      />
+      {searchMedia()}
     </div>
   );
 };

@@ -11,7 +11,6 @@ const EditProfilePicModal = dynamic(
 );
 import LogoTransition from "./LogoTransition";
 const Main = dynamic(() => import("./Main"));
-import { useSpring, animated } from "react-spring";
 import Image from "next/image";
 import WebLogo from "../../assets/logo/WebLogo.png";
 import DefaultProfile from "../../assets/profileicons/DefaultAvatar.png";
@@ -184,21 +183,6 @@ const ProfileSelection: FC<ProfileSelectionProps> = ({ signOut }) => {
     setEditProfilePic(false);
     setEditProfilePicText(profilePic);
   };
-
-  //Transition Animation
-  const fadeInProps = useSpring({
-    from: { opacity: 0, display: "none" },
-    to: { opacity: 1, display: "inline" },
-    delay: 2600,
-    config: { duration: 1000 },
-  });
-
-  const fadeOutProps = useSpring({
-    from: { opacity: 1 },
-    to: { opacity: 0 },
-    delay: 2600,
-    config: { duration: 1000 },
-  });
 
   //Profile Edit Mode On
   const profileEditModeOn = (): JSX.Element => {
@@ -437,17 +421,12 @@ const ProfileSelection: FC<ProfileSelectionProps> = ({ signOut }) => {
   };
 
   return (
-    <div>
-      <animated.div style={fadeOutProps}>
-        <LogoTransition />
-      </animated.div>
-
-      <animated.div style={fadeInProps}>
-        <div className={styles["whole-profile-main-wrapper"]}>
-          {profileSelected()}
-        </div>
-      </animated.div>
-    </div>
+    <>
+      <LogoTransition />
+      <div className={styles["whole-profile-main-wrapper"]}>
+        {profileSelected()}
+      </div>
+    </>
   );
 };
 
