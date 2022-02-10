@@ -2,8 +2,6 @@ import React, { FC, useEffect, useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
-import Divider from "@mui/material/Divider";
-import LogoAnimation from "../components/LandingPage/LogoAnimation";
 const LandingPageNavbar = dynamic(
   () => import("../components/LandingPage/LandingPageNavbar")
 );
@@ -48,18 +46,13 @@ const Home: FC = () => {
 
   return (
     <>
-      <LogoAnimation />
       <div className={styles["landing-page-content-wrapper"]}>
         <LandingPageNavbar />
         <HeroSection />
         <PageContentOne />
-        <Divider className={styles["content-divider"]} />
         <PageContentTwo />
-        <Divider className={styles["content-divider"]} />
         <PageContentThree />
-        <Divider className={styles["content-divider"]} />
         <AccordionSection />
-        <Divider className={styles["content-divider"]} />
         <LandingPageFooter />
       </div>
     </>

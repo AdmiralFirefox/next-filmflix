@@ -49,6 +49,12 @@
   }
 }
 
+//Divider
+.content-divider {
+  background: theme-variable.$modal-background-color;
+  height: 0.7em;
+}
+
 @media (min-width: theme-variable.$media-query-default-value) {
   .page-content-one-wrapper {
     flex-direction: row;

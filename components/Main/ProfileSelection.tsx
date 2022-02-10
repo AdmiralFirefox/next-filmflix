@@ -9,7 +9,7 @@ const EditProfileModal = dynamic(
 const EditProfilePicModal = dynamic(
   () => import("../Modal/ProfileModal/EditProfilePicModal")
 );
-import LogoTransition from "./LogoTransition";
+import LogoAnimation from "../LandingPage/LogoAnimation";
 const Main = dynamic(() => import("./Main"));
 import Image from "next/image";
 import WebLogo from "../../assets/logo/WebLogo.png";
@@ -422,7 +422,7 @@ const ProfileSelection: FC<ProfileSelectionProps> = ({ signOut }) => {
 
   return (
     <>
-      <LogoTransition />
+      <LogoAnimation />
       <div className={styles["whole-profile-main-wrapper"]}>
         {profileSelected()}
       </div>
