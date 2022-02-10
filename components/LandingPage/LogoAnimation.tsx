@@ -37,7 +37,9 @@ const LogoAnimation: FC = () => {
           }}
           transition={{ duration: 1 }}
           style={{
-            position: "relative",
+            position: "fixed",
+            width: "100%",
+            top: 0,
             zIndex: "10",
           }}
         >
