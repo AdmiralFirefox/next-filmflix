@@ -1,6 +1,5 @@
 import React, { FC } from "react";
-import Image from "next/image";
-import Watch from "../../../assets/landingpage/Watch.webp";
+import ReactPlayer from "react-player";
 import Divider from "@mui/material/Divider";
 import styles from "../../../styles/LandingPage/Content/PageContentTwo.module.scss";
 
@@ -16,12 +15,14 @@ const PageContentTwo: FC = () => {
           </p>
         </div>
         <div className={styles["page-content-two-image"]}>
-          <Image
-            src={Watch}
-            alt=""
-            width={460}
-            height={350}
-            objectFit="cover"
+          <ReactPlayer
+            loop
+            muted
+            playing
+            url="videos/Watch.mp4"
+            width="100%"
+            height="100%"
+            controls={false}
           />
         </div>
       </div>

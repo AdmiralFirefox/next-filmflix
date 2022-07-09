@@ -1,6 +1,5 @@
 import React, { FC } from "react";
-import Image from "next/image";
-import Monitor from "../../../assets/landingpage/Monitor.webp";
+import ReactPlayer from "react-player";
 import Divider from "@mui/material/Divider";
 import styles from "../../../styles/LandingPage/Content/PageContentOne.module.scss";
 
@@ -16,12 +15,14 @@ const PageContentOne: FC = () => {
           </p>
         </div>
         <div className={styles["page-content-one-image"]}>
-          <Image
-            src={Monitor}
-            alt=""
-            width={540}
-            height={330}
-            objectFit="cover"
+          <ReactPlayer
+            loop
+            muted
+            playing
+            url="videos/Monitor.mp4"
+            width="100%"
+            height="100%"
+            controls={false}
           />
         </div>
       </div>
