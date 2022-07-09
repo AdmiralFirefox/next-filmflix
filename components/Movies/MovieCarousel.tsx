@@ -6,14 +6,10 @@ import Skeleton from "@mui/material/Skeleton";
 import styles from "../../styles/Movies/MovieCarousel.module.scss";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
+import SwiperCore, { Navigation, Virtual } from "swiper";
 
-import SwiperCore, { Navigation, Virtual } from "swiper/core";
-
-// install Swiper modules
-SwiperCore.use([Navigation]);
-
-// install Virtual module
-SwiperCore.use([Virtual]);
+// install Swiper and Virtual modules
+SwiperCore.use([Navigation, Virtual]);
 
 interface RouteProp {
   route: string;
@@ -108,7 +104,7 @@ const MovieCarousel: FC<RouteProp> = ({ route, title }) => {
         slidesPerView={7}
         navigation={true}
         breakpoints={breakpoints}
-        className="mySwiper"
+        className="my-swiper-container"
         virtual
       >
         {loading ? (

@@ -2,6 +2,7 @@ import React, { FC } from "react";
 import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Button, { ButtonProps } from "@mui/material/Button";
+import { StaticImageData } from "next/image";
 
 const ManageProfileButtonClick = styled(Button)<ButtonProps>(() => ({
   color: "#8C8C8C",

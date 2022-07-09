@@ -1,4 +1,5 @@
 import React, { FC, useEffect, useState } from "react";
+import { StaticImageData } from "next/image";
 import Modal from "@mui/material/Modal";
 import AddProfileModalInput from "../../Inputs/Modal/AddProfileModalInput";
 import AddProfileModalButton from "../../Buttons/Modal/AddProfileModalButton";

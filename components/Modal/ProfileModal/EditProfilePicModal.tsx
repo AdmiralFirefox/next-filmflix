@@ -2,7 +2,7 @@ import React, { FC, useState, useRef } from "react";
 import { useWindowSize, Size } from "../../../hooks/useWindowSize";
 import useOnClickOutside from "../../../hooks/useOnClickOutside";
 import Modal from "@mui/material/Modal";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import { AvatarData } from "../../../data/profiledata";
 import SaveProfilePicButton from "../../Buttons/Modal/SaveProfilePicButton";
 import styles from "../../../styles/Modal/ProfileModal/EditProfilePicModal.module.scss";

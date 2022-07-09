@@ -10,8 +10,9 @@ import Meta from "../components/LandingPage/Meta";
 import "../styles/globals.scss";
 
 // Import Swiper styles
-import "swiper/swiper.min.css";
-import "swiper/components/navigation/navigation.min.css";
+import "swiper/css";
+import "swiper/css/bundle";
+import "swiper/css/navigation";
 
 const clientSideEmotionCache = createEmotionCache();
 
