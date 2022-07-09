@@ -4,7 +4,7 @@ import Skeleton from "@mui/material/Skeleton";
 import Axios from "axios";
 import Image from "next/image";
 import VideoFallback from "../../assets/fallbacks/VideoFallback.jpg";
-import ReactPlayer from "react-player/lazy";
+import ReactPlayer from "react-player/youtube";
 const VideoPlayer = dynamic(() => import("../Modal/VideoPlayer/VideoPlayer"));
 import PlayMovieButton from "../Buttons/Movies/PlayMovieButton";
 import styles from "../../styles/Movies/MovieTrailer.module.scss";
