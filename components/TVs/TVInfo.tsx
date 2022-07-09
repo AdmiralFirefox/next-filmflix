@@ -112,7 +112,11 @@ const TVInfo: FC<TVInfoProps> = ({ posterPath, voteAverage }) => {
               />
               <div className={styles["tv-overlay"]}>
                 <div className={styles["tv-vote-average"]}>
-                  {voteAverage !== 0 ? <h1>{voteAverage}</h1> : <h1>N/A</h1>}
+                  {voteAverage !== 0 ? (
+                    <h1>{Math.round(voteAverage * 10) / 10}</h1>
+                  ) : (
+                    <h1>N/A</h1>
+                  )}
                 </div>
                 <div
                   onClick={handleOpenTVInfo}
@@ -143,7 +147,11 @@ const TVInfo: FC<TVInfoProps> = ({ posterPath, voteAverage }) => {
           />
           <div className={styles["tv-overlay"]}>
             <div className={styles["tv-vote-average"]}>
-              {voteAverage !== 0 ? <h1>{voteAverage}</h1> : <h1>N/A</h1>}
+              {voteAverage !== 0 ? (
+                <h1>{Math.round(voteAverage * 10) / 10}</h1>
+              ) : (
+                <h1>N/A</h1>
+              )}
             </div>
             <div onClick={handleOpenTVInfo} className={styles["tv-info-icon"]}>
               <i className="fas fa-info-circle"></i>

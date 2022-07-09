@@ -115,7 +115,11 @@ const SearchTVInfo: FC<SearchTVInfoProps> = ({ posterPath, voteAverage }) => {
 
               <div className={styles["search-tv-overlay"]}>
                 <div className={styles["search-tv-vote-average"]}>
-                  {voteAverage !== 0 ? <h1>{voteAverage}</h1> : <h1>N/A</h1>}
+                  {voteAverage !== 0 ? (
+                    <h1>{Math.round(voteAverage * 10) / 10}</h1>
+                  ) : (
+                    <h1>N/A</h1>
+                  )}
                 </div>
                 <div
                   onClick={handleOpenSearchTVInfo}
@@ -139,7 +143,11 @@ const SearchTVInfo: FC<SearchTVInfoProps> = ({ posterPath, voteAverage }) => {
 
               <div className={styles["search-tv-overlay"]}>
                 <div className={styles["search-tv-vote-average"]}>
-                  {voteAverage !== 0 ? <h1>{voteAverage}</h1> : <h1>N/A</h1>}
+                  {voteAverage !== 0 ? (
+                    <h1>{Math.round(voteAverage * 10) / 10}</h1>
+                  ) : (
+                    <h1>N/A</h1>
+                  )}
                 </div>
                 <div
                   onClick={handleOpenSearchTVInfo}
@@ -165,7 +173,11 @@ const SearchTVInfo: FC<SearchTVInfoProps> = ({ posterPath, voteAverage }) => {
 
           <div className={styles["search-tv-overlay"]}>
             <div className={styles["search-tv-vote-average"]}>
-              {voteAverage !== 0 ? <h1>{voteAverage}</h1> : <h1>N/A</h1>}
+              {voteAverage !== 0 ? (
+                <h1>{Math.round(voteAverage * 10) / 10}</h1>
+              ) : (
+                <h1>N/A</h1>
+              )}
             </div>
             <div
               onClick={handleOpenSearchTVInfo}

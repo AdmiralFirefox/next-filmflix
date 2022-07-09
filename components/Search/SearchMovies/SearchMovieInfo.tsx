@@ -115,7 +115,11 @@ const SearchMovieInfo: FC<SearchMovieInfoProps> = ({
 
               <div className={styles["search-movie-overlay"]}>
                 <div className={styles["search-movie-vote-average"]}>
-                  {voteAverge !== 0 ? <h1>{voteAverge}</h1> : <h1>N/A</h1>}
+                  {voteAverge !== 0 ? (
+                    <h1>{Math.round(voteAverge * 10) / 10}</h1>
+                  ) : (
+                    <h1>N/A</h1>
+                  )}
                 </div>
                 <div
                   onClick={handleOpenSearchMovieModal}
@@ -139,7 +143,11 @@ const SearchMovieInfo: FC<SearchMovieInfoProps> = ({
 
               <div className={styles["search-movie-overlay"]}>
                 <div className={styles["search-movie-vote-average"]}>
-                  {voteAverge !== 0 ? <h1>{voteAverge}</h1> : <h1>N/A</h1>}
+                  {voteAverge !== 0 ? (
+                    <h1>{Math.round(voteAverge * 10) / 10}</h1>
+                  ) : (
+                    <h1>N/A</h1>
+                  )}
                 </div>
                 <div
                   onClick={handleOpenSearchMovieModal}
@@ -165,7 +173,11 @@ const SearchMovieInfo: FC<SearchMovieInfoProps> = ({
 
           <div className={styles["search-movie-overlay"]}>
             <div className={styles["search-movie-vote-average"]}>
-              {voteAverge !== 0 ? <h1>{voteAverge}</h1> : <h1>N/A</h1>}
+              {voteAverge !== 0 ? (
+                <h1>{Math.round(voteAverge * 10) / 10}</h1>
+              ) : (
+                <h1>N/A</h1>
+              )}
             </div>
             <div
               onClick={handleOpenSearchMovieModal}

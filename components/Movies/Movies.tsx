@@ -17,7 +17,7 @@ const Movies: FC = () => {
   const currentItems = MovieData.slice(indexOfFirstItem, indexOfLastItem);
 
   const handleLoadMore = () => {
-    setTimeout(() => setitemsPerPage(itemsPerPage + 3), 2000);
+    setTimeout(() => setitemsPerPage(itemsPerPage + 3), 1500);
 
     if (currentItems.length === MovieData.length) {
       setHasMore(false);

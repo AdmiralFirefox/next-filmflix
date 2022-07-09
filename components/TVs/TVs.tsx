@@ -17,7 +17,7 @@ const TVs: FC = () => {
   const currentItems = TVData.slice(indexOfFirstItem, indexOfLastItem);
 
   const handleLoadMore = () => {
-    setTimeout(() => setitemsPerPage(itemsPerPage + 3), 2000);
+    setTimeout(() => setitemsPerPage(itemsPerPage + 3), 1500);
 
     if (currentItems.length === TVData.length) {
       setHasMore(false);
