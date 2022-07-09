@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import Image from "next/image";
-import Monitor from "../../../assets/landingpage/Monitor.png";
+import Monitor from "../../../assets/landingpage/Monitor.webp";
 import Divider from "@mui/material/Divider";
 import styles from "../../../styles/LandingPage/Content/PageContentOne.module.scss";
 

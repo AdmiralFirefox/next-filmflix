@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import Image from "next/image";
-import Watch from "../../../assets/landingpage/Watch.png";
+import Watch from "../../../assets/landingpage/Watch.webp";
 import Divider from "@mui/material/Divider";
 import styles from "../../../styles/LandingPage/Content/PageContentTwo.module.scss";
 
