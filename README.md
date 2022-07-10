@@ -137,7 +137,7 @@ npm run dev
     * From the home page, click the "Sign In" button or the "Get Started" button.
     * From the sign in page, click the "Click here to create new account."
 
-2. Input the necessary fields
+2. Input the necessary fields.
     * Make sure the email is available and not in use.
     * Make sure the password is at least 8 characters long.
     * After inputting the necessary fields, click the "Create Account" button and you'll be signed in automatically.
