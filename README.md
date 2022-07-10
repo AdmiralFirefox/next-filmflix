@@ -13,7 +13,7 @@
 
 <h3 align="center">Desktop View</h3>
 
-https://user-images.githubusercontent.com/79429518/178147213-4630e189-4503-4716-8ea2-0bc1f3fc67c0.mp4
+https://user-images.githubusercontent.com/79429518/178148764-989302f2-9779-496f-acc7-81c1db6d41ea.mp4
 
 <br />
 
