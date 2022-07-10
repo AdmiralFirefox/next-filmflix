@@ -32,24 +32,24 @@ https://user-images.githubusercontent.com/79429518/178147835-e4d76c60-fb50-4a92-
     * [Prerequisites](#prerequisites)
     * [Installation](#installation)
 3. [Usage](#usage)
-    * [Creating an Account](#🧑‍💻-creating-an-account)
-    * [Logging In](#🧑‍💻-logging-in)
-    * [Adding User Profile](#🧑‍💻-adding-user-profile)
-    * [Editing User Profile](#🧑‍💻-editing-user-profile)
-    * [Deleting User Profile](#🧑‍💻-deleting-user-profile)
-    * [Searching for a Movie or a TV Show](#🧑‍💻-searching-for-a-movie-or-a-tv-show)
-    * [Signing Out](#🧑‍💻-signing-out)
+    * [Creating an Account](#creating-an-account)
+    * [Logging In](#logging-in)
+    * [Adding User Profile](#adding-user-profile)
+    * [Editing User Profile](#editing-user-profile)
+    * [Deleting User Profile](#deleting-user-profile)
+    * [Searching for a Movie or a TV Show](#searching-for-a-movie-or-a-tv-show)
+    * [Signing Out](#signing-out)
 
 <br />
 
-## 🎯About the Project
+## About the Project
 
 This project is created to expand my knowledge in React and Next JS, and how to structure a mid-level complexity web application. It is a movie database where you can view the information of a specific movie or tv show. It is mainly inspired by [Netflix's](https://www.netflix.com) design. I've also inserted a really close clone of Netflix's original splash animation (forked from a famous [Codepen from Claudio Bonfati](https://codepen.io/claudio_bonfati)), made entirely with CSS, paired with [Netflix's starting sound.](https://www.youtube.com/watch?v=GV3HUDMQ-F8) It took me months in making the project while also focusing on my college studies. I also update this project from time to time whenever a certain package has an update, as well as adding minor features, bug fixes and performance improvements. 
 
 Go try my project and please let me know some improvements 💖.
 
 
-### ⚒️ Built With...
+### Built With...
 * [Next.js](https://nextjs.org/)
 * [Typescript](https://www.typescriptlang.org/)
 * [Firebase](https://firebase.google.com/)
@@ -59,7 +59,7 @@ Go try my project and please let me know some improvements 💖.
 * [SASS](https://sass-lang.com/)
 * [TMDb API](https://www.themoviedb.org/)
 
-### ✨ Features
+### Features
 ✅ Display movies and tv shows categorized in different genres. <br />
 ✅  Search movies and tv shows. <br />
 ✅  View a movie's information such as it's overview, status, spoken language/s, genre, casts and similar movies. <br />
@@ -71,11 +71,11 @@ Go try my project and please let me know some improvements 💖.
 
 <br />
 
-## ⚙️ Building the Project
+## Building the Project
 
 To run this project on your local machine, follow these steps:
 
-### ⚙️ Prerequisites
+### Prerequisites
 
 * Install the latest [LTS Version of Node](https://nodejs.org/en/) and [Git](https://git-scm.com/)
 
@@ -85,7 +85,7 @@ To run this project on your local machine, follow these steps:
 npm install npm@latest -g
 ```
 
-### ⚙️ Installation
+### Installation
 
 1. Clone the Project
 
@@ -127,9 +127,9 @@ npm run dev
 
 <br /> 
 
-## 🧑‍💻 Usage
+## Usage
 
-### 🧑‍💻 Creating an Account
+### Creating an Account
 
 <img src="public/documentation/CreateAccountDemo.gif" alt="" width="100%" height="100%" />
 
@@ -142,7 +142,7 @@ npm run dev
     * Make sure the password is at least 8 characters long.
     * After inputting the necessary fields, click the "Create Account" button and you'll be signed in automatically.
 
-### 🧑‍💻 Logging In
+### Logging In
 
 <img src="public/documentation/SignInDemo.gif" alt="" width="100%" height="100%" />
 
@@ -155,7 +155,7 @@ npm run dev
         * Anonymously sign in by clicking "Sign In Anonymously" button.
         * Sign in with their google account by clicking the "Sign In with Google" button.
 
-### 🧑‍💻 Adding User Profile
+### Adding User Profile
 
 <img src="public/documentation/AddProfileDemo.gif" alt="" width="100%" height="100%" />
 
@@ -166,7 +166,7 @@ npm run dev
     * You can only have a maximum of 5 profiles.
 3. Click add profile. 
 
-### 🧑‍💻 Editing User Profile
+### Editing User Profile
 
 **Edit Profile Avatar**
 
@@ -190,7 +190,7 @@ npm run dev
         * Click the "Submit Edit" button when done.
 4. When you're done editing, don't forget to click the "Save Changes" button below.
 
-### 🧑‍💻 Deleting User Profile
+### Deleting User Profile
 
 <img src="public/documentation/DeletingProfileDemo.gif" alt="" width="100%" height="100%" />
 
@@ -198,7 +198,7 @@ npm run dev
 2. Click the "Manage Profiles" button below.
 3. Click the "X" icon below the profile name.
 
-### 🧑‍💻 Searching for a Movie or a TV Show
+### Searching for a Movie or a TV Show
 
 <img src="public/documentation/SearchMovieDemo.gif" alt="" width="100%" height="100%" />
 
@@ -206,7 +206,7 @@ npm run dev
 2. From the upper right of your screen beside your profile avatar, click the "Search" button.
 3. If you want to search for a movie, make sure to search in the movie tab. And if you want to search for a tv show, make sure to search in the tv shows tab.
 
-### 🧑‍💻 Signing Out
+### Signing Out
 
 <img src="public/documentation/SignOutDemo.gif" alt="" width="100%" height="100%" />
 
