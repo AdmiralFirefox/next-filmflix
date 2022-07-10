@@ -11,13 +11,13 @@
 <br />
 <br />
 
-<strong><p align="center">Desktop View</p></strong>
+<h3 align="center">Desktop View</h3>
 
 https://user-images.githubusercontent.com/79429518/178147213-4630e189-4503-4716-8ea2-0bc1f3fc67c0.mp4
 
 <br />
 
-<strong><p align="center">Mobile View</p></strong>
+<h3 align="center">Mobile View</h3>
 
 https://user-images.githubusercontent.com/79429518/178147835-e4d76c60-fb50-4a92-9739-bdcf2c8d8b0b.mp4
 
@@ -168,13 +168,15 @@ npm run dev
 
 ### 🧑‍💻 Editing User Profile
 
-<img src="public/documentation/EditProfileAvatarDemo.gif" alt="" width="100%" height="100%" />
-
 **Edit Profile Avatar**
 
-<img src="public/documentation/EditProfileNameDemo.gif" alt="" width="100%" height="100%" />
+<img src="public/documentation/EditProfileAvatarDemo.gif" alt="" width="100%" height="100%" />
+
+<br />
 
 **Edit Profile Name**
+
+<img src="public/documentation/EditProfileNameDemo.gif" alt="" width="100%" height="100%" />
 
 1. Log in to your account.
 2. Click the "Manage Profiles" button below.
