@@ -9,16 +9,17 @@
 </div>
 
 <br />
+<br />
+
+<strong><p align="center">Desktop View</p></strong>
 
 https://user-images.githubusercontent.com/79429518/178147213-4630e189-4503-4716-8ea2-0bc1f3fc67c0.mp4
 
-<strong><p>Desktop View</p></strong>
-
 <br />
 
-https://user-images.githubusercontent.com/79429518/178147835-e4d76c60-fb50-4a92-9739-bdcf2c8d8b0b.mp4
+<strong><p align="center">Mobile View</p></strong>
 
-<strong><p>Mobile View</p></strong>
+https://user-images.githubusercontent.com/79429518/178147835-e4d76c60-fb50-4a92-9739-bdcf2c8d8b0b.mp4
 
 <br />
 
