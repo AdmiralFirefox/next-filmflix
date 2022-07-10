@@ -1,5 +1,6 @@
+<img src="assets/fallbacks/BackdropFallback.jpg" alt="" width="100%"  height="200px" style="border-radius: 20px; object-fit: cover;" />
+
 <div align="center">
-    <img src="assets/fallbacks/BackdropFallback.jpg" alt="" width="100%"  height="200px" style="border-radius: 20px; object-fit: cover;" />
     <h1>Filmflix</h1>
     <strong>
         <p>A movie database website inspired by <a href="https://www.netflix.com/">Netflix</a></p>
