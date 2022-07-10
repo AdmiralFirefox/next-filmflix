@@ -1,4 +1,4 @@
-<img src="assets/fallbacks/BackdropFallback.jpg" alt="" width="100%"  height="200px" style="border-radius: 20px; object-fit: cover;" />
+<img src="assets/fallbacks/BackdropFallback.jpg" alt="" width="100%" style="border-radius: 20px" />
 
 <div align="center">
     <h1>Filmflix</h1>
