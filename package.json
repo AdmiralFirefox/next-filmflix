@@ -27,7 +27,7 @@
     "react-hook-form": "^7.33.1",
     "react-infinite-scroll-component": "^6.1.0",
     "react-player": "^2.10.1",
-    "sharp": "^0.30.7",
+    "sharp": "^0.31.3",
     "swiper": "^8.3.0",
     "uuid": "^8.3.2"
   },
