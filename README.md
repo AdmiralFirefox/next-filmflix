@@ -6,6 +6,11 @@
     <strong>
         <a href="https://filmflix-watch.vercel.app/">You can view the live site here »<a>
     </strong>
+    <br />
+    <br />
+     <strong>
+        <p>Note: You can also install this on your local machine since this is a PWA.</p>
+    </strong>
 </div>
 
 <br />
