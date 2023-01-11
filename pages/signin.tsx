@@ -1,4 +1,4 @@
-import React, { FC, useContext, useRef, useEffect, useState } from "react";
+import { FC, useContext, useRef, useEffect, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { useRouter } from "next/router";
 import Image from "next/image";
@@ -8,7 +8,6 @@ import {
   GoogleAuthProvider,
   signInWithEmailAndPassword,
   signInWithPopup,
-  signOut,
   signInAnonymously,
 } from "firebase/auth";
 import Link from "next/link";
@@ -76,11 +75,6 @@ const SignIn: FC = () => {
     }
   };
 
-  //Allow Users to Sign Out
-  const signOutAccount = async () => {
-    await signOut(auth);
-  };
-
   //Profile Background
   useEffect(() => {
     document.getElementsByTagName("body")[0].className = !user
@@ -100,7 +94,7 @@ const SignIn: FC = () => {
   }, [user]);
 
   if (user) {
-    return <ProfileSelection signOut={signOutAccount} />;
+    return <ProfileSelection />;
   }
 
   return (

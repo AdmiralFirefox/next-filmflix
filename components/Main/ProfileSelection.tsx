@@ -1,4 +1,6 @@
 import React, { FC, useState, useEffect, createContext } from "react";
+import { auth } from "../../firebase/firebase";
+import { signOut } from "firebase/auth";
 import dynamic from "next/dynamic";
 const AddProfileModal = dynamic(
   () => import("../Modal/ProfileModal/AddProfileModal")
@@ -25,14 +27,10 @@ interface ProfilesProps {
   }[];
 }
 
-interface ProfileSelectionProps {
-  signOut: () => Promise<void>;
-}
-
 export const ProfileNameContext = createContext("");
 export const ProfilePicContext = createContext(DefaultProfile);
 
-const ProfileSelection: FC<ProfileSelectionProps> = ({ signOut }) => {
+const ProfileSelection: FC = () => {
   //Profile Edit
   const [profiles, setProfiles] = useState<ProfilesProps["profileData"]>([]);
   const [profile, setProfile] = useState("");
@@ -229,6 +227,12 @@ const ProfileSelection: FC<ProfileSelectionProps> = ({ signOut }) => {
     setEditProfilePicText(profilePic);
   };
 
+  //Allow Users to Sign Out
+  const signOutAccount = async () => {
+    setProfileSelect(false);
+    await signOut(auth);
+  };
+
   //Profile Edit Mode On
   const profileEditModeOn = (): JSX.Element => {
     return (
@@ -419,7 +423,7 @@ const ProfileSelection: FC<ProfileSelectionProps> = ({ signOut }) => {
       return (
         <ProfilePicContext.Provider value={profilePic}>
           <ProfileNameContext.Provider value={profile}>
-            <Main manageProfiles={manageProfiles} signOut={signOut} />
+            <Main manageProfiles={manageProfiles} signOut={signOutAccount} />
           </ProfileNameContext.Provider>
         </ProfilePicContext.Provider>
       );
