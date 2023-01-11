@@ -130,6 +130,36 @@ const ProfileSelection: FC<ProfileSelectionProps> = ({ signOut }) => {
     localStorage.setItem("PROFILE_SELECTED", json);
   }, [profileSelect]);
 
+  // Local Storage for Profile Name
+  useEffect(() => {
+    const json = localStorage.getItem("PROFILE_NAME") as string;
+    const saveProfileName = JSON.parse(json);
+
+    if (saveProfileName) {
+      setProfile(saveProfileName);
+    }
+  }, []);
+
+  useEffect(() => {
+    const json = JSON.stringify(profile);
+    localStorage.setItem("PROFILE_NAME", json);
+  }, [profile]);
+
+  // Local Storage for Profile Pic
+  useEffect(() => {
+    const json = localStorage.getItem("PROFILE_PIC") as string;
+    const saveProfilePic = JSON.parse(json);
+
+    if (saveProfilePic) {
+      setProfilePic(saveProfilePic);
+    }
+  }, []);
+
+  useEffect(() => {
+    const json = JSON.stringify(profilePic);
+    localStorage.setItem("PROFILE_PIC", json);
+  }, [profilePic]);
+
   //Changing Background Color
   useEffect(() => {
     document.getElementsByTagName("body")[0].className =
