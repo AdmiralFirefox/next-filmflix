@@ -8,7 +8,7 @@ import styles from "../../styles/Movies/Movies.module.scss";
 
 const Movies: FC = () => {
   const [currentPage] = useState(1);
-  const [itemsPerPage, setitemsPerPage] = useState(3);
+  const [itemsPerPage, setitemsPerPage] = useState(4);
   const [hasMore, setHasMore] = useState(true);
   const [isMounted, setIsMounted] = useState(true);
 
@@ -17,7 +17,7 @@ const Movies: FC = () => {
   const currentItems = MovieData.slice(indexOfFirstItem, indexOfLastItem);
 
   const handleLoadMore = () => {
-    setTimeout(() => setitemsPerPage(itemsPerPage + 3), 1500);
+    setTimeout(() => setitemsPerPage(itemsPerPage + 4), 1200);
 
     if (currentItems.length === MovieData.length) {
       setHasMore(false);
