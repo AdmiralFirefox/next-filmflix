@@ -115,6 +115,21 @@ const ProfileSelection: FC<ProfileSelectionProps> = ({ signOut }) => {
     localStorage.setItem("profiles", json);
   }, [profiles]);
 
+  // Local Storage for Selecting a Profile
+  useEffect(() => {
+    const json = localStorage.getItem("PROFILE_SELECTED") as string;
+    const saveProfileSelected = JSON.parse(json);
+
+    if (saveProfileSelected) {
+      setProfileSelect(saveProfileSelected);
+    }
+  }, []);
+
+  useEffect(() => {
+    const json = JSON.stringify(profileSelect);
+    localStorage.setItem("PROFILE_SELECTED", json);
+  }, [profileSelect]);
+
   //Changing Background Color
   useEffect(() => {
     document.getElementsByTagName("body")[0].className =
