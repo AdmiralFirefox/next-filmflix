@@ -31,6 +31,9 @@ export const ProfileNameContext = createContext("");
 export const ProfilePicContext = createContext(DefaultProfile);
 
 const ProfileSelection: FC = () => {
+  // Animate Logo
+  const [animateLogo, setAnimateLogo] = useState(true);
+
   //Profile Edit
   const [profiles, setProfiles] = useState<ProfilesProps["profileData"]>([]);
   const [profile, setProfile] = useState("");
@@ -158,6 +161,21 @@ const ProfileSelection: FC = () => {
     localStorage.setItem("PROFILE_PIC", json);
   }, [profilePic]);
 
+  // Local Storage for Animating Logo State
+  useEffect(() => {
+    const json = localStorage.getItem("ANIMATE_LOGO") as string;
+    const saveAnimateLogoState = JSON.parse(json);
+
+    if (saveAnimateLogoState) {
+      setAnimateLogo(saveAnimateLogoState);
+    }
+  }, []);
+
+  useEffect(() => {
+    const json = JSON.stringify(animateLogo);
+    localStorage.setItem("ANIMATE_LOGO", json);
+  }, [animateLogo]);
+
   //Changing Background Color
   useEffect(() => {
     document.getElementsByTagName("body")[0].className =
@@ -230,6 +248,7 @@ const ProfileSelection: FC = () => {
   //Allow Users to Sign Out
   const signOutAccount = async () => {
     setProfileSelect(false);
+    setAnimateLogo(true);
     await signOut(auth);
   };
 
@@ -377,6 +396,7 @@ const ProfileSelection: FC = () => {
                     selectedProfile();
                     setProfile(profile.name);
                     setProfilePic(profile.picture);
+                    setAnimateLogo(false);
                   }}
                   priority={true}
                 />
@@ -471,7 +491,7 @@ const ProfileSelection: FC = () => {
 
   return (
     <>
-      <LogoAnimation />
+      {animateLogo && <LogoAnimation />}
       <div className={styles["whole-profile-main-wrapper"]}>
         {profileSelected()}
       </div>
