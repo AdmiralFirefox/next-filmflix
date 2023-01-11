@@ -55,7 +55,10 @@ const ProfileSelection: FC = () => {
   //When a user Select a Profile
   const [profileSelect, setProfileSelect] = useState(false);
 
-  const selectedProfile = () => setProfileSelect(true);
+  const selectedProfile = () => {
+    setProfileSelect(true);
+    setAnimateLogo(false);
+  };
 
   const manageProfiles = () => {
     setProfileSelect(false);
@@ -163,7 +166,7 @@ const ProfileSelection: FC = () => {
 
   // Local Storage for Animating Logo State
   useEffect(() => {
-    const json = localStorage.getItem("ANIMATE_LOGO") as string;
+    const json = localStorage.getItem("LOGO_ANIMATED") as string;
     const saveAnimateLogoState = JSON.parse(json);
 
     if (saveAnimateLogoState) {
@@ -173,7 +176,7 @@ const ProfileSelection: FC = () => {
 
   useEffect(() => {
     const json = JSON.stringify(animateLogo);
-    localStorage.setItem("ANIMATE_LOGO", json);
+    localStorage.setItem("LOGO_ANIMATED", json);
   }, [animateLogo]);
 
   //Changing Background Color
@@ -396,7 +399,6 @@ const ProfileSelection: FC = () => {
                     selectedProfile();
                     setProfile(profile.name);
                     setProfilePic(profile.picture);
-                    setAnimateLogo(false);
                   }}
                   priority={true}
                 />
