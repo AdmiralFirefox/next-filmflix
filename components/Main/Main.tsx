@@ -1,4 +1,4 @@
-import React, { FC, useState, useEffect } from "react";
+import React, { FC, useState, useEffect, Dispatch } from "react";
 import dynamic from "next/dynamic";
 import { SelectChangeEvent } from "@mui/material/Select";
 import ProfileLoader from "./ProfileLoader";
@@ -18,6 +18,65 @@ interface MainProps {
   manageProfiles: () => void;
   signOut: () => Promise<void>;
 }
+
+interface SearchMediaProps {
+  search: boolean;
+  closeSearch: () => void;
+  handleOpenProfileModal: () => void;
+  manageProfiles: () => void;
+  handleCategoryChange: (event: SelectChangeEvent) => void;
+  signOut: () => Promise<void>;
+  searchMode: () => void;
+  setCategory: Dispatch<React.SetStateAction<string>>;
+  category: string;
+}
+
+//If the user wants to search a movie/tv
+const SearchMedia: FC<SearchMediaProps> = ({
+  search,
+  closeSearch,
+  handleOpenProfileModal,
+  manageProfiles,
+  handleCategoryChange,
+  signOut,
+  searchMode,
+  setCategory,
+  category,
+}) => {
+  return (
+    <>
+      {search ? (
+        <Search
+          closeSearch={closeSearch}
+          handleOpenProfileModal={handleOpenProfileModal}
+        />
+      ) : (
+        <>
+          <Navbar
+            manageProfiles={manageProfiles}
+            handleCategoryChange={handleCategoryChange}
+            signOut={signOut}
+            searchMode={searchMode}
+            setCategory={setCategory}
+            category={category}
+            handleOpenProfileModal={handleOpenProfileModal}
+          />
+          {category === "Movies" ? (
+            <>
+              <TrendingMovies />
+              <Movies />
+            </>
+          ) : (
+            <>
+              <TrendingTVs />
+              <TVs />
+            </>
+          )}
+        </>
+      )}
+    </>
+  );
+};
 
 const Main: FC<MainProps> = ({ manageProfiles, signOut }) => {
   //Changing Categories
@@ -79,47 +138,8 @@ const Main: FC<MainProps> = ({ manageProfiles, signOut }) => {
     localStorage.setItem("SEARCH_MODE", json);
   }, [search]);
 
-  //If the user wants to search a movie/tv
-  const searchMedia = (): JSX.Element => {
-    if (search === true) {
-      return (
-        <>
-          <Search
-            closeSearch={closeSearch}
-            handleOpenProfileModal={handleOpenProfileModal}
-          />
-        </>
-      );
-    } else {
-      return (
-        <>
-          <Navbar
-            manageProfiles={manageProfiles}
-            handleCategoryChange={handleCategoryChange}
-            signOut={signOut}
-            searchMode={searchMode}
-            setCategory={setCategory}
-            category={category}
-            handleOpenProfileModal={handleOpenProfileModal}
-          />
-          {category === "Movies" ? (
-            <>
-              <TrendingMovies />
-              <Movies />
-            </>
-          ) : (
-            <>
-              <TrendingTVs />
-              <TVs />
-            </>
-          )}
-        </>
-      );
-    }
-  };
-
   return (
-    <div>
+    <>
       <ProfileLoader />
 
       <ProfileModal
@@ -128,8 +148,18 @@ const Main: FC<MainProps> = ({ manageProfiles, signOut }) => {
         manageProfiles={manageProfiles}
         signOut={signOut}
       />
-      {searchMedia()}
-    </div>
+      <SearchMedia
+        search={search}
+        closeSearch={closeSearch}
+        handleOpenProfileModal={handleOpenProfileModal}
+        manageProfiles={manageProfiles}
+        handleCategoryChange={handleCategoryChange}
+        signOut={signOut}
+        searchMode={searchMode}
+        setCategory={setCategory}
+        category={category}
+      />
+    </>
   );
 };
 

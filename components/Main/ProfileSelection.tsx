@@ -1,4 +1,11 @@
-import React, { FC, useState, useEffect, createContext } from "react";
+import React, {
+  FC,
+  useState,
+  useEffect,
+  createContext,
+  Dispatch,
+  SetStateAction,
+} from "react";
 import { auth } from "../../firebase/firebase";
 import { signOut } from "firebase/auth";
 import dynamic from "next/dynamic";
@@ -27,8 +34,251 @@ interface ProfilesProps {
   }[];
 }
 
+interface ProfileEditModeOnProps {
+  profiles: {
+    id: number;
+    name: string;
+    picture: StaticImageData;
+  }[];
+  editProfilePic: number | boolean;
+  editProfilePicModal: boolean;
+  handleCLoseEditProfilePicModal: () => void;
+  setEditProfilePicText: Dispatch<React.SetStateAction<StaticImageData>>;
+  SubmitProfilePicEdit: (id: number) => void;
+  setEditProfilePic: Dispatch<React.SetStateAction<number | boolean>>;
+  profilePic: StaticImageData;
+  setProfile: (value: SetStateAction<string>) => void;
+  setProfilePic: (value: SetStateAction<StaticImageData>) => void;
+  handleOpenEditProfilePicModal: () => void;
+  profileEdit: number | boolean;
+  editProfileModal: boolean;
+  handleCloseEditProfileModal: () => void;
+  setProfileTextEdit: Dispatch<React.SetStateAction<string>>;
+  SubmitProfileEdit: (id: number) => void;
+  profileTextEdit: string;
+  setProfileEdit: Dispatch<React.SetStateAction<number | boolean>>;
+  handleOpenEditProfileModal: () => void;
+  RemoveProfile: (id: number) => void;
+}
+
+interface ProfileEditModeOffProps {
+  profiles: {
+    id: number;
+    name: string;
+    picture: StaticImageData;
+  }[];
+  selectedProfile: () => void;
+  setProfile: (value: React.SetStateAction<string>) => void;
+  setProfilePic: (value: React.SetStateAction<StaticImageData>) => void;
+  editMode: boolean;
+  handleOpenAddProfileModal: () => void;
+}
+
 export const ProfileNameContext = createContext("");
 export const ProfilePicContext = createContext(DefaultProfile);
+
+//Profile Edit Mode On
+const ProfileEditModeOn: FC<ProfileEditModeOnProps> = ({
+  profiles,
+  editProfilePic,
+  editProfilePicModal,
+  handleCLoseEditProfilePicModal,
+  setEditProfilePicText,
+  SubmitProfilePicEdit,
+  setEditProfilePic,
+  profilePic,
+  setProfile,
+  setProfilePic,
+  handleOpenEditProfilePicModal,
+  profileEdit,
+  editProfileModal,
+  handleCloseEditProfileModal,
+  setProfileTextEdit,
+  SubmitProfileEdit,
+  profileTextEdit,
+  setProfileEdit,
+  handleOpenEditProfileModal,
+  RemoveProfile,
+}) => {
+  return (
+    <div className={styles["profile-selection-profiles"]}>
+      {profiles.map((profile) => {
+        return (
+          <div key={profile.id} className={styles["edit-mode-on-wrapper"]}>
+            {editProfilePic === profile.id ? (
+              <>
+                <EditProfilePicModal
+                  editProfilePicModal={editProfilePicModal}
+                  handleCLoseEditProfilePicModal={
+                    handleCLoseEditProfilePicModal
+                  }
+                  setEditProfilePicText={setEditProfilePicText}
+                  SubmitProfilePicEdit={SubmitProfilePicEdit}
+                  profile={profile}
+                  setEditProfilePic={setEditProfilePic}
+                  profilePic={profilePic}
+                />
+                <div className={styles["edit-mode-on-image-container"]}>
+                  <div className={styles["edit-mode-on-image"]}>
+                    <Image
+                      src={profile.picture}
+                      alt="Avatar Profile"
+                      onClick={() => {
+                        setProfile(profile.name);
+                        setProfilePic(profile.picture);
+                      }}
+                      priority={true}
+                    />
+                  </div>
+                  <div className={styles["edit-mode-on-image-overlay"]}>
+                    <div
+                      className={styles["edit-mode-on-edit-profile-icon"]}
+                      onClick={() => {
+                        setEditProfilePic(profile.id);
+                        handleOpenEditProfilePicModal();
+                      }}
+                    >
+                      <i className="fas fa-edit"></i>
+                    </div>
+                  </div>
+                </div>
+              </>
+            ) : (
+              <>
+                <div className={styles["edit-mode-on-image-container"]}>
+                  <div className={styles["edit-mode-on-image"]}>
+                    <Image
+                      src={profile.picture}
+                      alt="Avatar Profile"
+                      onClick={() => {
+                        setProfile(profile.name);
+                        setProfilePic(profile.picture);
+                      }}
+                      priority={true}
+                    />
+                  </div>
+                  <div className={styles["edit-mode-on-image-overlay"]}>
+                    <div
+                      className={styles["edit-mode-on-edit-profile-icon"]}
+                      onClick={() => {
+                        setEditProfilePic(profile.id);
+                        handleOpenEditProfilePicModal();
+                      }}
+                    >
+                      <i className="fas fa-edit"></i>
+                    </div>
+                  </div>
+                </div>
+              </>
+            )}
+
+            {profileEdit === profile.id ? (
+              <div className={styles["edit-mode-on-profile-name-wrapper"]}>
+                <EditProfileModal
+                  editProfileModal={editProfileModal}
+                  handleCloseEditProfileModal={handleCloseEditProfileModal}
+                  setProfileTextEdit={setProfileTextEdit}
+                  profile={profile}
+                  SubmitProfileEdit={SubmitProfileEdit}
+                  profileTextEdit={profileTextEdit}
+                  setProfileEdit={setProfileEdit}
+                  profiles={profiles}
+                />
+                <h1 className={styles["edit-mode-on-profile-name"]}>
+                  {profile.name}
+                </h1>
+                <div
+                  className={styles["edit-mode-on-edit-name-icon"]}
+                  onClick={() => {
+                    setProfileEdit(profile.id);
+                    handleOpenEditProfileModal();
+                  }}
+                >
+                  <i className="fas fa-edit"></i>
+                </div>
+              </div>
+            ) : (
+              <div className={styles["edit-mode-on-profile-name-wrapper"]}>
+                <h1 className={styles["edit-mode-on-profile-name"]}>
+                  {profile.name}
+                </h1>
+                <div
+                  className={styles["edit-mode-on-edit-name-icon"]}
+                  onClick={() => {
+                    setProfileEdit(profile.id);
+                    handleOpenEditProfileModal();
+                  }}
+                >
+                  <i className="fas fa-edit"></i>
+                </div>
+              </div>
+            )}
+
+            <div
+              className={styles["edit-mode-on-remove-profile-icon"]}
+              onClick={() => RemoveProfile(profile.id)}
+            >
+              <i className="fas fa-times-circle"></i>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+};
+
+//Profile Edit Mode Off
+const ProfileEditModeOff: FC<ProfileEditModeOffProps> = ({
+  profiles,
+  selectedProfile,
+  setProfile,
+  setProfilePic,
+  editMode,
+  handleOpenAddProfileModal,
+}) => {
+  return (
+    <div className={styles["profile-selection-profiles"]}>
+      {profiles.map((profile) => {
+        return (
+          <div key={profile.id} className={styles["edit-mode-off-wrapper"]}>
+            <div className={styles["edit-mode-off-image"]}>
+              <Image
+                src={profile.picture}
+                alt="Avatar Profile"
+                onClick={() => {
+                  selectedProfile();
+                  setProfile(profile.name);
+                  setProfilePic(profile.picture);
+                }}
+                priority={true}
+              />
+            </div>
+
+            <h1 className={styles["edit-mode-off-profile-name"]}>
+              {profile.name}
+            </h1>
+          </div>
+        );
+      })}
+
+      {/* Add Profiles */}
+      {profiles.length !== 5 && (
+        <>
+          {editMode ? null : (
+            <>
+              <div
+                onClick={handleOpenAddProfileModal}
+                className={styles["add-profile-icon"]}
+              >
+                <i className="fas fa-plus-circle"></i>
+              </div>
+            </>
+          )}
+        </>
+      )}
+    </div>
+  );
+};
 
 const ProfileSelection: FC = () => {
   // Animate Logo
@@ -102,6 +352,71 @@ const ProfileSelection: FC = () => {
     setEditProfilePicModal(false);
     setEditProfilePic(false);
     setEditProfilePicText(profilePic);
+  };
+
+  //Adding New Profiles
+  const handleProfileSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
+    e.preventDefault();
+
+    const newProfile = {
+      id: new Date().getTime(),
+      name: profile,
+      picture: profilePic,
+    };
+
+    setProfiles([...profiles].concat(newProfile));
+    setProfile("");
+    setOpenAddProfileModal(false);
+    setProfilePic(DefaultProfile);
+  };
+
+  //Handling Profile Change
+  const handleProfileChange = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ): void => {
+    setProfile(e.target.value);
+  };
+
+  //Removing Profile
+  const RemoveProfile = (id: number) => {
+    const updatedProfiles = [...profiles].filter(
+      (profile) => profile.id !== id
+    );
+
+    setProfiles(updatedProfiles);
+  };
+
+  //Editing Profile
+  const SubmitProfileEdit = (id: number) => {
+    const updatedProfiles = [...profiles].map((profile) => {
+      if (profile.id === id) {
+        profile.name = profileTextEdit;
+      }
+      return profile;
+    });
+    setProfiles(updatedProfiles);
+    setProfileEdit(false);
+    setProfileTextEdit("");
+  };
+
+  //Profile Pic Edit
+  const SubmitProfilePicEdit = (id: number) => {
+    const updatedProfiles = [...profiles].map((profile) => {
+      if (profile.id === id) {
+        profile.picture = editProfilePicText;
+      }
+      return profile;
+    });
+    setProfiles(updatedProfiles);
+    setEditProfilePic(false);
+    setEditProfilePicText(profilePic);
+  };
+
+  //Allow Users to Sign Out
+  const signOutAccount = async () => {
+    setProfileSelect(false);
+    setNoLogoAnimation(false);
+    await signOut(auth);
   };
 
   //Local Storage for Saving Profiles When Refresh
@@ -190,312 +505,86 @@ const ProfileSelection: FC = () => {
     };
   }, []);
 
-  //Adding New Profiles
-  const handleProfileSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
-    e.preventDefault();
-
-    const newProfile = {
-      id: new Date().getTime(),
-      name: profile,
-      picture: profilePic,
-    };
-
-    setProfiles([...profiles].concat(newProfile));
-    setProfile("");
-    setOpenAddProfileModal(false);
-    setProfilePic(DefaultProfile);
-  };
-
-  //Handling Profile Change
-  const handleProfileChange = (
-    e: React.ChangeEvent<HTMLInputElement>
-  ): void => {
-    setProfile(e.target.value);
-  };
-
-  //Removing Profile
-  const RemoveProfile = (id: number) => {
-    const updatedProfiles = [...profiles].filter(
-      (profile) => profile.id !== id
-    );
-
-    setProfiles(updatedProfiles);
-  };
-
-  //Editing Profile
-  const SubmitProfileEdit = (id: number) => {
-    const updatedProfiles = [...profiles].map((profile) => {
-      if (profile.id === id) {
-        profile.name = profileTextEdit;
-      }
-      return profile;
-    });
-    setProfiles(updatedProfiles);
-    setProfileEdit(false);
-    setProfileTextEdit("");
-  };
-
-  //Profile Pic Edit
-  const SubmitProfilePicEdit = (id: number) => {
-    const updatedProfiles = [...profiles].map((profile) => {
-      if (profile.id === id) {
-        profile.picture = editProfilePicText;
-      }
-      return profile;
-    });
-    setProfiles(updatedProfiles);
-    setEditProfilePic(false);
-    setEditProfilePicText(profilePic);
-  };
-
-  //Allow Users to Sign Out
-  const signOutAccount = async () => {
-    setProfileSelect(false);
-    setNoLogoAnimation(false);
-    await signOut(auth);
-  };
-
-  //Profile Edit Mode On
-  const profileEditModeOn = (): JSX.Element => {
-    return (
-      <div className={styles["profile-selection-profiles"]}>
-        {profiles.map((profile) => {
-          return (
-            <div key={profile.id} className={styles["edit-mode-on-wrapper"]}>
-              {editProfilePic === profile.id ? (
-                <>
-                  <EditProfilePicModal
-                    editProfilePicModal={editProfilePicModal}
-                    handleCLoseEditProfilePicModal={
-                      handleCLoseEditProfilePicModal
-                    }
-                    setEditProfilePicText={setEditProfilePicText}
-                    SubmitProfilePicEdit={SubmitProfilePicEdit}
-                    profile={profile}
-                    setEditProfilePic={setEditProfilePic}
-                    profilePic={profilePic}
-                  />
-                  <div className={styles["edit-mode-on-image-container"]}>
-                    <div className={styles["edit-mode-on-image"]}>
-                      <Image
-                        src={profile.picture}
-                        alt="Avatar Profile"
-                        onClick={() => {
-                          setProfile(profile.name);
-                          setProfilePic(profile.picture);
-                        }}
-                        priority={true}
-                      />
-                    </div>
-                    <div className={styles["edit-mode-on-image-overlay"]}>
-                      <div
-                        className={styles["edit-mode-on-edit-profile-icon"]}
-                        onClick={() => {
-                          setEditProfilePic(profile.id);
-                          handleOpenEditProfilePicModal();
-                        }}
-                      >
-                        <i className="fas fa-edit"></i>
-                      </div>
-                    </div>
-                  </div>
-                </>
-              ) : (
-                <>
-                  <div className={styles["edit-mode-on-image-container"]}>
-                    <div className={styles["edit-mode-on-image"]}>
-                      <Image
-                        src={profile.picture}
-                        alt="Avatar Profile"
-                        onClick={() => {
-                          setProfile(profile.name);
-                          setProfilePic(profile.picture);
-                        }}
-                        priority={true}
-                      />
-                    </div>
-                    <div className={styles["edit-mode-on-image-overlay"]}>
-                      <div
-                        className={styles["edit-mode-on-edit-profile-icon"]}
-                        onClick={() => {
-                          setEditProfilePic(profile.id);
-                          handleOpenEditProfilePicModal();
-                        }}
-                      >
-                        <i className="fas fa-edit"></i>
-                      </div>
-                    </div>
-                  </div>
-                </>
-              )}
-
-              {profileEdit === profile.id ? (
-                <div className={styles["edit-mode-on-profile-name-wrapper"]}>
-                  <EditProfileModal
-                    editProfileModal={editProfileModal}
-                    handleCloseEditProfileModal={handleCloseEditProfileModal}
-                    setProfileTextEdit={setProfileTextEdit}
-                    profile={profile}
-                    SubmitProfileEdit={SubmitProfileEdit}
-                    profileTextEdit={profileTextEdit}
-                    setProfileEdit={setProfileEdit}
-                    profiles={profiles}
-                  />
-                  <h1 className={styles["edit-mode-on-profile-name"]}>
-                    {profile.name}
-                  </h1>
-                  <div
-                    className={styles["edit-mode-on-edit-name-icon"]}
-                    onClick={() => {
-                      setProfileEdit(profile.id);
-                      handleOpenEditProfileModal();
-                    }}
-                  >
-                    <i className="fas fa-edit"></i>
-                  </div>
-                </div>
-              ) : (
-                <div className={styles["edit-mode-on-profile-name-wrapper"]}>
-                  <h1 className={styles["edit-mode-on-profile-name"]}>
-                    {profile.name}
-                  </h1>
-                  <div
-                    className={styles["edit-mode-on-edit-name-icon"]}
-                    onClick={() => {
-                      setProfileEdit(profile.id);
-                      handleOpenEditProfileModal();
-                    }}
-                  >
-                    <i className="fas fa-edit"></i>
-                  </div>
-                </div>
-              )}
-
-              <div
-                className={styles["edit-mode-on-remove-profile-icon"]}
-                onClick={() => RemoveProfile(profile.id)}
-              >
-                <i className="fas fa-times-circle"></i>
-              </div>
-            </div>
-          );
-        })}
-      </div>
-    );
-  };
-
-  //Profile Edit Mode Off
-  const profileEditModeOff = (): JSX.Element => {
-    return (
-      <div className={styles["profile-selection-profiles"]}>
-        {profiles.map((profile) => {
-          return (
-            <div key={profile.id} className={styles["edit-mode-off-wrapper"]}>
-              <div className={styles["edit-mode-off-image"]}>
+  return (
+    <>
+      {!noLogoAnimation && <LogoAnimation />}
+      <div className={styles["whole-profile-main-wrapper"]}>
+        {profileSelect ? (
+          <ProfilePicContext.Provider value={profilePic}>
+            <ProfileNameContext.Provider value={profile}>
+              <Main manageProfiles={manageProfiles} signOut={signOutAccount} />
+            </ProfileNameContext.Provider>
+          </ProfilePicContext.Provider>
+        ) : (
+          <>
+            <AddProfileModal
+              openAddProfileModal={openAddProfileModal}
+              handleCloseAddProfileModal={handleCloseAddProfileModal}
+              profile={profile}
+              handleProfileSubmit={handleProfileSubmit}
+              handleProfileChange={handleProfileChange}
+              setProfile={setProfile}
+              profiles={profiles}
+            />
+            <div className={styles["profile-selection-wrapper"]}>
+              <div className={styles["profile-selection-web-logo"]}>
                 <Image
-                  src={profile.picture}
-                  alt="Avatar Profile"
-                  onClick={() => {
-                    selectedProfile();
-                    setProfile(profile.name);
-                    setProfilePic(profile.picture);
-                  }}
-                  priority={true}
+                  src={WebLogo}
+                  alt="Web Logo"
+                  width={150}
+                  height={50}
+                  objectFit="cover"
                 />
               </div>
+              <div className={styles["profile-selection-title"]}>
+                <h1>Who&apos;s Watching?</h1>
+              </div>
 
-              <h1 className={styles["edit-mode-off-profile-name"]}>
-                {profile.name}
-              </h1>
-            </div>
-          );
-        })}
+              {editMode ? (
+                <ProfileEditModeOn
+                  profiles={profiles}
+                  editProfilePic={editProfilePic}
+                  editProfilePicModal={editProfilePicModal}
+                  handleCLoseEditProfilePicModal={
+                    handleCLoseEditProfilePicModal
+                  }
+                  setEditProfilePicText={setEditProfilePicText}
+                  SubmitProfilePicEdit={SubmitProfilePicEdit}
+                  setEditProfilePic={setEditProfilePic}
+                  profilePic={profilePic}
+                  setProfile={setProfile}
+                  setProfilePic={setProfilePic}
+                  handleOpenEditProfilePicModal={handleOpenEditProfilePicModal}
+                  profileEdit={profileEdit}
+                  editProfileModal={editProfileModal}
+                  handleCloseEditProfileModal={handleCloseEditProfileModal}
+                  setProfileTextEdit={setProfileTextEdit}
+                  SubmitProfileEdit={SubmitProfileEdit}
+                  profileTextEdit={profileTextEdit}
+                  setProfileEdit={setProfileEdit}
+                  handleOpenEditProfileModal={handleOpenEditProfileModal}
+                  RemoveProfile={RemoveProfile}
+                />
+              ) : (
+                <ProfileEditModeOff
+                  profiles={profiles}
+                  selectedProfile={selectedProfile}
+                  setProfile={setProfile}
+                  setProfilePic={setProfilePic}
+                  editMode={editMode}
+                  handleOpenAddProfileModal={handleOpenAddProfileModal}
+                />
+              )}
 
-        {/* Add Profiles */}
-        {profiles.length !== 5 && (
-          <>
-            {editMode ? null : (
-              <>
-                <div
-                  onClick={handleOpenAddProfileModal}
-                  className={styles["add-profile-icon"]}
-                >
-                  <i className="fas fa-plus-circle"></i>
-                </div>
-              </>
-            )}
-          </>
-        )}
-      </div>
-    );
-  };
-
-  //Editing Profiles
-  const editProfiles = (): JSX.Element => {
-    if (editMode === true) {
-      return <>{profileEditModeOn()}</>;
-    } else {
-      return <>{profileEditModeOff()}</>;
-    }
-  };
-
-  //If a Profile is Selected
-  const profileSelected = (): JSX.Element => {
-    if (profileSelect === true) {
-      return (
-        <ProfilePicContext.Provider value={profilePic}>
-          <ProfileNameContext.Provider value={profile}>
-            <Main manageProfiles={manageProfiles} signOut={signOutAccount} />
-          </ProfileNameContext.Provider>
-        </ProfilePicContext.Provider>
-      );
-    } else {
-      return (
-        <>
-          <AddProfileModal
-            openAddProfileModal={openAddProfileModal}
-            handleCloseAddProfileModal={handleCloseAddProfileModal}
-            profile={profile}
-            handleProfileSubmit={handleProfileSubmit}
-            handleProfileChange={handleProfileChange}
-            setProfile={setProfile}
-            profiles={profiles}
-          />
-          <div className={styles["profile-selection-wrapper"]}>
-            <div className={styles["profile-selection-web-logo"]}>
-              <Image
-                src={WebLogo}
-                alt="Web Logo"
-                width={150}
-                height={50}
-                objectFit="cover"
-              />
-            </div>
-            <div className={styles["profile-selection-title"]}>
-              <h1>Who&apos;s Watching?</h1>
-            </div>
-
-            {editProfiles()}
-
-            {/* Manage Profiles Profiles */}
-            <div>
+              {/* Manage Profiles Profiles */}
               <ManageProfileButton
                 profiles={profiles}
                 toggleEditMode={toggleEditMode}
                 editMode={editMode}
               />
             </div>
-          </div>
-        </>
-      );
-    }
-  };
-
-  return (
-    <>
-      {!noLogoAnimation && <LogoAnimation />}
-      <div className={styles["whole-profile-main-wrapper"]}>
-        {profileSelected()}
+          </>
+        )}
       </div>
     </>
   );
