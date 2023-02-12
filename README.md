@@ -4,9 +4,11 @@
         <p>A movie database website inspired by <a href="https://www.netflix.com/">Netflix</a></p>
     </strong>
     <strong>
-        <a href="https://filmflix-watch.vercel.app/">You can view the live site here »<a>
+        <p><a href="https://filmflix-watch.vercel.app/">You can view the live site here »<a></p>
     </strong>
-    <br />
+        <strong>
+       <p><a href="https://filmfilx-watch.netlify.app/">Alternate Link »<a></p>
+    </strong>
     <br />
      <strong>
         <p>Note: You can also install this on your local machine since this is a PWA.</p>
