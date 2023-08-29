@@ -50,9 +50,7 @@ https://user-images.githubusercontent.com/79429518/178147835-e4d76c60-fb50-4a92-
 
 ## About the Project
 
-This project is created to expand my knowledge in React and Next JS, and how to structure a mid-level complexity web application. It is a movie database where you can view the information of a specific movie or tv show. It is mainly inspired by [Netflix's](https://www.netflix.com) design. I've also inserted a really close clone of Netflix's original splash animation (forked from a famous [Codepen from Claudio Bonfati](https://codepen.io/claudio_bonfati)), made entirely with CSS, paired with [Netflix's starting sound.](https://www.youtube.com/watch?v=GV3HUDMQ-F8) It took me months in making the project while also focusing on my college studies. I also update this project from time to time whenever a certain package has an update, as well as adding minor features, bug fixes and performance improvements. 
-
-Go try my project and please let me know some improvements. 💖
+This project is created to expand my knowledge in React and Next JS, and how to structure a mid-level complexity web application. It is a movie database where you can view the information of a specific movie or tv show. It is mainly inspired by [Netflix's](https://www.netflix.com) design. I've also inserted a really close clone of Netflix's original splash animation (forked from a famous [Codepen from Claudio Bonfati](https://codepen.io/claudio_bonfati)), made entirely with CSS, paired with [Netflix's starting sound.](https://www.youtube.com/watch?v=GV3HUDMQ-F8) It took me months in making the project while also focusing on my college studies. As much as possible, I've tried to maintain this project, updating whenever a certain package has an update, as well as adding minor features, bug fixes and performance improvements. 
 
 
 ### Built With...
