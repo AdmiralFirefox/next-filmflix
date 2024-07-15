@@ -1,6 +1,6 @@
 import React, { FC, useState, useEffect, useContext } from "react";
 import dynamic from "next/dynamic";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import PosterFallback from "../../../assets/fallbacks/PosterFallback.jpg";
 import { SearchMovieIDContext } from "./SearchMovies";
 import Axios from "axios";

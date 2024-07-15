@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import Kids from "../../../assets/landingpage/Kids.png";
 import Divider from "@mui/material/Divider";
 import styles from "../../../styles/LandingPage/Content/PageContentThree.module.scss";

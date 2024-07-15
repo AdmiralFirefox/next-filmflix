@@ -1,7 +1,7 @@
 import { FC, useContext, useRef, useEffect, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { useRouter } from "next/router";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import WebLogo from "../assets/logo/WebLogo.png";
 import { auth } from "../firebase/firebase";
 import {

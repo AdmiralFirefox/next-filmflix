@@ -2,7 +2,7 @@ import React, { FC, useState, useEffect, useContext } from "react";
 import dynamic from "next/dynamic";
 import { TrendingTVIDContext } from "./TrendingTVs";
 import Axios from "axios";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import MoreTVInfoButton from "../../Buttons/TrendingTVs/MoreTVInfoButton";
 const PlayTVVideoButton = dynamic(
   () => import("../../Buttons/TrendingTVs/PlayTVVideoButton")

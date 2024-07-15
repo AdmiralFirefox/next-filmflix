@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import { useForm } from "react-hook-form";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import GoogleLogo from "../../../assets/login/Google.png";
 import { styled } from "@mui/material/styles";
 import Button, { ButtonProps } from "@mui/material/Button";

@@ -1,5 +1,5 @@
 import React, { FC, useContext } from "react";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import { ProfilePicContext } from "../Main/ProfileSelection";
 import styles from "../../styles/Search/SearchNavbar.module.scss";
 

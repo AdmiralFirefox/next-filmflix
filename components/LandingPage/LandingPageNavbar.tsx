@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import Link from "next/link";
 import WebLogo from "../../assets/logo/WebLogo.png";
 import LandingPageRedButton from "../Buttons/LandingPage/LandingPageRedButton";

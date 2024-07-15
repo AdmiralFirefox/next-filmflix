@@ -2,7 +2,7 @@ import React, { FC, useState, useEffect, useContext } from "react";
 import dynamic from "next/dynamic";
 import { TVIDContext } from "./TVCarousel";
 import Axios from "axios";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import PosterFallback from "../../assets/fallbacks/PosterFallback.jpg";
 const TVModal = dynamic(() => import("../Modal/TVs/TVModal"));
 import styles from "../../styles/TVs/TVInfo.module.scss";
