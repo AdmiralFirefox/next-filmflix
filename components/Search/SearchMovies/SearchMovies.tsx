@@ -1,5 +1,5 @@
 import React, { FC, useState, useEffect, createContext } from "react";
-import useDebounce from "../../../hooks/useDebounce";
+import { useDebounceValue } from "../../../hooks/useDebounceValue";
 import Axios from "axios";
 import dynamic from "next/dynamic";
 const SearchMovieInfo = dynamic(() => import("./SearchMovieInfo"));
@@ -18,11 +18,9 @@ const SearchMovies: FC = () => {
     SearchMovieProps["searchMovieData"]
   >([]);
 
-  const [searchQuery, setSearchQuery] = useState("/");
+  const [searchQuery, setSearchQuery] = useDebounceValue("", 650);
 
   const [loadingSearches, setLoadingSearches] = useState(false);
-
-  const debouncedSearch = useDebounce(searchQuery, 650);
 
   const handleSearchChange = (
     e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
@@ -36,7 +34,7 @@ const SearchMovies: FC = () => {
     const displaySearchMovies = async () => {
       try {
         const res = await Axios.get(
-          `https://api.themoviedb.org/3/search/movie?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US&query=${debouncedSearch}&page=1&include_adult=false`
+          `https://api.themoviedb.org/3/search/movie?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US&query=${searchQuery}&page=1&include_adult=false`
         );
         // console.log(res.data.results);
         if (isMounted) {
@@ -53,20 +51,11 @@ const SearchMovies: FC = () => {
     return () => {
       isMounted = false;
     };
-  }, [debouncedSearch]);
-
-  if (searchQuery === "") {
-    setSearchQuery("/");
-  }
+  }, [searchQuery]);
 
   //If there are no searched movies available
   const noResultsFound = (): JSX.Element | undefined => {
-    if (
-      searchQuery !== "/" &&
-      debouncedSearch !== "/" &&
-      searchMovies.length === 0 &&
-      !loadingSearches
-    ) {
+    if (searchQuery !== "" && searchMovies.length === 0 && !loadingSearches) {
       return (
         <div className={styles["search-movies-no-results-found"]}>
           <p>
@@ -85,7 +74,7 @@ const SearchMovies: FC = () => {
         <SearchMoviesInput handleSearchChange={handleSearchChange} />
       </div>
 
-      {searchQuery === "/" ? null : (
+      {searchQuery === "" ? null : (
         <p className={styles["search-movies-guide"]}>
           Search results for: {searchQuery}
         </p>
