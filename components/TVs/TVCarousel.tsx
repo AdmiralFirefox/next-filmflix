@@ -2,6 +2,7 @@ import React, { FC, useState, useEffect, createContext } from "react";
 import dynamic from "next/dynamic";
 const TVInfo = dynamic(() => import("./TVInfo"));
 import Axios from "axios";
+import { options } from "../../utils/options";
 import Skeleton from "@mui/material/Skeleton";
 import styles from "../../styles/TVs/TVCarousel.module.scss";
 // Import Swiper React components
@@ -70,7 +71,7 @@ const TVCarousel: FC<TVShowsRouteProps> = ({ route, title }) => {
     setLoading(true);
     const displayTVShows = async () => {
       try {
-        const res = await Axios.get(`${route}`);
+        const res = await Axios.get(route, options);
         // console.log(res.data.results);
         if (isMounted) {
           setTvShows(res.data.results);

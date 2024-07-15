@@ -2,6 +2,7 @@ import React, { FC, useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 import Skeleton from "@mui/material/Skeleton";
 import Axios from "axios";
+import { options } from "../../utils/options";
 import Image from "next/legacy/image";
 import VideoFallback from "../../assets/fallbacks/VideoFallback.jpg";
 import ReactPlayer from "react-player/youtube";
@@ -31,7 +32,8 @@ const TVTrailer: FC<{ id: number }> = ({ id }) => {
     const displayTVTrailer = async () => {
       try {
         const res = await Axios.get(
-          `https://api.themoviedb.org/3/tv/${id}/videos?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US`
+          `https://api.themoviedb.org/3/tv/${id}/videos?language=en-US`,
+          options
         );
         // console.log(res.data.results[0]);
         if (isMounted) {

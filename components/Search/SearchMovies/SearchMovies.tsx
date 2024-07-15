@@ -1,6 +1,7 @@
 import React, { FC, useState, useEffect, createContext } from "react";
 import { useDebounceValue } from "../../../hooks/useDebounceValue";
 import Axios from "axios";
+import { options } from "../../../utils/options";
 import dynamic from "next/dynamic";
 const SearchMovieInfo = dynamic(() => import("./SearchMovieInfo"));
 import SearchMoviesInput from "../../Inputs/SearchMovies/SearchMoviesInput";
@@ -34,7 +35,8 @@ const SearchMovies: FC = () => {
     const displaySearchMovies = async () => {
       try {
         const res = await Axios.get(
-          `https://api.themoviedb.org/3/search/movie?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US&query=${searchQuery}&page=1&include_adult=false`
+          `https://api.themoviedb.org/3/search/movie?language=en-US&query=${searchQuery}&page=1&include_adult=false`,
+          options
         );
         // console.log(res.data.results);
         if (isMounted) {

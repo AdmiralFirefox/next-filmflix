@@ -1,6 +1,7 @@
 import React, { FC, useState, useEffect, createContext } from "react";
 import { useDebounceValue } from "../../../hooks/useDebounceValue";
 import Axios from "axios";
+import { options } from "../../../utils/options";
 import dynamic from "next/dynamic";
 const SearchTVInfo = dynamic(() => import("./SearchTVInfo"));
 import SearchTVsInput from "../../Inputs/SearchTVs/SearchTVsInput";
@@ -35,8 +36,10 @@ const SearchTVs: FC = () => {
     let isMounted = true;
     const displaySearchTVs = async () => {
       try {
-        const res = await Axios.get(`
-        https://api.themoviedb.org/3/search/tv?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US&page=1&query=${searchQuery}&include_adult=false`);
+        const res = await Axios.get(
+          `https://api.themoviedb.org/3/search/tv?language=en-US&page=1&query=${searchQuery}&include_adult=false`,
+          options
+        );
         // console.log(res.data.results);
         if (isMounted) {
           setSearchTVs(res.data.results);

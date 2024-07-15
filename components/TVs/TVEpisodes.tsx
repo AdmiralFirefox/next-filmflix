@@ -1,5 +1,6 @@
 import React, { FC, useState, useEffect } from "react";
 import Axios from "axios";
+import { options } from "../../utils/options";
 import Image from "next/legacy/image";
 import BackdropFallback from "../../assets/fallbacks/BackdropFallback.jpg";
 import { styled } from "@mui/material/styles";
@@ -48,7 +49,8 @@ const TVEpisodes: FC<CurrentSeasonProp> = ({ currentSeason, id }) => {
     const displayEpisodesData = async () => {
       try {
         const res = await Axios.get(
-          `https://api.themoviedb.org/3/tv/${id}/season/${currentSeason}?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US`
+          `https://api.themoviedb.org/3/tv/${id}/season/${currentSeason}?language=en-US`,
+          options
         );
         // console.log(res.data);
         if (isMounted) {

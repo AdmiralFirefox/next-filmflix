@@ -4,6 +4,7 @@ import Image from "next/legacy/image";
 import PosterFallback from "../../../assets/fallbacks/PosterFallback.jpg";
 import { SearchTVIDContext } from "./SearchTVs";
 import Axios from "axios";
+import { options } from "../../../utils/options";
 import styles from "../../../styles/Search/SearchTVs/SearchTVInfo.module.scss";
 const TVModal = dynamic(() => import("../../Modal/TVs/TVModal"));
 
@@ -60,7 +61,8 @@ const SearchTVInfo: FC<SearchTVInfoProps> = ({ posterPath, voteAverage }) => {
     const displayTVInfoData = async () => {
       try {
         const res = await Axios.get(
-          `https://api.themoviedb.org/3/tv/${SearchTVID}?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US`
+          `https://api.themoviedb.org/3/tv/${SearchTVID}?language=en-US`,
+          options
         );
         // console.log(res.data);
         if (isMounted) {

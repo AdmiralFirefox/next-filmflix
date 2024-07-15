@@ -1,6 +1,7 @@
 import React, { FC, useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 import Axios from "axios";
+import { options } from "../../../utils/options";
 import { styled } from "@mui/material/styles";
 import Button, { ButtonProps } from "@mui/material/Button";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
@@ -39,7 +40,8 @@ const PlayMovieVideoButton: FC<{ id?: number }> = ({ id }) => {
     const displayTrailer = async () => {
       try {
         const res = await Axios.get(
-          `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US`
+          `https://api.themoviedb.org/3/movie/${id}/videos?language=en-US`,
+          options
         );
         // console.log(res.data.results[0]);
         if (isMounted) {

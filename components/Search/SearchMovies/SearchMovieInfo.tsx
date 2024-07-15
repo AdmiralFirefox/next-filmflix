@@ -4,6 +4,7 @@ import Image from "next/legacy/image";
 import PosterFallback from "../../../assets/fallbacks/PosterFallback.jpg";
 import { SearchMovieIDContext } from "./SearchMovies";
 import Axios from "axios";
+import { options } from "../../../utils/options";
 import styles from "../../../styles/Search/SearchMovies/SearchMovieInfo.module.scss";
 const MovieModal = dynamic(() => import("../../Modal/Movies/MovieModal"));
 
@@ -52,7 +53,8 @@ const SearchMovieInfo: FC<SearchMovieInfoProps> = ({
     const displaySearchMovieInfo = async () => {
       try {
         const res = await Axios.get(
-          `https://api.themoviedb.org/3/movie/${searchMovieID}?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US`
+          `https://api.themoviedb.org/3/movie/${searchMovieID}?language=en-US`,
+          options
         );
         // console.log(res.data);
         if (isMounted) {

@@ -1,5 +1,6 @@
 import React, { FC, useState, useEffect } from "react";
 import Axios from "axios";
+import { options } from "../../utils/options";
 import Image from "next/legacy/image";
 import ProfileFallback from "../../assets/fallbacks/ProfileFallback.jpg";
 import { styled } from "@mui/material/styles";
@@ -46,7 +47,8 @@ const MovieCasts: FC<{ id: number }> = ({ id }) => {
     const displayMovieCasts = async () => {
       try {
         const res = await Axios.get(
-          `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US`
+          `https://api.themoviedb.org/3/movie/${id}/credits?language=en-US`,
+          options
         );
         // console.log(res.data.cast);
         if (isMounted) {

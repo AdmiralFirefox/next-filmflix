@@ -2,6 +2,7 @@ import React, { FC, useState, useEffect, useContext } from "react";
 import dynamic from "next/dynamic";
 import { TVIDContext } from "./TVCarousel";
 import Axios from "axios";
+import { options } from "../../utils/options";
 import Image from "next/legacy/image";
 import PosterFallback from "../../assets/fallbacks/PosterFallback.jpg";
 const TVModal = dynamic(() => import("../Modal/TVs/TVModal"));
@@ -60,7 +61,8 @@ const TVInfo: FC<TVInfoProps> = ({ posterPath, voteAverage }) => {
     const displayTVInfo = async () => {
       try {
         const res = await Axios.get(
-          `https://api.themoviedb.org/3/tv/${TVID}?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US`
+          `https://api.themoviedb.org/3/tv/${TVID}?language=en-US`,
+          options
         );
         // console.log(res.data);
         if (isMounted) {

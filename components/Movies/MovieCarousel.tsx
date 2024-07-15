@@ -1,6 +1,7 @@
 import React, { FC, useState, useEffect, createContext } from "react";
 import dynamic from "next/dynamic";
 import Axios from "axios";
+import { options } from "../../utils/options";
 const MovieInfo = dynamic(() => import("./MovieInfo"));
 import Skeleton from "@mui/material/Skeleton";
 import styles from "../../styles/Movies/MovieCarousel.module.scss";
@@ -70,7 +71,7 @@ const MovieCarousel: FC<RouteProp> = ({ route, title }) => {
     setLoading(true);
     const displayTrendingMovies = async () => {
       try {
-        const res = await Axios.get(`${route}`);
+        const res = await Axios.get(route, options);
         // console.log(res.data.results);
         if (isMounted) {
           setMovies(res.data.results);

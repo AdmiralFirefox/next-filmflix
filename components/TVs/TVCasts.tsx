@@ -1,5 +1,6 @@
 import React, { FC, useState, useEffect } from "react";
 import Axios from "axios";
+import { options } from "../../utils/options";
 import Image from "next/legacy/image";
 import ProfileFallback from "../../assets/fallbacks/ProfileFallback.jpg";
 import { styled } from "@mui/material/styles";
@@ -44,7 +45,8 @@ const TVCasts: FC<{ id: number }> = ({ id }) => {
     const displayTVCasts = async () => {
       try {
         const res = await Axios.get(
-          `https://api.themoviedb.org/3/tv/${id}/credits?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US`
+          `https://api.themoviedb.org/3/tv/${id}/credits?language=en-US`,
+          options
         );
         // console.log(res.data.cast);
         if (isMounted) {

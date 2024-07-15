@@ -1,6 +1,7 @@
 import React, { FC, useState, useEffect, createContext } from "react";
 import dynamic from "next/dynamic";
 import Axios from "axios";
+import { options } from "../../../utils/options";
 const TrendingMovieInfo = dynamic(() => import("./TrendingMovieInfo"));
 import Skeleton from "@mui/material/Skeleton";
 import styles from "../../../styles/Trending/TrendingMovies/TrendingMovies.module.scss";
@@ -23,7 +24,8 @@ const TrendingMovies: FC = () => {
     const displayTrendingMovies = async () => {
       try {
         const res = await Axios.get(
-          `https://api.themoviedb.org/3/trending/movie/day?api_key=${process.env.NEXT_PUBLIC_API_KEY}`
+          `https://api.themoviedb.org/3/trending/movie/day`,
+          options
         );
         // console.log(res.data.results[1]);
         if (isMounted) {

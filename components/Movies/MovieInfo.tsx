@@ -2,6 +2,7 @@ import React, { FC, useState, useEffect, useContext } from "react";
 import dynamic from "next/dynamic";
 import { MovieIDContext } from "./MovieCarousel";
 import Axios from "axios";
+import { options } from "../../utils/options";
 import Image from "next/legacy/image";
 import PosterFallback from "../../assets/fallbacks/PosterFallback.jpg";
 const MovieModal = dynamic(() => import("../Modal/Movies/MovieModal"));
@@ -59,7 +60,8 @@ const MovieInfo: FC<MovieInfoProps> = ({ posterPath, voteAverage }) => {
     const displayMovieInfo = async () => {
       try {
         const res = await Axios.get(
-          `https://api.themoviedb.org/3/movie/${movieID}?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US`
+          `https://api.themoviedb.org/3/movie/${movieID}?language=en-US`,
+          options
         );
         // console.log(res.data);
         if (isMounted) {

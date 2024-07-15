@@ -1,5 +1,6 @@
 import React, { FC, useState, useEffect } from "react";
 import Axios from "axios";
+import { options } from "../../utils/options";
 import Image from "next/legacy/image";
 import PosterFallback from "../../assets/fallbacks/PosterFallback.jpg";
 import { styled } from "@mui/material/styles";
@@ -46,7 +47,8 @@ const SimilarMovies: FC<{ id: number }> = ({ id }) => {
     const displaySimilarMovies = async () => {
       try {
         const res = await Axios.get(
-          `https://api.themoviedb.org/3/movie/${id}/similar?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US&page=1`
+          `https://api.themoviedb.org/3/movie/${id}/similar?language=en-US&page=1`,
+          options
         );
         // console.log(res.data.results);
         if (isMounted) {

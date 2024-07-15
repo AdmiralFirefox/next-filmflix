@@ -1,5 +1,6 @@
 import React, { FC, useState, useEffect, createContext } from "react";
 import Axios from "axios";
+import { options } from "../../../utils/options";
 import dynamic from "next/dynamic";
 const TrendingTVInfo = dynamic(() => import("./TrendingTVInfo"));
 import Skeleton from "@mui/material/Skeleton";
@@ -23,7 +24,8 @@ const TrendingTVs: FC = () => {
     const displayTrendingTVData = async () => {
       try {
         const res = await Axios.get(
-          `https://api.themoviedb.org/3/trending/tv/day?api_key=${process.env.NEXT_PUBLIC_API_KEY}`
+          `https://api.themoviedb.org/3/trending/tv/day`,
+          options
         );
         // console.log(res.data.results[Math.floor(Math.random() * 10)]);
         if (isMounted) {

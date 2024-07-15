@@ -2,6 +2,7 @@ import React, { FC, useState, useEffect, useContext } from "react";
 import dynamic from "next/dynamic";
 import { TrendingTVIDContext } from "./TrendingTVs";
 import Axios from "axios";
+import { options } from "../../../utils/options";
 import Image from "next/legacy/image";
 import MoreTVInfoButton from "../../Buttons/TrendingTVs/MoreTVInfoButton";
 const PlayTVVideoButton = dynamic(
@@ -72,7 +73,8 @@ const TrendingTVInfo: FC<TrendingTVInfoProps> = ({
     const displayTrendingTV = async () => {
       try {
         const res = await Axios.get(
-          `https://api.themoviedb.org/3/tv/${TrendingTVID}?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US`
+          `https://api.themoviedb.org/3/tv/${TrendingTVID}?language=en-US`,
+          options
         );
         // console.log(res.data);
         if (isMounted) {

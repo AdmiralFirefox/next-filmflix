@@ -2,6 +2,7 @@ import React, { FC, useState, useEffect, useContext } from "react";
 import dynamic from "next/dynamic";
 import { TrendingMovieIDContext } from "./TrendingMovies";
 import Axios from "axios";
+import { options } from "../../../utils/options";
 import Image from "next/legacy/image";
 import MoreMovieInfoButton from "../../Buttons/TrendingMovies/MoreMovieInfoButton";
 const PlayMovieVideoButton = dynamic(
@@ -70,7 +71,8 @@ const TrendingMovieInfo: FC<TrendingMovieInfoProps> = ({
     const displayTrendingMovieInfo = async () => {
       try {
         const res = await Axios.get(
-          `https://api.themoviedb.org/3/movie/${trendingMovieID}?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US`
+          `https://api.themoviedb.org/3/movie/${trendingMovieID}?language=en-US`,
+          options
         );
         // console.log(res.data);
         if (isMounted) {
