@@ -1,6 +1,6 @@
 import React, { FC, useState, useContext, useEffect } from "react";
 import dynamic from "next/dynamic";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import WebLogo from "../../assets/logo/WebLogo.png";
 import { ProfilePicContext } from "./ProfileSelection";
 const NavbarContent = dynamic(() => import("./NavbarContent"));

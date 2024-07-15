@@ -2,7 +2,7 @@ import React, { FC, useState, useEffect, useContext } from "react";
 import dynamic from "next/dynamic";
 import { TrendingMovieIDContext } from "./TrendingMovies";
 import Axios from "axios";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import MoreMovieInfoButton from "../../Buttons/TrendingMovies/MoreMovieInfoButton";
 const PlayMovieVideoButton = dynamic(
   () => import("../../Buttons/TrendingMovies/PlayMovieVideoButton")

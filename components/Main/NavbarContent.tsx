@@ -1,7 +1,7 @@
 import React, { FC, useContext, useState } from "react";
 import { ProfileNameContext, ProfilePicContext } from "./ProfileSelection";
 import { useWindowSize, Size } from "../../hooks/useWindowSize";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import Box from "@mui/material/Box";
 import SwipeableDrawer from "@mui/material/SwipeableDrawer";
 import IconButton from "@mui/material/IconButton";

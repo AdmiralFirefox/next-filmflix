@@ -2,7 +2,7 @@ import React, { FC, useState, useEffect, useContext } from "react";
 import dynamic from "next/dynamic";
 import { MovieIDContext } from "./MovieCarousel";
 import Axios from "axios";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import PosterFallback from "../../assets/fallbacks/PosterFallback.jpg";
 const MovieModal = dynamic(() => import("../Modal/Movies/MovieModal"));
 import styles from "../../styles/Movies/MovieInfo.module.scss";

@@ -2,7 +2,7 @@ import React, { FC, useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 import Skeleton from "@mui/material/Skeleton";
 import Axios from "axios";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import VideoFallback from "../../assets/fallbacks/VideoFallback.jpg";
 import ReactPlayer from "react-player/youtube";
 const VideoPlayer = dynamic(() => import("../Modal/VideoPlayer/VideoPlayer"));

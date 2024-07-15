@@ -1,6 +1,6 @@
 import React, { FC, useContext } from "react";
 import Modal from "@mui/material/Modal";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import {
   ProfileNameContext,
   ProfilePicContext,

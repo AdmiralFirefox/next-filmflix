@@ -20,7 +20,7 @@ const EditProfilePicModal = dynamic(
 );
 import LogoAnimation from "../LandingPage/LogoAnimation";
 const Main = dynamic(() => import("./Main"));
-import Image, { StaticImageData } from "next/image";
+import Image, { StaticImageData } from "next/legacy/image";
 import WebLogo from "../../assets/logo/WebLogo.png";
 import DefaultProfile from "../../assets/profileicons/DefaultAvatar.png";
 import ManageProfileButton from "../Buttons/Main/ManageProfileButton";

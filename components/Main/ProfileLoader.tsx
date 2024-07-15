@@ -3,7 +3,7 @@ import { useLockedBody } from "../../hooks/useLockedBody";
 import { useTimeout } from "../../hooks/useTimeout";
 import { motion, AnimatePresence } from "framer-motion";
 import { ProfilePicContext } from "./ProfileSelection";
-import Image from "next/image";
+import Image from "next/legacy/image";
 
 const ProfileLoader: FC = () => {
   const [locked, setLocked] = useState(false);

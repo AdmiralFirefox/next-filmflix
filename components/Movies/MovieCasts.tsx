@@ -1,6 +1,6 @@
 import React, { FC, useState, useEffect } from "react";
 import Axios from "axios";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import ProfileFallback from "../../assets/fallbacks/ProfileFallback.jpg";
 import { styled } from "@mui/material/styles";
 import Button, { ButtonProps } from "@mui/material/Button";
