@@ -6,8 +6,6 @@ import { styled } from "@mui/material/styles";
 import Button, { ButtonProps } from "@mui/material/Button";
 import styles from "../../styles/Movies/MovieCasts.module.scss";
 
-const { NEXT_PUBLIC_API_KEY } = process.env;
-
 interface MovieCastProp {
   movieCastData: {
     id: number;
@@ -48,7 +46,7 @@ const MovieCasts: FC<{ id: number }> = ({ id }) => {
     const displayMovieCasts = async () => {
       try {
         const res = await Axios.get(
-          `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${NEXT_PUBLIC_API_KEY}&language=en-US`
+          `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US`
         );
         // console.log(res.data.cast);
         if (isMounted) {

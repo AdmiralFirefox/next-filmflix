@@ -7,8 +7,6 @@ import PosterFallback from "../../assets/fallbacks/PosterFallback.jpg";
 const TVModal = dynamic(() => import("../Modal/TVs/TVModal"));
 import styles from "../../styles/TVs/TVInfo.module.scss";
 
-const { NEXT_PUBLIC_API_KEY } = process.env;
-
 interface TVGenreProp {
   tvGenreData: {
     id: number;
@@ -62,7 +60,7 @@ const TVInfo: FC<TVInfoProps> = ({ posterPath, voteAverage }) => {
     const displayTVInfo = async () => {
       try {
         const res = await Axios.get(
-          `https://api.themoviedb.org/3/tv/${TVID}?api_key=${NEXT_PUBLIC_API_KEY}&language=en-US`
+          `https://api.themoviedb.org/3/tv/${TVID}?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US`
         );
         // console.log(res.data);
         if (isMounted) {

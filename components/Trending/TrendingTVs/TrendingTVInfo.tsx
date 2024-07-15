@@ -12,8 +12,6 @@ import FallbackButton from "../../Buttons/FallbackButton/FallbackButton";
 const TVModal = dynamic(() => import("../../Modal/TVs/TVModal"));
 import styles from "../../../styles/Trending/TrendingTVs/TrendingTVInfo.module.scss";
 
-const { NEXT_PUBLIC_API_KEY } = process.env;
-
 interface TVGenreProp {
   tvGenreData: {
     id: number;
@@ -74,7 +72,7 @@ const TrendingTVInfo: FC<TrendingTVInfoProps> = ({
     const displayTrendingTV = async () => {
       try {
         const res = await Axios.get(
-          `https://api.themoviedb.org/3/tv/${TrendingTVID}?api_key=${NEXT_PUBLIC_API_KEY}&language=en-US`
+          `https://api.themoviedb.org/3/tv/${TrendingTVID}?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US`
         );
         // console.log(res.data);
         if (isMounted) {

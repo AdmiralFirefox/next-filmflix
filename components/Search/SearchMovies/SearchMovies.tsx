@@ -7,8 +7,6 @@ import SearchMoviesInput from "../../Inputs/SearchMovies/SearchMoviesInput";
 import CircularProgress from "@mui/material/CircularProgress";
 import styles from "../../../styles/Search/SearchMovies/SearchMovies.module.scss";
 
-const { NEXT_PUBLIC_API_KEY } = process.env;
-
 export const SearchMovieIDContext = createContext(0);
 
 interface SearchMovieProps {
@@ -38,7 +36,7 @@ const SearchMovies: FC = () => {
     const displaySearchMovies = async () => {
       try {
         const res = await Axios.get(
-          `https://api.themoviedb.org/3/search/movie?api_key=${NEXT_PUBLIC_API_KEY}&language=en-US&query=${debouncedSearch}&page=1&include_adult=false`
+          `https://api.themoviedb.org/3/search/movie?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US&query=${debouncedSearch}&page=1&include_adult=false`
         );
         // console.log(res.data.results);
         if (isMounted) {

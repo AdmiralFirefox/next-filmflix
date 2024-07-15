@@ -11,8 +11,6 @@ const VideoPlayer = dynamic(
   () => import("../../Modal/VideoPlayer/VideoPlayer")
 );
 
-const { NEXT_PUBLIC_API_KEY } = process.env;
-
 const PlayButton = styled(Button)<ButtonProps>(() => ({
   color: "#000",
   backgroundColor: "hsl(0, 0%, 100%)",
@@ -41,7 +39,7 @@ const PlayMovieVideoButton: FC<{ id?: number }> = ({ id }) => {
     const displayTrailer = async () => {
       try {
         const res = await Axios.get(
-          `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${NEXT_PUBLIC_API_KEY}&language=en-US`
+          `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US`
         );
         // console.log(res.data.results[0]);
         if (isMounted) {

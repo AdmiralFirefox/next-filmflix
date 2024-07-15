@@ -7,8 +7,6 @@ import Axios from "axios";
 import styles from "../../../styles/Search/SearchTVs/SearchTVInfo.module.scss";
 const TVModal = dynamic(() => import("../../Modal/TVs/TVModal"));
 
-const { NEXT_PUBLIC_API_KEY } = process.env;
-
 interface TVGenreProp {
   tvGenreData: {
     id: number;
@@ -62,7 +60,7 @@ const SearchTVInfo: FC<SearchTVInfoProps> = ({ posterPath, voteAverage }) => {
     const displayTVInfoData = async () => {
       try {
         const res = await Axios.get(
-          `https://api.themoviedb.org/3/tv/${SearchTVID}?api_key=${NEXT_PUBLIC_API_KEY}&language=en-US`
+          `https://api.themoviedb.org/3/tv/${SearchTVID}?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US`
         );
         // console.log(res.data);
         if (isMounted) {

@@ -9,8 +9,6 @@ const VideoPlayer = dynamic(() => import("../Modal/VideoPlayer/VideoPlayer"));
 import PlayTVButton from "../Buttons/TVs/PlayTVButton";
 import styles from "../../styles/TVs/TVTrailer.module.scss";
 
-const { NEXT_PUBLIC_API_KEY } = process.env;
-
 const TVTrailer: FC<{ id: number }> = ({ id }) => {
   const [trailerTV, setTrailerTV] = useState({ key: 0 });
 
@@ -33,7 +31,7 @@ const TVTrailer: FC<{ id: number }> = ({ id }) => {
     const displayTVTrailer = async () => {
       try {
         const res = await Axios.get(
-          `https://api.themoviedb.org/3/tv/${id}/videos?api_key=${NEXT_PUBLIC_API_KEY}&language=en-US`
+          `https://api.themoviedb.org/3/tv/${id}/videos?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US`
         );
         // console.log(res.data.results[0]);
         if (isMounted) {

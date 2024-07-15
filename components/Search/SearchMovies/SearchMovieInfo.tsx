@@ -7,8 +7,6 @@ import Axios from "axios";
 import styles from "../../../styles/Search/SearchMovies/SearchMovieInfo.module.scss";
 const MovieModal = dynamic(() => import("../../Modal/Movies/MovieModal"));
 
-const { NEXT_PUBLIC_API_KEY } = process.env;
-
 interface GenreProp {
   genreData: {
     id: number;
@@ -54,7 +52,7 @@ const SearchMovieInfo: FC<SearchMovieInfoProps> = ({
     const displaySearchMovieInfo = async () => {
       try {
         const res = await Axios.get(
-          `https://api.themoviedb.org/3/movie/${searchMovieID}?api_key=${NEXT_PUBLIC_API_KEY}&language=en-US`
+          `https://api.themoviedb.org/3/movie/${searchMovieID}?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US`
         );
         // console.log(res.data);
         if (isMounted) {

@@ -7,8 +7,6 @@ import PosterFallback from "../../assets/fallbacks/PosterFallback.jpg";
 const MovieModal = dynamic(() => import("../Modal/Movies/MovieModal"));
 import styles from "../../styles/Movies/MovieInfo.module.scss";
 
-const { NEXT_PUBLIC_API_KEY } = process.env;
-
 interface GenreProp {
   genreData: {
     id: number;
@@ -61,7 +59,7 @@ const MovieInfo: FC<MovieInfoProps> = ({ posterPath, voteAverage }) => {
     const displayMovieInfo = async () => {
       try {
         const res = await Axios.get(
-          `https://api.themoviedb.org/3/movie/${movieID}?api_key=${NEXT_PUBLIC_API_KEY}&language=en-US`
+          `https://api.themoviedb.org/3/movie/${movieID}?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US`
         );
         // console.log(res.data);
         if (isMounted) {

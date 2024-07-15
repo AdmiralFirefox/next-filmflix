@@ -5,8 +5,6 @@ const TrendingTVInfo = dynamic(() => import("./TrendingTVInfo"));
 import Skeleton from "@mui/material/Skeleton";
 import styles from "../../../styles/Trending/TrendingTVs/TrendingTVs.module.scss";
 
-const { NEXT_PUBLIC_API_KEY } = process.env;
-
 export const TrendingTVIDContext = createContext(0);
 
 const TrendingTVs: FC = () => {
@@ -25,7 +23,7 @@ const TrendingTVs: FC = () => {
     const displayTrendingTVData = async () => {
       try {
         const res = await Axios.get(
-          `https://api.themoviedb.org/3/trending/tv/day?api_key=${NEXT_PUBLIC_API_KEY}`
+          `https://api.themoviedb.org/3/trending/tv/day?api_key=${process.env.NEXT_PUBLIC_API_KEY}`
         );
         // console.log(res.data.results[Math.floor(Math.random() * 10)]);
         if (isMounted) {

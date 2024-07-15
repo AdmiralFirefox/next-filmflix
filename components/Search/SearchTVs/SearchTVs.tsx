@@ -7,8 +7,6 @@ import SearchTVsInput from "../../Inputs/SearchTVs/SearchTVsInput";
 import CircularProgress from "@mui/material/CircularProgress";
 import styles from "../../../styles/Search/SearchTVs/SearchTVs.module.scss";
 
-const { NEXT_PUBLIC_API_KEY } = process.env;
-
 export const SearchTVIDContext = createContext(0);
 
 interface SearchTVProps {
@@ -40,7 +38,7 @@ const SearchTVs: FC = () => {
     const displaySearchTVs = async () => {
       try {
         const res = await Axios.get(`
-        https://api.themoviedb.org/3/search/tv?api_key=${NEXT_PUBLIC_API_KEY}&language=en-US&page=1&query=${debouncedSearch}&include_adult=false`);
+        https://api.themoviedb.org/3/search/tv?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US&page=1&query=${debouncedSearch}&include_adult=false`);
         // console.log(res.data.results);
         if (isMounted) {
           setSearchTVs(res.data.results);

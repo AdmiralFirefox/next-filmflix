@@ -6,8 +6,6 @@ import { styled } from "@mui/material/styles";
 import Button, { ButtonProps } from "@mui/material/Button";
 import styles from "../../styles/Movies/SimilarMovies.module.scss";
 
-const { NEXT_PUBLIC_API_KEY } = process.env;
-
 interface SimilarMoviesProps {
   similarMovieData: {
     id: number;
@@ -48,7 +46,7 @@ const SimilarMovies: FC<{ id: number }> = ({ id }) => {
     const displaySimilarMovies = async () => {
       try {
         const res = await Axios.get(
-          `https://api.themoviedb.org/3/movie/${id}/similar?api_key=${NEXT_PUBLIC_API_KEY}&language=en-US&page=1`
+          `https://api.themoviedb.org/3/movie/${id}/similar?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US&page=1`
         );
         // console.log(res.data.results);
         if (isMounted) {
