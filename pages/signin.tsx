@@ -16,9 +16,6 @@ import ProfileUserInput from "../components/Inputs/Profiles/ProfileUserInput";
 const SignUpFooter = dynamic(
   () => import("../components/LandingPage/SignUpFooter")
 );
-const ProfileSelection = dynamic(
-  () => import("../components/Main/ProfileSelection")
-);
 import profileStyles from "../styles/Pages/SignIn.module.scss";
 
 const SignIn: FC = () => {
@@ -85,65 +82,61 @@ const SignIn: FC = () => {
   // Route Changing when the user is logged in
   useEffect(() => {
     if (user) {
-      router.push("/signin", "/signin?userSignedIn", { shallow: true });
-    } else {
-      router.push("/signin", undefined, { shallow: true });
+      router.push("/watch");
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
 
-  if (user) {
-    return <ProfileSelection />;
-  }
+  return (
+    <>
+      <Link href="/" passHref legacyBehavior>
+        <div className={profileStyles["profile-styles-web-logo"]}>
+          <Image
+            src={WebLogo}
+            alt="Web Logo"
+            width={150}
+            height={50}
+            objectFit="cover"
+          />
+        </div>
+      </Link>
 
-  return <>
-    <Link href="/" passHref legacyBehavior>
-      <div className={profileStyles["profile-styles-web-logo"]}>
-        <Image
-          src={WebLogo}
-          alt="Web Logo"
-          width={150}
-          height={50}
-          objectFit="cover"
-        />
+      <div className={profileStyles["profile-styles-wrapper"]}>
+        <div className={profileStyles["profile-styles-content"]}>
+          <div className={profileStyles["profile-styles-title"]}>
+            <h1>Sign In</h1>
+          </div>
+
+          <ProfileUserInput
+            emailRef={emailRef}
+            passwordRef={passwordRef}
+            signIn={signIn}
+            signInWithgoogle={signInWithgoogle}
+            signInAnonymously={anonymousAccountSignIn}
+            authLoading={authLoading}
+          />
+
+          <div className={profileStyles["profile-styles-new-title"]}>
+            <h1>New to Filmflix?</h1>
+          </div>
+          <div className={profileStyles["profile-styles-new-account-link"]}>
+            <Link href="/createaccount" passHref legacyBehavior>
+              <p>Click here to create new account</p>
+            </Link>
+          </div>
+
+          <div className={profileStyles["profile-styles-recaptcha"]}>
+            <p>
+              This page is protected by Google reCAPTCHA to ensure you&apos;re
+              not a bot.{" "}
+            </p>
+          </div>
+        </div>
+        <SignUpFooter />
       </div>
-    </Link>
-
-    <div className={profileStyles["profile-styles-wrapper"]}>
-      <div className={profileStyles["profile-styles-content"]}>
-        <div className={profileStyles["profile-styles-title"]}>
-          <h1>Sign In</h1>
-        </div>
-
-        <ProfileUserInput
-          emailRef={emailRef}
-          passwordRef={passwordRef}
-          signIn={signIn}
-          signInWithgoogle={signInWithgoogle}
-          signInAnonymously={anonymousAccountSignIn}
-          authLoading={authLoading}
-        />
-
-        <div className={profileStyles["profile-styles-new-title"]}>
-          <h1>New to Filmflix?</h1>
-        </div>
-        <div className={profileStyles["profile-styles-new-account-link"]}>
-          <Link href="/createaccount" passHref legacyBehavior>
-            <p>Click here to create new account</p>
-          </Link>
-        </div>
-
-        <div className={profileStyles["profile-styles-recaptcha"]}>
-          <p>
-            This page is protected by Google reCAPTCHA to ensure you&apos;re
-            not a bot.{" "}
-          </p>
-        </div>
-      </div>
-      <SignUpFooter />
-    </div>
-  </>;
+    </>
+  );
 };
 
 export default SignIn;

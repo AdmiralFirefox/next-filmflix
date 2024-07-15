@@ -1,6 +1,4 @@
-import React, { FC, useEffect, useContext } from "react";
-import { AuthContext } from "../context/AuthContext";
-import { useRouter } from "next/router";
+import React, { FC, useEffect } from "react";
 import dynamic from "next/dynamic";
 const LandingPageNavbar = dynamic(
   () => import("../components/LandingPage/LandingPageNavbar")
@@ -26,18 +24,6 @@ const LandingPageFooter = dynamic(
 import styles from "../styles/Pages/Home.module.scss";
 
 const Home: FC = () => {
-  const user = useContext(AuthContext);
-  const router = useRouter();
-
-  // Route Changing when the user is logged in
-  useEffect(() => {
-    if (user) {
-      router.push("/signin");
-    }
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [user]);
-
   //Content Background
   useEffect(() => {
     document.getElementsByTagName("body")[0].className =
