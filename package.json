@@ -21,6 +21,7 @@
     "cross-env": "^7.0.3",
     "firebase": "^9.9.0",
     "framer-motion": "^6.4.3",
+    "lodash.debounce": "^4.0.8",
     "next": "^14.2.5",
     "next-pwa": "^5.6.0",
     "react": "^18.2.0",
@@ -33,6 +34,7 @@
     "uuid": "^8.3.2"
   },
   "devDependencies": {
+    "@types/lodash.debounce": "^4.0.9",
     "@types/next": "^9.0.0",
     "@types/react": "^17.0.15",
     "@types/uuid": "^8.3.1",
