@@ -9,33 +9,33 @@ const SignUpFooter: FC = () => {
         <div className={styles["signup-footer-contact-links"]}>
           <div className={styles["signup-footer-questions"]}>
             <Link href="/signin">
-              <a>Questions? Contact us.</a>
+              Questions? Contact us.
             </Link>
           </div>
           <div className={styles["signup-footer-links-info"]}>
             <Link href="/signin">
-              <a>FAQ</a>
+              FAQ
             </Link>
 
             <Link href="/signin">
-              <a>Cookie Preferences</a>
+              Cookie Preferences
             </Link>
 
             <Link href="/signin">
-              <a>Help Center</a>
+              Help Center
             </Link>
 
             <Link href="/signin">
-              <a>Corporate Information</a>
+              Corporate Information
             </Link>
           </div>
         </div>
         <div className={styles["signup-footer-terms-of-service"]}>
           <Link href="/signin">
-            <a>Terms of Use</a>
+            Terms of Use
           </Link>
           <Link href="/signin">
-            <a>Privacy</a>
+            Privacy
           </Link>
         </div>
       </div>

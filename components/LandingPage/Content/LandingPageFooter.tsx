@@ -7,67 +7,67 @@ const LandingPageFooter: FC = () => {
     <div className={styles["landing-page-footer-wrapper"]}>
       <div className={styles["landing-page-footer-questions"]}>
         <Link href="/">
-          <a>Questions? Contact us.</a>
+          Questions? Contact us.
         </Link>
       </div>
       <div className={styles["landing-page-footer-links"]}>
         <div>
           <Link href="/">
-            <a>FAQ</a>
+            FAQ
           </Link>
           <Link href="/">
-            <a>Investor Relations</a>
+            Investor Relations
           </Link>
           <Link href="/">
-            <a>Ways to Watch</a>
+            Ways to Watch
           </Link>
           <Link href="/">
-            <a>Corporate Information</a>
+            Corporate Information
           </Link>
           <Link href="/">
-            <a>Only on Filmflix</a>
-          </Link>
-        </div>
-        <div>
-          <Link href="/">
-            <a>Help Center</a>
-          </Link>
-          <Link href="/">
-            <a>Jobs</a>
-          </Link>
-          <Link href="/">
-            <a>Terms of Use</a>
-          </Link>
-          <Link href="/">
-            <a>Contact Us</a>
+            Only on Filmflix
           </Link>
         </div>
         <div>
           <Link href="/">
-            <a>Account</a>
+            Help Center
           </Link>
           <Link href="/">
-            <a>Redeem Gift Cards</a>
+            Jobs
           </Link>
           <Link href="/">
-            <a>Privacy</a>
+            Terms of Use
           </Link>
           <Link href="/">
-            <a>Speed Test</a>
+            Contact Us
           </Link>
         </div>
         <div>
           <Link href="/">
-            <a>Media Center</a>
+            Account
           </Link>
           <Link href="/">
-            <a>Buy Gift Cards</a>
+            Redeem Gift Cards
           </Link>
           <Link href="/">
-            <a>Cookie Preferences</a>
+            Privacy
           </Link>
           <Link href="/">
-            <a>Legal Notices</a>
+            Speed Test
+          </Link>
+        </div>
+        <div>
+          <Link href="/">
+            Media Center
+          </Link>
+          <Link href="/">
+            Buy Gift Cards
+          </Link>
+          <Link href="/">
+            Cookie Preferences
+          </Link>
+          <Link href="/">
+            Legal Notices
           </Link>
         </div>
       </div>

@@ -19,7 +19,7 @@ const LandingPageNavbar: FC = () => {
       </div>
 
       <div>
-        <Link href="/signin" passHref>
+        <Link href="/signin" passHref legacyBehavior>
           <span>
             <LandingPageRedButton>Sign In</LandingPageRedButton>
           </span>

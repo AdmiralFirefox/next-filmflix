@@ -66,144 +66,142 @@ const ProfileUserInput: FC<ProfileUserInputProps> = ({
     formState: { errors },
   } = useForm();
 
-  return (
-    <>
-      <Paper
+  return <>
+    <Paper
+      sx={{
+        padding: "0.5em",
+        display: "flex",
+        alignItems: "center",
+        width: "min(100%, 35em)",
+        background: "#333333",
+        marginBottom: "1.5em",
+      }}
+    >
+      <InputBase
+        placeholder="Email"
+        inputRef={emailRef}
+        type="email"
+        inputProps={{
+          "aria-label": "Email",
+        }}
         sx={{
-          padding: "0.5em",
-          display: "flex",
-          alignItems: "center",
-          width: "min(100%, 35em)",
-          background: "#333333",
+          color: "#fff",
+          fontWeight: "bold",
+          ml: 1,
+          flex: 1,
+        }}
+        id="email"
+        aria-invalid={errors.email ? "true" : "false"}
+        {...register("email", {
+          required: "*required",
+          pattern: {
+            value: /\S+@\S+\.\S+/,
+            message: "Please enter a valid email",
+          },
+        })}
+      />
+    </Paper>
+    {errors.email && (
+      <p
+        role="alert"
+        style={{
+          color: "#f59842",
+          marginTop: "-1em",
           marginBottom: "1.5em",
+          alignSelf: "start",
+          textAlign: "left",
         }}
       >
-        <InputBase
-          placeholder="Email"
-          inputRef={emailRef}
-          type="email"
-          inputProps={{
-            "aria-label": "Email",
-          }}
-          sx={{
-            color: "#fff",
-            fontWeight: "bold",
-            ml: 1,
-            flex: 1,
-          }}
-          id="email"
-          aria-invalid={errors.email ? "true" : "false"}
-          {...register("email", {
-            required: "*required",
-            pattern: {
-              value: /\S+@\S+\.\S+/,
-              message: "Please enter a valid email",
-            },
-          })}
-        />
-      </Paper>
-      {errors.email && (
-        <p
-          role="alert"
-          style={{
-            color: "#f59842",
-            marginTop: "-1em",
-            marginBottom: "1.5em",
-            alignSelf: "start",
-            textAlign: "left",
-          }}
-        >
-          {errors.email.message}
-        </p>
-      )}
-      <Paper
+        {errors.email.message}
+      </p>
+    )}
+    <Paper
+      sx={{
+        padding: "0.5em",
+        display: "flex",
+        alignItems: "center",
+        width: "min(100%, 35em)",
+        background: "#333333",
+        marginBottom: "1.5em",
+      }}
+    >
+      <InputBase
+        placeholder="Password"
+        inputRef={passwordRef}
+        type="password"
+        inputProps={{
+          "aria-label": "Password",
+        }}
         sx={{
-          padding: "0.5em",
-          display: "flex",
-          alignItems: "center",
-          width: "min(100%, 35em)",
-          background: "#333333",
+          color: "#fff",
+          fontWeight: "bold",
+          ml: 1,
+          flex: 1,
+        }}
+        id="password"
+        aria-invalid={errors.passward ? "true" : "false"}
+        {...register("password", {
+          required: "*required",
+          minLength: {
+            value: 8,
+            message: "Password length must be at least 8",
+          },
+        })}
+      />
+    </Paper>
+    {errors.password && (
+      <p
+        role="alert"
+        style={{
+          color: "#f59842",
+          marginTop: "-1em",
           marginBottom: "1.5em",
+          alignSelf: "start",
+          textAlign: "left",
         }}
       >
-        <InputBase
-          placeholder="Password"
-          inputRef={passwordRef}
-          type="password"
-          inputProps={{
-            "aria-label": "Password",
-          }}
-          sx={{
-            color: "#fff",
-            fontWeight: "bold",
-            ml: 1,
-            flex: 1,
-          }}
-          id="password"
-          aria-invalid={errors.passward ? "true" : "false"}
-          {...register("password", {
-            required: "*required",
-            minLength: {
-              value: 8,
-              message: "Password length must be at least 8",
-            },
-          })}
-        />
-      </Paper>
-      {errors.password && (
-        <p
-          role="alert"
-          style={{
-            color: "#f59842",
-            marginTop: "-1em",
-            marginBottom: "1.5em",
-            alignSelf: "start",
-            textAlign: "left",
-          }}
+        {errors.password.message}
+      </p>
+    )}
+    {authLoading ? (
+      <>
+        <LoadingButtons />
+        <LoadingButtons />
+        <LoadingButtons />
+      </>
+    ) : (
+      <>
+        <SignInButton
+          variant="contained"
+          onClick={handleSubmit(signIn)}
+          type="submit"
         >
-          {errors.password.message}
-        </p>
-      )}
-      {authLoading ? (
-        <>
-          <LoadingButtons />
-          <LoadingButtons />
-          <LoadingButtons />
-        </>
-      ) : (
-        <>
-          <SignInButton
-            variant="contained"
-            onClick={handleSubmit(signIn)}
-            type="submit"
-          >
-            Sign In
-          </SignInButton>
-          <SignInDummyAccountButton
-            variant="contained"
-            onClick={signInAnonymously}
-            type="submit"
-          >
-            Sign In Anonymously
-          </SignInDummyAccountButton>
-          <SignInWithGoogleButton
-            onClick={signInWithgoogle}
-            variant="contained"
-            startIcon={
-              <Image
-                src={GoogleLogo}
-                alt="Google Image"
-                width={30}
-                height={30}
-              />
-            }
-          >
-            Sign In with Google
-          </SignInWithGoogleButton>
-        </>
-      )}
-    </>
-  );
+          Sign In
+        </SignInButton>
+        <SignInDummyAccountButton
+          variant="contained"
+          onClick={signInAnonymously}
+          type="submit"
+        >
+          Sign In Anonymously
+        </SignInDummyAccountButton>
+        <SignInWithGoogleButton
+          onClick={signInWithgoogle}
+          variant="contained"
+          startIcon={
+            <Image
+              src={GoogleLogo}
+              alt="Google Image"
+              width={30}
+              height={30}
+            />
+          }
+        >
+          Sign In with Google
+        </SignInWithGoogleButton>
+      </>
+    )}
+  </>;
 };
 
 export default ProfileUserInput;

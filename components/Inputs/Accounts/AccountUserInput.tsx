@@ -41,164 +41,162 @@ const AccountUserInput: FC<AccountUserInputProps> = ({
   const password = useRef({});
   password.current = watch("password", "");
 
-  return (
-    <>
-      <Paper
+  return <>
+    <Paper
+      sx={{
+        display: "flex",
+        alignItems: "center",
+        padding: "0.5em",
+        width: "min(100%, 35em)",
+        marginBottom: "1.5em",
+        background: "#333333",
+      }}
+    >
+      <InputBase
+        inputRef={emailRef}
+        inputProps={{
+          "aria-label": "Email",
+        }}
         sx={{
-          display: "flex",
-          alignItems: "center",
-          padding: "0.5em",
-          width: "min(100%, 35em)",
+          color: "#fff",
+          fontWeight: "bold",
+          ml: 1,
+          flex: 1,
+        }}
+        type="email"
+        id="email"
+        aria-invalid={errors.email ? "true" : "false"}
+        {...register("email", {
+          required: "*required",
+          pattern: {
+            value: /\S+@\S+\.\S+/,
+            message: "Please enter a valid email",
+          },
+        })}
+        placeholder="Email"
+      />
+    </Paper>
+    {errors.email && (
+      <p
+        role="alert"
+        style={{
+          color: "#f59842",
+          marginTop: "-1em",
           marginBottom: "1.5em",
-          background: "#333333",
+          alignSelf: "start",
+          textAlign: "left",
         }}
       >
-        <InputBase
-          inputRef={emailRef}
-          inputProps={{
-            "aria-label": "Email",
-          }}
-          sx={{
-            color: "#fff",
-            fontWeight: "bold",
-            ml: 1,
-            flex: 1,
-          }}
-          type="email"
-          id="email"
-          aria-invalid={errors.email ? "true" : "false"}
-          {...register("email", {
-            required: "*required",
-            pattern: {
-              value: /\S+@\S+\.\S+/,
-              message: "Please enter a valid email",
-            },
-          })}
-          placeholder="Email"
-        />
-      </Paper>
-      {errors.email && (
-        <p
-          role="alert"
-          style={{
-            color: "#f59842",
-            marginTop: "-1em",
-            marginBottom: "1.5em",
-            alignSelf: "start",
-            textAlign: "left",
-          }}
-        >
-          {errors.email.message}
-        </p>
-      )}
-      <Paper
+        {errors.email.message}
+      </p>
+    )}
+    <Paper
+      sx={{
+        display: "flex",
+        alignItems: "center",
+        padding: "0.5em",
+        width: "min(100%, 35em)",
+        marginBottom: "1.5em",
+        background: "#333333",
+      }}
+    >
+      <InputBase
+        inputRef={passwordRef}
+        inputProps={{
+          "aria-label": "Password",
+        }}
         sx={{
-          display: "flex",
-          alignItems: "center",
-          padding: "0.5em",
-          width: "min(100%, 35em)",
+          color: "#fff",
+          fontWeight: "bold",
+          ml: 1,
+          flex: 1,
+        }}
+        type="password"
+        id="password"
+        aria-invalid={errors.passward ? "true" : "false"}
+        {...register("password", {
+          required: "*required",
+          minLength: {
+            value: 8,
+            message: "Password length must be at least 8",
+          },
+        })}
+        placeholder="Password"
+      />
+    </Paper>
+    {errors.password && (
+      <p
+        role="alert"
+        style={{
+          color: "#f59842",
+          marginTop: "-1em",
           marginBottom: "1.5em",
-          background: "#333333",
+          alignSelf: "start",
+          textAlign: "left",
         }}
       >
-        <InputBase
-          inputRef={passwordRef}
-          inputProps={{
-            "aria-label": "Password",
-          }}
-          sx={{
-            color: "#fff",
-            fontWeight: "bold",
-            ml: 1,
-            flex: 1,
-          }}
-          type="password"
-          id="password"
-          aria-invalid={errors.passward ? "true" : "false"}
-          {...register("password", {
-            required: "*required",
-            minLength: {
-              value: 8,
-              message: "Password length must be at least 8",
-            },
-          })}
-          placeholder="Password"
-        />
-      </Paper>
-      {errors.password && (
-        <p
-          role="alert"
-          style={{
-            color: "#f59842",
-            marginTop: "-1em",
-            marginBottom: "1.5em",
-            alignSelf: "start",
-            textAlign: "left",
-          }}
-        >
-          {errors.password.message}
-        </p>
-      )}
-      <Paper
+        {errors.password.message}
+      </p>
+    )}
+    <Paper
+      sx={{
+        display: "flex",
+        alignItems: "center",
+        padding: "0.5em",
+        width: "min(100%, 35em)",
+        marginBottom: "1.5em",
+        background: "#333333",
+      }}
+    >
+      <InputBase
+        inputProps={{
+          "aria-label": "Password",
+        }}
         sx={{
-          display: "flex",
-          alignItems: "center",
-          padding: "0.5em",
-          width: "min(100%, 35em)",
+          color: "#fff",
+          fontWeight: "bold",
+          ml: 1,
+          flex: 1,
+        }}
+        type="password"
+        id="confirmPassword"
+        aria-invalid={errors.confirmPassword ? "true" : "false"}
+        {...register("confirmPassword", {
+          required: "Please re-enter your password",
+          validate: (value) =>
+            value === password.current || "The passwords do not match",
+        })}
+        placeholder="Confirm Password"
+      />
+    </Paper>
+    {errors.confirmPassword && (
+      <p
+        role="alert"
+        style={{
+          color: "#f59842",
+          marginTop: "-1em",
           marginBottom: "1.5em",
-          background: "#333333",
+          alignSelf: "start",
+          textAlign: "left",
         }}
       >
-        <InputBase
-          inputProps={{
-            "aria-label": "Password",
-          }}
-          sx={{
-            color: "#fff",
-            fontWeight: "bold",
-            ml: 1,
-            flex: 1,
-          }}
-          type="password"
-          id="confirmPassword"
-          aria-invalid={errors.confirmPassword ? "true" : "false"}
-          {...register("confirmPassword", {
-            required: "Please re-enter your password",
-            validate: (value) =>
-              value === password.current || "The passwords do not match",
-          })}
-          placeholder="Confirm Password"
-        />
-      </Paper>
-      {errors.confirmPassword && (
-        <p
-          role="alert"
-          style={{
-            color: "#f59842",
-            marginTop: "-1em",
-            marginBottom: "1.5em",
-            alignSelf: "start",
-            textAlign: "left",
-          }}
-        >
-          {errors.confirmPassword.message}
-        </p>
-      )}
-      {authLoading ? (
-        <>
-          <LoadingButtons />
-        </>
-      ) : (
-        <CreateAccount
-          variant="contained"
-          onClick={handleSubmit(createAccount)}
-          type="button"
-        >
-          Create Account
-        </CreateAccount>
-      )}
-    </>
-  );
+        {errors.confirmPassword.message}
+      </p>
+    )}
+    {authLoading ? (
+      <>
+        <LoadingButtons />
+      </>
+    ) : (
+      <CreateAccount
+        variant="contained"
+        onClick={handleSubmit(createAccount)}
+        type="button"
+      >
+        Create Account
+      </CreateAccount>
+    )}
+  </>;
 };
 
 export default AccountUserInput;

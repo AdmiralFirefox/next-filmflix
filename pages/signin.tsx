@@ -97,55 +97,53 @@ const SignIn: FC = () => {
     return <ProfileSelection />;
   }
 
-  return (
-    <>
-      <Link href="/" passHref>
-        <div className={profileStyles["profile-styles-web-logo"]}>
-          <Image
-            src={WebLogo}
-            alt="Web Logo"
-            width={150}
-            height={50}
-            objectFit="cover"
-          />
-        </div>
-      </Link>
-
-      <div className={profileStyles["profile-styles-wrapper"]}>
-        <div className={profileStyles["profile-styles-content"]}>
-          <div className={profileStyles["profile-styles-title"]}>
-            <h1>Sign In</h1>
-          </div>
-
-          <ProfileUserInput
-            emailRef={emailRef}
-            passwordRef={passwordRef}
-            signIn={signIn}
-            signInWithgoogle={signInWithgoogle}
-            signInAnonymously={anonymousAccountSignIn}
-            authLoading={authLoading}
-          />
-
-          <div className={profileStyles["profile-styles-new-title"]}>
-            <h1>New to Filmflix?</h1>
-          </div>
-          <div className={profileStyles["profile-styles-new-account-link"]}>
-            <Link href="/createaccount" passHref>
-              <p>Click here to create new account</p>
-            </Link>
-          </div>
-
-          <div className={profileStyles["profile-styles-recaptcha"]}>
-            <p>
-              This page is protected by Google reCAPTCHA to ensure you&apos;re
-              not a bot.{" "}
-            </p>
-          </div>
-        </div>
-        <SignUpFooter />
+  return <>
+    <Link href="/" passHref legacyBehavior>
+      <div className={profileStyles["profile-styles-web-logo"]}>
+        <Image
+          src={WebLogo}
+          alt="Web Logo"
+          width={150}
+          height={50}
+          objectFit="cover"
+        />
       </div>
-    </>
-  );
+    </Link>
+
+    <div className={profileStyles["profile-styles-wrapper"]}>
+      <div className={profileStyles["profile-styles-content"]}>
+        <div className={profileStyles["profile-styles-title"]}>
+          <h1>Sign In</h1>
+        </div>
+
+        <ProfileUserInput
+          emailRef={emailRef}
+          passwordRef={passwordRef}
+          signIn={signIn}
+          signInWithgoogle={signInWithgoogle}
+          signInAnonymously={anonymousAccountSignIn}
+          authLoading={authLoading}
+        />
+
+        <div className={profileStyles["profile-styles-new-title"]}>
+          <h1>New to Filmflix?</h1>
+        </div>
+        <div className={profileStyles["profile-styles-new-account-link"]}>
+          <Link href="/createaccount" passHref legacyBehavior>
+            <p>Click here to create new account</p>
+          </Link>
+        </div>
+
+        <div className={profileStyles["profile-styles-recaptcha"]}>
+          <p>
+            This page is protected by Google reCAPTCHA to ensure you&apos;re
+            not a bot.{" "}
+          </p>
+        </div>
+      </div>
+      <SignUpFooter />
+    </div>
+  </>;
 };
 
 export default SignIn;
