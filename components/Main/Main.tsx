@@ -1,7 +1,8 @@
-import React, { FC, useState, useEffect, Dispatch } from "react";
+import React, { FC, useState, Dispatch } from "react";
 import dynamic from "next/dynamic";
 import { SelectChangeEvent } from "@mui/material/Select";
 import ProfileLoader from "./ProfileLoader";
+import { useLocalStorage } from "../../hooks/useLocalStorage";
 const Movies = dynamic(() => import("../Movies/Movies"));
 const Navbar = dynamic(() => import("./Navbar"));
 const TVs = dynamic(() => import("../TVs/TVs"));
@@ -80,10 +81,10 @@ const SearchMedia: FC<SearchMediaProps> = ({
 
 const Main: FC<MainProps> = ({ manageProfiles, signOut }) => {
   //Changing Categories
-  const [category, setCategory] = useState("Movies");
+  const [category, setCategory] = useLocalStorage("CATEGORY", "Movies");
 
   //Search Functions
-  const [search, setSearch] = useState(false);
+  const [search, setSearch] = useLocalStorage("SEARCH_MODE", false);
 
   const searchMode = (): void => setSearch(true);
 
@@ -107,36 +108,6 @@ const Main: FC<MainProps> = ({ manageProfiles, signOut }) => {
   const handleCloseProfileModal = (): void => {
     setOpenProfileModal(false);
   };
-
-  // Local Storage for when the user selects a Category
-  useEffect(() => {
-    const json = localStorage.getItem("CATEGORY") as string;
-    const saveCategory = JSON.parse(json);
-
-    if (saveCategory) {
-      setCategory(saveCategory);
-    }
-  }, []);
-
-  useEffect(() => {
-    const json = JSON.stringify(category);
-    localStorage.setItem("CATEGORY", json);
-  }, [category]);
-
-  // Local Storage when the user Searches for Movies or TVs
-  useEffect(() => {
-    const json = localStorage.getItem("SEARCH_MODE") as string;
-    const saveSearchMode = JSON.parse(json);
-
-    if (saveSearchMode) {
-      setSearch(saveSearchMode);
-    }
-  }, []);
-
-  useEffect(() => {
-    const json = JSON.stringify(search);
-    localStorage.setItem("SEARCH_MODE", json);
-  }, [search]);
 
   return (
     <>

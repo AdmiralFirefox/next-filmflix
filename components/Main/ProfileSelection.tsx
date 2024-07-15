@@ -21,6 +21,7 @@ const EditProfilePicModal = dynamic(
 import LogoAnimation from "../LandingPage/LogoAnimation";
 const Main = dynamic(() => import("./Main"));
 import Image, { StaticImageData } from "next/legacy/image";
+import { useLocalStorage } from "../../hooks/useLocalStorage";
 import WebLogo from "../../assets/logo/WebLogo.png";
 import DefaultProfile from "../../assets/profileicons/DefaultAvatar.png";
 import ManageProfileButton from "../Buttons/Main/ManageProfileButton";
@@ -282,17 +283,17 @@ const ProfileEditModeOff: FC<ProfileEditModeOffProps> = ({
 
 const ProfileSelection: FC = () => {
   // Animate Logo
-  const [noLogoAnimation, setNoLogoAnimation] = useState(false);
+  const [noLogoAnimation, setNoLogoAnimation] = useLocalStorage("NO_LOGO_ANIMATION", false);
 
   //Profile Edit
-  const [profiles, setProfiles] = useState<ProfilesProps["profileData"]>([]);
-  const [profile, setProfile] = useState("");
+  const [profiles, setProfiles] = useLocalStorage<ProfilesProps["profileData"]>("profiles", []);
+  const [profile, setProfile] = useLocalStorage("PROFILE_NAME", "");
 
   const [profileEdit, setProfileEdit] = useState<boolean | number>(false);
   const [profileTextEdit, setProfileTextEdit] = useState("");
 
   //Proile Picture Edit
-  const [profilePic, setProfilePic] = useState(DefaultProfile);
+  const [profilePic, setProfilePic] = useLocalStorage("PROFILE_PIC", DefaultProfile);
   const [editProfilePic, setEditProfilePic] = useState<boolean | number>(false);
   const [editProfilePicText, setEditProfilePicText] =
     useState<StaticImageData>(profilePic);
@@ -303,7 +304,7 @@ const ProfileSelection: FC = () => {
   const toggleEditMode = (): void => setEditMode(!editMode);
 
   //When a user Select a Profile
-  const [profileSelect, setProfileSelect] = useState(false);
+  const [profileSelect, setProfileSelect] = useLocalStorage("PROFILE_SELECTED", false);
 
   const selectedProfile = () => {
     setProfileSelect(true);
@@ -418,81 +419,6 @@ const ProfileSelection: FC = () => {
     setNoLogoAnimation(false);
     await signOut(auth);
   };
-
-  //Local Storage for Saving Profiles When Refresh
-  useEffect(() => {
-    const json = localStorage.getItem("profiles") as string;
-    const saveProfiles = JSON.parse(json);
-
-    if (saveProfiles) {
-      setProfiles(saveProfiles);
-    }
-  }, []);
-
-  useEffect(() => {
-    const json = JSON.stringify(profiles);
-    localStorage.setItem("profiles", json);
-  }, [profiles]);
-
-  // Local Storage for Selecting a Profile
-  useEffect(() => {
-    const json = localStorage.getItem("PROFILE_SELECTED") as string;
-    const saveProfileSelected = JSON.parse(json);
-
-    if (saveProfileSelected) {
-      setProfileSelect(saveProfileSelected);
-    }
-  }, []);
-
-  useEffect(() => {
-    const json = JSON.stringify(profileSelect);
-    localStorage.setItem("PROFILE_SELECTED", json);
-  }, [profileSelect]);
-
-  // Local Storage for Profile Name
-  useEffect(() => {
-    const json = localStorage.getItem("PROFILE_NAME") as string;
-    const saveProfileName = JSON.parse(json);
-
-    if (saveProfileName) {
-      setProfile(saveProfileName);
-    }
-  }, []);
-
-  useEffect(() => {
-    const json = JSON.stringify(profile);
-    localStorage.setItem("PROFILE_NAME", json);
-  }, [profile]);
-
-  // Local Storage for Profile Pic
-  useEffect(() => {
-    const json = localStorage.getItem("PROFILE_PIC") as string;
-    const saveProfilePic = JSON.parse(json);
-
-    if (saveProfilePic) {
-      setProfilePic(saveProfilePic);
-    }
-  }, []);
-
-  useEffect(() => {
-    const json = JSON.stringify(profilePic);
-    localStorage.setItem("PROFILE_PIC", json);
-  }, [profilePic]);
-
-  // Local Storage for Animating Logo State
-  useEffect(() => {
-    const json = localStorage.getItem("NO_LOGO_ANIMATION") as string;
-    const saveAnimateLogoState = JSON.parse(json);
-
-    if (saveAnimateLogoState) {
-      setNoLogoAnimation(saveAnimateLogoState);
-    }
-  }, []);
-
-  useEffect(() => {
-    const json = JSON.stringify(noLogoAnimation);
-    localStorage.setItem("NO_LOGO_ANIMATION", json);
-  }, [noLogoAnimation]);
 
   //Changing Background Color
   useEffect(() => {
