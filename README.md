@@ -4,10 +4,7 @@
         <p>A movie database website inspired by <a href="https://www.netflix.com/">Netflix</a></p>
     </strong>
     <strong>
-        <p><a href="https://filmflix-watch.vercel.app/">You can view the live site here »<a></p>
-    </strong>
-        <strong>
-       <p><a href="https://filmflix-watch.netlify.app/">Alternate Link »<a></p>
+        <p><a href="https://filmflix-master-project-eagle.vercel.app/">You can view the live site here »<a></p>
     </strong>
     <br />
      <strong>
