@@ -39,7 +39,7 @@
     "@types/react": "^17.0.15",
     "@types/uuid": "^8.3.1",
     "eslint": "7.31.0",
-    "eslint-config-next": "^14.2.22",
+    "eslint-config-next": "11.0.1",
     "file-loader": "^6.2.0",
     "sass": "^1.49.7",
     "typescript": "^5.5.3",
