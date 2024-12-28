@@ -7,7 +7,11 @@ interface MetaProps {
   description?: string;
 }
 
-const Meta: FC<MetaProps> = ({ title, keywords, description }) => {
+const Meta: FC<MetaProps> = ({
+  title = "Filmflix",
+  keywords = "Filmflix, Movie Database",
+  description = "Filmflix, a database of latest movies and tv shows.",
+}) => {
   return (
     <Head>
       <meta
@@ -21,12 +25,6 @@ const Meta: FC<MetaProps> = ({ title, keywords, description }) => {
       <title>{title}</title>
     </Head>
   );
-};
-
-Meta.defaultProps = {
-  title: "Filmflix",
-  keywords: "Filmflix, Movie Database",
-  description: "Filmflix, a database of latest movies and tv shows.",
 };
 
 export default Meta;
